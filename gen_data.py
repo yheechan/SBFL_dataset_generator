@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-import subprocess as sp
-import argparse
-
 from utils import myCommander as cc
 from utils import myDatabase as dd
+from utils import myArgparser as pp
 
 failing_file = [
     'src/lib_json/json_reader.cpp',
@@ -53,39 +51,8 @@ passing_tc = [
     'ReaderTest/parseString'
 ]
     
-def make_parser():
-    parser = argparse.ArgumentParser(
-        description='Generate Data.'
-    )
-
-    parser.add_argument(
-        '--command',
-        required=False,
-        default='spectra-data',
-        choices=[
-            'spectra-data',
-            'summary',
-            'list-tc',
-            'html',
-            'pretty-json',
-            'tc-criterion',
-            'tc-relation'
-        ],
-        help='select which operation to run.'
-    )
-
-    parser.add_argument(
-        '--tcNum',
-        type=int,
-        nargs='?',
-        const=0,
-        default=None,
-        help='test case number (optional)')
-
-    return parser
-
 if __name__ == "__main__":
-    parser = make_parser()
+    parser = pp.make_parser()
     args = parser.parse_args()
 
     db = dd.myDatabase()
