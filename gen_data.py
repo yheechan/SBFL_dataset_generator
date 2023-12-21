@@ -57,17 +57,46 @@ if __name__ == "__main__":
     db = dd.myDatabase()
     cc.assign_test_cases(db, tf)
 
-    if args.command == 'spectra-data':
-        cc.spectra_data(db, tf, tp)
-    elif args.command == 'list-tc':
-        cc.list_test_cases(db, tf)
-    elif args.command == 'summary':
-        cc.summary_coverage_json_target_TC(db, args.tcNum)
-    elif args.command == 'html':
-        cc.html_target_TC(db, args.tcNum)
-    elif args.command == 'pretty-json':
-        cc.pretty_json_TC(db, args.tcNum)
-    elif args.command == 'tc-criterion':
-        cc.criterion_all_TC(db, failing_info)
-    elif args.command == 'tc-relation':
-        cc.relation_all_TC(db)
+    sd = (0, '')
+    ct = (0, '')
+    rt = (0, '')
+    lt = (0, '')
+    st = (0, '')
+    ht = (0, '')
+    pt = (0, '')
+
+    if args.spectra_data:
+        sd = cc.spectra_data(db, tf, tp)
+    if args.criteria_data:
+        ct = cc.criteria_all_TC(db, failing_info)
+    if args.relation_data:
+        rt = cc.relation_all_TC(db)
+    if args.list_tc:
+        lt = cc.list_test_cases(db, tf)
+    if args.summary_json is not None:
+        st = cc.summary_coverage_json_target_TC(db, args.summary_json)
+    if args.html is not None:
+        ht = cc.html_target_TC(db, args.html)
+    if args.pretty_json is not None:
+        pt = cc.pretty_json_TC(db, args.pretty_json)
+    
+    print()
+    print()
+    print("************************************")
+    print("***** FINAL RESULTS ON COMMAND *****")
+    print("************************************")
+
+    if sd[0]:
+        print(sd[1])
+    if ct[0]:
+        print(ct[1])
+    if rt[0]:
+        print(rt[1])
+    if lt[0]:
+        print(lt[1])
+    if st[0]:
+        print(st[1])
+    if ht[0]:
+        print(ht[1])
+    if pt[0]:
+        print(pt[1])

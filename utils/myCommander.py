@@ -73,69 +73,79 @@ def spectra_data(db, tf, tp):
     spectra_data = db.cov_per_file
     ww.write_spectra_data_to_csv(spectra_data)
     
-    print(">>> [COMPLETE] making spectra data for target TC")
+    output = ">>> [COMPLETE] Generating spectrum-based data with selected Failing & Passing TC."
+    print(output)
+    return (1, output)
 
 # 1. executes './jsoncpp_test --list-tests' to gather list of TC
 def list_test_cases(db, tf):
     ww.write_test_cases_list_to_txt(db.tc, pp=True)
-    print(">>> [COMPLETE] writing test cases list to data/tc-list.txt")
+    output = ">>> [COMPLETE] Generating a text file containing the list of test cases."
+    print(output)
+    return (1, output)
 
 # 1. remove all gcda files
 # 2. execute test case
 # 3. generate summary coverage json (file)
 def summary_coverage_json_target_TC(db, num):
-    if hh.check_num(num):
-        tc_id = 'TC'+str(num)
+    tc_id = 'TC'+str(num)
 
-        if not tc_id in db.tc.keys():
-            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
-            return
+    if not tc_id in db.tc.keys():
+        output = ">>> [IN-COMPLETE] summary-json: Test case doesn't exist: {}".format(tc_id)
+        print(output)
+        return (1, output)
 
-        tc_name = db.tc[tc_id]['name']
+    tc_name = db.tc[tc_id]['name']
 
-        xx.remove_all_gcda()
-        xx.run_by_tc_name(tc_name)
-        xx.generate_summary_json_for_TC(tc_id)
-    else:
-        print(">>> [IN-COMPLETE] test case number is not given")
+    xx.remove_all_gcda()
+    xx.run_by_tc_name(tc_name)
+    xx.generate_summary_json_for_TC(tc_id)
+    
+    output = ">>> [COMPLETE] Generating coverage summary in json format {}.".format(tc_id)
+    print(output)
+    return (1, output)
 
 # 1. remove all gcda files
 # 2. execute test case
 # 3. generate html
 def html_target_TC(db, num):
-    if hh.check_num(num):
-        tc_id = 'TC'+str(num)
+    tc_id = 'TC'+str(num)
 
-        if not tc_id in db.tc.keys():
-            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
-            return
+    if not tc_id in db.tc.keys():
+        output = ">>> [IN-COMPLETE] html: Test case doesn't exist: {}".format(tc_id)
+        print(output)
+        return (1, output)
 
-        tc_name = db.tc[tc_id]['name']
+    tc_name = db.tc[tc_id]['name']
 
-        xx.remove_all_gcda()
-        xx.run_by_tc_name(tc_name)
-        xx.generate_html_for_TC(tc_id)
-    else:
-        print(">>> [IN-COMPLETE] test case number is not given")
+    xx.remove_all_gcda()
+    xx.run_by_tc_name(tc_name)
+    xx.generate_html_for_TC(tc_id)
+
+    output = ">>> [COMPLETE] Generating html of coverage data for {}.".format(tc_id)
+    print(output)
+    return (1, output)
 
 # 1. remove all gcda files
 # 2. execute test case
 # 3. generate html
 def pretty_json_TC(db, num):
-    if hh.check_num(num):
-        tc_id = 'TC'+str(num)
+    tc_id = 'TC'+str(num)
 
-        if not tc_id in db.tc.keys():
-            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
-            return
+    if not tc_id in db.tc.keys():
+        output = ">>> [IN-COMPLETE] pretty-json: Test case doesn't exist: {}".format(tc_id)
+        print(output)
+        return (1, output)
 
-        tc_name = db.tc[tc_id]['name']
+    tc_name = db.tc[tc_id]['name']
 
-        xx.remove_all_gcda()
-        xx.run_by_tc_name(tc_name)
-        xx.generate_pretty_json_for_TC(tc_id)
-    else:
-        print(">>> [IN-COMPLETE] test case number is not given")
+    xx.remove_all_gcda()
+    xx.run_by_tc_name(tc_name)
+    xx.generate_pretty_json_for_TC(tc_id)
+
+    output = ">>> [COMPLETE] Generating coverage in pretty json format for {}.".format(tc_id)
+    print(output)
+    return (1, output)
 
 def check_exist(target, set):
     found = False
@@ -144,7 +154,7 @@ def check_exist(target, set):
     return found
 
 # Gen one csv containing 0 or 1 for all TC
-def criterion_all_TC(db, failing_info):
+def criteria_all_TC(db, failing_info):
     failing_file = failing_info['failing_file']
     failing_func = failing_info['failing_func']
     failing_line = failing_info['failing_line']
@@ -154,7 +164,7 @@ def criterion_all_TC(db, failing_info):
         ['bug-func'],
         ['bug-line'],
     ]
-    col_data = ['criterion']
+    col_data = ['criteria']
 
     execs_buggy_file_cnt = 0
     execs_buggy_func_cnt = 0
@@ -166,7 +176,7 @@ def criterion_all_TC(db, failing_info):
         xx.remove_all_gcda()
         xx.run_by_tc_name(tc_name)
 
-        # for file criterion
+        # for file criteria
         summ_path = xx.generate_summary_json_for_TC(tc_id)
         summ_json = rr.get_json_from_file_path(summ_path)
 
@@ -184,7 +194,7 @@ def criterion_all_TC(db, failing_info):
         print("* {} on fail file".format(execs_buggy_file))
 
 
-        # for func criterion
+        # for func criteria
         cov_path = xx.generate_pretty_json_for_TC(tc_id)
         cov_json = rr.get_json_from_file_path(cov_path)
 
@@ -208,7 +218,7 @@ def criterion_all_TC(db, failing_info):
         row_data[1].append(int(execs_buggy_func))
         print("* {} on fail func".format(execs_buggy_func))
 
-        # for func criterion
+        # for func criteria
         execs_buggy_line = False
         for file in cov_json['files']:
             file_name = file['file']
@@ -229,16 +239,18 @@ def criterion_all_TC(db, failing_info):
         row_data[2].append(int(execs_buggy_line))
         print("* {} on fail line".format(execs_buggy_line))
     
-    db.tc_criterion['col_data'] = col_data
-    db.tc_criterion['row_data'] = row_data
-    db.tc_criterion['xx_fail_file'] = execs_buggy_file_cnt
-    db.tc_criterion['xx_fail_func'] = execs_buggy_func_cnt
-    db.tc_criterion['xx_fail_line'] = execs_buggy_line_cnt
+    db.tc_criteria['col_data'] = col_data
+    db.tc_criteria['row_data'] = row_data
+    db.tc_criteria['xx_fail_file'] = execs_buggy_file_cnt
+    db.tc_criteria['xx_fail_func'] = execs_buggy_func_cnt
+    db.tc_criteria['xx_fail_line'] = execs_buggy_line_cnt
     
-    ww.write_TC_on_criterion_to_csv(db.tc_criterion)
-    ww.write_criterion_stat_results_to_csv(db.tc_criterion, db.tc_cnt)
+    ww.write_TC_on_criteria_to_csv(db.tc_criteria)
+    ww.write_criteria_stat_results_to_csv(db.tc_criteria, db.tc_cnt)
 
-    print(">>> [COMPLETE] making TC on criterion data for all TC")
+    output = ">>> [COMPLETE] Generating CSV file for all TC to a criteria."
+    print(output)
+    return (1, output)
 
 def save_total_cov_info_on_DB(db):
 
@@ -255,7 +267,7 @@ def save_total_cov_info_on_DB(db):
         xx.remove_all_gcda()
         xx.run_by_tc_name(tc_name)
 
-        # for file criterion
+        # for file relation
         summ_path = xx.generate_summary_json_for_TC(tc_id)
         summ_json = rr.get_json_from_file_path(summ_path)
 
@@ -266,7 +278,7 @@ def save_total_cov_info_on_DB(db):
             if line_cov > 0:
                 db.all_cov[tc_id]['files'].append(file_name)
         
-        # for func criterion
+        # for func relation
         cov_path = xx.generate_pretty_json_for_TC(tc_id)
         cov_json = rr.get_json_from_file_path(cov_path)
 
@@ -342,4 +354,6 @@ def relation_all_TC(db):
     ww.write_data_to_csv(db.tc_relation['func-intersection'], 'func_intersection')
     ww.write_data_to_csv(db.tc_relation['line-intersection'], 'line_intersection')
 
-    print(">>> [COMPLETE] writing relation data to csv per file, func, line")
+    output = ">>> [COMPLETE] Generating TC-to-TC relation csv on per-file, per-function, per-line intersections."
+    print(output)
+    return (1, output)
