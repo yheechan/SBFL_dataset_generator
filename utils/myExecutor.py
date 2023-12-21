@@ -86,7 +86,6 @@ def generate_pretty_json_for_TC(tc_id):
 
     return file_path
 
-
 def generate_html_for_TC(tc_id):
     hh.check_dir(coverage_dir)
     hh.check_dir(html_dir)
