@@ -12,7 +12,7 @@ data_dir = main_dir / 'data'
 coverage_dir = main_dir / 'coverage'
 spectra_dir = data_dir / 'spectra'
 tc_list_file = coverage_dir / 'tc-list.txt'
-cov_pretty_dir = coverage_dir / 'cov_pretty'
+pretty_dir = coverage_dir / 'pretty'
 html_dir = coverage_dir / 'html'
 summary_dir = coverage_dir / 'summary'
 
@@ -66,6 +66,26 @@ def generate_summary_json_for_TC(tc_id):
     hh.after_exec(res, "generating summary json coverage data using gcovr")
 
     return file_path
+
+def generate_pretty_json_for_TC(tc_id):
+    hh.check_dir(coverage_dir)
+    hh.check_dir(pretty_dir)
+
+    file_name = tc_id+'.pretty.json'
+    file_path = pretty_dir / file_name
+
+    cmd = [
+        'gcovr',
+        '--gcov-executable', 'llvm-cov gcov',
+        '--json', '--json-pretty',
+        '-o', file_path
+    ]
+
+    res = sp.call(cmd, cwd=main_dir)
+    hh.after_exec(res, "generating pretty json coverage data using gcovr")
+
+    return file_path
+
 
 def generate_html_for_TC(tc_id):
     hh.check_dir(coverage_dir)

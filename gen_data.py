@@ -494,9 +494,8 @@ if __name__ == "__main__":
         cc.summary_coverage_json_target_TC(db, args.tcNum)
     elif args.command == 'html':
         cc.html_target_TC(db, args.tcNum)
-        # gen_html(args.tcNum)
     elif args.command == 'pretty-json':
-        pretty_print(args.tcNum)
+        cc.pretty_json_TC(db, args.tcNum)
     elif args.command == 'tc-criterion':
         gen_criterion()
 

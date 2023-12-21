@@ -61,6 +61,7 @@ def spectra_data(db, tf, tp):
         xx.remove_all_gcda()
         xx.run_by_tc_name(tc_name)
         json_file_path = xx.generate_json_for_TC(tc_id, 'out.json')
+
         cov_json = rr.get_json_from_file_path(json_file_path)
 
         if db.first:
@@ -100,7 +101,7 @@ def summary_coverage_json_target_TC(db, num):
 
 # 1. remove all gcda files
 # 2. execute test case
-# 3. generate summary coverage json (file)
+# 3. generate html
 def html_target_TC(db, num):
     if hh.check_num(num):
         tc_id = 'TC'+str(num)
@@ -114,5 +115,24 @@ def html_target_TC(db, num):
         xx.remove_all_gcda()
         xx.run_by_tc_name(tc_name)
         xx.generate_html_for_TC(tc_id)
+    else:
+        print(">>> [IN-COMPLETE] test case number is not given")
+
+# 1. remove all gcda files
+# 2. execute test case
+# 3. generate html
+def pretty_json_TC(db, num):
+    if hh.check_num(num):
+        tc_id = 'TC'+str(num)
+
+        if not tc_id in db.tc.keys():
+            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
+            return
+
+        tc_name = db.tc[tc_id]['name']
+
+        xx.remove_all_gcda()
+        xx.run_by_tc_name(tc_name)
+        xx.generate_pretty_json_for_TC(tc_id)
     else:
         print(">>> [IN-COMPLETE] test case number is not given")
