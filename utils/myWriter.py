@@ -47,21 +47,21 @@ def write_test_cases_list_to_txt(tc_list: list, pp=False):
             if pp:
                 print(line)
 
-def write_TC_on_criterion_to_csv(criterion_data: dict):
+def write_TC_on_criteria_to_csv(criteria_data: dict):
     hh.check_dir(data_dir)
-    file = data_dir / 'TC.criterion.csv'
+    file = data_dir / 'TC.criteria.csv'
 
-    col_data = criterion_data['col_data']
-    row_data = criterion_data['row_data']
+    col_data = criteria_data['col_data']
+    row_data = criteria_data['row_data']
 
     with open(file, 'w') as fp:
         cw = csv.writer(fp)
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def write_criterion_stat_results_to_csv(cd, tot):
+def write_criteria_stat_results_to_csv(cd, tot):
     hh.check_dir(data_dir)
-    file = data_dir / 'criterion_stats.csv'
+    file = data_dir / 'criteria_stats.csv'
 
     xF_file = cd['xx_fail_file']
     nF_file = tot-xF_file
@@ -70,7 +70,7 @@ def write_criterion_stat_results_to_csv(cd, tot):
     xF_line = cd['xx_fail_line']
     nF_line = tot-xF_line
 
-    col_data = ['criterion', 'executes', 'not-executes', 'total']
+    col_data = ['criteria', 'executes', 'not-executes', 'total']
     row_data = [
         ['buggy-file', xF_file, nF_file, tot],
         ['buggy-func', xF_func, nF_func, tot],
