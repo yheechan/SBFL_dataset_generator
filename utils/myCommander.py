@@ -1,6 +1,16 @@
 from . import myReader as rr
 from . import myWriter as ww
 from . import myExecutor as xx
+from . import myHelper as hh
+
+def assign_test_cases(db, tf):
+    tc_packet = xx.get_test_case_list(tf)
+    db.tc = tc_packet[0]
+    db.name2id = tc_packet[1]
+    db.tc_cnt = tc_packet[2]
+    db.tf_cnt = tc_packet[3]
+    db.tp_cnt = tc_packet[4]
+    return
 
 def add_first_spectra(db, cov_json, tc_id):
     for file in cov_json['files']:
@@ -43,13 +53,6 @@ def add_next_spectra(db, cov_json, tc_id):
 # 4. save to DB
 # 5. writer spectra data in DB to csv
 def spectra_data(db, tf, tp):
-    tc_packet = xx.get_test_case_list(tf)
-    db.tc = tc_packet[0]
-    db.name2id = tc_packet[1]
-    db.tc_cnt = tc_packet[2]
-    db.tf_cnt = tc_packet[3]
-    db.tp_cnt = tc_packet[4]
-
     tc_names = tf+tp
 
     for tc_name in tc_names:
@@ -71,14 +74,33 @@ def spectra_data(db, tf, tp):
     
     print(">>> [COMPLETE] making spectra data for target TC")
 
+# 1. executes './jsoncpp_test --list-tests' to gather list of TC
 def list_test_cases(db, tf):
-    tc_packet  = xx.get_test_case_list(tf, pp=True)
-    db.tc = tc_packet[0]
-    db.name2id = tc_packet[1]
-    db.tc_cnt = tc_packet[2]
-    db.tf_cnt = tc_packet[3]
-    db.tp_cnt = tc_packet[4]
-
     ww.write_test_cases_list_to_txt(db.tc)
-
     print(">>> [COMPLETE] writing test cases list to data/tc-list.txt")
+
+# 1. remove all gcda files
+# 2. execute test case
+# 3. generate summary coverage json (file)
+def summary_coverage_json_target_TC(db, num):
+    if hh.check_num(num):
+        tc_id = 'TC'+str(num)
+
+        if not tc_id in db.tc.keys():
+            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
+            return
+
+        tc_name = db.tc[tc_id]['name']
+
+        xx.remove_all_gcda()
+        xx.run_by_tc_name(tc_name)
+        xx.generate_summary_json_for_TC(tc_id)
+    else:
+        print(">>> [IN-COMPLETE] test case number is not given")
+
+
+# 1. remove all gcda files
+# 2. execute test case
+# 3. generate summary coverage json (file)
+def html_target_TC(num):
+    pass

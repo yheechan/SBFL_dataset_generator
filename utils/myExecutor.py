@@ -48,6 +48,25 @@ def generate_json_for_TC(tc, file_name):
 
     return file_path
 
+def generate_summary_json_for_TC(tc_id):
+    hh.check_dir(coverage_dir)
+    hh.check_dir(summary_dir)
+
+    file_name = tc_id+'.summary.json'
+    file_path = summary_dir / file_name
+
+    cmd = [
+        'gcovr',
+        '--gcov-executable', 'llvm-cov gcov',
+        '--json-summary-pretty', '--json', 'json-pretty',
+        '-o', file_path
+    ]
+
+    res = sp.call(cmd, cwd=main_dir)
+    hh.after_exec(res, "generating summary json coverage data using gcovr")
+
+    return file_path
+
 def get_test_case_list(tf, pp=False):
     cmd = [
         './jsoncpp_test',

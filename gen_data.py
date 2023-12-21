@@ -484,14 +484,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     db = dd.myDatabase()
+    cc.assign_test_cases(db, failing_tc)
 
     if args.command == 'spectra-data':
         cc.spectra_data(db, failing_tc, passing_tc)
     elif args.command == 'list-tc':
         cc.list_test_cases(db, failing_tc)
-        # gen_tc_list()
     elif args.command == 'summary':
-        print_summary(args.tcNum)
+        cc.summary_coverage_json_target_TC(db, args.tcNum)
+        # print_summary(args.tcNum)
     elif args.command == 'html':
         gen_html(args.tcNum)
     elif args.command == 'pretty-json':
