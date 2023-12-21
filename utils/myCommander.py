@@ -98,9 +98,21 @@ def summary_coverage_json_target_TC(db, num):
     else:
         print(">>> [IN-COMPLETE] test case number is not given")
 
-
 # 1. remove all gcda files
 # 2. execute test case
 # 3. generate summary coverage json (file)
-def html_target_TC(num):
-    pass
+def html_target_TC(db, num):
+    if hh.check_num(num):
+        tc_id = 'TC'+str(num)
+
+        if not tc_id in db.tc.keys():
+            print(">>> [IN-COMPLETE] test case doesn't exist: {}".format(tc_id))
+            return
+
+        tc_name = db.tc[tc_id]['name']
+
+        xx.remove_all_gcda()
+        xx.run_by_tc_name(tc_name)
+        xx.generate_html_for_TC(tc_id)
+    else:
+        print(">>> [IN-COMPLETE] test case number is not given")

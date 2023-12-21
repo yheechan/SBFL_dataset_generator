@@ -67,6 +67,28 @@ def generate_summary_json_for_TC(tc_id):
 
     return file_path
 
+def generate_html_for_TC(tc_id):
+    hh.check_dir(coverage_dir)
+    hh.check_dir(html_dir)
+    tc_html_dir = html_dir / tc_id
+    hh.check_dir(tc_html_dir)
+
+    file_name = 'cov.html'
+    file_path = tc_html_dir / file_name
+
+    cmd = [
+        'gcovr',
+        '--gcov-executable', 'llvm-cov gcov',
+        '--html', '--html-details',
+        '-o', file_path,
+        '-r', '.'
+    ]
+
+    res = sp.call(cmd, cwd=main_dir)
+    hh.after_exec(res, "generating html data using gcovr")
+
+    return file_path
+
 def get_test_case_list(tf, pp=False):
     cmd = [
         './jsoncpp_test',

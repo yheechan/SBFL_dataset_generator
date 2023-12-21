@@ -492,9 +492,9 @@ if __name__ == "__main__":
         cc.list_test_cases(db, failing_tc)
     elif args.command == 'summary':
         cc.summary_coverage_json_target_TC(db, args.tcNum)
-        # print_summary(args.tcNum)
     elif args.command == 'html':
-        gen_html(args.tcNum)
+        cc.html_target_TC(db, args.tcNum)
+        # gen_html(args.tcNum)
     elif args.command == 'pretty-json':
         pretty_print(args.tcNum)
     elif args.command == 'tc-criterion':
