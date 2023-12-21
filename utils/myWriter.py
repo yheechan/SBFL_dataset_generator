@@ -31,3 +31,14 @@ def write_spectra_data_to_csv(spectra_data_per_file: dict):
             cw = csv.writer(fp)
             cw.writerow(col_data)
             cw.writerows(row_data)
+
+def write_test_cases_list_to_txt(tc_list: list):
+    hh.check_dir(data_dir)
+    file = data_dir / 'tc-list.txt'
+    with open(file, 'w') as fp:
+        for tc in tc_list.keys():
+            line = '{}-{}: {}\n'.format(
+                tc, tc_list[tc]['type'],
+                tc_list[tc]['name']
+            )
+            fp.write(line)

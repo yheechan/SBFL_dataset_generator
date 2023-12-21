@@ -1,5 +1,3 @@
-
-
 def after_exec(res, text):
     if res == 0:
         print(">> [SUCCESS] ", end='')

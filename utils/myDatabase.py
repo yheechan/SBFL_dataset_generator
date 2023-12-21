@@ -1,5 +1,3 @@
-
-
 class myDatabase:
     def __init__(self):
         self.first = True

@@ -71,5 +71,14 @@ def spectra_data(db, tf, tp):
     
     print(">>> [COMPLETE] making spectra data for target TC")
 
-def tmp():
-    print("from commander")
+def list_test_cases(db, tf):
+    tc_packet  = xx.get_test_case_list(tf, pp=True)
+    db.tc = tc_packet[0]
+    db.name2id = tc_packet[1]
+    db.tc_cnt = tc_packet[2]
+    db.tf_cnt = tc_packet[3]
+    db.tp_cnt = tc_packet[4]
+
+    ww.write_test_cases_list_to_txt(db.tc)
+
+    print(">>> [COMPLETE] writing test cases list to data/tc-list.txt")

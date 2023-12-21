@@ -453,9 +453,9 @@ def make_parser():
     parser.add_argument(
         '--command',
         required=False,
-        default='data',
+        default='spectra-data',
         choices=[
-            'data',
+            'spectra-data',
             'summary',
             'list-tc',
             'html',
@@ -483,13 +483,13 @@ if __name__ == "__main__":
     parser = make_parser()
     args = parser.parse_args()
 
-    if args.command == 'data':
-        db = dd.myDatabase()
+    db = dd.myDatabase()
+
+    if args.command == 'spectra-data':
         cc.spectra_data(db, failing_tc, passing_tc)
-        # gen_data(failing_tc, passing_tc)
-        # after_exec(0, "FINISHED GENERATING DATA <<")
     elif args.command == 'list-tc':
-        gen_tc_list()
+        cc.list_test_cases(db, failing_tc)
+        # gen_tc_list()
     elif args.command == 'summary':
         print_summary(args.tcNum)
     elif args.command == 'html':
