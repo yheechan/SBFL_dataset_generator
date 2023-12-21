@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 import csv
 from . import myHelper as hh
+import json
 
 script_path = Path(os.path.realpath(__file__))
 util_dir = script_path.parent
@@ -58,7 +59,7 @@ def write_TC_on_criterion_to_csv(criterion_data: dict):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def write_criterion_stat_results(cd, tot):
+def write_criterion_stat_results_to_csv(cd, tot):
     hh.check_dir(data_dir)
     file = data_dir / 'criterion_stats.csv'
 
@@ -80,3 +81,23 @@ def write_criterion_stat_results(cd, tot):
         cw = csv.writer(fp)
         cw.writerow(col_data)
         cw.writerows(row_data)
+
+def dump_dict_as_json(data):
+    hh.check_dir(data_dir)
+    file = data_dir / 'cov_dump.json'
+
+    with open(file, 'w') as fp:
+        json.dump(data, fp, ensure_ascii=False, indent=4)
+
+def write_data_to_csv(data, file_name):
+    hh.check_dir(data_dir)
+    relation_dir = data_dir / 'relation'
+    hh.check_dir(relation_dir)
+
+    full_name = file_name+'.csv'
+    file = relation_dir / full_name
+
+    with open(file, 'w') as fp:
+        cw = csv.writer(fp)
+        cw.writerow(data['col_data'])
+        cw.writerows(data['row_data'])

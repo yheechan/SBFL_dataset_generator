@@ -19,7 +19,7 @@ failing_info = {
         ),
         (
             'src/lib_json/json_reader.cpp',
-            "Json::Reader::readObject(Json::Reader::Token&)"
+            'Json::Reader::readObject(Json::Reader::Token&)'
         ),
         (
             'src/lib_json/json_value.cpp',
@@ -34,14 +34,14 @@ failing_info = {
     ],
 }
 
-failing_tc = [
+tf = [
     'CharReaderTest/failingTestCaseIntegerOverflows',
     'CharReaderTest/failingTestCaseHeapOverflows',
     'ReaderTest/allowNumericKeysTest',
     'ValueTest/resizePopulatesAllMissingElements'
 ]
 
-passing_tc = [
+tp = [
     'CharReaderTest/parseWithNoErrors',
     'FastWriterTest/writeArrays',
     'StyledWriterTest/multiLineArray',
@@ -49,18 +49,18 @@ passing_tc = [
     'StyledStreamWriterTest/writeArrays',
     'ReaderTest/parseString'
 ]
-    
+
 if __name__ == "__main__":
     parser = pp.make_parser()
     args = parser.parse_args()
 
     db = dd.myDatabase()
-    cc.assign_test_cases(db, failing_tc)
+    cc.assign_test_cases(db, tf)
 
     if args.command == 'spectra-data':
-        cc.spectra_data(db, failing_tc, passing_tc)
+        cc.spectra_data(db, tf, tp)
     elif args.command == 'list-tc':
-        cc.list_test_cases(db, failing_tc)
+        cc.list_test_cases(db, tf)
     elif args.command == 'summary':
         cc.summary_coverage_json_target_TC(db, args.tcNum)
     elif args.command == 'html':
@@ -70,4 +70,4 @@ if __name__ == "__main__":
     elif args.command == 'tc-criterion':
         cc.criterion_all_TC(db, failing_info)
     elif args.command == 'tc-relation':
-        pass
+        cc.relation_all_TC(db)

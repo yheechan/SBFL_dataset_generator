@@ -137,18 +137,10 @@ def pretty_json_TC(db, num):
     else:
         print(">>> [IN-COMPLETE] test case number is not given")
 
-def check_fail_file(name, fails):
+def check_exist(target, set):
     found = False
-    if name in fails:
+    if target in set:
         found = True
-    return found
-
-def check_fail(file_name, specifics, failing):
-    found = False
-    for ff in failing:
-        if file_name == ff[0] and specifics == ff[1]:
-            found = True
-            break
     return found
 
 # Gen one csv containing 0 or 1 for all TC
@@ -183,7 +175,7 @@ def criterion_all_TC(db, failing_info):
             line_cov = file['line_covered']
             file_name = file['filename']
 
-            if line_cov > 0 and check_fail_file(file_name, failing_file):
+            if line_cov > 0 and check_exist(file_name, failing_file):
                 execs_buggy_file = True
                 execs_buggy_file_cnt += 1
                 break
@@ -193,7 +185,7 @@ def criterion_all_TC(db, failing_info):
 
 
         # for func criterion
-        cov_path = xx.generate_json_for_TC(tc_id, 'out.json')
+        cov_path = xx.generate_pretty_json_for_TC(tc_id)
         cov_json = rr.get_json_from_file_path(cov_path)
 
         execs_buggy_func = False
@@ -203,8 +195,8 @@ def criterion_all_TC(db, failing_info):
                 func_cov = function['execution_count']
                 func_name = function['name']
 
-                if func_cov > 0 and check_fail(
-                    file_name, func_name, failing_func
+                if func_cov > 0 and check_exist(
+                    (file_name, func_name), failing_func
                 ):
                     execs_buggy_func = True
                     execs_buggy_func_cnt += 1
@@ -224,8 +216,8 @@ def criterion_all_TC(db, failing_info):
                 line_cov = line['count']
                 line_no = line['line_number']
 
-                if line_cov > 0 and check_fail(
-                    file_name, line_no, failing_line
+                if line_cov > 0 and check_exist(
+                    (file_name, line_no), failing_line
                 ):
                     execs_buggy_line = True
                     execs_buggy_line_cnt += 1
@@ -244,6 +236,110 @@ def criterion_all_TC(db, failing_info):
     db.tc_criterion['xx_fail_line'] = execs_buggy_line_cnt
     
     ww.write_TC_on_criterion_to_csv(db.tc_criterion)
-    ww.write_criterion_stat_results(db.tc_criterion, db.tc_cnt)
+    ww.write_criterion_stat_results_to_csv(db.tc_criterion, db.tc_cnt)
 
     print(">>> [COMPLETE] making TC on criterion data for all TC")
+
+def save_total_cov_info_on_DB(db):
+
+    for tc_id in db.tc.keys():
+        # initiate tc_id to relation dict
+        assert not tc_id in db.tc_relation.keys()
+        db.all_cov[tc_id] = {
+            'files': [],
+            'functions': [],
+            'lines': []
+        }
+
+        tc_name = db.tc[tc_id]['name']
+        xx.remove_all_gcda()
+        xx.run_by_tc_name(tc_name)
+
+        # for file criterion
+        summ_path = xx.generate_summary_json_for_TC(tc_id)
+        summ_json = rr.get_json_from_file_path(summ_path)
+
+        for file in summ_json['files']:
+            line_cov = file['line_covered']
+            file_name = file['filename']
+
+            if line_cov > 0:
+                db.all_cov[tc_id]['files'].append(file_name)
+        
+        # for func criterion
+        cov_path = xx.generate_pretty_json_for_TC(tc_id)
+        cov_json = rr.get_json_from_file_path(cov_path)
+
+        for file in cov_json['files']:
+            file_name = file['file']
+            for function in file['functions']:
+                func_cov = function['execution_count']
+                func_name = function['name']
+
+                if func_cov > 0:
+                    db.all_cov[tc_id]['functions'].append(
+                        (file_name, func_name)
+                    )
+            
+            for line in file['lines']:
+                line_cov = line['count']
+                line_no = line['line_number']
+
+                if line_cov > 0:
+                    db.all_cov[tc_id]['lines'].append(
+                        (file_name, line_no)
+                    )
+    return 0
+
+def relation_all_TC(db):
+    res = save_total_cov_info_on_DB(db)
+    hh.after_exec(res, "gathered all info on covrage for all TC")
+
+    db.tc_relation['file-intersection'] = {
+        'col_data': ['# of intersecting files'],
+        'row_data': []
+    }
+    db.tc_relation['func-intersection'] = {
+        'col_data': ['# of intersecting functions'],
+        'row_data': []
+    }
+    db.tc_relation['line-intersection'] = {
+        'col_data': ['# of intersecting lines'],
+        'row_data': []
+    }
+
+    # initialize csv data
+    for tc_id in db.tc.keys():
+        db.tc_relation['file-intersection']['col_data'].append(tc_id)
+        db.tc_relation['func-intersection']['col_data'].append(tc_id)
+        db.tc_relation['line-intersection']['col_data'].append(tc_id)
+
+        db.tc_relation['file-intersection']['row_data'].append([tc_id])
+        db.tc_relation['func-intersection']['row_data'].append([tc_id])
+        db.tc_relation['line-intersection']['row_data'].append([tc_id])
+
+    tc_id = list(db.all_cov.keys())
+    for row in range(len(db.all_cov)):
+        # compare row to each col
+        x_file_set = set(db.all_cov[tc_id[row]]['files'])
+        x_func_set = set(db.all_cov[tc_id[row]]['functions'])
+        x_line_set = set(db.all_cov[tc_id[row]]['lines'])
+
+        for col in range(0, row):
+            y_file_list = db.all_cov[tc_id[col]]['files']
+            y_func_list = db.all_cov[tc_id[col]]['functions']
+            y_line_list = db.all_cov[tc_id[col]]['lines']
+
+            file_cnt = len(list(x_file_set.intersection(y_file_list)))
+            func_cnt = len(list(x_func_set.intersection(y_func_list)))
+            line_cnt = len(list(x_line_set.intersection(y_line_list)))
+
+            db.tc_relation['file-intersection']['row_data'][row].append(file_cnt)
+            db.tc_relation['func-intersection']['row_data'][row].append(func_cnt)
+            db.tc_relation['line-intersection']['row_data'][row].append(line_cnt)
+    
+    ww.write_data_to_csv(db.tc_relation['file-intersection'], 'file_intersection')
+    ww.write_data_to_csv(db.tc_relation['func-intersection'], 'func_intersection')
+    ww.write_data_to_csv(db.tc_relation['line-intersection'], 'line_intersection')
+
+    print(">>> [COMPLETE] writing relation data to csv per file, func, line")

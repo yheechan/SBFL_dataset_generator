@@ -16,4 +16,5 @@ class myDatabase:
         self.tp_cnt = 0
 
         self.tc_criterion = {}
+        self.all_cov = {}
         self.tc_relation = {}

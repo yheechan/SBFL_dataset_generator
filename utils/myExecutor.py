@@ -55,6 +55,9 @@ def generate_summary_json_for_TC(tc_id):
     file_name = tc_id+'.summary.json'
     file_path = summary_dir / file_name
 
+    if file_path.exists():
+        return file_path
+
     cmd = [
         'gcovr',
         '--gcov-executable', 'llvm-cov gcov',
@@ -73,6 +76,9 @@ def generate_pretty_json_for_TC(tc_id):
 
     file_name = tc_id+'.pretty.json'
     file_path = pretty_dir / file_name
+
+    if file_path.exists():
+        return file_path
 
     cmd = [
         'gcovr',
