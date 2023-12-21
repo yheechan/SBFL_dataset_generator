@@ -32,13 +32,16 @@ def write_spectra_data_to_csv(spectra_data_per_file: dict):
             cw.writerow(col_data)
             cw.writerows(row_data)
 
-def write_test_cases_list_to_txt(tc_list: list):
+def write_test_cases_list_to_txt(tc_list: list, pp=False):
     hh.check_dir(data_dir)
     file = data_dir / 'tc-list.txt'
     with open(file, 'w') as fp:
         for tc in tc_list.keys():
-            line = '{}-{}: {}\n'.format(
+            line = '{}-{}: {}'.format(
                 tc, tc_list[tc]['type'],
                 tc_list[tc]['name']
             )
-            fp.write(line)
+            fp.write(line+'\n')
+
+            if pp:
+                print(line)

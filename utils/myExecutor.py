@@ -109,7 +109,7 @@ def generate_html_for_TC(tc_id):
 
     return file_path
 
-def get_test_case_list(tf, pp=False):
+def get_test_case_list(tf):
     cmd = [
         './jsoncpp_test',
         '--list-tests'
@@ -145,11 +145,6 @@ def get_test_case_list(tf, pp=False):
             'name': tc_name
         }
         name2id[tc_name] = tc_id
-
-        if pp:
-            print('{}-{}: {}'.format(
-                tc_id, type, tc_name
-            ))
         
         num += 1
     

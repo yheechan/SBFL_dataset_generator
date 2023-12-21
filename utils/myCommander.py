@@ -45,7 +45,7 @@ def add_next_spectra(db, cov_json, tc_id):
 
             cov_result = 1 if line['count'] > 0 else 0
 
-            db.cov_per_file[full_file_name]['col_data'].append(tc_id)
+            db.cov_per_file[full_file_name]['row_data'][i].append(cov_result)
 
 # 1. remove all gcda files
 # 2. execute test case
@@ -77,7 +77,7 @@ def spectra_data(db, tf, tp):
 
 # 1. executes './jsoncpp_test --list-tests' to gather list of TC
 def list_test_cases(db, tf):
-    ww.write_test_cases_list_to_txt(db.tc)
+    ww.write_test_cases_list_to_txt(db.tc, pp=True)
     print(">>> [COMPLETE] writing test cases list to data/tc-list.txt")
 
 # 1. remove all gcda files
