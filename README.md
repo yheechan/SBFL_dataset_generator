@@ -20,7 +20,9 @@ TC that:
 Shows ```<# of lines, # of functions, # of files>``` intersection on all TC-to-TC.
 
 ## Example Command
-```$ ./gen_data.py --spectra_data --criteria_data --relation_data --list_tc --summary_json 1 --html 1 --pretty_json 1 ```
+```
+./gen_data.py --spectra_data --criteria_data --relation_data --list_tc --summary_json 1 --html 1 --pretty_json 1
+```
 
 ## Command Line Interface
 ```
