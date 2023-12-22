@@ -252,6 +252,17 @@ def criteria_all_TC(db, failing_info):
     print(output)
     return (1, output)
 
+def criteria_per_BUG(db, tf, failing_info):
+    tf_id_list = []
+    for tf_name in tf:
+        tf_id = db.name2id[tf_name]
+        tf_id_list.append(tf_id)
+    print(tf_id_list)
+
+    output = ">>> [COMPLETE} Generating CSV file for all TC to a criteria per BUG."
+    print(output)
+    return (1, output)
+
 def save_total_cov_info_on_DB(db):
 
     for tc_id in db.tc.keys():

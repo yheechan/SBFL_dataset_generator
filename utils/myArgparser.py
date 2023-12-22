@@ -18,6 +18,12 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--criteria_per_BUG',
+        action='store_true',
+        help='Generates CSV file for all TC to a criteria per BUG.'
+    )
+
+    parser.add_argument(
         '--relation_data',
         action='store_true',
         help='Generates TC-to-TC relation csv on per-file, per-function, per-line intersections.'

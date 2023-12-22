@@ -10,8 +10,12 @@ failing_info = {
     ],
     'failing_func': [
         (
+            'src/lib_json/json_value.cpp',
+            'Json::Value::resize(unsigned int)'
+        ),
+        (
             'src/lib_json/json_reader.cpp',
-            'Json::OurReader::decodeNumber(Json::OurReader::Token&, Json::Value&)'
+            'Json::Reader::readObject(Json::Reader::Token&)'
         ),
         (
             'src/lib_json/json_reader.cpp',
@@ -19,26 +23,22 @@ failing_info = {
         ),
         (
             'src/lib_json/json_reader.cpp',
-            'Json::Reader::readObject(Json::Reader::Token&)'
-        ),
-        (
-            'src/lib_json/json_value.cpp',
-            'Json::Value::resize(unsigned int)'
+            'Json::OurReader::decodeNumber(Json::OurReader::Token&, Json::Value&)'
         )
     ],
     'failing_line': [
+        ('src/lib_json/json_value.cpp', 915),
         ('src/lib_json/json_reader.cpp', 467),
         ('src/lib_json/json_reader.cpp', 1279),
-        ('src/lib_json/json_reader.cpp', 1630),
-        ('src/lib_json/json_value.cpp', 915)
+        ('src/lib_json/json_reader.cpp', 1630)
     ],
 }
 
 tf = [
-    'CharReaderTest/failingTestCaseIntegerOverflows',
-    'CharReaderTest/failingTestCaseHeapOverflows',
+    'ValueTest/issue1264_1',
     'ReaderTest/allowNumericKeysTest',
-    'ValueTest/resizePopulatesAllMissingElements'
+    'CharReaderTest/ossFuzz_21916_1',
+    'CharReaderTest/ossFuzz_18147_1'
 ]
 
 tp = [
@@ -59,6 +59,7 @@ if __name__ == "__main__":
 
     sd = (0, '')
     ct = (0, '')
+    cb = (0, '')
     rt = (0, '')
     lt = (0, '')
     st = (0, '')
@@ -69,6 +70,8 @@ if __name__ == "__main__":
         sd = cc.spectra_data(db, tf, tp)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
+    if args.criteria_per_BUG:
+        cb = cc.criteria_per_BUG(db, tf, failing_info)
     if args.relation_data:
         rt = cc.relation_all_TC(db)
     if args.list_tc:
@@ -90,6 +93,8 @@ if __name__ == "__main__":
         print(sd[1])
     if ct[0]:
         print(ct[1])
+    if cb[0]:
+        print(cb[1])
     if rt[0]:
         print(rt[1])
     if lt[0]:

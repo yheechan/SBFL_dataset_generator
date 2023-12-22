@@ -49,7 +49,9 @@ def write_test_cases_list_to_txt(tc_list: list, pp=False):
 
 def write_TC_on_criteria_to_csv(criteria_data: dict):
     hh.check_dir(data_dir)
-    file = data_dir / 'TC.criteria.csv'
+    crit_dir = data_dir / 'criteria'
+    hh.check_dir(crit_dir)
+    file = crit_dir / 'criteria.csv'
 
     col_data = criteria_data['col_data']
     row_data = criteria_data['row_data']
@@ -61,7 +63,9 @@ def write_TC_on_criteria_to_csv(criteria_data: dict):
 
 def write_criteria_stat_results_to_csv(cd, tot):
     hh.check_dir(data_dir)
-    file = data_dir / 'criteria_stats.csv'
+    crit_dir = data_dir / 'criteria'
+    hh.check_dir(crit_dir)
+    file = crit_dir / 'criteria_stats.csv'
 
     xF_file = cd['xx_fail_file']
     nF_file = tot-xF_file

@@ -3,6 +3,7 @@
 ## ToDo
 * Select/Generate more failing test input
 * Select/Generate more passing test input with different coverage
+  * in standard of each BUG
 * analyze ossfuzz timeout bugs
 
 ## TC Criteria

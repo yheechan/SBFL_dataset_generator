@@ -125,33 +125,42 @@ def get_test_case_list(tf):
         cwd=test_dir, encoding='utf-8'
     )
 
+    raw_tf = []
+    raw_tp = []
+    while True:
+        line = process.stdout.readline()
+        if line == '' and process.poll() != None:
+            break
+        tc_name = line.strip()
+
+        if tc_name in tf:
+            raw_tf.append(tc_name)
+        else:
+            raw_tp.append(tc_name)
+    
+
+    raw_tc_list = raw_tf + raw_tp
     tc = {}
     name2id = {}
     tot_cnt = 0
     fail_cnt = 0
     pass_cnt = 0
     num = 1
-    while True:
-        line = process.stdout.readline()
-        if line == '' and process.poll() != None:
-            break
+    for num in range(len(raw_tc_list)):
         tc_id = 'TC'+str(num)
-        tc_name = line.strip()
+        tc_name = raw_tc_list[num]
         type = 'tp'
-
         if tc_name in tf:
             type = 'tf'
             fail_cnt += 1
         
         assert not tc_id in tc.keys()
-        
+
         tc[tc_id] = {
             'type': type,
             'name': tc_name
         }
         name2id[tc_name] = tc_id
-        
-        num += 1
     
     tot_cnt = len(tc.keys())
     pass_cnt = tot_cnt - fail_cnt
