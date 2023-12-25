@@ -61,6 +61,47 @@ def write_TC_on_criteria_to_csv(criteria_data: dict):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
+def write_TC_on_criteria_per_BUG_to_csv(criteria_data: dict):
+    hh.check_dir(data_dir)
+    crit_dir = data_dir / 'criteria-per-BUG'
+    hh.check_dir(crit_dir)
+    file_name = criteria_data['target'] + '.csv'
+    file = crit_dir / file_name
+
+    col_data = criteria_data['col_data']
+    row_data = criteria_data['row_data']
+
+    with open(file, 'w') as fp:
+        cw = csv.writer(fp)
+        cw.writerow(col_data)
+        cw.writerows(row_data)
+
+def write_criteria_stat_results_per_BUG_to_csv(cd, tot):
+    hh.check_dir(data_dir)
+    crit_dir = data_dir / 'criteria-per-BUG'
+    hh.check_dir(crit_dir)
+    file_name = cd['target'] + '.stats.csv'
+    file = crit_dir / file_name
+
+    xF_file = cd['xx_fail_file']
+    nF_file = tot-xF_file
+    xF_func = cd['xx_fail_func']
+    nF_func = tot-xF_func
+    xF_line = cd['xx_fail_line']
+    nF_line = tot-xF_line
+
+    col_data = ['criteria', 'executes', 'not-executes', 'total']
+    row_data = [
+        ['buggy-file', xF_file, nF_file, tot],
+        ['buggy-func', xF_func, nF_func, tot],
+        ['buggy-line', xF_line, nF_line, tot]
+    ]
+
+    with open(file, 'w') as fp:
+        cw = csv.writer(fp)
+        cw.writerow(col_data)
+        cw.writerows(row_data)
+
 def write_criteria_stat_results_to_csv(cd, tot):
     hh.check_dir(data_dir)
     crit_dir = data_dir / 'criteria'

@@ -34,6 +34,16 @@ def run_by_tc_name(tc_name):
     res = sp.call(cmd, cwd=test_dir)
     hh.after_exec(res, "running test case {}\n".format(tc_name))
 
+def run_needed(tc_id, subject):
+    if subject == 'summary':
+        hh.check_dir(summary_dir)
+        file_name = tc_id + '.summary.json'
+        file_path = summary_dir / file_name
+        if file_path.exists():
+            return False
+
+    return True
+
 def generate_json_for_TC(tc, file_name):
     hh.check_dir(coverage_dir)
     file_path = coverage_dir / file_name
@@ -147,7 +157,7 @@ def get_test_case_list(tf):
     pass_cnt = 0
     num = 1
     for num in range(len(raw_tc_list)):
-        tc_id = 'TC'+str(num)
+        tc_id = 'TC'+str(num+1)
         tc_name = raw_tc_list[num]
         type = 'tp'
         if tc_name in tf:

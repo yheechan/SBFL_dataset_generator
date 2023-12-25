@@ -5,8 +5,8 @@ from utils import myArgparser as pp
 
 failing_info = {
     'failing_file': [
-        'src/lib_json/json_reader.cpp',
-        'src/lib_json/json_value.cpp'
+        'src/lib_json/json_value.cpp',
+        'src/lib_json/json_reader.cpp'
     ],
     'failing_func': [
         (
@@ -32,6 +32,41 @@ failing_info = {
         ('src/lib_json/json_reader.cpp', 1279),
         ('src/lib_json/json_reader.cpp', 1630)
     ],
+}
+
+fails = {
+    'ValueTest/issue1264_1': {
+        'file': 'src/lib_json/json_value.cpp',
+        'function': (
+            'src/lib_json/json_value.cpp',
+            'Json::Value::resize(unsigned int)'
+        ),
+        'line': ('src/lib_json/json_value.cpp', 915),
+    },
+    'ReaderTest/allowNumericKeysTest': {
+        'file': 'src/lib_json/json_reader.cpp',
+        'function': (
+            'src/lib_json/json_reader.cpp',
+            'Json::Reader::readObject(Json::Reader::Token&)'
+        ),
+        'line': ('src/lib_json/json_reader.cpp', 467),
+    },
+    'CharReaderTest/ossFuzz_21916_1': {
+        'file': 'src/lib_json/json_reader.cpp',
+        'function': (
+            'src/lib_json/json_reader.cpp',
+            'Json::OurReader::skipBom(bool)'
+        ),
+        'line': ('src/lib_json/json_reader.cpp', 1279),
+    },
+    'CharReaderTest/ossFuzz_18147_1': {
+        'file': 'src/lib_json/json_reader.cpp',
+        'function': (
+            'src/lib_json/json_reader.cpp',
+            'Json::OurReader::decodeNumber(Json::OurReader::Token&, Json::Value&)'
+        ),
+        'line': ('src/lib_json/json_reader.cpp', 1630),
+    }
 }
 
 tf = [
@@ -71,7 +106,7 @@ if __name__ == "__main__":
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:
-        cb = cc.criteria_per_BUG(db, tf, failing_info)
+        cb = cc.criteria_per_BUG(db, fails)
     if args.relation_data:
         rt = cc.relation_all_TC(db)
     if args.list_tc:

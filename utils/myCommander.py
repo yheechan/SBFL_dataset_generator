@@ -252,12 +252,111 @@ def criteria_all_TC(db, failing_info):
     print(output)
     return (1, output)
 
-def criteria_per_BUG(db, tf, failing_info):
-    tf_id_list = []
-    for tf_name in tf:
+def check(source, dest):
+    found = False
+    if source == dest:
+        found = True
+    return found
+
+def criteria_per_BUG(db, fails):
+
+    # per fails
+    for fail in fails.keys():
+        tf_name = fail
         tf_id = db.name2id[tf_name]
-        tf_id_list.append(tf_id)
-    print(tf_id_list)
+
+        failing_file = fails[fail]['file']
+        failing_func = fails[fail]['function']
+        failing_line = fails[fail]['line']
+
+        row_data = [
+            ['bug-file'],
+            ['bug-func'],
+            ['bug-line']
+        ]
+        col_data = ['criteria']
+
+        execs_buggy_file_cnt = 0
+        execs_buggy_func_cnt = 0
+        execs_buggy_line_cnt = 0
+        # per test case
+        for tc_id in db.tc.keys():
+            col_data.append(tc_id)
+
+
+            tc_name = db.tc[tc_id]['name']
+            print(tf_id, tc_name)
+            if xx.run_needed(tc_id, 'summary'):
+                xx.remove_all_gcda()
+                xx.run_by_tc_name(tc_name)
+
+            # for file criteria
+            summ_path = xx.generate_summary_json_for_TC(tc_id)
+            summ_json = rr.get_json_from_file_path(summ_path)
+
+            execs_buggy_file= False
+            for file in summ_json['files']:
+                line_cov = file['line_covered']
+                file_name = file['filename']
+
+                if line_cov > 0 and check(file_name, failing_file):
+                    execs_buggy_file = True
+                    execs_buggy_file_cnt += 1
+                    break
+            
+            row_data[0].append(int(execs_buggy_file))
+            print("* {} on fail file".format(execs_buggy_file))
+
+            # for func criteria
+            cov_path = xx.generate_pretty_json_for_TC(tc_id)
+            cov_json = rr.get_json_from_file_path(cov_path)
+
+            execs_buggy_func = False
+            for file in cov_json['files']:
+                file_name = file['file']
+                for function in file['functions']:
+                    func_cov = function['execution_count']
+                    func_name = function['name']
+
+                    if func_cov > 0 and check((file_name, func_name), failing_func):
+                        execs_buggy_func = True
+                        execs_buggy_func_cnt += 1
+                        break
+                
+                if execs_buggy_func:
+                    break
+            
+            row_data[1].append(int(execs_buggy_func))
+            print("* {} on fail func".format(execs_buggy_func))
+
+            # for func criteria
+            execs_buggy_line = False
+            for file in cov_json['files']:
+                file_name = file['file']
+                for line in file['lines']:
+                    line_cov = line['count']
+                    line_no = line['line_number']
+
+                    if line_cov > 0 and check((file_name, line_no), failing_line):
+                        execs_buggy_line = True
+                        execs_buggy_line_cnt += 1
+                        break
+                
+                if execs_buggy_line:
+                    break
+            
+            row_data[2].append(int(execs_buggy_line))
+            print("* {} on fail line".format(execs_buggy_line))
+
+        db.tc_criteria['target'] = 'fail.'+tf_id
+        db.tc_criteria['col_data'] = col_data
+        db.tc_criteria['row_data'] = row_data
+        db.tc_criteria['xx_fail_file'] = execs_buggy_file_cnt
+        db.tc_criteria['xx_fail_func'] = execs_buggy_func_cnt
+        db.tc_criteria['xx_fail_line'] = execs_buggy_line_cnt
+
+        ww.write_TC_on_criteria_per_BUG_to_csv(db.tc_criteria)
+        ww.write_criteria_stat_results_per_BUG_to_csv(db.tc_criteria, db.tc_cnt)
 
     output = ">>> [COMPLETE} Generating CSV file for all TC to a criteria per BUG."
     print(output)
