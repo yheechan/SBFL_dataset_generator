@@ -182,3 +182,16 @@ def get_test_case_list(tf):
 
     return [tc, name2id, tot_cnt, fail_cnt, pass_cnt]
 
+
+def get_list_versions():
+    version_list = []
+    for version in sorted(os.listdir(versions_dir)):
+        if version[3].isdigit():
+            version_list.append(version) 
+    return version_list
+
+def build_version(v_num):
+    cmd = [
+        './build.py', '--version', str(v_num)
+    ]
+    sp.call(cmd, cwd=bin_dir)

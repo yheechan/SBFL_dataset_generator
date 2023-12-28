@@ -12,40 +12,43 @@ def assign_test_cases(db, tf):
     db.tp_cnt = tc_packet[4]
     return
 
-def add_first_spectra(db, cov_json, tc_id):
+def add_first_spectra(per_version_dict, cov_json, tc_id, version_num):
     for file in cov_json['files']:
         col_data = ['lineNo', tc_id]
         row_data = []
 
         full_file_name = file['file']
 
-        if not full_file_name in db.cov_per_file.keys():
-            db.cov_per_file[full_file_name] = {}
+        if not full_file_name in per_version_dict.keys():
+            per_version_dict[full_file_name] = {}
         
         for line in file['lines']:
             cov_result = 1 if line['count'] > 0 else 0
+            row_name = full_file_name+':'+version_num+':'+str(line['line_number'])
             row_data.append([
-                line['line_number'], cov_result
+                row_name, cov_result
             ])
         
-        db.cov_per_file[full_file_name]['col_data'] = col_data
-        db.cov_per_file[full_file_name]['row_data'] = row_data
+        per_version_dict[full_file_name]['col_data'] = col_data
+        per_version_dict[full_file_name]['row_data'] = row_data
+    return per_version_dict
 
-def add_next_spectra(db, cov_json, tc_id):
+def add_next_spectra(per_version_dict, cov_json, tc_id, version_num):
     for file in cov_json['files']:
         full_file_name = file['file']
-        assert full_file_name in db.cov_per_file.keys()
+        assert full_file_name in per_version_dict.keys()
 
-        db.cov_per_file[full_file_name]['col_data'].append(tc_id)
+        per_version_dict[full_file_name]['col_data'].append(tc_id)
 
         for i in range(len(file['lines'])):
             line = file['lines'][i]
-            lineNo = line['line_number']
-            assert lineNo == db.cov_per_file[full_file_name]['row_data'][i][0]
+            lineNo = full_file_name+':'+version_num+':'+str(line['line_number'])
+            assert lineNo == per_version_dict[full_file_name]['row_data'][i][0]
 
             cov_result = 1 if line['count'] > 0 else 0
 
-            db.cov_per_file[full_file_name]['row_data'][i].append(cov_result)
+            per_version_dict[full_file_name]['row_data'][i].append(cov_result)
+    return per_version_dict
 
 # 1. remove all gcda files
 # 2. execute test case
@@ -55,20 +58,49 @@ def add_next_spectra(db, cov_json, tc_id):
 def spectra_data(db, tf, tp):
     tc_names = tf+tp
 
-    for tc_name in tc_names:
-        tc_id  = db.name2id[tc_name]
+    version_list = xx.get_list_versions()
 
-        xx.remove_all_gcda()
-        xx.run_by_tc_name(tc_name)
-        json_file_path = xx.generate_json_for_TC(tc_id, 'out.json')
+    tot_version_dict = []
+    for version in version_list:
+        version_num = int(version[3:])
+        xx.build_version(version_num)
 
-        cov_json = rr.get_json_from_file_path(json_file_path)
+        per_version_dict = {}
+        db.first = True
+        for tc_name in tc_names:
+            tc_id  = db.name2id[tc_name]
 
+            xx.remove_all_gcda()
+            xx.run_by_tc_name(tc_name)
+            json_file_path = xx.generate_json_for_TC(tc_id, 'out.json')
+
+            cov_json = rr.get_json_from_file_path(json_file_path)
+
+            if db.first:
+                per_version_dict = add_first_spectra(per_version_dict, cov_json, tc_id, version)
+                db.first = False
+            else:
+                per_version_dict = add_next_spectra(per_version_dict, cov_json, tc_id, version)
+
+        tot_version_dict.append(per_version_dict)
+    
+    db.cov_per_file['all'] = {}
+    db.first = True
+    for single_version in tot_version_dict:
         if db.first:
-            add_first_spectra(db, cov_json, tc_id)
+            first_file = list(single_version.keys())[0]
+            db.cov_per_file['all']['col_data'] = single_version[first_file]['col_data']
+
+            db.cov_per_file['all']['row_data'] = []
+            for file in single_version.keys():
+                file_data = single_version[file]
+                db.cov_per_file['all']['row_data'] += file_data['row_data']
+
             db.first = False
         else:
-            add_next_spectra(db, cov_json, tc_id)
+           for file in single_version.keys():
+               file_data = single_version[file]
+               db.cov_per_file['all']['row_data'] += file_data['row_data']
     
     spectra_data = db.cov_per_file
     ww.write_spectra_data_to_csv(spectra_data)
