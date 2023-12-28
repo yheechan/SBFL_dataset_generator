@@ -258,16 +258,16 @@ def check(source, dest):
         found = True
     return found
 
-def criteria_per_BUG(db, fails):
+def criteria_per_BUG(db, bugs):
 
     # per fails
-    for fail in fails.keys():
-        tf_name = fail
-        tf_id = db.name2id[tf_name]
+    for bug in bugs.keys():
+        bug_name = bug
+        bug_id = db.name2id[bug_name]
 
-        failing_file = fails[fail]['file']
-        failing_func = fails[fail]['function']
-        failing_line = fails[fail]['line']
+        failing_file = bugs[bug]['file']
+        failing_func = bugs[bug]['function']
+        failing_line = bugs[bug]['line']
 
         row_data = [
             ['bug-file'],
@@ -285,7 +285,7 @@ def criteria_per_BUG(db, fails):
 
 
             tc_name = db.tc[tc_id]['name']
-            print(tf_id, tc_name)
+            print(bug_id, tc_name)
             if xx.run_needed(tc_id, 'summary'):
                 xx.remove_all_gcda()
                 xx.run_by_tc_name(tc_name)
@@ -348,7 +348,7 @@ def criteria_per_BUG(db, fails):
             row_data[2].append(int(execs_buggy_line))
             print("* {} on fail line".format(execs_buggy_line))
 
-        db.tc_criteria['target'] = 'fail.'+tf_id
+        db.tc_criteria['target'] = 'bug.'+bug_id
         db.tc_criteria['col_data'] = col_data
         db.tc_criteria['row_data'] = row_data
         db.tc_criteria['xx_fail_file'] = execs_buggy_file_cnt

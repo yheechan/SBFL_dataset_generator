@@ -43,7 +43,7 @@ fails = {
         ),
         'line': ('src/lib_json/json_value.cpp', 915),
     },
-    'ReaderTest/allowNumericKeysTest': {
+    'ReaderTest/allowNumericKeysTest_1': {
         'file': 'src/lib_json/json_reader.cpp',
         'function': (
             'src/lib_json/json_reader.cpp',
@@ -71,18 +71,32 @@ fails = {
 
 tf = [
     'ValueTest/issue1264_1',
-    'ReaderTest/allowNumericKeysTest',
+    'ValueTest/issue1264_2',
+    'ValueTest/issue1264_3',
+    'ReaderTest/allowNumericKeysTest_1',
+    'ReaderTest/allowNumericKeysTest_2',
+    'ReaderTest/allowNumericKeysTest_3',
     'CharReaderTest/ossFuzz_21916_1',
-    'CharReaderTest/ossFuzz_18147_1'
+    'CharReaderTest/ossFuzz_21916_2',
+    'CharReaderTest/ossFuzz_21916_3',
+    'CharReaderTest/ossFuzz_18147_1',
+    'CharReaderTest/ossFuzz_18147_2',
+    'CharReaderTest/ossFuzz_18147_3',
 ]
 
 tp = [
+    'ValueTest/resizeArray',
+    'ValueTest/checkNormalizeFloatingPointStr',
+    'CharReaderFailIfExtraTest/issue107',
+    'ReaderTest/parseWithNoErrors',
+    'ValueTest/arrays',
+    'StyledWriterTest/writeNestedObjects',
+    'CharReaderTest/parseWithNoErrorsTestingOffsets',
+    'ValueTest/memberCount',
+    'ValueTest/offsetAccessors',
     'CharReaderTest/parseWithNoErrors',
-    'FastWriterTest/writeArrays',
-    'StyledWriterTest/multiLineArray',
-    'StyledStreamWriterTest/writeNumericValue',
-    'StyledStreamWriterTest/writeArrays',
-    'ReaderTest/parseString'
+    'ValueTest/objects',
+    'ValueTest/StaticString'
 ]
 
 if __name__ == "__main__":

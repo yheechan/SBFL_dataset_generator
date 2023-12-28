@@ -36,6 +36,7 @@ def run_by_tc_name(tc_name):
 
 def run_needed(tc_id, subject):
     if subject == 'summary':
+        hh.check_dir(coverage_dir)
         hh.check_dir(summary_dir)
         file_name = tc_id + '.summary.json'
         file_path = summary_dir / file_name

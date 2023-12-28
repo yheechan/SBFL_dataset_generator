@@ -1,9 +1,10 @@
 # gen_data_4_jsoncpp
 
 ## ToDo
-* Select/Generate more failing test input
-* Select/Generate more passing test input with different coverage
-  * in standard of each BUG
+* make different versions for each bug
+  * make it buildable/executable for each bug
+* generate coverage data on each version with all TC
+* calculate supsicious score for all the lines on all versions
 * analyze ossfuzz timeout bugs
 
 ## TC Criteria
@@ -27,8 +28,9 @@ Shows ```<# of lines, # of functions, # of files>``` intersection on all TC-to-T
 
 ## Command Line Interface
 ```
-usage: gen_data.py [-h] [--spectra_data] [--criteria_data] [--relation_data]
-                   [--list_tc] [--summary_json SUMMARY_JSON] [--html HTML]
+usage: gen_data.py [-h] [--spectra_data] [--criteria_data]
+                   [--criteria_per_BUG] [--relation_data] [--list_tc]
+                   [--summary_json SUMMARY_JSON] [--html HTML]
                    [--pretty_json PRETTY_JSON]
 
 Generate Spectrum-Based Data.
@@ -38,6 +40,7 @@ optional arguments:
   --spectra_data        Generates spectrum-based data with selected Failing &
                         Passing TC.
   --criteria_data       Generates CSV file for all TC to a criteria.
+  --criteria_per_BUG    Generates CSV file for all TC to a criteria per BUG.
   --relation_data       Generates TC-to-TC relation csv on per-file, per-
                         function, per-line intersections.
   --list_tc             Generates a text file containing the list of test
