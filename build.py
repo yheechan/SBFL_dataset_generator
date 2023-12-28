@@ -90,6 +90,17 @@ def only_make_tester(dir_name):
 
     pass
 
+def remove():
+    cmd = ['./remove.py']
+    sp.call(cmd, cwd=bin_dir)
+    print(">> removed currently build project")
+
+def chVersion(v):
+    cmd = ['./chVersion.py', '--version', str(v)]
+    res = sp.call(cmd, cwd=bin_dir)
+    if res == 1:
+        exit(1)
+
 def make_parser():
     parser = argparse.ArgumentParser(
         description='Build and Compile targets.'
@@ -102,16 +113,25 @@ def make_parser():
         help='for re-compiling tester'
     )
 
+    parser.add_argument(
+        '--version',
+        type=int,
+        default=0,
+        help='Converts JsonCPP project to User Selected Version. (Default: 0 which is bugFree version.)'
+    )
+
     return parser
 
 if __name__ == '__main__':
     parser = make_parser()
     args = parser.parse_args()
 
-    name = 'build-1'
+    name = 'build'
     if args.onlyTester:
         only_make_tester(name)
     else:
+        remove()
+        chVersion(args.version)
         build(name)
         make(name)
         copy_files(name)

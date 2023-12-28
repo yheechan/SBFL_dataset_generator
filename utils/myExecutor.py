@@ -7,7 +7,7 @@ script_path = Path(os.path.realpath(__file__))
 util_dir = script_path.parent
 bin_dir = util_dir.parent
 main_dir = bin_dir.parent
-test_dir = main_dir / 'build-1/src/test_lib_json'
+test_dir = main_dir / 'build/src/test_lib_json'
 data_dir = main_dir / 'data'
 coverage_dir = main_dir / 'coverage'
 spectra_dir = data_dir / 'spectra'
@@ -15,6 +15,7 @@ tc_list_file = coverage_dir / 'tc-list.txt'
 pretty_dir = coverage_dir / 'pretty'
 html_dir = coverage_dir / 'html'
 summary_dir = coverage_dir / 'summary'
+versions_dir = bin_dir / 'versions'
 
 def remove_all_gcda():
     cmd = [

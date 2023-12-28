@@ -30,7 +30,7 @@ failing_info = {
         ('src/lib_json/json_value.cpp', 915),
         ('src/lib_json/json_reader.cpp', 467),
         ('src/lib_json/json_reader.cpp', 1279),
-        ('src/lib_json/json_reader.cpp', 1630)
+        ('src/lib_json/json_reader.cpp', 1628)
     ],
 }
 
@@ -65,7 +65,7 @@ fails = {
             'src/lib_json/json_reader.cpp',
             'Json::OurReader::decodeNumber(Json::OurReader::Token&, Json::Value&)'
         ),
-        'line': ('src/lib_json/json_reader.cpp', 1630),
+        'line': ('src/lib_json/json_reader.cpp', 1628),
     }
 }
 
