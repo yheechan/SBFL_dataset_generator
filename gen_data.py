@@ -69,6 +69,29 @@ fails = {
     }
 }
 
+failing_per_bug = {
+    'bug1': [
+        'ValueTest/issue1264_1',
+        'ValueTest/issue1264_2',
+        'ValueTest/issue1264_3',
+    ],
+    'bug2': [
+        'ReaderTest/allowNumericKeysTest_1',
+        'ReaderTest/allowNumericKeysTest_2',
+        'ReaderTest/allowNumericKeysTest_3',
+    ],
+    'bug3': [
+        'CharReaderTest/ossFuzz_21916_1',
+        'CharReaderTest/ossFuzz_21916_2',
+        'CharReaderTest/ossFuzz_21916_3',
+    ],
+    'bug4': [
+        'CharReaderTest/ossFuzz_18147_1',
+        'CharReaderTest/ossFuzz_18147_2',
+        'CharReaderTest/ossFuzz_18147_3',
+    ]
+}
+
 tf = [
     'ValueTest/issue1264_1',
     'ValueTest/issue1264_2',
@@ -107,6 +130,7 @@ if __name__ == "__main__":
     cc.assign_test_cases(db, tf)
 
     sd = (0, '')
+    psd = (0, '')
     ct = (0, '')
     cb = (0, '')
     rt = (0, '')
@@ -116,9 +140,9 @@ if __name__ == "__main__":
     pt = (0, '')
 
     if args.spectra_data:
-        sd = cc.spectra_data(db, tf, tp)
-        # if args.processed_data:
-        #     pc = cc.processed_data(file)
+        sd = cc.spectra_data(db, tf, tp, args.processed_data, failing_per_bug)
+    if args.processed_data:
+        psd = cc.processed_data(db, failing_per_bug)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:

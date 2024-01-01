@@ -5,6 +5,7 @@ class myDatabase:
         # a dict with keys as file
         # a file holding info of cov per TC
         self.cov_per_file = {}
+        self.processed_data = {}
 
         # holds all TC information
         self.tc = {}

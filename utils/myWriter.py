@@ -148,3 +148,11 @@ def write_data_to_csv(data, file_name):
         cw = csv.writer(fp)
         cw.writerow(data['col_data'])
         cw.writerows(data['row_data'])
+
+def write_df_to_csv(df, file_name):
+    hh.check_dir(data_dir)
+    processed_dir = data_dir / 'processed'
+    hh.check_dir(processed_dir)
+
+    csv_file_path = processed_dir / file_name
+    df.to_csv(csv_file_path)

@@ -197,3 +197,9 @@ def build_version(v_num, onlyProject=False):
     if onlyProject:
         cmd.append('--onlyProject')
     sp.call(cmd, cwd=bin_dir)
+
+def get_list_spectra():
+    spectra_list = []
+    for spectra in sorted(spectra_dir.iterdir()):
+        spectra_list.append(spectra)
+    return spectra_list

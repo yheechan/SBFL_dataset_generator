@@ -2,6 +2,8 @@ from . import myReader as rr
 from . import myWriter as ww
 from . import myExecutor as xx
 from . import myHelper as hh
+import numpy as np
+import pandas as pd
 
 def assign_test_cases(db, tf):
     tc_packet = xx.get_test_case_list(tf)
@@ -50,12 +52,87 @@ def add_next_spectra(per_version_dict, cov_json, tc_id, version):
             per_version_dict[full_file_name]['row_data'][i].append(cov_result)
     return per_version_dict
 
+def get_spectrum(coverage_df, failing_tests):
+    X = coverage_df.values.transpose()
+
+    is_failing = np.array([test in failing_tests for test in coverage_df.columns])
+
+    e_p = X[~is_failing].sum(axis=0)
+    e_f = X[is_failing].sum(axis=0)
+    n_p = np.sum(~is_failing) - e_p
+    n_f = np.sum(is_failing) - e_f
+
+    return e_p, e_f, n_p, n_f
+
+def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
+    if formula == "Jaccard":
+        return e_f/(e_f + n_f + e_p)
+    elif formula == "Binary":
+        return np.where(n_f > 0, 0, n_f)
+    elif formula == "GP13":
+        divisor = (2 * e_p + e_f)
+        x = np.divide(e_f, divisor, where=divisor!=0)
+        return e_f + x
+    elif formula == "Naish1":
+        return np.where(n_f > 0, -1, n_p)
+    elif formula == "Naish2":
+        x = e_p / (e_p + n_p + 1)
+        return e_f - x
+    elif formula == "Ochiai":
+        divisor = np.sqrt((e_f + n_f) * (e_f + e_p))
+        return np.divide(e_f, divisor, where=divisor!=0)
+    elif formula == "Russel+Rao":
+        return e_f/(e_p + n_p + e_f + n_f)
+    elif formula == "Wong1":
+        return e_f
+    else:
+        raise Exception(f"Unknown formula: {formula}")
+
+def processed_data(db, failing_per_bug):
+    SBFL = [
+        'Binary', 'GP13', 'Jaccard', 'Naish1',
+        'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
+    ]
+
+    db.processed_data['processed'] = {}
+    db.first = True
+    spectra_csv_list = xx.get_list_spectra()
+
+    for spectra_csv in spectra_csv_list:
+        csv_file_name = spectra_csv.name
+        bug_version = csv_file_name.split('.')[0]
+        bug_index = int(bug_version[3:])
+
+        print(">> processed data for {}: {}".format(bug_version, csv_file_name))
+
+        failing_list = []
+        for failing in failing_per_bug[bug_version]:
+            tc_id = db.name2id[failing]
+            failing_list.append(tc_id)
+
+        spectra_df = rr.get_csv_as_pandas_file_path(spectra_csv)
+        index_nd = spectra_df.index
+        e_p, e_f, n_p, n_f = get_spectrum(spectra_df, failing_list)
+
+        data = {'ep': e_p, 'ef': e_f, 'np': n_p, 'nf': n_f}
+
+        for form in SBFL:
+            score = sbfl(e_p, e_f, n_p, n_f, formula=form)
+            data[form] = score
+        
+        new_df = pd.DataFrame(data, index=index_nd)
+        ww.write_df_to_csv(new_df, csv_file_name)
+
+    output = ">>> [COMPLETE] Generating processed data with generated Spectrum-data."
+    print(output)
+    return (1, output)
+
 # 1. remove all gcda files
 # 2. execute test case
 # 3. generate coverage json (line)
 # 4. save to DB
 # 5. writer spectra data in DB to csv
-def spectra_data(db, tf, tp):
+def spectra_data(db, tf, tp, processed_flag, failing_per_bug):
     tc_names = tf+tp
 
     version_list = xx.get_list_versions()
@@ -85,26 +162,8 @@ def spectra_data(db, tf, tp):
         ww.write_spectra_data_to_csv(per_version_dict)
         tot_version_dict.append(per_version_dict)
     
-    # db.cov_per_file['all'] = {}
-    # db.first = True
-    # for single_version in tot_version_dict:
-    #     if db.first:
-    #         first_file = list(single_version.keys())[0]
-    #         db.cov_per_file['all']['col_data'] = single_version[first_file]['col_data']
-
-    #         db.cov_per_file['all']['row_data'] = []
-    #         for file in single_version.keys():
-    #             file_data = single_version[file]
-    #             db.cov_per_file['all']['row_data'] += file_data['row_data']
-
-    #         db.first = False
-    #     else:
-    #        for file in single_version.keys():
-    #            file_data = single_version[file]
-    #            db.cov_per_file['all']['row_data'] += file_data['row_data']
-    
-    # spectra_data = db.cov_per_file
-    # spectra_file = ww.write_spectra_data_to_csv(spectra_data)
+    if processed_flag:
+        processed_data(db, failing_per_bug)
     
     output = ">>> [COMPLETE] Generating spectrum-based data with selected Failing & Passing TC."
     print(output)
@@ -500,6 +559,3 @@ def relation_all_TC(db):
     output = ">>> [COMPLETE] Generating TC-to-TC relation csv on per-file, per-function, per-line intersections."
     print(output)
     return (1, output)
-
-def processed_data(target_file):
-    spectra_df = rr.get_csv_as_pandas_file_path(target_file)
