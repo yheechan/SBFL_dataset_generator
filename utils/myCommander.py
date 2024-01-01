@@ -12,19 +12,19 @@ def assign_test_cases(db, tf):
     db.tp_cnt = tc_packet[4]
     return
 
-def add_first_spectra(per_version_dict, cov_json, tc_id, version_num):
+def add_first_spectra(per_version_dict, cov_json, tc_id, version):
     for file in cov_json['files']:
         col_data = ['lineNo', tc_id]
         row_data = []
 
-        full_file_name = file['file']
+        full_file_name = version+'.'+file['file']
 
         if not full_file_name in per_version_dict.keys():
             per_version_dict[full_file_name] = {}
         
         for line in file['lines']:
             cov_result = 1 if line['count'] > 0 else 0
-            row_name = full_file_name+':'+version_num+':'+str(line['line_number'])
+            row_name = version+':'+file['file']+':'+str(line['line_number'])
             row_data.append([
                 row_name, cov_result
             ])
@@ -33,16 +33,16 @@ def add_first_spectra(per_version_dict, cov_json, tc_id, version_num):
         per_version_dict[full_file_name]['row_data'] = row_data
     return per_version_dict
 
-def add_next_spectra(per_version_dict, cov_json, tc_id, version_num):
+def add_next_spectra(per_version_dict, cov_json, tc_id, version):
     for file in cov_json['files']:
-        full_file_name = file['file']
+        full_file_name = version+'.'+file['file']
         assert full_file_name in per_version_dict.keys()
 
         per_version_dict[full_file_name]['col_data'].append(tc_id)
 
         for i in range(len(file['lines'])):
             line = file['lines'][i]
-            lineNo = full_file_name+':'+version_num+':'+str(line['line_number'])
+            lineNo = version+':'+file['file']+':'+str(line['line_number'])
             assert lineNo == per_version_dict[full_file_name]['row_data'][i][0]
 
             cov_result = 1 if line['count'] > 0 else 0
@@ -63,7 +63,7 @@ def spectra_data(db, tf, tp):
     tot_version_dict = []
     for version in version_list:
         version_num = int(version[3:])
-        xx.build_version(version_num)
+        xx.build_version(version_num, onlyProject=True)
 
         per_version_dict = {}
         db.first = True
@@ -81,33 +81,34 @@ def spectra_data(db, tf, tp):
                 db.first = False
             else:
                 per_version_dict = add_next_spectra(per_version_dict, cov_json, tc_id, version)
-
+        
+        ww.write_spectra_data_to_csv(per_version_dict)
         tot_version_dict.append(per_version_dict)
     
-    db.cov_per_file['all'] = {}
-    db.first = True
-    for single_version in tot_version_dict:
-        if db.first:
-            first_file = list(single_version.keys())[0]
-            db.cov_per_file['all']['col_data'] = single_version[first_file]['col_data']
+    # db.cov_per_file['all'] = {}
+    # db.first = True
+    # for single_version in tot_version_dict:
+    #     if db.first:
+    #         first_file = list(single_version.keys())[0]
+    #         db.cov_per_file['all']['col_data'] = single_version[first_file]['col_data']
 
-            db.cov_per_file['all']['row_data'] = []
-            for file in single_version.keys():
-                file_data = single_version[file]
-                db.cov_per_file['all']['row_data'] += file_data['row_data']
+    #         db.cov_per_file['all']['row_data'] = []
+    #         for file in single_version.keys():
+    #             file_data = single_version[file]
+    #             db.cov_per_file['all']['row_data'] += file_data['row_data']
 
-            db.first = False
-        else:
-           for file in single_version.keys():
-               file_data = single_version[file]
-               db.cov_per_file['all']['row_data'] += file_data['row_data']
+    #         db.first = False
+    #     else:
+    #        for file in single_version.keys():
+    #            file_data = single_version[file]
+    #            db.cov_per_file['all']['row_data'] += file_data['row_data']
     
-    spectra_data = db.cov_per_file
-    ww.write_spectra_data_to_csv(spectra_data)
+    # spectra_data = db.cov_per_file
+    # spectra_file = ww.write_spectra_data_to_csv(spectra_data)
     
     output = ">>> [COMPLETE] Generating spectrum-based data with selected Failing & Passing TC."
     print(output)
-    return (1, output)
+    return (1, output)# , spectra_file
 
 # 1. executes './jsoncpp_test --list-tests' to gather list of TC
 def list_test_cases(db, tf):
@@ -499,3 +500,6 @@ def relation_all_TC(db):
     output = ">>> [COMPLETE] Generating TC-to-TC relation csv on per-file, per-function, per-line intersections."
     print(output)
     return (1, output)
+
+def processed_data(target_file):
+    spectra_df = rr.get_csv_as_pandas_file_path(target_file)

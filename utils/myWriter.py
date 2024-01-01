@@ -32,6 +32,8 @@ def write_spectra_data_to_csv(spectra_data_per_file: dict):
             cw = csv.writer(fp)
             cw.writerow(col_data)
             cw.writerows(row_data)
+    
+    return file
 
 def write_test_cases_list_to_txt(tc_list: list, pp=False):
     hh.check_dir(data_dir)

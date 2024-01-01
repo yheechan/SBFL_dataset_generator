@@ -90,8 +90,10 @@ def only_make_tester(dir_name):
 
     pass
 
-def remove():
+def remove(onlyProject):
     cmd = ['./remove.py']
+    if onlyProject:
+        cmd.append('--onlyProject')
     sp.call(cmd, cwd=bin_dir)
     print(">> removed currently build project")
 
@@ -120,6 +122,13 @@ def make_parser():
         help='Converts JsonCPP project to User Selected Version. (Default: 0 which is bugFree version.)'
     )
 
+    parser.add_argument(
+        '--onlyProject',
+        required=False,
+        action='store_true',
+        help='for deleting only Project'
+    )
+
     return parser
 
 if __name__ == '__main__':
@@ -130,7 +139,7 @@ if __name__ == '__main__':
     if args.onlyTester:
         only_make_tester(name)
     else:
-        remove()
+        remove(args.onlyProject)
         chVersion(args.version)
         build(name)
         make(name)

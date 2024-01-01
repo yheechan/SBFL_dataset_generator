@@ -18,6 +18,12 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--processed_data',
+        action='store_true',
+        help='Generates processed spectrum data.'
+    )
+
+    parser.add_argument(
         '--criteria_per_BUG',
         action='store_true',
         help='Generates CSV file for all TC to a criteria per BUG.'

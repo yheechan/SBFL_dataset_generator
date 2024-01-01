@@ -117,6 +117,8 @@ if __name__ == "__main__":
 
     if args.spectra_data:
         sd = cc.spectra_data(db, tf, tp)
+        # if args.processed_data:
+        #     pc = cc.processed_data(file)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:

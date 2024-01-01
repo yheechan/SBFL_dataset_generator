@@ -190,8 +190,10 @@ def get_list_versions():
             version_list.append(version) 
     return version_list
 
-def build_version(v_num):
+def build_version(v_num, onlyProject=False):
     cmd = [
         './build.py', '--version', str(v_num)
     ]
+    if onlyProject:
+        cmd.append('--onlyProject')
     sp.call(cmd, cwd=bin_dir)

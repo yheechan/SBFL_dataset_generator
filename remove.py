@@ -8,11 +8,13 @@ script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 
-def remove_dirs(arg):
+def remove_dirs(onlyProject):
     target_dirs = ['build']
-    if arg:
+    if not onlyProject:
         target_dirs.append('coverage')
         target_dirs.append('data')
+    else:
+        print('>> deleting only project directory')
 
     cmd = ['rm', '-rf']
 
@@ -54,7 +56,7 @@ def make_parser():
     )
 
     parser.add_argument(
-        '--all',
+        '--onlyProject',
         required=False,
         action='store_true',
         help='whether to delete coverage and data files'
@@ -66,6 +68,6 @@ if __name__ == '__main__':
     parser = make_parser()
     args = parser.parse_args()
 
-    remove_dirs(not args.all)
+    remove_dirs(args.onlyProject)
     remove_gcno()
     remove_gcda()
