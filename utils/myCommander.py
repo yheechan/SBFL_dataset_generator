@@ -88,7 +88,7 @@ def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
     else:
         raise Exception(f"Unknown formula: {formula}")
 
-def processed_data(db, failing_per_bug):
+def processed_data(db, failing_per_bug, fails):
     SBFL = [
         'Binary', 'GP13', 'Jaccard', 'Naish1',
         'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
@@ -120,7 +120,20 @@ def processed_data(db, failing_per_bug):
             score = sbfl(e_p, e_f, n_p, n_f, formula=form)
             data[form] = score
         
+        bug_info = np.zeros_like(e_p)
+        data['bug'] = bug_info
+
+        buggy_file = ''
+        buggy_line = 0
+        for failing in failing_per_bug[bug_version]:
+            if failing in fails:
+                buggy_file = fails[failing]['file']
+                buggy_line = fails[failing]['line'][1]
+        
+        bug_position = bug_version+':'+buggy_file+':'+str(buggy_line)
+
         new_df = pd.DataFrame(data, index=index_nd)
+        new_df.loc[bug_position, 'bug'] = 1
         ww.write_df_to_csv(new_df, csv_file_name)
 
     output = ">>> [COMPLETE] Generating processed data with generated Spectrum-data."
@@ -132,7 +145,7 @@ def processed_data(db, failing_per_bug):
 # 3. generate coverage json (line)
 # 4. save to DB
 # 5. writer spectra data in DB to csv
-def spectra_data(db, tf, tp, processed_flag, failing_per_bug):
+def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     tc_names = tf+tp
 
     version_list = xx.get_list_versions()
@@ -163,7 +176,7 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug):
         tot_version_dict.append(per_version_dict)
     
     if processed_flag:
-        processed_data(db, failing_per_bug)
+        processed_data(db, failing_per_bug, fails)
     
     output = ">>> [COMPLETE] Generating spectrum-based data with selected Failing & Passing TC."
     print(output)

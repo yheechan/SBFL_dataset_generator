@@ -6,8 +6,10 @@ from . import myHelper as hh
 script_path = Path(os.path.realpath(__file__))
 util_dir = script_path.parent
 bin_dir = util_dir.parent
+extractor_exe = bin_dir / 'clang-frontend/extractor'
 main_dir = bin_dir.parent
-test_dir = main_dir / 'build/src/test_lib_json'
+build_dir = main_dir / 'build'
+test_dir = build_dir / 'src/test_lib_json'
 data_dir = main_dir / 'data'
 coverage_dir = main_dir / 'coverage'
 spectra_dir = data_dir / 'spectra'
@@ -182,6 +184,91 @@ def get_test_case_list(tf):
 
     return [tc, name2id, tot_cnt, fail_cnt, pass_cnt]
 
+def get_ii_files():
+    cmd = [
+        'find', '.', '-type',
+        'f', '-name', '*.ii'
+    ]
+
+    process = sp.Popen(
+        cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
+        cwd=build_dir, encoding='utf-8'
+    )
+
+    ii_files = []
+    while True:
+        line = process.stdout.readline()
+        if line == '' and process.poll() != None:
+            break
+        line = line.strip()
+        if line == '':
+            continue
+        ii_files.append(line)
+    
+    return ii_files
+
+def change_ii_to_cpp(ii_files):
+    cmd = ['mv']
+
+    cpp_files = []
+    if len(ii_files) != 0:
+        for file in ii_files:
+            cmd.append(file)
+            cpp_file_name = file[:-2]+'cpp'
+            cmd.append(cpp_file_name)
+            cpp_files.append(cpp_file_name)
+
+            res = sp.call(cmd, cwd=build_dir)
+            hh.after_exec(res, "changed {} to {}".format(file, file[:-2]+'cpp'))
+
+            cmd.pop()
+            cmd.pop()
+    else:
+        cmd = [
+            'find', '.', '-type',
+            'f', '-name', '*.cpp'
+        ]
+
+        process = sp.Popen(
+            cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
+            cwd=build_dir, encoding='utf-8'
+        )
+
+        while True:
+            line = process.stdout.readline()
+            if line == '' and process.poll() != None:
+                break
+            line = line.strip()
+            cpp_files.append(line)
+    
+    return cpp_files
+
+def extract_line2method(cpp_files):
+    cmd = [extractor_exe]
+
+    cnt = 0
+    for file in cpp_files:
+        cmd.append(file)
+
+        process = sp.Popen(
+            cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
+            cwd=build_dir, encoding='utf-8'
+        )
+
+        while True:
+            line = process.stdout.readline()
+            if line == '' and process.poll() != None:
+                break
+            line = line.strip()
+            print(line)
+        
+        print('>> extracted line2method from {}'.format(file))
+
+        if cnt == 3:
+            break
+        cnt += 1
+
+        cmd.pop()
 
 def get_list_versions():
     version_list = []

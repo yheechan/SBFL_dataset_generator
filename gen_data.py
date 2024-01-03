@@ -140,9 +140,9 @@ if __name__ == "__main__":
     pt = (0, '')
 
     if args.spectra_data:
-        sd = cc.spectra_data(db, tf, tp, args.processed_data, failing_per_bug)
+        sd = cc.spectra_data(db, tf, tp, args.processed_data, failing_per_bug, fails)
     if args.processed_data:
-        psd = cc.processed_data(db, failing_per_bug)
+        psd = cc.processed_data(db, failing_per_bug, fails)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:

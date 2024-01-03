@@ -7,6 +7,10 @@
 * calculate supsicious score for all the lines on all versions
 * analyze ossfuzz timeout bugs
 
+# Currently Working On:
+* make line2method dataset
+* make acc@10 scores on method level
+
 ## TC Criteria
 TC that:
   1. Not executes **cpp file** containing buggy line
