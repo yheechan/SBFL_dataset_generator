@@ -26,7 +26,7 @@ def add_first_spectra(per_version_dict, cov_json, tc_id, version):
         
         for line in file['lines']:
             cov_result = 1 if line['count'] > 0 else 0
-            row_name = version+':'+file['file']+':'+str(line['line_number'])
+            row_name = version+'#'+file['file']+'#'+str(line['line_number'])
             row_data.append([
                 row_name, cov_result
             ])
@@ -44,7 +44,7 @@ def add_next_spectra(per_version_dict, cov_json, tc_id, version):
 
         for i in range(len(file['lines'])):
             line = file['lines'][i]
-            lineNo = version+':'+file['file']+':'+str(line['line_number'])
+            lineNo = version+'#'+file['file']+'#'+str(line['line_number'])
             assert lineNo == per_version_dict[full_file_name]['row_data'][i][0]
 
             cov_result = 1 if line['count'] > 0 else 0
@@ -130,7 +130,7 @@ def processed_data(db, failing_per_bug, fails):
                 buggy_file = fails[failing]['file']
                 buggy_line = fails[failing]['line'][1]
         
-        bug_position = bug_version+':'+buggy_file+':'+str(buggy_line)
+        bug_position = bug_version+'#'+buggy_file+'#'+str(buggy_line)
 
         new_df = pd.DataFrame(data, index=index_nd)
         new_df.loc[bug_position, 'bug'] = 1
@@ -153,7 +153,7 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     tot_version_dict = []
     for version in version_list:
         version_num = int(version[3:])
-        xx.build_version(version_num, onlyProject=True)
+        xx.build_version(version_num, onlyProject=True, withPreprocessed=True)
 
         per_version_dict = {}
         db.first = True

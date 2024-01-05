@@ -11,6 +11,7 @@ bin_dir = util_dir.parent
 main_dir = bin_dir.parent
 test_dir = main_dir / 'build/src/test_lib_json'
 data_dir = main_dir / 'data'
+line2method_dir = data_dir / 'line2method'
 coverage_dir = main_dir / 'coverage'
 spectra_dir = data_dir / 'spectra'
 tc_list_file = coverage_dir / 'tc-list.txt'
@@ -156,3 +157,14 @@ def write_df_to_csv(df, file_name):
 
     csv_file_path = processed_dir / file_name
     df.to_csv(csv_file_path)
+
+def write_line2method(data, bug_version):
+    hh.check_dir(data_dir)
+    hh.check_dir(line2method_dir)
+
+    file_name = bug_version+'.line2method.json'
+
+    file = line2method_dir / file_name
+
+    with open(file, 'w') as fp:
+        json.dump(data, fp, ensure_ascii=False, indent=4)

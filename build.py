@@ -4,11 +4,14 @@ from pathlib import Path
 import os
 import argparse
 
+from utils import myExecutor as xx
+from utils import myWriter as ww
+
 script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 
-def build(dir_name):
+def build(dir_name, preprocessed=False):
     build_dir = main_dir / dir_name
 
     if not build_dir.exists():
@@ -17,11 +20,15 @@ def build(dir_name):
     cmd = [
         'cmake',
         '-DCMAKE_CXX_COMPILER=clang++',
-        '-DCMAKE_CXX_FLAGS=-O0 -fprofile-arcs -ftest-coverage -g -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize=fuzzer-no-link --save-temps',
+        '-DCMAKE_CXX_FLAGS=-O0 -fprofile-arcs -ftest-coverage -g -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize=fuzzer-no-link',
         '-DBUILD_SHARED_LIBS=OFF', '-G',
         'Unix Makefiles',
         '../'
     ]
+
+    if preprocessed:
+        cmd[2] += ' --save-temps'
+
     sp.call(cmd, cwd=build_dir)
 
     print('>> built project')
@@ -90,10 +97,14 @@ def only_make_tester(dir_name):
 
     pass
 
-def remove(onlyProject):
+def remove(onlyProject=False, onlyPreprocesed=False):
     cmd = ['./remove.py']
     if onlyProject:
         cmd.append('--onlyProject')
+    
+    if onlyPreprocesed:
+        cmd.append('--onlyPreprocessed')
+
     sp.call(cmd, cwd=bin_dir)
     print(">> removed currently build project")
 
@@ -116,6 +127,13 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--preprocessed',
+        required=False,
+        action='store_true',
+        help='for building with preprocessed files'
+    )
+
+    parser.add_argument(
         '--version',
         type=int,
         default=0,
@@ -129,6 +147,13 @@ def make_parser():
         help='for deleting only Project'
     )
 
+    parser.add_argument(
+        '--withPreprocessed',
+        required=False,
+        action='store_true',
+        help='for deleting only preprocessed project'
+    )
+
     return parser
 
 if __name__ == '__main__':
@@ -136,11 +161,25 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     name = 'build'
+    preprocessed = 'preprocessed'
     if args.onlyTester:
         only_make_tester(name)
     else:
-        remove(args.onlyProject)
+        remove(onlyProject=args.onlyProject, onlyPreprocesed=True)
         chVersion(args.version)
+
+        if args.withPreprocessed:
+            # build preprocessed project
+            build(preprocessed, preprocessed=True)
+            make(preprocessed)
+            ii_files = xx.get_ii_files()
+            cpp_files = xx.change_ii_to_cpp(ii_files)
+            bug_version = 'bug'+str(args.version)
+            perFile_data = xx.extract_line2method(cpp_files)
+            ww.write_line2method(perFile_data, bug_version)
+            remove(onlyProject=args.onlyProject, onlyPreprocesed=True)
+
+        # build coverage project
         build(name)
         make(name)
         copy_files(name)

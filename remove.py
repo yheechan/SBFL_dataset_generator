@@ -8,13 +8,14 @@ script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 
-def remove_dirs(onlyProject):
+def remove_dirs(onlyProject=False, onlyPreprocesed=False):
     target_dirs = ['build']
     if not onlyProject:
         target_dirs.append('coverage')
         target_dirs.append('data')
-    else:
-        print('>> deleting only project directory')
+
+    if onlyPreprocesed:
+        target_dirs.append('preprocessed')
 
     cmd = ['rm', '-rf']
 
@@ -23,6 +24,7 @@ def remove_dirs(onlyProject):
         cmd.append(d)
 
         sp.call(cmd, cwd=main_dir)
+        print(">> removed {}".format(d))
 
         cmd.pop()
     
@@ -62,12 +64,29 @@ def make_parser():
         help='whether to delete coverage and data files'
     )
 
+    parser.add_argument(
+        '--onlyPreprocessed',
+        required=False,
+        action='store_true',
+        help='whether to delete coverage and data files'
+    )
+
+    parser.add_argument(
+        '--all',
+        required=False,
+        action='store_true',
+        help='whether to delete coverage and data files'
+    )
+
     return parser
 
 if __name__ == '__main__':
     parser = make_parser()
     args = parser.parse_args()
 
-    remove_dirs(args.onlyProject)
+    if args.all:
+        args.onlyPreprocessed = True
+    
+    remove_dirs(onlyProject=args.onlyProject, onlyPreprocesed=args.onlyPreprocessed)
     remove_gcno()
     remove_gcda()

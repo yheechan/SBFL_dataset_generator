@@ -9,6 +9,7 @@ bin_dir = util_dir.parent
 extractor_exe = bin_dir / 'clang-frontend/extractor'
 main_dir = bin_dir.parent
 build_dir = main_dir / 'build'
+preprocessed_dir = main_dir / 'preprocessed'
 test_dir = build_dir / 'src/test_lib_json'
 data_dir = main_dir / 'data'
 coverage_dir = main_dir / 'coverage'
@@ -192,7 +193,7 @@ def get_ii_files():
 
     process = sp.Popen(
         cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
-        cwd=build_dir, encoding='utf-8'
+        cwd=preprocessed_dir, encoding='utf-8'
     )
 
     ii_files = []
@@ -218,7 +219,7 @@ def change_ii_to_cpp(ii_files):
             cmd.append(cpp_file_name)
             cpp_files.append(cpp_file_name)
 
-            res = sp.call(cmd, cwd=build_dir)
+            res = sp.call(cmd, cwd=preprocessed_dir)
             hh.after_exec(res, "changed {} to {}".format(file, file[:-2]+'cpp'))
 
             cmd.pop()
@@ -231,7 +232,7 @@ def change_ii_to_cpp(ii_files):
 
         process = sp.Popen(
             cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
-            cwd=build_dir, encoding='utf-8'
+            cwd=preprocessed_dir, encoding='utf-8'
         )
 
         while True:
@@ -239,6 +240,8 @@ def change_ii_to_cpp(ii_files):
             if line == '' and process.poll() != None:
                 break
             line = line.strip()
+            if line == '':
+                continue
             cpp_files.append(line)
     
     return cpp_files
@@ -247,12 +250,14 @@ def extract_line2method(cpp_files):
     cmd = [extractor_exe]
 
     cnt = 0
+
+    perFile_data = {}
     for file in cpp_files:
         cmd.append(file)
 
         process = sp.Popen(
             cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
-            cwd=build_dir, encoding='utf-8'
+            cwd=preprocessed_dir, encoding='utf-8'
         )
 
         while True:
@@ -260,15 +265,44 @@ def extract_line2method(cpp_files):
             if line == '' and process.poll() != None:
                 break
             line = line.strip()
-            print(line)
+            if line == '':
+                continue
+
+            data = line.split("##")
+            # print("class: \t{}".format(data[0]))
+            class_name = data[0]
+            # print("function: \t{}".format(data[1]))
+            function_name = data[1]
+            # print("start line: \t{}".format(data[2]))
+            start_line = data[2]
+            # print("end line: \t{}".format(data[3]))
+            end_line = data[3]
+            # print("origin file: \t{}".format(data[4]))
+            originated_file = data[4]
+            file_data = originated_file.split(':')[0]
+            route_data = file_data.split('/')
+            mark = 0
+            for i in range(len(route_data)-1, -1, -1):
+                if route_data[i] in ['src', 'build', 'include']:
+                    mark = i
+                    break
+            marked_path = '/'.join(route_data[mark:])
+            # print("marked file: {}".format(marked_path))
+            # print("targeted file: \t{}".format(data[5]))
+            # print("***************\n")
+
+            if not marked_path in perFile_data.keys():
+                perFile_data[marked_path] = []
+            
+            full_function = class_name+'::'+function_name if class_name != 'None' else function_name
+            data = (full_function, int(start_line), int(end_line))
+            if not data in perFile_data[marked_path]:
+                perFile_data[marked_path].append(data)
         
         print('>> extracted line2method from {}'.format(file))
-
-        if cnt == 3:
-            break
-        cnt += 1
-
         cmd.pop()
+    
+    return perFile_data
 
 def get_list_versions():
     version_list = []
@@ -277,12 +311,15 @@ def get_list_versions():
             version_list.append(version) 
     return version_list
 
-def build_version(v_num, onlyProject=False):
+def build_version(v_num, onlyProject=False, withPreprocessed=False):
     cmd = [
         './build.py', '--version', str(v_num)
     ]
     if onlyProject:
         cmd.append('--onlyProject')
+    if withPreprocessed:
+        cmd.append('--withPreprocessed')
+
     sp.call(cmd, cwd=bin_dir)
 
 def get_list_spectra():

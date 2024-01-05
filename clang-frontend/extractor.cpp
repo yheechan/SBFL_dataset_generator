@@ -53,14 +53,12 @@ public:
     bool VisitFunctionDecl(FunctionDecl *f)
     {
         currentFunctionName = f->getNameInfo().getName().getAsString();
-        llvm::outs() << "Entering method: " << currentFunctionName << "\n";
 
         // get start and end location of function
         SourceLocation startLocation = f->getBeginLoc();
         SourceLocation endLocation = f->getEndLoc();
 
         string info = startLocation.printToString(m_sourceManager);
-        llvm::outs() << "\t>info : " <<  info << "\n";
 
         // get presumed line number of start and end location
         unsigned int startLineNum = m_sourceManager.getPresumedLineNumber(startLocation);
@@ -78,10 +76,23 @@ public:
         const FileEntry *fileEntry = m_sourceManager.getFileEntryForID(m_sourceManager.getFileID(startLocation));
         std::string fileName = (fileEntry ? string(fileEntry->getName()) : "UnknownFile");
 
-        llvm::outs() << "\t start line number: " << startLineNum << "\n"
-                    << "\t end line number: " << endLineNum << "\n"
-                    << "\t file name: " << fileName << "\n"
-                    << "\t class name: " << currentFunctionClassName << "\n";
+        // Get function parameters
+        string parametersStr;
+        for (const ParmVarDecl *param : f->parameters()) {
+            if (!parametersStr.empty()) {
+                parametersStr += ", ";
+            }
+            parametersStr += param->getType().getAsString() + " " + param->getNameAsString();
+        }
+        parametersStr = "(" + parametersStr + ")";
+        currentFunctionName = currentFunctionName + parametersStr;
+
+        llvm::outs() << currentFunctionClassName << "##"
+                        << currentFunctionName << "##"
+                        << startLineNum << "##"
+                        << endLineNum << "##"
+                        << info << "##"
+                        << fileName << "\n";
 
         return true;
     }
