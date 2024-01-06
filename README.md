@@ -7,9 +7,10 @@
 * calculate supsicious score for all the lines on all versions
 * analyze ossfuzz timeout bugs
 
-# Currently Working On:
+## Currently Working On:
 * make line2method dataset
 * make acc@10 scores on method level
+* [IMPO] Check whether skipping TC runs are correctly skipped
 
 ## TC Criteria
 TC that:

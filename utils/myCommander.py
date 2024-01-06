@@ -14,19 +14,38 @@ def assign_test_cases(db, tf):
     db.tp_cnt = tc_packet[4]
     return
 
-def add_first_spectra(per_version_dict, cov_json, tc_id, version):
+def return_fuction(fname, lnum, line2method_dict):
+    endName = fname.split('/')[-1]
+    useName = endName if endName == 'CMakeCXXCompilerId.cpp' else fname
+
+    if useName in line2method_dict.keys():
+        for funcData in line2method_dict[useName]:
+            funcName = funcData[0]
+            funcStart = funcData[1]
+            funcEnd = funcData[2]
+
+            if lnum >= funcStart and lnum <= funcEnd:
+                return funcName
+    return 'FUNCTIONNOTFOUND()'
+
+def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2method_dict):
     for file in cov_json['files']:
         col_data = ['lineNo', tc_id]
         row_data = []
 
-        full_file_name = version+'.'+file['file']
+        filename = file['file']
+        full_file_name = version+'.'+filename
 
         if not full_file_name in per_version_dict.keys():
             per_version_dict[full_file_name] = {}
         
         for line in file['lines']:
             cov_result = 1 if line['count'] > 0 else 0
-            row_name = version+'#'+file['file']+'#'+str(line['line_number'])
+
+            curr_line_number = line['line_number']
+            function_name = return_fuction(filename, curr_line_number, line2method_dict)
+
+            row_name = version+'#'+filename+'#'+function_name+"#"+str(curr_line_number)
             row_data.append([
                 row_name, cov_result
             ])
@@ -35,17 +54,21 @@ def add_first_spectra(per_version_dict, cov_json, tc_id, version):
         per_version_dict[full_file_name]['row_data'] = row_data
     return per_version_dict
 
-def add_next_spectra(per_version_dict, cov_json, tc_id, version):
+def add_next_spectra(per_version_dict, cov_json, tc_id, version, line2method_dict):
     for file in cov_json['files']:
-        full_file_name = version+'.'+file['file']
+        filename = file['file']
+        full_file_name = version+'.'+filename
         assert full_file_name in per_version_dict.keys()
 
         per_version_dict[full_file_name]['col_data'].append(tc_id)
 
         for i in range(len(file['lines'])):
             line = file['lines'][i]
-            lineNo = version+'#'+file['file']+'#'+str(line['line_number'])
-            assert lineNo == per_version_dict[full_file_name]['row_data'][i][0]
+            curr_line_number = line['line_number']
+            function_name = return_fuction(filename, curr_line_number, line2method_dict)
+
+            row_name = version+'#'+filename+'#'+function_name+"#"+str(curr_line_number)
+            assert row_name == per_version_dict[full_file_name]['row_data'][i][0]
 
             cov_result = 1 if line['count'] > 0 else 0
 
@@ -153,7 +176,12 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     tot_version_dict = []
     for version in version_list:
         version_num = int(version[3:])
+        # builds with according version
+        # produces ii files for line2method data generation
+        # removes the project built for ii
+        # build project for coverage
         xx.build_version(version_num, onlyProject=True, withPreprocessed=True)
+        line2method_dict = rr.get_line2method_json(version_num)
 
         per_version_dict = {}
         db.first = True
@@ -167,10 +195,22 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
             cov_json = rr.get_json_from_file_path(json_file_path)
 
             if db.first:
-                per_version_dict = add_first_spectra(per_version_dict, cov_json, tc_id, version)
+                per_version_dict = add_first_spectra(
+                    per_version_dict,
+                    cov_json,
+                    tc_id,
+                    version,
+                    line2method_dict
+                )
                 db.first = False
             else:
-                per_version_dict = add_next_spectra(per_version_dict, cov_json, tc_id, version)
+                per_version_dict = add_next_spectra(
+                    per_version_dict,
+                    cov_json,
+                    tc_id,
+                    version,
+                    line2method_dict
+                )
         
         ww.write_spectra_data_to_csv(per_version_dict)
         tot_version_dict.append(per_version_dict)
