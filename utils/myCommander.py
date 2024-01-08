@@ -91,7 +91,7 @@ def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
     if formula == "Jaccard":
         return e_f/(e_f + n_f + e_p)
     elif formula == "Binary":
-        return np.where(n_f > 0, 0, n_f)
+        return np.where(n_f > 0, 0, 1)
     elif formula == "GP13":
         divisor = (2 * e_p + e_f)
         x = np.divide(e_f, divisor, where=divisor!=0)
@@ -180,8 +180,15 @@ def ranked_data(db, failing_per_bug, fails):
         'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
     ]
 
+    col_data = [''] + SBFL
+    row_data = []
+
     bug_version_list = list(failing_per_bug.keys())
     for bug in bug_version_list:
+        if bug not in row_data:
+            row_data.append([bug])
+        bug_index = row_data.index([bug])
+
         processed_list = xx.get_processed_data_list_on_bug(bug)
         # save dataframes per fil in list
         dataframe_list = []
@@ -190,9 +197,11 @@ def ranked_data(db, failing_per_bug, fails):
             dataframe_list.append(df)
         
         # concat all dataframes in list
-        total_df = pd.concat(dataframe_list, axis=0)
+        og_total_df = pd.concat(dataframe_list, axis=0)
 
         for sbfl_type in SBFL:
+            total_df = og_total_df.copy()
+
             # the index (lineNo) of total_df is a single string formatted as follows:
             # bug_name#file_name#function_name#line_number
             # I want to combine rows that have the same bug_name#file_name#function_name
@@ -210,7 +219,16 @@ def ranked_data(db, failing_per_bug, fails):
             file_name = bug+'.'+sbfl_type
             ww.write_ranked_data_to_csv(result_df, file_name)
 
-            print(">> ranked data for {}: {}".format(bug, file_name))
+            result_df['Rank'] = result_df[sbfl_type].rank(method='max', ascending=False)
+            bug_row = result_df[result_df['bug'] == 1]
+            bug_rank_value = bug_row['Rank'].values[0]
+            row_data[bug_index].append(bug_rank_value)
+
+            print(">> ranked data for {}: {} at rank {}".format(bug, file_name, bug_rank_value))
+        
+    summary_result = {'col_data': col_data, 'row_data': row_data}
+    ww.write_ranked_summary_to_csv(summary_result)
+
     return (1, ">>> [COMPLETE] Generating ranked data with processed data.")
 
 

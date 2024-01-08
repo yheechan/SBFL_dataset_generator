@@ -1,10 +1,10 @@
 # gen_data_4_jsoncpp
 
 ## ToDo
+* make PPT slides to share results
 * analyze ossfuzz timeout bugs
 
 ## Currently Working On:
-* generate summary of acc@10 results at method level
 * [IMPO] Check whether skipping TC runs are correctly skipped
 
 ## Finished Over the Week
@@ -16,6 +16,7 @@
   * currently does not handle lines that are not within a method
   * currently does not handle template functions
 * Finished Ranking at Method Level (per SBFL Formula on each BUG)
+* generate summary of acc@10 results at method level
 
 ## TC Criteria
 TC that:

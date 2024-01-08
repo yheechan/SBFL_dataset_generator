@@ -178,3 +178,16 @@ def write_ranked_data_to_csv(df, fname):
     file = ranked_dir / file_name
 
     df.to_csv(file)
+
+def write_ranked_summary_to_csv(data):
+    hh.check_dir(data_dir)
+    ranked_dir = data_dir / 'ranked'
+    hh.check_dir(ranked_dir)
+
+    file_name = 'rank.summary.csv'
+    file = ranked_dir / file_name
+
+    with open(file, 'w') as fp:
+        cw = csv.writer(fp)
+        cw.writerow(data['col_data'])
+        cw.writerows(data['row_data'])
