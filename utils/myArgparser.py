@@ -24,6 +24,12 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--ranked_data',
+        action='store_true',
+        help='Generates ranked from processed data.'
+    )
+
+    parser.add_argument(
         '--criteria_per_BUG',
         action='store_true',
         help='Generates CSV file for all TC to a criteria per BUG.'

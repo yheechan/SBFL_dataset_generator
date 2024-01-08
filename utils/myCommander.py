@@ -26,7 +26,7 @@ def return_fuction(fname, lnum, line2method_dict):
 
             if lnum >= funcStart and lnum <= funcEnd:
                 return funcName
-    return 'FUNCTIONNOTFOUND()'
+    return 'FUNCTIONNOTFOUND'
 
 def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2method_dict):
     for file in cov_json['files']:
@@ -153,15 +153,67 @@ def processed_data(db, failing_per_bug, fails):
                 buggy_file = fails[failing]['file']
                 buggy_line = fails[failing]['line'][1]
         
-        bug_position = bug_version+'#'+buggy_file+'#'+str(buggy_line)
+        line2method_dict = rr.get_line2method_json(bug_index)
+        function_name = return_fuction(buggy_file, buggy_line, line2method_dict)
+
+        bug_position = bug_version+'#'+buggy_file+'#'+function_name+'#'+str(buggy_line)
 
         new_df = pd.DataFrame(data, index=index_nd)
-        new_df.loc[bug_position, 'bug'] = 1
+        if bug_position in new_df.index:
+            new_df.loc[bug_position, 'bug'] = 1
         ww.write_df_to_csv(new_df, csv_file_name)
 
     output = ">>> [COMPLETE] Generating processed data with generated Spectrum-data."
     print(output)
     return (1, output)
+
+# Define a function to apply to each group
+def set_bug_value(group, sbfl_type):
+    max_row = group.loc[group[sbfl_type].idxmax()]
+    if (group['bug'] == 1).any():
+        max_row['bug'] = 1
+    return max_row
+
+def ranked_data(db, failing_per_bug, fails):
+    SBFL = [
+        'Binary', 'GP13', 'Jaccard', 'Naish1',
+        'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
+    ]
+
+    bug_version_list = list(failing_per_bug.keys())
+    for bug in bug_version_list:
+        processed_list = xx.get_processed_data_list_on_bug(bug)
+        # save dataframes per fil in list
+        dataframe_list = []
+        for processed_path in processed_list:
+            df = rr.get_csv_as_pandas_file_path(processed_path)
+            dataframe_list.append(df)
+        
+        # concat all dataframes in list
+        total_df = pd.concat(dataframe_list, axis=0)
+
+        for sbfl_type in SBFL:
+            # the index (lineNo) of total_df is a single string formatted as follows:
+            # bug_name#file_name#function_name#line_number
+            # I want to combine rows that have the same bug_name#file_name#function_name
+            # the column values set to the maximum value of a column names sbfl_type
+            total_df['key'] = total_df.index.str.extract(r'(bug\d+#.*?#.*?)(?=#|$)', expand=False)
+            total_df.columns = total_df.columns.str.strip()
+
+            # set bug value to 1 if any of the rows in the group has a bug value of 1
+            result_df = total_df.groupby('key', group_keys=False).apply(set_bug_value, sbfl_type=sbfl_type)
+            result_df = result_df.drop(columns='key')
+
+            # sort by column of variable sbfl_type
+            result_df = result_df.sort_values(by=sbfl_type, ascending=False)
+
+            file_name = bug+'.'+sbfl_type
+            ww.write_ranked_data_to_csv(result_df, file_name)
+
+            print(">> ranked data for {}: {}".format(bug, file_name))
+    return (1, ">>> [COMPLETE] Generating ranked data with processed data.")
+
+
 
 # 1. remove all gcda files
 # 2. execute test case

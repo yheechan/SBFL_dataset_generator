@@ -168,3 +168,13 @@ def write_line2method(data, bug_version):
 
     with open(file, 'w') as fp:
         json.dump(data, fp, ensure_ascii=False, indent=4)
+    
+def write_ranked_data_to_csv(df, fname):
+    hh.check_dir(data_dir)
+    ranked_dir = data_dir / 'ranked'
+    hh.check_dir(ranked_dir)
+
+    file_name = fname+'.csv'
+    file = ranked_dir / file_name
+
+    df.to_csv(file)

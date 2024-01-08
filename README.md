@@ -1,16 +1,21 @@
 # gen_data_4_jsoncpp
 
 ## ToDo
-* make different versions for each bug
-  * make it buildable/executable for each bug
-* generate coverage data on each version with all TC
-* calculate supsicious score for all the lines on all versions
 * analyze ossfuzz timeout bugs
 
 ## Currently Working On:
-* make line2method dataset
-* make acc@10 scores on method level
+* generate summary of acc@10 results at method level
 * [IMPO] Check whether skipping TC runs are correctly skipped
+
+## Finished Over the Week
+* make different versions for each bug
+  * make it buildable/executable for each bug
+* generate coverage data on each version with all TC
+* calculate suspicious score on each line using SBFL formulas
+* utilized clang to retreive line-to-method data
+  * currently does not handle lines that are not within a method
+  * currently does not handle template functions
+* Finished Ranking at Method Level (per SBFL Formula on each BUG)
 
 ## TC Criteria
 TC that:

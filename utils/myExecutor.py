@@ -14,6 +14,7 @@ test_dir = build_dir / 'src/test_lib_json'
 data_dir = main_dir / 'data'
 coverage_dir = main_dir / 'coverage'
 spectra_dir = data_dir / 'spectra'
+processed_dir = data_dir / 'processed'
 tc_list_file = coverage_dir / 'tc-list.txt'
 pretty_dir = coverage_dir / 'pretty'
 html_dir = coverage_dir / 'html'
@@ -327,3 +328,10 @@ def get_list_spectra():
     for spectra in sorted(spectra_dir.iterdir()):
         spectra_list.append(spectra)
     return spectra_list
+
+def get_processed_data_list_on_bug(bug_name):
+    processed_data_list = []
+    for file in sorted(processed_dir.iterdir()):
+        if bug_name in file.name:
+            processed_data_list.append(file)
+    return processed_data_list

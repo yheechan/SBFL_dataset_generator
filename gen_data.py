@@ -131,6 +131,7 @@ if __name__ == "__main__":
 
     sd = (0, '')
     psd = (0, '')
+    rd = (0, '')
     ct = (0, '')
     cb = (0, '')
     rt = (0, '')
@@ -143,6 +144,8 @@ if __name__ == "__main__":
         sd = cc.spectra_data(db, tf, tp, args.processed_data, failing_per_bug, fails)
     if args.processed_data:
         psd = cc.processed_data(db, failing_per_bug, fails)
+    if args.ranked_data:
+        rd = cc.ranked_data(db, failing_per_bug, fails)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:
@@ -166,6 +169,10 @@ if __name__ == "__main__":
 
     if sd[0]:
         print(sd[1])
+    if psd[0]:
+        print(psd[1])
+    if rd[0]:
+        print(rd[1])
     if ct[0]:
         print(ct[1])
     if cb[0]:
