@@ -5,6 +5,9 @@
 * analyze ossfuzz timeout bugs
 
 ## Currently Working On:
+1. debug rank results
+2. improve performance on FL (by excluding coincident passed TC)
+3. documentation in GREAT DETAIL
 * [IMPO] Check whether skipping TC runs are correctly skipped
 
 ## Finished Over the Week

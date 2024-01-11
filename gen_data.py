@@ -35,15 +35,13 @@ failing_info = {
 }
 
 fails = {
-    'ValueTest/issue1264_1': {
+    'bug1': {
         'file': 'src/lib_json/json_value.cpp',
         'function': (
             'src/lib_json/json_value.cpp',
             'Json::Value::resize(unsigned int)'
-        ),
-        'line': ('src/lib_json/json_value.cpp', 915),
-    },
-    'ReaderTest/allowNumericKeysTest_1': {
+        ),    },
+    'bug2': {
         'file': 'src/lib_json/json_reader.cpp',
         'function': (
             'src/lib_json/json_reader.cpp',
@@ -51,7 +49,7 @@ fails = {
         ),
         'line': ('src/lib_json/json_reader.cpp', 467),
     },
-    'CharReaderTest/ossFuzz_21916_1': {
+    'bug3': {
         'file': 'src/lib_json/json_reader.cpp',
         'function': (
             'src/lib_json/json_reader.cpp',
@@ -59,7 +57,7 @@ fails = {
         ),
         'line': ('src/lib_json/json_reader.cpp', 1279),
     },
-    'CharReaderTest/ossFuzz_18147_1': {
+    'bug4': {
         'file': 'src/lib_json/json_reader.cpp',
         'function': (
             'src/lib_json/json_reader.cpp',
@@ -149,7 +147,7 @@ if __name__ == "__main__":
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:
-        cb = cc.criteria_per_BUG(db, fails)
+        cb = cc.criteria_per_BUG(db, fails, failing_per_bug)
     if args.relation_data:
         rt = cc.relation_all_TC(db)
     if args.list_tc:

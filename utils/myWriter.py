@@ -87,17 +87,18 @@ def write_criteria_stat_results_per_BUG_to_csv(cd, tot):
     file = crit_dir / file_name
 
     xF_file = cd['xx_fail_file']
-    nF_file = tot-xF_file
+    nF_file = tot-(xF_file[0] + xF_file[1])
     xF_func = cd['xx_fail_func']
-    nF_func = tot-xF_func
+    nF_func = tot-(xF_func[0] + xF_func[1])
     xF_line = cd['xx_fail_line']
-    nF_line = tot-xF_line
+    nF_line = tot-(xF_line[0] + xF_line[1])
 
-    col_data = ['criteria', 'executes', 'not-executes', 'total']
+    col_data = ['criteria', 'executes&pass', 'executes&fail', 'not-executes', 'total']
+    # (pass, fail)
     row_data = [
-        ['buggy-file', xF_file, nF_file, tot],
-        ['buggy-func', xF_func, nF_func, tot],
-        ['buggy-line', xF_line, nF_line, tot]
+        ['buggy-file', xF_file[0], xF_file[1], nF_file, tot],
+        ['buggy-func', xF_func[0], xF_func[1], nF_func, tot],
+        ['buggy-line', xF_line[0], xF_line[1], nF_line, tot]
     ]
 
     with open(file, 'w') as fp:
