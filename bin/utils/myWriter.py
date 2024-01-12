@@ -17,6 +17,7 @@ test_dir = jsoncpp_dir / 'build/src/test_lib_json'
 data_dir = jsoncpp_dir / 'data'
 line2method_dir = data_dir / 'line2method'
 spectra_dir = data_dir / 'spectra'
+data_coverage_dir = data_dir / 'coverage'
 
 coverage_dir = main_dir / 'coverage'
 tc_list_file = coverage_dir / 'tc-list.txt'
@@ -198,3 +199,16 @@ def write_ranked_summary_to_csv(data):
         cw = csv.writer(fp)
         cw.writerow(data['col_data'])
         cw.writerows(data['row_data'])
+
+def write_coincident_TC(bug_name, data):
+    hh.check_dir(data_dir)
+    hh.check_dir(data_coverage_dir)
+    file_name = bug_name + '.coincidentTC.txt'
+    file_path = data_coverage_dir / file_name
+
+    with open(file_path, 'w') as fp:
+        for d in data:
+            tc_id = str(d[0])
+            tc_name = str(d[1])
+            line = tc_id + '#' + tc_name + '\n'
+            fp.write(line)

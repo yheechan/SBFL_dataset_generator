@@ -516,6 +516,7 @@ def criteria_per_BUG(db, bugs, failing_per_bug):
         execs_buggy_func_cnt = [0, 0]
         execs_buggy_line_cnt = [0, 0]
         # per TC
+        coincident_tc_list = []
         for tc_id in db.tc.keys():
             col_data.append(tc_id)
 
@@ -597,6 +598,8 @@ def criteria_per_BUG(db, bugs, failing_per_bug):
                         else:
                             execs_buggy_func_cnt[0] += 1
                             isFail = False
+                            if [tc_id, tc_name] not in coincident_tc_list:
+                                coincident_tc_list.append([tc_id, tc_name])
                         break
                 
                 if execs_buggy_func:
@@ -632,6 +635,8 @@ def criteria_per_BUG(db, bugs, failing_per_bug):
                         else:
                             execs_buggy_line_cnt[0] += 1
                             isFail = False
+                            if [tc_id, tc_name] not in coincident_tc_list:
+                                coincident_tc_list.append([tc_id, tc_name])
                         break
                 
                 if execs_buggy_line:
@@ -645,6 +650,9 @@ def criteria_per_BUG(db, bugs, failing_per_bug):
                 row_data[4].append(0)
                 row_data[5].append(0)
             print("* {} on fail line".format(execs_buggy_line))
+
+        # write coincident TC
+        ww.write_coincident_TC(bug_name, coincident_tc_list)
 
         db.tc_criteria['target'] = bug_name
         db.tc_criteria['col_data'] = col_data
