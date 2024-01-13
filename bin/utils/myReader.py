@@ -38,3 +38,25 @@ def get_line2method_json(version_num):
     with open(file_path, 'r') as fp:
         json_data = json.load(fp)
     return json_data
+
+def get_coincident_tc(bug_version):
+    hh.check_dir(data_dir)
+    cov_dir = data_dir / 'coverage'
+    hh.check_dir(cov_dir)
+    coinc_dir = cov_dir / 'coincident'
+    hh.check_dir(coinc_dir)
+
+    file_name = bug_version + '.coincidentTC.txt'
+    file_path = coinc_dir / file_name
+
+    coinc_list = []
+    with open(file_path, 'r') as fp:
+        lines = fp.readlines()
+
+    for line in lines:
+        line = line.strip()
+        # [tc_id, tc_name]
+        data = line.split('#')
+        coinc_list.append(data)
+    
+    return coinc_list

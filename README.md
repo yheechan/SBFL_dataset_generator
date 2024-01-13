@@ -5,9 +5,9 @@
 * analyze ossfuzz timeout bugs
 
 ## Currently Working On:
-1. debug rank results
 2. improve performance on FL (by excluding coincident passed TC)
-3. documentation in GREAT DETAIL
+3. Change to execute for single BUG version (for simplicity)
+4. documentation in GREAT DETAIL
 * [IMPO] Check whether skipping TC runs are correctly skipped
 
 ## Finished Over the Week
@@ -20,6 +20,7 @@
   * currently does not handle template functions
 * Finished Ranking at Method Level (per SBFL Formula on each BUG)
 * generate summary of acc@10 results at method level
+*. debug rank results
 
 ## TC Criteria
 TC that:

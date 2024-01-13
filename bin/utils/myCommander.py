@@ -247,8 +247,12 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     version_list = xx.get_list_versions()
 
     tot_version_dict = []
-    for version in version_list:
-        version_num = int(version[3:])
+    for version_name in version_list:
+        version_num = int(version_name[3:])
+
+        # get the coincident tc list for this version
+        coincident_tc_list = rr.get_coincident_tc(version_name)
+
         # builds with according version
         # produces ii files for line2method data generation
         # removes the project built for ii
@@ -260,19 +264,22 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
         db.first = True
         for tc_id in db.tc.keys():
             tc_name = db.tc[tc_id]['name']
+
+            if [tc_id, tc_name] in coincident_tc_list:
+                continue
         # for tc_name in tc_names:
         #     tc_id  = db.name2id[tc_name]
 
-            print(">> spectra data for {}: {}".format(version, tc_id))
+            print(">> spectra data for {}: {}".format(version_name, tc_id))
 
             xx.remove_all_gcda()
-            check_run = xx.run_needed(version, tc_id, 'raw')
+            check_run = xx.run_needed(version_name, tc_id, 'raw')
             if check_run[0]:
                 xx.run_by_tc_name(tc_name)
-                json_file_path = xx.generate_json_for_TC(version, tc_id)
-                for_summ = xx.run_needed(version, tc_id, 'summary')
+                json_file_path = xx.generate_json_for_TC(version_name, tc_id)
+                for_summ = xx.run_needed(version_name, tc_id, 'summary')
                 if for_summ[0]:
-                    json_summary_path = xx.generate_summary_json_for_TC_perBUG(version, tc_id)
+                    json_summary_path = xx.generate_summary_json_for_TC_perBUG(version_name, tc_id)
             else:
                 json_file_path = check_run[1]
             cov_json = rr.get_json_from_file_path(json_file_path)
@@ -282,7 +289,7 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
                     per_version_dict,
                     cov_json,
                     tc_id,
-                    version,
+                    version_name,
                     line2method_dict
                 )
                 db.first = False
@@ -291,7 +298,7 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
                     per_version_dict,
                     cov_json,
                     tc_id,
-                    version,
+                    version_name,
                     line2method_dict
                 )
         
@@ -598,8 +605,8 @@ def criteria_per_BUG(db, bugs, failing_per_bug):
                         else:
                             execs_buggy_func_cnt[0] += 1
                             isFail = False
-                            if [tc_id, tc_name] not in coincident_tc_list:
-                                coincident_tc_list.append([tc_id, tc_name])
+                            # if [tc_id, tc_name] not in coincident_tc_list:
+                            #     coincident_tc_list.append([tc_id, tc_name])
                         break
                 
                 if execs_buggy_func:

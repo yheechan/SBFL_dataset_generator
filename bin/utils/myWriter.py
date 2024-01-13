@@ -203,8 +203,10 @@ def write_ranked_summary_to_csv(data):
 def write_coincident_TC(bug_name, data):
     hh.check_dir(data_dir)
     hh.check_dir(data_coverage_dir)
+    coincident_dir = data_coverage_dir / 'coincident'
+    hh.check_dir(coincident_dir)
     file_name = bug_name + '.coincidentTC.txt'
-    file_path = data_coverage_dir / file_name
+    file_path = coincident_dir / file_name
 
     with open(file_path, 'w') as fp:
         for d in data:
