@@ -266,7 +266,7 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
     # produces ii files for line2method data generation
     # removes the project built for ii
     # build project for coverage
-    xx.build_version(project_name, onlyProject=True, withPreprocessed=True)
+    xx.build_version(project_name)
     line2method_dict = rr.get_line2method_json(project_name, version_num)
 
     per_version_dict = {}
@@ -513,7 +513,7 @@ def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
     bug_number = int(bug_version[3:])
 
     # 1. build version
-    xx.build_version(project_name, onlyProject=True, withPreprocessed=True)
+    xx.build_version(project_name)
 
     failing_file = bugs[bug_version]['file']
     failing_func = bugs[bug_version]['function']

@@ -1,5 +1,13 @@
 # gen_data_4_jsoncpp
 
+```
+./build.py --project jsoncpp --bug_version bug1 --withPreprocessed
+./gen_data.py --project jsoncpp --bug_version bug2 --criteria_per_BUG
+./gen_data.py --project jsoncpp --bug_version bug2 --spectra_data
+./gen_data.py --project jsoncpp --bug_version bug2 --processed_data
+./gen_data.py --project jsoncpp --bug_version bug2 --ranked_data
+```
+
 ## ToDo
 * make PPT slides to share results
 * analyze ossfuzz timeout bugs

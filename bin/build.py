@@ -87,15 +87,11 @@ def compile_fuzzer(project_dir, dir_name):
 
     print('>> compiled fuzzer')
 
-def remove(project, bug_version, onlyProject=False, onlyPreprocesed=False):
-
-    cmd = ['./remove.py', '--project', project, '--bug_version', bug_version]
-    if onlyProject:
-        cmd.append('--onlyProject')
-    
-    if onlyPreprocesed:
-        cmd.append('--withPreprocessed')
-
+def remove(project, bug_version):
+    cmd = [
+        './remove.py',
+        '--project', project, '--bug_version', bug_version,
+    ]
     sp.call(cmd, cwd=bin_dir)
     print(">> removed currently build project")
 
@@ -143,24 +139,10 @@ def make_parser():
     )
 
     parser.add_argument(
-        '--preprocessed',
-        required=False,
-        action='store_true',
-        help='for building with preprocessed files'
-    )
-
-    parser.add_argument(
-        '--onlyProject',
-        required=False,
-        action='store_true',
-        help='for deleting only Project'
-    )
-
-    parser.add_argument(
         '--withPreprocessed',
         required=False,
         action='store_true',
-        help='for deleting only preprocessed project'
+        help='for building with preprocessed files'
     )
 
     return parser
@@ -175,10 +157,7 @@ if __name__ == '__main__':
     project_dir = check_project_cloned(args.project, args.bug_version)
     check_extractor_built('extractor')
 
-    remove(
-        args.project, args.bug_version,
-        onlyProject=args.onlyProject, onlyPreprocesed=True
-    )
+    remove(args.project, args.bug_version)
 
     if args.withPreprocessed:
         # build preprocessed project
@@ -190,10 +169,7 @@ if __name__ == '__main__':
 
         perFile_data = xx.extract_line2method(project_dir, cpp_files)
         ww.write_line2method(project_dir, perFile_data, args.bug_version)
-        remove(
-            args.project, args.bug_version,
-            onlyProject=args.onlyProject, onlyPreprocesed=True
-        )
+        remove(args.project, args.bug_version)
 
     # build coverage project
     build(project_dir, name)

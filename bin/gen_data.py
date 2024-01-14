@@ -142,26 +142,26 @@ if __name__ == "__main__":
     ht = (0, '')
     pt = (0, '')
 
-    if args.spectra_data:
+    if args.spectrum_data:
         sd = cc.spectra_data(project_name, db, tf, tp, args.processed_data, failing_per_bug, fails)
     if args.processed_data:
         psd = cc.processed_data(project_name, db, failing_per_bug, fails)
     if args.ranked_data:
         rd = cc.ranked_data(project_name, db, failing_per_bug, fails)
-    if args.criteria_data:
-        ct = cc.criteria_all_TC(db, failing_info)
-    if args.criteria_per_BUG:
+    # if args.criteria_data:
+    #     ct = cc.criteria_all_TC(db, failing_info)
+    if args.run_all_testcases:
         cb = cc.criteria_per_BUG(project_name, db, fails, failing_per_bug)
-    if args.relation_data:
-        rt = cc.relation_all_TC(db)
-    if args.list_tc:
-        lt = cc.list_test_cases(db, tf)
-    if args.summary_json is not None:
-        st = cc.summary_coverage_json_target_TC(db, args.summary_json)
-    if args.html is not None:
-        ht = cc.html_target_TC(db, args.html)
-    if args.pretty_json is not None:
-        pt = cc.pretty_json_TC(db, args.pretty_json)
+    # if args.relation_data:
+    #     rt = cc.relation_all_TC(db)
+    # if args.list_tc:
+    #     lt = cc.list_test_cases(db, tf)
+    # if args.summary_json is not None:
+    #     st = cc.summary_coverage_json_target_TC(db, args.summary_json)
+    # if args.html is not None:
+    #     ht = cc.html_target_TC(db, args.html)
+    # if args.pretty_json is not None:
+    #     pt = cc.pretty_json_TC(db, args.pretty_json)
     
     print()
     print()

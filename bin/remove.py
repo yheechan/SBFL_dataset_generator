@@ -9,17 +9,11 @@ bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 subjects_dir = main_dir / 'subjects'
 
-def remove_dirs(project, bug_version, onlyProject=False, withPreprocesed=False):
+def remove_dirs(project, bug_version):
     project_name = project + '-' + bug_version
     project_dir = subjects_dir / project_name
     
-    target_dirs = ['build']
-    if not onlyProject:
-        target_dirs.append('coverage')
-        target_dirs.append('data')
-
-    if withPreprocesed:
-        target_dirs.append('preprocessed')
+    target_dirs = ['build', 'preprocessed']
 
     cmd = ['rm', '-rf']
 
@@ -82,39 +76,12 @@ def make_parser():
         help='bug version'
     )
 
-    parser.add_argument(
-        '--onlyProject',
-        required=False,
-        action='store_true',
-        help='whether to delete coverage and data files'
-    )
-
-    parser.add_argument(
-        '--withPreprocessed',
-        required=False,
-        action='store_true',
-        help='whether to delete coverage and data files'
-    )
-
-    parser.add_argument(
-        '--all',
-        required=False,
-        action='store_true',
-        help='whether to delete coverage and data files'
-    )
-
     return parser
 
 if __name__ == '__main__':
     parser = make_parser()
     args = parser.parse_args()
-
-    if args.all:
-        args.onlyPreprocessed = True
     
-    remove_dirs(
-        args.project, args.bug_version,
-        onlyProject=args.onlyProject, withPreprocesed=args.withPreprocessed
-    )
+    remove_dirs(args.project, args.bug_version)
     remove_gcno(args.project, args.bug_version)
     remove_gcno(args.project, args.bug_version)

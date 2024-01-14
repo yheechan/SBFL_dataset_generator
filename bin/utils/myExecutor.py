@@ -397,12 +397,8 @@ def build_version(project_name, onlyProject=False, withPreprocessed=False):
     project = project_name.split('-')[0]
     bug_version = project_name.split('-')[1]
     cmd = [
-        './build.py', '--project', project, '--bug_version', bug_version
+        './build.py', '--project', project, '--bug_version', bug_version, '--withPreprocessed'
     ]
-    if onlyProject:
-        cmd.append('--onlyProject')
-    if withPreprocessed:
-        cmd.append('--withPreprocessed')
     
     project_path = subjects_dir / project_name
     build_dir = project_path / 'build'

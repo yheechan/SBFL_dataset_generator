@@ -200,13 +200,16 @@ def write_ranked_data_to_csv(project_name, df, fname):
     df.to_csv(file)
 
 def write_ranked_summary_to_csv(project_name, data):
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
+    
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
     ranked_dir = data_dir / 'ranked'
     hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
 
-    file_name = 'rank.summary.csv'
+    file_name = bug_version + '.rank.summary.csv'
     file = ranked_dir / file_name
 
     with open(file, 'w') as fp:
