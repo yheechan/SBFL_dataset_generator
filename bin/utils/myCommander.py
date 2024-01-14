@@ -89,11 +89,13 @@ def get_spectrum(coverage_df, failing_tests):
 
 def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
     if formula == "Jaccard":
-        return e_f/(e_f + n_f + e_p)
+        divisior = (e_f + n_f + e_p)
+        x = np.divide(e_f, divisior, where=divisior!=0)
+        return x
     elif formula == "Binary":
         return np.where(n_f > 0, 0, 1)
     elif formula == "GP13":
-        divisor = (2 * e_p + e_f)
+        divisor = ((2 * e_p) + e_f)
         x = np.divide(e_f, divisor, where=divisor!=0)
         return e_f + x
     elif formula == "Naish1":
@@ -247,6 +249,11 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     version_list = xx.get_list_versions()
 
     tot_version_dict = []
+    # coincident_tc_list = []
+    # for version_name in version_list:
+    #     tc_list = rr.get_coincident_tc(version_name)
+    #     coincident_tc_list += tc_list
+
     for version_name in version_list:
         version_num = int(version_name[3:])
 
@@ -265,6 +272,7 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
         for tc_id in db.tc.keys():
             tc_name = db.tc[tc_id]['name']
 
+            # skip the tc if it is in the coincident tc list
             if [tc_id, tc_name] in coincident_tc_list:
                 continue
         # for tc_name in tc_names:
