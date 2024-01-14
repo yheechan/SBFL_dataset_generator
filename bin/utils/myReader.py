@@ -10,10 +10,7 @@ script_path = Path(os.path.realpath(__file__))
 util_dir = script_path.parent
 bin_dir = util_dir.parent
 main_dir = bin_dir.parent
-jsoncpp_dir = main_dir / 'jsoncpp'
-build_dir = jsoncpp_dir / 'build'
-data_dir = jsoncpp_dir / 'data'
-line2method_dir = data_dir / 'line2method'
+subjects_dir = main_dir / 'subjects'
 
 # input path to json file
 # output dict
@@ -27,7 +24,11 @@ def get_csv_as_pandas_file_path(file_path):
     df = pd.read_csv(file_path, index_col='lineNo')
     return df
 
-def get_line2method_json(version_num):
+def get_line2method_json(project_name, version_num):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    line2method_dir = data_dir / 'line2method'
+    hh.check_dir(data_dir)
     hh.check_dir(line2method_dir)
 
     version_name = 'bug'+str(version_num)
@@ -39,11 +40,13 @@ def get_line2method_json(version_num):
         json_data = json.load(fp)
     return json_data
 
-def get_coincident_tc(bug_version):
-    hh.check_dir(data_dir)
+def get_coincident_tc(project_name, bug_version):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     cov_dir = data_dir / 'coverage'
-    hh.check_dir(cov_dir)
     coinc_dir = cov_dir / 'coincident'
+    hh.check_dir(data_dir)
+    hh.check_dir(cov_dir)
     hh.check_dir(coinc_dir)
 
     file_name = bug_version + '.coincidentTC.txt'

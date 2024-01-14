@@ -125,9 +125,11 @@ tp = [
 if __name__ == "__main__":
     parser = pp.make_parser()
     args = parser.parse_args()
+    
+    project_name = args.project + '-' + args.bug_version
 
     db = dd.myDatabase()
-    cc.assign_test_cases(db, tf)
+    cc.assign_test_cases(project_name, db, tf)
 
     sd = (0, '')
     psd = (0, '')
@@ -141,15 +143,15 @@ if __name__ == "__main__":
     pt = (0, '')
 
     if args.spectra_data:
-        sd = cc.spectra_data(db, tf, tp, args.processed_data, failing_per_bug, fails)
+        sd = cc.spectra_data(project_name, db, tf, tp, args.processed_data, failing_per_bug, fails)
     if args.processed_data:
-        psd = cc.processed_data(db, failing_per_bug, fails)
+        psd = cc.processed_data(project_name, db, failing_per_bug, fails)
     if args.ranked_data:
-        rd = cc.ranked_data(db, failing_per_bug, fails)
+        rd = cc.ranked_data(project_name, db, failing_per_bug, fails)
     if args.criteria_data:
         ct = cc.criteria_all_TC(db, failing_info)
     if args.criteria_per_BUG:
-        cb = cc.criteria_per_BUG(db, fails, failing_per_bug)
+        cb = cc.criteria_per_BUG(project_name, db, fails, failing_per_bug)
     if args.relation_data:
         rt = cc.relation_all_TC(db)
     if args.list_tc:

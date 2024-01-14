@@ -11,6 +11,7 @@ from utils import myHelper as hh
 script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
+subjects_dir = main_dir / 'subjects'
 
 def build(project_dir, dir_name, preprocessed=False):
     build_dir = project_dir / dir_name
@@ -86,8 +87,9 @@ def compile_fuzzer(project_dir, dir_name):
 
     print('>> compiled fuzzer')
 
-def remove(onlyProject=False, onlyPreprocesed=False):
-    cmd = ['./remove.py']
+def remove(project, bug_version, onlyProject=False, onlyPreprocesed=False):
+
+    cmd = ['./remove.py', '--project', project, '--bug_version', bug_version]
     if onlyProject:
         cmd.append('--onlyProject')
     
@@ -97,23 +99,18 @@ def remove(onlyProject=False, onlyPreprocesed=False):
     sp.call(cmd, cwd=bin_dir)
     print(">> removed currently build project")
 
-def chVersion(v):
-    cmd = ['./chVersion.py', '--version', str(v)]
-    res = sp.call(cmd, cwd=bin_dir)
-    if res == 1:
-        exit(1)
-
-def check_projcect_cloned(project):
-    project_dir = main_dir / project
-    if not project_dir.exists():
+def check_project_cloned(project, bug_version):
+    project_name = project + '-' + bug_version
+    project_path = subjects_dir / project_name
+    if not project_path.exists():
         # clone project
-        exe = 'clone_'+project+'.sh'
-        cmd = ['bash', exe]
+        exe = './clone_'+project+'.py'
+        cmd = [exe, '--project', project, '--bug_version', bug_version]
         res = sp.call(cmd, cwd=bin_dir)
         if res == 1:
             exit(1)
-        print(">> cloned project: {}".format(project))
-    return project_dir
+        print(">> completely cloned project: {}".format(project_name))
+    return project_path
 
 def check_extractor_built(name):
     extractor_bin = bin_dir / name
@@ -132,17 +129,24 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--project',
+        type=str,
+        required=True,
+        help='project name'
+    )
+
+    parser.add_argument(
+        '--bug_version',
+        type=str,
+        required=True,
+        help='bug version'
+    )
+
+    parser.add_argument(
         '--preprocessed',
         required=False,
         action='store_true',
         help='for building with preprocessed files'
-    )
-
-    parser.add_argument(
-        '--version',
-        type=int,
-        default=0,
-        help='Converts JsonCPP project to User Selected Version. (Default: 0 which is bugFree version.)'
     )
 
     parser.add_argument(
@@ -168,22 +172,28 @@ if __name__ == '__main__':
     name = 'build'
     preprocessed = 'preprocessed'
 
-    project_dir = check_projcect_cloned('jsoncpp')
+    project_dir = check_project_cloned(args.project, args.bug_version)
     check_extractor_built('extractor')
 
-    remove(onlyProject=args.onlyProject, onlyPreprocesed=True)
-    chVersion(args.version)
+    remove(
+        args.project, args.bug_version,
+        onlyProject=args.onlyProject, onlyPreprocesed=True
+    )
 
     if args.withPreprocessed:
         # build preprocessed project
         build(project_dir, preprocessed, preprocessed=True)
         make(project_dir, preprocessed)
-        ii_files = xx.get_ii_files()
-        cpp_files = xx.change_ii_to_cpp(ii_files)
-        bug_version = 'bug'+str(args.version)
-        perFile_data = xx.extract_line2method(cpp_files)
-        ww.write_line2method(perFile_data, bug_version)
-        remove(onlyProject=args.onlyProject, onlyPreprocesed=True)
+
+        ii_files = xx.get_ii_files(project_dir)
+        cpp_files = xx.change_ii_to_cpp(project_dir, ii_files)
+
+        perFile_data = xx.extract_line2method(project_dir, cpp_files)
+        ww.write_line2method(project_dir, perFile_data, args.bug_version)
+        remove(
+            args.project, args.bug_version,
+            onlyProject=args.onlyProject, onlyPreprocesed=True
+        )
 
     # build coverage project
     build(project_dir, name)

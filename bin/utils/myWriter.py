@@ -10,22 +10,12 @@ util_dir = script_path.parent
 bin_dir = util_dir.parent
 main_dir = bin_dir.parent
 src_dir = main_dir / 'src'
-jsoncpp_dir = main_dir / 'jsoncpp'
+subjects_dir = main_dir / 'subjects'
 
-test_dir = jsoncpp_dir / 'build/src/test_lib_json'
-
-data_dir = jsoncpp_dir / 'data'
-line2method_dir = data_dir / 'line2method'
-spectra_dir = data_dir / 'spectra'
-data_coverage_dir = data_dir / 'coverage'
-
-coverage_dir = main_dir / 'coverage'
-tc_list_file = coverage_dir / 'tc-list.txt'
-cov_pretty_dir = coverage_dir / 'cov_pretty'
-html_dir = coverage_dir / 'html'
-summary_dir = coverage_dir / 'summary'
-
-def write_spectra_data_to_csv(spectra_data_per_file: dict):
+def write_spectra_data_to_csv(project_name, spectra_data_per_file: dict):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    spectra_dir = data_dir / 'spectra'
     hh.check_dir(data_dir)
     hh.check_dir(spectra_dir)
 
@@ -42,9 +32,12 @@ def write_spectra_data_to_csv(spectra_data_per_file: dict):
     
     return file
 
-def write_test_cases_list_to_txt(tc_list: list, pp=False):
+def write_test_cases_list_to_txt(project_path, tc_list: list, pp=False):
+    data_dir = project_path / 'data'
     hh.check_dir(data_dir)
+
     file = data_dir / 'tc-list.txt'
+
     with open(file, 'w') as fp:
         for tc in tc_list.keys():
             line = '{}-{}: {}'.format(
@@ -56,10 +49,12 @@ def write_test_cases_list_to_txt(tc_list: list, pp=False):
             if pp:
                 print(line)
 
-def write_TC_on_criteria_to_csv(criteria_data: dict):
-    hh.check_dir(data_dir)
+def write_TC_on_criteria_to_csv(project_path, criteria_data: dict):
+    data_dir = project_path / 'data'
     crit_dir = data_dir / 'criteria'
+    hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
+
     file = crit_dir / 'criteria.csv'
 
     col_data = criteria_data['col_data']
@@ -70,10 +65,13 @@ def write_TC_on_criteria_to_csv(criteria_data: dict):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def write_TC_on_criteria_per_BUG_to_csv(criteria_data: dict):
-    hh.check_dir(data_dir)
+def write_TC_on_criteria_per_BUG_to_csv(project_name, criteria_data: dict):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     crit_dir = data_dir / 'criteria-per-BUG'
+    hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
+
     file_name = criteria_data['target'] + '.csv'
     file = crit_dir / file_name
 
@@ -85,10 +83,13 @@ def write_TC_on_criteria_per_BUG_to_csv(criteria_data: dict):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def write_criteria_stat_results_per_BUG_to_csv(cd, tot):
-    hh.check_dir(data_dir)
+def write_criteria_stat_results_per_BUG_to_csv(project_name, cd, tot):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     crit_dir = data_dir / 'criteria-per-BUG'
+    hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
+
     file_name = cd['target'] + '.stats.csv'
     file = crit_dir / file_name
 
@@ -112,10 +113,12 @@ def write_criteria_stat_results_per_BUG_to_csv(cd, tot):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def write_criteria_stat_results_to_csv(cd, tot):
-    hh.check_dir(data_dir)
+def write_criteria_stat_results_to_csv(project_path, cd, tot):
+    data_dir = project_path / 'data'
     crit_dir = data_dir / 'criteria'
+    hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
+
     file = crit_dir / 'criteria_stats.csv'
 
     xF_file = cd['xx_fail_file']
@@ -137,16 +140,19 @@ def write_criteria_stat_results_to_csv(cd, tot):
         cw.writerow(col_data)
         cw.writerows(row_data)
 
-def dump_dict_as_json(data):
+def dump_dict_as_json(project_path, data):
+    data_dir = project_path / 'data'
     hh.check_dir(data_dir)
+
     file = data_dir / 'cov_dump.json'
 
     with open(file, 'w') as fp:
         json.dump(data, fp, ensure_ascii=False, indent=4)
 
-def write_data_to_csv(data, file_name):
-    hh.check_dir(data_dir)
+def write_data_to_csv(project_path, data, file_name):
+    data_dir = project_path / 'data'
     relation_dir = data_dir / 'relation'
+    hh.check_dir(data_dir)
     hh.check_dir(relation_dir)
 
     full_name = file_name+'.csv'
@@ -157,15 +163,19 @@ def write_data_to_csv(data, file_name):
         cw.writerow(data['col_data'])
         cw.writerows(data['row_data'])
 
-def write_df_to_csv(df, file_name):
-    hh.check_dir(data_dir)
+def write_df_to_csv(project_name, df, file_name):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     processed_dir = data_dir / 'processed'
+    hh.check_dir(data_dir)
     hh.check_dir(processed_dir)
 
     csv_file_path = processed_dir / file_name
     df.to_csv(csv_file_path)
 
-def write_line2method(data, bug_version):
+def write_line2method(project_path, data, bug_version):
+    data_dir = project_path / 'data'
+    line2method_dir = data_dir / 'line2method'
     hh.check_dir(data_dir)
     hh.check_dir(line2method_dir)
 
@@ -177,9 +187,11 @@ def write_line2method(data, bug_version):
         json.dump(data, fp, ensure_ascii=False, indent=4)
 
     
-def write_ranked_data_to_csv(df, fname):
-    hh.check_dir(data_dir)
+def write_ranked_data_to_csv(project_name, df, fname):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     ranked_dir = data_dir / 'ranked'
+    hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
 
     file_name = fname+'.csv'
@@ -187,9 +199,11 @@ def write_ranked_data_to_csv(df, fname):
 
     df.to_csv(file)
 
-def write_ranked_summary_to_csv(data):
-    hh.check_dir(data_dir)
+def write_ranked_summary_to_csv(project_name, data):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
     ranked_dir = data_dir / 'ranked'
+    hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
 
     file_name = 'rank.summary.csv'
@@ -200,11 +214,15 @@ def write_ranked_summary_to_csv(data):
         cw.writerow(data['col_data'])
         cw.writerows(data['row_data'])
 
-def write_coincident_TC(bug_name, data):
+def write_coincident_TC(project_name, bug_name, data):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    coincident_dir = coverage_dir / 'coincident'
     hh.check_dir(data_dir)
-    hh.check_dir(data_coverage_dir)
-    coincident_dir = data_coverage_dir / 'coincident'
+    hh.check_dir(coverage_dir)
     hh.check_dir(coincident_dir)
+
     file_name = bug_name + '.coincidentTC.txt'
     file_path = coincident_dir / file_name
 

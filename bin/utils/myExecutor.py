@@ -9,35 +9,25 @@ bin_dir = util_dir.parent
 main_dir = bin_dir.parent
 src_dir = main_dir / 'src'
 extractor_exe = bin_dir / 'extractor'
-jsoncpp_dir = main_dir / 'jsoncpp'
-
-build_dir = jsoncpp_dir / 'build'
-test_dir = build_dir / 'src/test_lib_json'
-preprocessed_dir = jsoncpp_dir / 'preprocessed'
-data_dir = jsoncpp_dir / 'data'
-coverage_dir = data_dir / 'coverage'
-
-spectra_dir = data_dir / 'spectra'
-processed_dir = data_dir / 'processed'
-
-tc_list_file = coverage_dir / 'tc-list.txt'
-pretty_dir = coverage_dir / 'pretty'
-html_dir = coverage_dir / 'html'
-summary_dir = coverage_dir / 'summary'
-raw_dir = coverage_dir / 'raw'
+subjects_dir = main_dir / 'subjects'
 
 versions_dir = src_dir / 'bug-versions-jsoncpp'
 
-def remove_all_gcda():
+def remove_all_gcda(project_name):
+    project_path = subjects_dir / project_name
     cmd = [
         'find', '.', '-type',
         'f', '-name', '*.gcda',
         '-delete'
     ]
-    res = sp.call(cmd, cwd=main_dir)
+    res = sp.call(cmd, cwd=project_path)
     hh.after_exec(res, "removed all *.gcda files.")
 
-def run_by_tc_name(tc_name):
+def run_by_tc_name(project_name, tc_name):
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    test_dir = build_dir / 'src/test_lib_json'
+
     cmd = [
         './jsoncpp_test',
         '--test',
@@ -46,10 +36,17 @@ def run_by_tc_name(tc_name):
     res = sp.call(cmd, cwd=test_dir)
     hh.after_exec(res, "running test case {}\n".format(tc_name))
 
-def run_needed(version, tc_id, type):
-    file_name = version + '.' + tc_id + '.' + type + '.json'
+def run_needed(project_name, version, tc_id, type):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
     hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
+
+    file_name = version + '.' + tc_id + '.' + type + '.json'
+
+    raw_dir = coverage_dir / 'raw'
+    summary_dir = coverage_dir / 'summary'
 
     start_path = raw_dir
     if type == 'raw':
@@ -66,10 +63,15 @@ def run_needed(version, tc_id, type):
 
     return (True, 0)
 
-def generate_json_for_TC(version, tc_id):
+def generate_json_for_TC(project_name, version, tc_id):
+    project_path = subjects_dir / project_name
+    data_dir =  project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    raw_dir = coverage_dir / 'raw'
     hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
     hh.check_dir(raw_dir)
+
     file_name = version + '.' + tc_id + '.raw.json'
     file_path = raw_dir / file_name
     cmd = [
@@ -77,11 +79,16 @@ def generate_json_for_TC(version, tc_id):
         '--gcov-executable', 'llvm-cov gcov',
         '--json', file_path
     ]
-    res = sp.call(cmd, cwd=jsoncpp_dir)
+    res = sp.call(cmd, cwd=project_path)
     hh.after_exec(res, "generating json for {} on {}".format(tc_id, file_name))
     return file_path
 
-def generate_summary_json_for_TC(tc_id):
+def generate_summary_json_for_TC(project_name, tc_id):
+    project_path = subjects_dir / project_name
+    data_dir =  project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    summary_dir = coverage_dir / 'summary'
+    hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
     hh.check_dir(summary_dir)
 
@@ -98,12 +105,17 @@ def generate_summary_json_for_TC(tc_id):
         '-o', file_path
     ]
 
-    res = sp.call(cmd, cwd=jsoncpp_dir)
+    res = sp.call(cmd, cwd=project_path)
     hh.after_exec(res, "generating summary json coverage data using gcovr")
 
     return file_path
 
-def generate_summary_json_for_TC_perBUG(bug_name, tc_id):
+def generate_summary_json_for_TC_perBUG(project_name, bug_name, tc_id):
+    project_path = subjects_dir / project_name
+    data_dir =  project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    summary_dir = coverage_dir / 'summary'
+    hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
     hh.check_dir(summary_dir)
 
@@ -120,12 +132,17 @@ def generate_summary_json_for_TC_perBUG(bug_name, tc_id):
         '-o', file_path
     ]
 
-    res = sp.call(cmd, cwd=jsoncpp_dir)
+    res = sp.call(cmd, cwd=project_path)
     hh.after_exec(res, "generating summary json coverage data using gcovr")
 
     return file_path
 
-def generate_pretty_json_for_TC(tc_id):
+def generate_pretty_json_for_TC(project_name, tc_id):
+    project_path = subjects_dir / project_name
+    data_dir =  project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    pretty_dir = coverage_dir / 'pretty'
+    hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
     hh.check_dir(pretty_dir)
 
@@ -142,12 +159,17 @@ def generate_pretty_json_for_TC(tc_id):
         '-o', file_path
     ]
 
-    res = sp.call(cmd, cwd=main_dir)
+    res = sp.call(cmd, cwd=project_path)
     hh.after_exec(res, "generating pretty json coverage data using gcovr")
 
     return file_path
 
-def generate_html_for_TC(tc_id):
+def generate_html_for_TC(project_name, tc_id):
+    project_path = subjects_dir / project_name
+    data_dir =  project_path / 'data'
+    coverage_dir = data_dir / 'coverage'
+    html_dir = coverage_dir / 'html'
+    hh.check_dir(data_dir)
     hh.check_dir(coverage_dir)
     hh.check_dir(html_dir)
     tc_html_dir = html_dir / tc_id
@@ -169,15 +191,25 @@ def generate_html_for_TC(tc_id):
 
     return file_path
 
-def get_test_case_list(tf):
-    if not jsoncpp_dir.exists() or not build_dir.exists():
-        cmd = ['./build.py']
+def get_test_case_list(project_name, tf):
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
+
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    if not project_path.exists() or not build_dir.exists():
+        cmd = [
+            './build.py', '--project', project, '--bug_version', bug_version,
+            '--onlyProject', '--withPreprocessed'
+        ]
         sp.call(cmd, cwd=bin_dir)
 
     cmd = [
         './jsoncpp_test',
         '--list-tests'
     ]
+
+    test_dir = build_dir / 'src/test_lib_json'
 
     process = sp.Popen(
         cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
@@ -229,11 +261,13 @@ def get_test_case_list(tf):
 
     return [tc, name2id, tot_cnt, fail_cnt, pass_cnt]
 
-def get_ii_files():
+def get_ii_files(project_path):
     cmd = [
         'find', '.', '-type',
         'f', '-name', '*.ii'
     ]
+
+    preprocessed_dir = project_path / 'preprocessed'
 
     process = sp.Popen(
         cmd, stdout=sp.PIPE, stderr=sp.STDOUT,
@@ -252,7 +286,9 @@ def get_ii_files():
     
     return ii_files
 
-def change_ii_to_cpp(ii_files):
+def change_ii_to_cpp(project_path, ii_files):
+    preprocessed_dir = project_path / 'preprocessed'
+
     cmd = ['mv']
 
     cpp_files = []
@@ -290,7 +326,9 @@ def change_ii_to_cpp(ii_files):
     
     return cpp_files
 
-def extract_line2method(cpp_files):
+def extract_line2method(project_path, cpp_files):
+    preprocessed_dir = project_path / 'preprocessed'
+
     cmd = [extractor_exe]
 
     cnt = 0
@@ -355,24 +393,37 @@ def get_list_versions():
             version_list.append(version) 
     return version_list
 
-def build_version(v_num, onlyProject=False, withPreprocessed=False):
+def build_version(project_name, onlyProject=False, withPreprocessed=False):
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
     cmd = [
-        './build.py', '--version', str(v_num)
+        './build.py', '--project', project, '--bug_version', bug_version
     ]
     if onlyProject:
         cmd.append('--onlyProject')
     if withPreprocessed:
         cmd.append('--withPreprocessed')
+    
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    if build_dir.exists():
+        return
 
     sp.call(cmd, cwd=bin_dir)
 
-def get_list_spectra():
+def get_list_spectra(project_name):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    spectra_dir = data_dir / 'spectra'
     spectra_list = []
     for spectra in sorted(spectra_dir.iterdir()):
         spectra_list.append(spectra)
     return spectra_list
 
-def get_processed_data_list_on_bug(bug_name):
+def get_processed_data_list_on_bug(project_name, bug_name):
+    project_path = subjects_dir / project_name
+    data_dir = project_path / 'data'
+    processed_dir = data_dir / 'processed'
     processed_data_list = []
     for file in sorted(processed_dir.iterdir()):
         if bug_name in file.name:

@@ -6,6 +6,20 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--project',
+        type=str,
+        required=True,
+        help='project name'
+    )
+
+    parser.add_argument(
+        '--bug_version',
+        type=str,
+        required=True,
+        help='bug version'
+    )
+
+    parser.add_argument(
         '--spectra_data',
         action='store_true',
         help='Generates spectrum-based data with selected Failing & Passing TC.'

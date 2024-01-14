@@ -32,27 +32,6 @@ def clone_projects(project, bug_version):
     sp.call(clone_cmd, cwd=subject_dir)
     sp.call(reset_cmd, cwd=dir_path)
 
-def make_parser():
-    parser = argparse.ArgumentParser(
-        description='Clone projects from github.com'
-    )
-
-    parser.add_argument(
-        '--project',
-        type=str,
-        required=True,
-        help='project name'
-    )
-
-    parser.add_argument(
-        '--bug_version',
-        type=str,
-        required=True,
-        help='bug version'
-    )
-
-    return parser
-
 def change_files(project, bug_version):
     project_name = project + '-' + bug_version
     project_path = subject_dir / project_name
@@ -89,6 +68,27 @@ def change_files(project, bug_version):
     sp.call(cmd, cwd=project_path)
     cmd = ['cp', cmakeFile[1], cmakeFile[0]]
     sp.call(cmd, cwd=project_path)
+
+def make_parser():
+    parser = argparse.ArgumentParser(
+        description='Clone projects from github.com'
+    )
+
+    parser.add_argument(
+        '--project',
+        type=str,
+        required=True,
+        help='project name'
+    )
+
+    parser.add_argument(
+        '--bug_version',
+        type=str,
+        required=True,
+        help='bug version'
+    )
+
+    return parser
 
 if __name__ == "__main__":
     parser = make_parser()

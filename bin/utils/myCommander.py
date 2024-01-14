@@ -5,8 +5,8 @@ from . import myHelper as hh
 import numpy as np
 import pandas as pd
 
-def assign_test_cases(db, tf):
-    tc_packet = xx.get_test_case_list(tf)
+def assign_test_cases(project_name, db, tf):
+    tc_packet = xx.get_test_case_list(project_name, tf)
     db.tc = tc_packet[0]
     db.name2id = tc_packet[1]
     db.tc_cnt = tc_packet[2]
@@ -113,7 +113,7 @@ def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
     else:
         raise Exception(f"Unknown formula: {formula}")
 
-def processed_data(db, failing_per_bug, fails):
+def processed_data(project_name, db, failing_per_bug, fails):
     SBFL = [
         'Binary', 'GP13', 'Jaccard', 'Naish1',
         'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
@@ -121,7 +121,7 @@ def processed_data(db, failing_per_bug, fails):
 
     db.processed_data['processed'] = {}
     db.first = True
-    spectra_csv_list = xx.get_list_spectra()
+    spectra_csv_list = xx.get_list_spectra(project_name)
 
     for spectra_csv in spectra_csv_list:
         csv_file_name = spectra_csv.name
@@ -157,7 +157,7 @@ def processed_data(db, failing_per_bug, fails):
         #         buggy_file = fails[failing]['file']
         #         buggy_line = fails[failing]['line'][1]
         
-        line2method_dict = rr.get_line2method_json(bug_index)
+        line2method_dict = rr.get_line2method_json(project_name, bug_index)
         function_name = return_fuction(buggy_file, buggy_line, line2method_dict)
 
         bug_position = bug_version+'#'+buggy_file+'#'+function_name+'#'+str(buggy_line)
@@ -165,7 +165,7 @@ def processed_data(db, failing_per_bug, fails):
         new_df = pd.DataFrame(data, index=index_nd)
         if bug_position in new_df.index:
             new_df.loc[bug_position, 'bug'] = 1
-        ww.write_df_to_csv(new_df, csv_file_name)
+        ww.write_df_to_csv(project_name, new_df, csv_file_name)
 
     output = ">>> [COMPLETE] Generating processed data with generated Spectrum-data."
     print(output)
@@ -178,7 +178,7 @@ def set_bug_value(group, sbfl_type):
         max_row['bug'] = 1
     return max_row
 
-def ranked_data(db, failing_per_bug, fails):
+def ranked_data(project_name, db, failing_per_bug, fails):
     SBFL = [
         'Binary', 'GP13', 'Jaccard', 'Naish1',
         'Naish2', 'Ochiai', 'Russel+Rao', 'Wong1'
@@ -187,52 +187,53 @@ def ranked_data(db, failing_per_bug, fails):
     col_data = [''] + SBFL
     row_data = []
 
-    bug_version_list = list(failing_per_bug.keys())
-    for bug in bug_version_list:
-        if bug not in row_data:
-            row_data.append([bug])
-        bug_index = row_data.index([bug])
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
 
-        processed_list = xx.get_processed_data_list_on_bug(bug)
-        # save dataframes per fil in list
-        dataframe_list = []
-        for processed_path in processed_list:
-            df = rr.get_csv_as_pandas_file_path(processed_path)
-            dataframe_list.append(df)
-        
-        # concat all dataframes in list
-        og_total_df = pd.concat(dataframe_list, axis=0)
+    if bug_version not in row_data:
+        row_data.append([bug_version])
+    bug_index = row_data.index([bug_version])
 
-        for sbfl_type in SBFL:
-            total_df = og_total_df.copy()
+    processed_list = xx.get_processed_data_list_on_bug(project_name, bug_version)
+    # save dataframes per fil in list
+    dataframe_list = []
+    for processed_path in processed_list:
+        df = rr.get_csv_as_pandas_file_path(processed_path)
+        dataframe_list.append(df)
+    
+    # concat all dataframes in list
+    og_total_df = pd.concat(dataframe_list, axis=0)
 
-            # the index (lineNo) of total_df is a single string formatted as follows:
-            # bug_name#file_name#function_name#line_number
-            # I want to combine rows that have the same bug_name#file_name#function_name
-            # the column values set to the maximum value of a column names sbfl_type
-            total_df['key'] = total_df.index.str.extract(r'(bug\d+#.*?#.*?)(?=#|$)', expand=False)
-            total_df.columns = total_df.columns.str.strip()
+    for sbfl_type in SBFL:
+        total_df = og_total_df.copy()
 
-            # set bug value to 1 if any of the rows in the group has a bug value of 1
-            result_df = total_df.groupby('key', group_keys=False).apply(set_bug_value, sbfl_type=sbfl_type)
-            result_df = result_df.drop(columns='key')
+        # the index (lineNo) of total_df is a single string formatted as follows:
+        # bug_name#file_name#function_name#line_number
+        # I want to combine rows that have the same bug_name#file_name#function_name
+        # the column values set to the maximum value of a column names sbfl_type
+        total_df['key'] = total_df.index.str.extract(r'(bug\d+#.*?#.*?)(?=#|$)', expand=False)
+        total_df.columns = total_df.columns.str.strip()
 
-            # sort by column of variable sbfl_type
-            result_df = result_df.sort_values(by=sbfl_type, ascending=False)
+        # set bug value to 1 if any of the rows in the group has a bug value of 1
+        result_df = total_df.groupby('key', group_keys=False).apply(set_bug_value, sbfl_type=sbfl_type)
+        result_df = result_df.drop(columns='key')
 
-            file_name = bug+'.'+sbfl_type
+        # sort by column of variable sbfl_type
+        result_df = result_df.sort_values(by=sbfl_type, ascending=False)
 
-            result_df['Rank'] = result_df[sbfl_type].rank(method='max', ascending=False)
-            bug_row = result_df[result_df['bug'] == 1]
-            bug_rank_value = bug_row['Rank'].values[0]
-            row_data[bug_index].append(bug_rank_value)
+        file_name = bug_version+'.'+sbfl_type
 
-            ww.write_ranked_data_to_csv(result_df, file_name)
+        result_df['Rank'] = result_df[sbfl_type].rank(method='max', ascending=False)
+        bug_row = result_df[result_df['bug'] == 1]
+        bug_rank_value = bug_row['Rank'].values[0]
+        row_data[bug_index].append(bug_rank_value)
 
-            print(">> ranked data for {}: {} at rank {}".format(bug, file_name, bug_rank_value))
+        ww.write_ranked_data_to_csv(project_name, result_df, file_name)
+
+        print(">> ranked data for {}: {} at rank {}".format(bug_version, file_name, bug_rank_value))
         
     summary_result = {'col_data': col_data, 'row_data': row_data}
-    ww.write_ranked_summary_to_csv(summary_result)
+    ww.write_ranked_summary_to_csv(project_name, summary_result)
 
     return (1, ">>> [COMPLETE] Generating ranked data with processed data.")
 
@@ -243,10 +244,14 @@ def ranked_data(db, failing_per_bug, fails):
 # 3. generate coverage json (line)
 # 4. save to DB
 # 5. writer spectra data in DB to csv
-def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
+def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fails):
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
+    version_num = int(bug_version[3:])
+
     tc_names = tf+tp
 
-    version_list = xx.get_list_versions()
+    # version_list = xx.get_list_versions()
 
     tot_version_dict = []
     # coincident_tc_list = []
@@ -254,67 +259,64 @@ def spectra_data(db, tf, tp, processed_flag, failing_per_bug, fails):
     #     tc_list = rr.get_coincident_tc(version_name)
     #     coincident_tc_list += tc_list
 
-    for version_name in version_list:
-        version_num = int(version_name[3:])
+    # get the coincident tc list for this version
+    coincident_tc_list = rr.get_coincident_tc(project_name, bug_version)
 
-        # get the coincident tc list for this version
-        coincident_tc_list = rr.get_coincident_tc(version_name)
+    # builds with according version
+    # produces ii files for line2method data generation
+    # removes the project built for ii
+    # build project for coverage
+    xx.build_version(project_name, onlyProject=True, withPreprocessed=True)
+    line2method_dict = rr.get_line2method_json(project_name, version_num)
 
-        # builds with according version
-        # produces ii files for line2method data generation
-        # removes the project built for ii
-        # build project for coverage
-        xx.build_version(version_num, onlyProject=True, withPreprocessed=True)
-        line2method_dict = rr.get_line2method_json(version_num)
+    per_version_dict = {}
+    db.first = True
+    for tc_id in db.tc.keys():
+        tc_name = db.tc[tc_id]['name']
 
-        per_version_dict = {}
-        db.first = True
-        for tc_id in db.tc.keys():
-            tc_name = db.tc[tc_id]['name']
+        # skip the tc if it is in the coincident tc list
+        if [tc_id, tc_name] in coincident_tc_list:
+            continue
+    # for tc_name in tc_names:
+    #     tc_id  = db.name2id[tc_name]
 
-            # skip the tc if it is in the coincident tc list
-            if [tc_id, tc_name] in coincident_tc_list:
-                continue
-        # for tc_name in tc_names:
-        #     tc_id  = db.name2id[tc_name]
+        print(">> spectra data for {}: {}".format(bug_version, tc_id))
 
-            print(">> spectra data for {}: {}".format(version_name, tc_id))
+        xx.remove_all_gcda(project_name)
+        check_run = xx.run_needed(project_name, bug_version, tc_id, 'raw')
+        if check_run[0]:
+            xx.run_by_tc_name(project_name, tc_name)
+            json_file_path = xx.generate_json_for_TC(project_name, bug_version, tc_id)
+            for_summ = xx.run_needed(project_name, bug_version, tc_id, 'summary')
+            if for_summ[0]:
+                json_summary_path = xx.generate_summary_json_for_TC_perBUG(project_name, bug_version, tc_id)
+        else:
+            json_file_path = check_run[1]
+        cov_json = rr.get_json_from_file_path(json_file_path)
 
-            xx.remove_all_gcda()
-            check_run = xx.run_needed(version_name, tc_id, 'raw')
-            if check_run[0]:
-                xx.run_by_tc_name(tc_name)
-                json_file_path = xx.generate_json_for_TC(version_name, tc_id)
-                for_summ = xx.run_needed(version_name, tc_id, 'summary')
-                if for_summ[0]:
-                    json_summary_path = xx.generate_summary_json_for_TC_perBUG(version_name, tc_id)
-            else:
-                json_file_path = check_run[1]
-            cov_json = rr.get_json_from_file_path(json_file_path)
-
-            if db.first:
-                per_version_dict = add_first_spectra(
-                    per_version_dict,
-                    cov_json,
-                    tc_id,
-                    version_name,
-                    line2method_dict
-                )
-                db.first = False
-            else:
-                per_version_dict = add_next_spectra(
-                    per_version_dict,
-                    cov_json,
-                    tc_id,
-                    version_name,
-                    line2method_dict
-                )
-        
-        ww.write_spectra_data_to_csv(per_version_dict)
-        tot_version_dict.append(per_version_dict)
+        if db.first:
+            per_version_dict = add_first_spectra(
+                per_version_dict,
+                cov_json,
+                tc_id,
+                bug_version,
+                line2method_dict
+            )
+            db.first = False
+        else:
+            per_version_dict = add_next_spectra(
+                per_version_dict,
+                cov_json,
+                tc_id,
+                bug_version,
+                line2method_dict
+            )
+    
+    ww.write_spectra_data_to_csv(project_name, per_version_dict)
+    tot_version_dict.append(per_version_dict)
     
     if processed_flag:
-        processed_data(db, failing_per_bug, fails)
+        processed_data(project_name, db, failing_per_bug, fails)
     
     output = ">>> [COMPLETE] Generating spectrum-based data with selected Failing & Passing TC."
     print(output)
@@ -501,183 +503,184 @@ def check(source, dest):
         found = True
     return found
 
-def criteria_per_BUG(db, bugs, failing_per_bug):
+def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
+    project = project_name.split('-')[0]
+    bug_version = project_name.split('-')[1]
 
     # per fails
-    for bug_name in bugs.keys():
-        failing_list = failing_per_bug[bug_name]
-        # bug_id = db.name2id[bug_name]
-        bug_number = int(bug_name[3:])
+    failing_list = failing_per_bug[bug_version]
+    # bug_id = db.name2id[bug_name]
+    bug_number = int(bug_version[3:])
 
-        # 1. build version
-        xx.build_version(bug_number, onlyProject=True)
+    # 1. build version
+    xx.build_version(project_name, onlyProject=True, withPreprocessed=True)
 
-        failing_file = bugs[bug_name]['file']
-        failing_func = bugs[bug_name]['function']
-        failing_line = bugs[bug_name]['line']
+    failing_file = bugs[bug_version]['file']
+    failing_func = bugs[bug_version]['function']
+    failing_line = bugs[bug_version]['line']
 
-        row_data = [
-            ['bug-file-pass'],
-            ['bug-file-fail'],
-            ['bug-func-pass'],
-            ['bug-func-fail'],
-            ['bug-line-pass'],
-            ['bug-line-fail']
-        ]
-        col_data = ['criteria']
+    row_data = [
+        ['bug-file-pass'],
+        ['bug-file-fail'],
+        ['bug-func-pass'],
+        ['bug-func-fail'],
+        ['bug-line-pass'],
+        ['bug-line-fail']
+    ]
+    col_data = ['criteria']
 
-        # (pass, fail)
-        execs_buggy_file_cnt = [0, 0]
-        execs_buggy_func_cnt = [0, 0]
-        execs_buggy_line_cnt = [0, 0]
-        # per TC
-        coincident_tc_list = []
-        for tc_id in db.tc.keys():
-            col_data.append(tc_id)
+    # (pass, fail)
+    execs_buggy_file_cnt = [0, 0]
+    execs_buggy_func_cnt = [0, 0]
+    execs_buggy_line_cnt = [0, 0]
+    # per TC
+    coincident_tc_list = []
+    for tc_id in db.tc.keys():
+        col_data.append(tc_id)
 
-            tc_name = db.tc[tc_id]['name']
-            print(bug_name, tc_name)
-            # if xx.run_needed(tc_id, 'summary'):
-            xx.remove_all_gcda()
+        tc_name = db.tc[tc_id]['name']
+        print(bug_version, tc_name)
+        # if xx.run_needed(tc_id, 'summary'):
+        xx.remove_all_gcda(project_name)
 
-            check_run = xx.run_needed(bug_name, tc_id, 'summary')
-            if check_run[0]:
-                # 2. run TC on current version
-                xx.run_by_tc_name(tc_name)
-                json_file_path = xx.generate_summary_json_for_TC_perBUG(bug_name, tc_id)
-                for_raw = xx.run_needed(bug_name, tc_id, 'raw')
-                if for_raw[0]:
-                    json_raw_path = xx.generate_json_for_TC(bug_name, tc_id)
-            else:
-                json_file_path = check_run[1]
+        check_run = xx.run_needed(project_name, bug_version, tc_id, 'summary')
+        if check_run[0]:
+            # 2. run TC on current version
+            xx.run_by_tc_name(project_name, tc_name)
+            json_file_path = xx.generate_summary_json_for_TC_perBUG(project_name, bug_version, tc_id)
+            for_raw = xx.run_needed(project_name, bug_version, tc_id, 'raw')
+            if for_raw[0]:
+                json_raw_path = xx.generate_json_for_TC(project_name, bug_version, tc_id)
+        else:
+            json_file_path = check_run[1]
 
-            # for file criteria
-            summ_json = rr.get_json_from_file_path(json_file_path)
+        # for file criteria
+        summ_json = rr.get_json_from_file_path(json_file_path)
 
-            execs_buggy_file = False
-            isFail = False
-            # Check through file coverage
-            for file in summ_json['files']:
-                line_cov = file['line_covered']
-                file_name = file['filename']
+        execs_buggy_file = False
+        isFail = False
+        # Check through file coverage
+        for file in summ_json['files']:
+            line_cov = file['line_covered']
+            file_name = file['filename']
 
-                # 4. Check if file is covered
-                if line_cov > 0 and check(file_name, failing_file):
-                    execs_buggy_file = True
-                    
-                    # 5. Check if file is covered by pass or fail
+            # 4. Check if file is covered
+            if line_cov > 0 and check(file_name, failing_file):
+                execs_buggy_file = True
+                
+                # 5. Check if file is covered by pass or fail
+                if tc_name in failing_list:
+                    execs_buggy_file_cnt[1] += 1
+                    isFail = True
+                else:
+                    execs_buggy_file_cnt[0] += 1
+                    isFail = False
+                break
+        
+        # 6. if file is covered, save on whether it is fail or pass
+        if execs_buggy_file:
+            row_data[0].append(int(not isFail))
+            row_data[1].append(int(isFail))
+        else:
+            row_data[0].append(0)
+            row_data[1].append(0)
+        print("* {} on fail file".format(execs_buggy_file))
+
+        # for func criteria
+        check_run = xx.run_needed(project_name, bug_version, tc_id, 'raw')
+        if check_run[0]:
+            xx.run_by_tc_name(project_name, tc_name)
+            json_file_path = xx.generate_json_for_TC(project_name, bug_version, tc_id)
+        else:
+            json_file_path = check_run[1]
+        # cov_path = xx.generate_pretty_json_for_TC(tc_id)
+        cov_json = rr.get_json_from_file_path(json_file_path)
+
+        execs_buggy_func = False
+        isFail = False
+        # check through function of each file coverage
+        for file in cov_json['files']:
+            file_name = file['file']
+            for function in file['functions']:
+                func_cov = function['execution_count']
+                func_name = function['name']
+
+                # 7. Check if function is covered
+                if func_cov > 0 and check((file_name, func_name), failing_func):
+                    execs_buggy_func = True
+
+                    # 8. Check if function is covered by pass or fail
                     if tc_name in failing_list:
-                        execs_buggy_file_cnt[1] += 1
+                        execs_buggy_func_cnt[1] += 1
                         isFail = True
                     else:
-                        execs_buggy_file_cnt[0] += 1
+                        execs_buggy_func_cnt[0] += 1
                         isFail = False
+                        # if [tc_id, tc_name] not in coincident_tc_list:
+                        #     coincident_tc_list.append([tc_id, tc_name])
                     break
             
-            # 6. if file is covered, save on whether it is fail or pass
-            if execs_buggy_file:
-                row_data[0].append(int(not isFail))
-                row_data[1].append(int(isFail))
-            else:
-                row_data[0].append(0)
-                row_data[1].append(0)
-            print("* {} on fail file".format(execs_buggy_file))
+            if execs_buggy_func:
+                break
+        
+        # 9. if function is covered, save on whether it is fail or pass
+        if execs_buggy_file:
+            row_data[2].append(int(not isFail))
+            row_data[3].append(int(isFail))
+        else:   
+            row_data[2].append(0)
+            row_data[3].append(0)
+        print("* {} on fail func".format(execs_buggy_func))
 
-            # for func criteria
-            check_run = xx.run_needed(bug_name, tc_id, 'raw')
-            if check_run[0]:
-                xx.run_by_tc_name(tc_name)
-                json_file_path = xx.generate_json_for_TC(bug_name, tc_id)
-            else:
-                json_file_path = check_run[1]
-            # cov_path = xx.generate_pretty_json_for_TC(tc_id)
-            cov_json = rr.get_json_from_file_path(json_file_path)
+        # for func criteria
+        execs_buggy_line = False
+        isFail = False
+        # 10. check through line of each file coverage
+        for file in cov_json['files']:
+            file_name = file['file']
+            for line in file['lines']:
+                line_cov = line['count']
+                line_no = line['line_number']
 
-            execs_buggy_func = False
-            isFail = False
-            # check through function of each file coverage
-            for file in cov_json['files']:
-                file_name = file['file']
-                for function in file['functions']:
-                    func_cov = function['execution_count']
-                    func_name = function['name']
+                # 11. Check if line is covered
+                if line_cov > 0 and check((file_name, line_no), failing_line):
+                    execs_buggy_line = True
 
-                    # 7. Check if function is covered
-                    if func_cov > 0 and check((file_name, func_name), failing_func):
-                        execs_buggy_func = True
-
-                        # 8. Check if function is covered by pass or fail
-                        if tc_name in failing_list:
-                            execs_buggy_func_cnt[1] += 1
-                            isFail = True
-                        else:
-                            execs_buggy_func_cnt[0] += 1
-                            isFail = False
-                            # if [tc_id, tc_name] not in coincident_tc_list:
-                            #     coincident_tc_list.append([tc_id, tc_name])
-                        break
-                
-                if execs_buggy_func:
+                    # 12. Check if line is covered by pass or fail
+                    if tc_name in failing_list:
+                        execs_buggy_line_cnt[1] += 1
+                        isFail = True
+                    else:
+                        execs_buggy_line_cnt[0] += 1
+                        isFail = False
+                        if [tc_id, tc_name] not in coincident_tc_list:
+                            coincident_tc_list.append([tc_id, tc_name])
                     break
             
-            # 9. if function is covered, save on whether it is fail or pass
-            if execs_buggy_file:
-                row_data[2].append(int(not isFail))
-                row_data[3].append(int(isFail))
-            else:   
-                row_data[2].append(0)
-                row_data[3].append(0)
-            print("* {} on fail func".format(execs_buggy_func))
-
-            # for func criteria
-            execs_buggy_line = False
-            isFail = False
-            # 10. check through line of each file coverage
-            for file in cov_json['files']:
-                file_name = file['file']
-                for line in file['lines']:
-                    line_cov = line['count']
-                    line_no = line['line_number']
-
-                    # 11. Check if line is covered
-                    if line_cov > 0 and check((file_name, line_no), failing_line):
-                        execs_buggy_line = True
-
-                        # 12. Check if line is covered by pass or fail
-                        if tc_name in failing_list:
-                            execs_buggy_line_cnt[1] += 1
-                            isFail = True
-                        else:
-                            execs_buggy_line_cnt[0] += 1
-                            isFail = False
-                            if [tc_id, tc_name] not in coincident_tc_list:
-                                coincident_tc_list.append([tc_id, tc_name])
-                        break
-                
-                if execs_buggy_line:
-                    break
-            
-            # 13. if line is covered, save on whether it is fail or pass
             if execs_buggy_line:
-                row_data[4].append(int(not isFail))
-                row_data[5].append(int(isFail))
-            else:
-                row_data[4].append(0)
-                row_data[5].append(0)
-            print("* {} on fail line".format(execs_buggy_line))
+                break
+        
+        # 13. if line is covered, save on whether it is fail or pass
+        if execs_buggy_line:
+            row_data[4].append(int(not isFail))
+            row_data[5].append(int(isFail))
+        else:
+            row_data[4].append(0)
+            row_data[5].append(0)
+        print("* {} on fail line".format(execs_buggy_line))
 
-        # write coincident TC
-        ww.write_coincident_TC(bug_name, coincident_tc_list)
+    # write coincident TC
+    ww.write_coincident_TC(project_name, bug_version, coincident_tc_list)
 
-        db.tc_criteria['target'] = bug_name
-        db.tc_criteria['col_data'] = col_data
-        db.tc_criteria['row_data'] = row_data
-        db.tc_criteria['xx_fail_file'] = execs_buggy_file_cnt
-        db.tc_criteria['xx_fail_func'] = execs_buggy_func_cnt
-        db.tc_criteria['xx_fail_line'] = execs_buggy_line_cnt
+    db.tc_criteria['target'] = bug_version
+    db.tc_criteria['col_data'] = col_data
+    db.tc_criteria['row_data'] = row_data
+    db.tc_criteria['xx_fail_file'] = execs_buggy_file_cnt
+    db.tc_criteria['xx_fail_func'] = execs_buggy_func_cnt
+    db.tc_criteria['xx_fail_line'] = execs_buggy_line_cnt
 
-        ww.write_TC_on_criteria_per_BUG_to_csv(db.tc_criteria)
-        ww.write_criteria_stat_results_per_BUG_to_csv(db.tc_criteria, db.tc_cnt)
+    ww.write_TC_on_criteria_per_BUG_to_csv(project_name, db.tc_criteria)
+    ww.write_criteria_stat_results_per_BUG_to_csv(project_name, db.tc_criteria, db.tc_cnt)
 
     output = ">>> [COMPLETE} Generating CSV file for all TC to a criteria per BUG."
     print(output)
