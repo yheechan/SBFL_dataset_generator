@@ -1,5 +1,34 @@
 # gen_data_4_jsoncpp
 
+This programs generate ranked dataset for Spectrum-Based Fault Localization (SBFL).
+Current limit is that it is limited to only [JsonCPP](https://github.com/open-source-parsers/jsoncpp).
+
+## Dependencies
+1. Clang/LLVM, version 13.0.1
+  * apt package downloader: https://apt.llvm.org/
+  * manually built from source: https://releases.llvm.org/download.html
+    * ```sudo apt install llvm-13-dev clang-13 libclang-13-dev lld-13 libc++abi-13-dev```
+
+2. Gcovr, version 6.0
+  * install guide: https://gcovr.com/en/stable/installation.html
+
+3. Python Modules
+  * Pandas (1.1.15)
+  * Numpy (1.19.5)
+
+## EASY command for execution
+```
+# Generates SBFL dataset for all 4 bug versions of JsonCPP
+./bin/SBFL_all.sh
+
+# or
+
+# Generates SBFL dataset for a single bug version of JsonCPP
+./bin/SBFL_<bug-version>.sh
+```
+
+## Step-by-Step command execution (example)
+
 ```
 ./build.py --project jsoncpp --bug_version bug1 --withPreprocessed
 ./gen_data.py --project jsoncpp --bug_version bug1 --run_all_testcases
@@ -9,26 +38,7 @@
 ```
 
 ## ToDo
-* make PPT slides to share results
 * analyze ossfuzz timeout bugs
-
-## Currently Working On:
-3. Change to execute for single BUG version (for simplicity)
-4. documentation in GREAT DETAIL
-* [IMPO] Check whether skipping TC runs are correctly skipped
-
-## Finished Over the Week
-* make different versions for each bug
-  * make it buildable/executable for each bug
-* generate coverage data on each version with all TC
-* calculate suspicious score on each line using SBFL formulas
-* utilized clang to retreive line-to-method data
-  * currently does not handle lines that are not within a method
-  * currently does not handle template functions
-* Finished Ranking at Method Level (per SBFL Formula on each BUG)
-* generate summary of acc@10 results at method level
-* debug rank results
-* improve performance on FL (by excluding coincident passed TC)
 
 ## TC Criteria
 TC that:
@@ -41,15 +51,7 @@ TC that:
   7. NOT executes buggy **lines**
   8. executes buggy **lines**
 
-## TC-to-TC Relation Data
-Shows ```<# of lines, # of functions, # of files>``` intersection on all TC-to-TC.
-
-## Example Command
-```
-./gen_data.py --spectra_data --criteria_data --relation_data --list_tc --summary_json 1 --html 1 --pretty_json 1
-```
-
-## Command Line Interface
+## Command Line Interface for ```./bin/gen_data.py```
 ```
 usage: gen_data.py [-h] --project PROJECT --bug_version BUG_VERSION
                    [--run_all_testcases] [--spectrum_data] [--processed_data]
@@ -61,10 +63,10 @@ optional arguments:
   -h, --help            show this help message and exit
 
   --project PROJECT     project name (ex. jsoncpp)
-
+  
   --bug_version BUG_VERSION
                         bug version (ex. bug1)
-
+                        
   --run_all_testcases   Command that runs all existinc test cases. For each
                         run, it saves coverage result data
                         ('/<project>/data/coverage/'). It also generates lists
