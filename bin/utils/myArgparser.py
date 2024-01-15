@@ -20,6 +20,16 @@ def make_parser():
     )
 
     parser.add_argument(
+        '--run_all_testcases',
+        action='store_true',
+        help='Command that runs all existinc test cases. \
+                For each run, it saves coverage result data (\'/<project>/data/coverage/\').\
+                It also generates lists of test cases that coincidentally\
+                pass even when running the buggy line \
+                (\'/<project>/data/coverage/coincident/<bug-version>.coincidentTC.txt\')'
+    )
+
+    parser.add_argument(
         '--spectrum_data',
         action='store_true',
         help='Command that generates spectrum data on each file of project \
@@ -51,27 +61,17 @@ def make_parser():
                 (\'/<project>/data/ranked/<bug-version>.rank.summary.csv\').'
     )
 
-    parser.add_argument(
-        '--run_all_testcases',
-        action='store_true',
-        help='Command that runs all existinc test cases. \
-                For each run, it saves coverage result data (\'/<project>/data/coverage/\').\
-                It also generates lists of test cases that coincidentally\
-                pass even when running the buggy line \
-                (\'/<project>/data/coverage/coincident/<bug-version>.coincidentTC.txt\')'
-    )
-
     # parser.add_argument(
     #     '--relation_data',
     #     action='store_true',
     #     help='Generates TC-to-TC relation csv on per-file, per-function, per-line intersections.'
     # )
 
-    parser.add_argument(
-        '--list_tc',
-        action='store_true',
-        help='Generates a text file containing the list of test cases.'
-    )
+    # parser.add_argument(
+    #     '--list_tc',
+    #     action='store_true',
+    #     help='Generates a text file containing the list of test cases.'
+    # )
 
     # parser.add_argument(
     #     '--summary_json',
