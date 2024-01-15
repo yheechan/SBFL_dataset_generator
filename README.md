@@ -5,16 +5,16 @@ Current limit is that it is limited to only [JsonCPP](https://github.com/open-so
 
 ## Dependencies
 1. Clang/LLVM, version 13.0.1
-  * apt package downloader: https://apt.llvm.org/
-  * manually built from source: https://releases.llvm.org/download.html
-    * ```sudo apt install llvm-13-dev clang-13 libclang-13-dev lld-13 libc++abi-13-dev```
+    * apt package downloader: https://apt.llvm.org/
+    * manually built from source: https://releases.llvm.org/download.html
+      * ```sudo apt install llvm-13-dev clang-13 libclang-13-dev lld-13 libc++abi-13-dev```
 
 2. Gcovr, version 6.0
-  * install guide: https://gcovr.com/en/stable/installation.html
+    * install guide: https://gcovr.com/en/stable/installation.html
 
 3. Python Modules
-  * Pandas (1.1.15)
-  * Numpy (1.19.5)
+    * Pandas (1.1.15)
+    * Numpy (1.19.5)
 
 ## EASY command for execution
 ```
@@ -63,7 +63,7 @@ optional arguments:
   -h, --help            show this help message and exit
 
   --project PROJECT     project name (ex. jsoncpp)
-  
+
   --bug_version BUG_VERSION
                         bug version (ex. bug1)
                         
