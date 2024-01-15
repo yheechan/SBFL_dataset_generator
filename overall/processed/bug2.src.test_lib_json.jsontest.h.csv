@@ -1,0 +1,17 @@
+lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
+bug2#src/test_lib_json/jsontest.h#FUNCTIONNOTFOUND#32,3,3,121,0,1,3.3333333333333335,0.5,121,2.976,0.7071067811865476,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#FUNCTIONNOTFOUND#56,124,3,0,0,1,3.0119521912350598,0.023622047244094488,0,2.008,0.15369465587356798,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#TestResult::operator<<(const T & value)#85,1,3,123,0,1,3.6,0.75,123,2.992,0.8660254037844387,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#TestResult::operator<<(const T & value)#86,1,3,123,0,1,3.6,0.75,123,2.992,0.8660254037844387,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#TestResult::operator<<(const T & value)#87,1,3,123,0,1,3.6,0.75,123,2.992,0.8660254037844387,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#TestResult::operator<<(const T & value)#88,1,3,123,0,1,3.6,0.75,123,2.992,0.8660254037844387,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#TestResult::operator<<(const T & value)#89,1,3,123,0,1,3.6,0.75,123,2.992,0.8660254037844387,0.023622047244094488,3,0
+bug2#src/test_lib_json/jsontest.h#FUNCTIONNOTFOUND#134,124,3,0,0,1,3.0119521912350598,0.023622047244094488,0,2.008,0.15369465587356798,0.023622047244094488,3,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#176",57,0,67,3,0,0.0,0.0,-1,-0.456,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#178",57,0,67,3,0,0.0,0.0,-1,-0.456,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#179",0,0,124,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#180",0,0,124,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#181",0,0,124,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#182",0,0,124,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#183",57,0,67,3,0,0.0,0.0,-1,-0.456,0.0,0.0,0,0
+"bug2#src/test_lib_json/jsontest.h#checkEqual(class JsonTest::TestResult & result, T expected, U actual, const char * file, unsigned int line, const char * expr)#184",0,0,124,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0

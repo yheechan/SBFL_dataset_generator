@@ -1,0 +1,80 @@
+lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::ValueIteratorBase()#18,5,0,119,3,0,0.0,0.0,-1,-0.04,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::ValueIteratorBase(const class Value::ObjectValues::iterator & current)#20,11,0,113,3,0,0.0,0.0,-1,-0.088,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::ValueIteratorBase(const class Value::ObjectValues::iterator & current)#22,11,0,113,3,0,0.0,0.0,-1,-0.088,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::deref()#24,5,0,119,3,0,0.0,0.0,-1,-0.04,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::deref()#25,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::increment()#27,8,0,116,3,0,0.0,0.0,-1,-0.064,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::decrement()#29,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#32,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#38,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#39,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#47,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#48,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#49,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#50,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#51,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#52,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::computeDistance(const Json::ValueIteratorBase::SelfType & other)#53,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::isEqual(const Json::ValueIteratorBase::SelfType & other)#55,12,0,112,3,0,0.0,0.0,-1,-0.096,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::isEqual(const Json::ValueIteratorBase::SelfType & other)#56,12,0,112,3,0,0.0,0.0,-1,-0.096,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::isEqual(const Json::ValueIteratorBase::SelfType & other)#57,3,0,121,3,0,0.0,0.0,-1,-0.024,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::isEqual(const Json::ValueIteratorBase::SelfType & other)#59,10,0,114,3,0,0.0,0.0,-1,-0.08,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::isEqual(const Json::ValueIteratorBase::SelfType & other)#60,12,0,112,3,0,0.0,0.0,-1,-0.096,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::copy(const Json::ValueIteratorBase::SelfType & other)#62,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::copy(const Json::ValueIteratorBase::SelfType & other)#63,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::copy(const Json::ValueIteratorBase::SelfType & other)#64,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::copy(const Json::ValueIteratorBase::SelfType & other)#65,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#67,3,0,121,3,0,0.0,0.0,-1,-0.024,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#68,3,0,121,3,0,0.0,0.0,-1,-0.024,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#69,3,0,121,3,0,0.0,0.0,-1,-0.024,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#70,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#71,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#72,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#74,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::key()#75,3,0,121,3,0,0.0,0.0,-1,-0.024,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#77,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#78,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#79,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#80,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#81,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::index()#82,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#84,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#85,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#86,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#87,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#88,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#89,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#90,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::name()#91,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName()#93,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName()#94,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName()#95,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName()#96,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#98,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#99,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#100,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#101,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#102,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#104,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#105,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIteratorBase::memberName(const char ** end)#106,2,0,122,3,0,0.0,0.0,-1,-0.016,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::ValueConstIterator()#116,4,0,120,3,0,0.0,0.0,-1,-0.032,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::ValueConstIterator(const class Value::ObjectValues::iterator & current)#118,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::ValueConstIterator(const class Value::ObjectValues::iterator & current)#120,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::ValueConstIterator(const class Json::ValueIterator & other)#122,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::ValueConstIterator(const class Json::ValueIterator & other)#123,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::operator=(const class Json::ValueIteratorBase & other)#126,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::operator=(const class Json::ValueIteratorBase & other)#127,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueConstIterator::operator=(const class Json::ValueIteratorBase & other)#128,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator()#139,4,0,120,3,0,0.0,0.0,-1,-0.032,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Value::ObjectValues::iterator & current)#141,11,0,113,3,0,0.0,0.0,-1,-0.088,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Value::ObjectValues::iterator & current)#142,11,0,113,3,0,0.0,0.0,-1,-0.088,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Json::ValueConstIterator & other)#144,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Json::ValueConstIterator & other)#145,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Json::ValueConstIterator & other)#146,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Json::ValueConstIterator & other)#147,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::ValueIterator(const class Json::ValueIterator & other)#149,5,0,119,3,0,0.0,0.0,-1,-0.04,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::operator=(const Json::ValueIterator::SelfType & other)#151,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::operator=(const Json::ValueIterator::SelfType & other)#152,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0
+bug2#src/lib_json/json_valueiterator.inl#ValueIterator::operator=(const Json::ValueIterator::SelfType & other)#153,1,0,123,3,0,0.0,0.0,-1,-0.008,0.0,0.0,0,0

@@ -1,0 +1,221 @@
+lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
+bug3#src/test_lib_json/jsontest.cpp#FUNCTIONNOTFOUND#64,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::TestResult()#76,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::TestResult()#78,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::TestResult()#79,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::TestResult()#80,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::TestResult()#81,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::setTestName(const Json::String & name)#83,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#85",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#89",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#90",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#91",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#92",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#94",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#95",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#96",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#99",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#100",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#101",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#102",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#105",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#106",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#107",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailure(const char * file, unsigned int line, const char * expr)#108",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#FUNCTIONNOTFOUND#109,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#110",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#111",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#112",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#113",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#114",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#115",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#116",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#117",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#118",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#119",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::addFailureInfo(const char * file, unsigned int line, const char * expr, unsigned int nestingLevel)#120",0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#122,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#123,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#124,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#125,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#128,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#129,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#130,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#131,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#133,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#134,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#135,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::popPredicateContext()#136,18,0,75,3,0,0.0,0.0,-1,-0.19148936170212766,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::failed()#138,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#140,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#141,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#142,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#145,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#146,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#147,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#150,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#151,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#152,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#153,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#154,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#155,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#156,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#157,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#158,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#159,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#160,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#161,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#162,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#163,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#164,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::printFailure(_Bool printTestName)#165,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#167",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#169",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#170",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#171",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#172",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#173",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#174",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#175",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#176",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#177",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#178",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#179",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#180",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#TestResult::indentText(const Json::String & text, const Json::String & indent)#181",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::addToLastFailure(const Json::String & message)#183,9,0,84,3,0,0.0,0.0,-1,-0.09574468085106383,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::addToLastFailure(const Json::String & message)#184,9,0,84,3,0,0.0,0.0,-1,-0.09574468085106383,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::addToLastFailure(const Json::String & message)#185,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::addToLastFailure(const Json::String & message)#186,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::addToLastFailure(const Json::String & message)#187,9,0,84,3,0,0.0,0.0,-1,-0.09574468085106383,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::Int64 value)#190,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::Int64 value)#191,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::Int64 value)#192,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::UInt64 value)#194,8,0,85,3,0,0.0,0.0,-1,-0.0851063829787234,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::UInt64 value)#195,8,0,85,3,0,0.0,0.0,-1,-0.0851063829787234,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(Json::UInt64 value)#196,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(_Bool value)#198,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(_Bool value)#199,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestResult::operator<<(_Bool value)#200,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::TestCase()#205,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::~TestCase()#207,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::run(class JsonTest::TestResult & result)#209,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::run(class JsonTest::TestResult & result)#210,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::run(class JsonTest::TestResult & result)#211,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#TestCase::run(class JsonTest::TestResult & result)#212,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::Runner()#217,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::add(JsonTest::TestCaseFactory factory)#219,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::add(JsonTest::TestCaseFactory factory)#220,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::add(JsonTest::TestCaseFactory factory)#221,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testCount()#224,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#226,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#227,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#228,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#229,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#230,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::testNameAt(size_t index)#231,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#233",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#234",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#235",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#236",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#237",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#241",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#243",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#244",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#245",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#246",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#248",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#249",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#250",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#251",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runTestAt(size_t index, class JsonTest::TestResult & result)#252",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#254,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#255,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#256,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#257,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#258,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#259,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#260,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#261,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#262,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#263,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#265,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#266,93,0,0,3,0,0.0,0.0,-1,-0.9893617021276596,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#267,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#268,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#269,93,0,0,3,0,0.0,0.0,-1,-0.9893617021276596,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#271,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#272,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#273,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#275,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#276,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#277,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#278,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#279,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#280,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#281,0,3,93,0,1,4.0,1.0,93,3.0,1.0,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::runAllTest(_Bool printSummary)#282,93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#284",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#285",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#286",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#287",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#288",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#289",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#291",92,3,1,0,1,3.016042780748663,0.031578947368421054,1,2.021276595744681,0.1777046633277277,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#292",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::testIndex(const Json::String & testName, size_t & indexOut)#293",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#295,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#296,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#297,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#298,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#299,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::listTests()#300,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#302",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#304",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#305",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#306",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#307",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#308",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#309",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#311",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#312",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#313",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#314",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#315",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#316",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#317",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#318",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#319",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#320",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#321",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#323",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#324",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#325",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#327",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#328",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#329",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#331",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#332",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#333",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#334",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#335",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#336",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#338",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+"bug3#src/test_lib_json/jsontest.cpp#Runner::runCommandLine(int argc, const char ** argv)#339",93,3,0,0,1,3.015873015873016,0.03125,0,2.0106382978723403,0.1767766952966369,0.03125,3,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::preventDialogOnCrash()#370,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::preventDialogOnCrash()#388,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::printUsage(const char * appName)#390,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::printUsage(const char * appName)#391,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::printUsage(const char * appName)#401,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#Runner::printUsage(const char * appName)#402,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#ToJsonString(const char * toConvert)#407,11,1,82,2,0,1.0434782608695652,0.07142857142857142,-1,0.8829787234042553,0.16666666666666666,0.010416666666666666,1,0
+bug3#src/test_lib_json/jsontest.cpp#ToJsonString(const char * toConvert)#408,11,1,82,2,0,1.0434782608695652,0.07142857142857142,-1,0.8829787234042553,0.16666666666666666,0.010416666666666666,1,0
+bug3#src/test_lib_json/jsontest.cpp#ToJsonString(const char * toConvert)#409,0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug3#src/test_lib_json/jsontest.cpp#ToJsonString(Json::String in)#411,36,1,57,2,0,1.0136986301369864,0.02564102564102564,-1,0.6170212765957447,0.0949157995752499,0.010416666666666666,1,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#419",36,1,57,2,0,1.0136986301369864,0.02564102564102564,-1,0.6170212765957447,0.0949157995752499,0.010416666666666666,1,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#422",36,1,57,2,0,1.0136986301369864,0.02564102564102564,-1,0.6170212765957447,0.0949157995752499,0.010416666666666666,1,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#423",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#424",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#425",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#426",0,0,93,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug3#src/test_lib_json/jsontest.cpp#checkStringEqual(class JsonTest::TestResult & result, const Json::String & expected, const Json::String & actual, const char * file, unsigned int line, const char * expr)#427",36,1,57,2,0,1.0136986301369864,0.02564102564102564,-1,0.6170212765957447,0.0949157995752499,0.010416666666666666,1,0

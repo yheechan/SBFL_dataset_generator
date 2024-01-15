@@ -1,0 +1,47 @@
+lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
+bug1#include/json/value.h#FUNCTIONNOTFOUND#83,0,0,123,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug1#include/json/value.h#FUNCTIONNOTFOUND#94,0,0,123,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug1#include/json/value.h#StaticString::StaticString(const char * czstring)#149,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#StaticString::c_str()#153,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#Value::setType(enum Json::ValueType v)#594,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Value::setType(enum Json::ValueType v)#595,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Value::setType(enum Json::ValueType v)#596,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Value::isAllocated()#597,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Value::setIsAllocated(_Bool v)#598,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#FUNCTIONNOTFOUND#633,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Comments::Comments()#635,123,3,0,0,1,3.0120481927710845,0.023809523809523808,0,2.008064516129032,0.1543033499620919,0.023809523809523808,3,0
+bug1#include/json/value.h#Value::as()#656,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#657,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#659,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#660,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#662,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#663,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#666,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#667,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#669,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#670,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#673,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#674,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#676,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::is()#677,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#681,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#682,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#Value::as()#683,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#FUNCTIONNOTFOUND#689,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#FUNCTIONNOTFOUND#716,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIteratorBase::operator==(const Json::ValueIteratorBase::SelfType & other)#752,6,0,117,3,0,0.0,0.0,-1,-0.04838709677419355,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIteratorBase::operator!=(const Json::ValueIteratorBase::SelfType & other)#754,5,3,118,0,1,3.230769230769231,0.375,118,2.9596774193548385,0.6123724356957946,0.023809523809523808,3,0
+bug1#include/json/value.h#ValueIteratorBase::operator-(const Json::ValueIteratorBase::SelfType & other)#756,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIteratorBase::operator-(const Json::ValueIteratorBase::SelfType & other)#757,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#ValueConstIterator::operator++()#858,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueConstIterator::operator++()#859,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueConstIterator::operator++()#860,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueConstIterator::operator*()#863,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIterator::operator--()#905,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIterator::operator--()#906,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIterator::operator--()#907,2,0,121,3,0,0.0,0.0,-1,-0.016129032258064516,0.0,0.0,0,0
+bug1#include/json/value.h#ValueIterator::operator++()#910,4,3,119,0,1,3.2727272727272725,0.42857142857142855,119,2.967741935483871,0.6546536707079772,0.023809523809523808,3,0
+bug1#include/json/value.h#ValueIterator::operator++()#911,4,3,119,0,1,3.2727272727272725,0.42857142857142855,119,2.967741935483871,0.6546536707079772,0.023809523809523808,3,0
+bug1#include/json/value.h#ValueIterator::operator++()#912,4,3,119,0,1,3.2727272727272725,0.42857142857142855,119,2.967741935483871,0.6546536707079772,0.023809523809523808,3,0
+bug1#include/json/value.h#ValueIterator::operator*()#920,1,3,122,0,1,3.6,0.75,122,2.9919354838709675,0.8660254037844387,0.023809523809523808,3,0
+bug1#include/json/value.h#ValueIterator::operator->()#921,1,0,122,3,0,0.0,0.0,-1,-0.008064516129032258,0.0,0.0,0,0

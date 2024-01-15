@@ -26,3 +26,4 @@
 # ./gen_data.py --project jsoncpp --bug_version bug4 --ranked_data
 ./SBFL_bug4.sh
 
+./gather.py

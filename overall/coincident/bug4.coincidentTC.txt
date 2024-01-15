@@ -1,0 +1,2 @@
+TC104#CharReaderAllowNumericKeysTest/allowNumericKeys
+TC108#CharReaderAllowSpecialFloatsTest/issue209

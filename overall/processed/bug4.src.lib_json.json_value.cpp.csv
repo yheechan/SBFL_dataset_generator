@@ -1,0 +1,957 @@
+lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#52,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#53,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#54,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#55,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#56,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#57,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#cloneUnique(const std::unique_ptr<T> & p)#58,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::nullSingleton()#70,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::nullSingleton()#71,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::nullSingleton()#72,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::nullSingleton()#73,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#FUNCTIONNOTFOUND#74,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#FUNCTIONNOTFOUND#79,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#FUNCTIONNOTFOUND#82,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#integerToDouble(Json::UInt64 value)#93,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#integerToDouble(Json::UInt64 value)#94,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#integerToDouble(Json::UInt64 value)#95,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#integerToDouble(T value)#98,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#integerToDouble(T value)#99,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#InRange(double d, T min, U max)#103",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#InRange(double d, T min, U max)#104",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#115",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#118",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#119",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#121",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#122",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#123",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#126",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#127",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#128",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateStringValue(const char * value, size_t length)#129",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#133",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#137",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#141",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#142",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#143",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#144",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#147",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#148",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#149",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#151",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#duplicateAndPrefixStringValue(const char * value, unsigned int length)#152",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#153",54,0,68,3,0,0.0,0.0,-1,-0.43902439024390244,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#155",54,0,68,3,0,0.0,0.0,-1,-0.43902439024390244,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#156",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#157",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#158",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#159",54,0,68,3,0,0.0,0.0,-1,-0.43902439024390244,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#160",54,0,68,3,0,0.0,0.0,-1,-0.43902439024390244,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#decodePrefixedString(_Bool isPrefixed, const char * prefixed, unsigned int * length, const char ** value)#162",54,0,68,3,0,0.0,0.0,-1,-0.43902439024390244,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#releasePrefixedStringValue(char * value)#182,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#releaseStringValue(char * value, unsigned int )#183",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Exception::Exception(Json::String msg)#203,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Exception::~Exception()#204,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Exception::what()#205,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#RuntimeError::RuntimeError(const Json::String & msg)#206,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#LogicError::LogicError(const Json::String & msg)#207,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwRuntimeError(const Json::String & msg)#208,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwRuntimeError(const Json::String & msg)#209,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwRuntimeError(const Json::String & msg)#210,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwLogicError(const Json::String & msg)#211,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwLogicError(const Json::String & msg)#212,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#throwLogicError(const Json::String & msg)#213,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(Json::Value::ArrayIndex index)#236,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#CZString::CZString(const char * str, unsigned int length, enum Json::Value::CZString::DuplicationPolicy allocate)#238",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#CZString::CZString(const char * str, unsigned int length, enum Json::Value::CZString::DuplicationPolicy allocate)#240",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#CZString::CZString(const char * str, unsigned int length, enum Json::Value::CZString::DuplicationPolicy allocate)#242",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#CZString::CZString(const char * str, unsigned int length, enum Json::Value::CZString::DuplicationPolicy allocate)#243",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#CZString::CZString(const char * str, unsigned int length, enum Json::Value::CZString::DuplicationPolicy allocate)#244",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#246,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#247,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#248,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#249,33,0,89,3,0,0.0,0.0,-1,-0.2682926829268293,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#250,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#252,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#253,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#257,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#259,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(const class Json::Value::CZString & other)#260,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(class Json::Value::CZString && other)#262,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(class Json::Value::CZString && other)#263,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(class Json::Value::CZString && other)#264,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::CZString(class Json::Value::CZString && other)#265,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#267,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#268,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#269,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#270,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#274,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::~CZString()#275,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::swap(class Json::Value::CZString & other)#277,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::swap(class Json::Value::CZString & other)#278,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::swap(class Json::Value::CZString & other)#279,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::swap(class Json::Value::CZString & other)#280,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(const class Json::Value::CZString & other)#282,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(const class Json::Value::CZString & other)#283,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(const class Json::Value::CZString & other)#284,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(const class Json::Value::CZString & other)#285,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(class Json::Value::CZString && other)#288,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(class Json::Value::CZString && other)#289,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(class Json::Value::CZString && other)#290,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(class Json::Value::CZString && other)#291,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator=(class Json::Value::CZString && other)#292,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#295,84,3,38,0,1,3.017543859649123,0.034482758620689655,38,2.317073170731707,0.1856953381770519,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#296,84,3,38,0,1,3.017543859649123,0.034482758620689655,38,2.317073170731707,0.1856953381770519,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#297,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#300,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#301,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#302,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#303,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#304,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#305,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#306,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#307,72,3,50,0,1,3.020408163265306,0.04,50,2.4146341463414633,0.2,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#308,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#309,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator<(const class Json::Value::CZString & other)#310,84,3,38,0,1,3.017543859649123,0.034482758620689655,38,2.317073170731707,0.1856953381770519,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#312,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#313,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#314,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#317,63,3,59,0,1,3.0232558139534884,0.045454545454545456,59,2.4878048780487805,0.21320071635561044,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#318,63,3,59,0,1,3.0232558139534884,0.045454545454545456,59,2.4878048780487805,0.21320071635561044,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#319,63,3,59,0,1,3.0232558139534884,0.045454545454545456,59,2.4878048780487805,0.21320071635561044,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#320,52,3,70,0,1,3.02803738317757,0.05454545454545454,70,2.5772357723577235,0.23354968324845687,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#321,57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#322,57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#323,57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::operator==(const class Json::Value::CZString & other)#324,66,3,56,0,1,3.022222222222222,0.043478260869565216,56,2.4634146341463414,0.20851441405707474,0.024,3,0
+bug4#src/lib_json/json_value.cpp#CZString::index()#326,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::data()#329,23,0,99,3,0,0.0,0.0,-1,-0.18699186991869918,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::length()#330,21,0,101,3,0,0.0,0.0,-1,-0.17073170731707318,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::isStaticString()#331,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#CZString::isStaticString()#332,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#347,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#349,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#350,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#355,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#356,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#358,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#359,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#362,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#363,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#366,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#367,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#369,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#370,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#373,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(enum Json::ValueType type)#374,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int value)#376,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int value)#377,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int value)#378,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int value)#379,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt value)#381,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt value)#382,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt value)#383,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt value)#384,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int64 value)#386,8,3,114,0,1,3.1578947368421053,0.2727272727272727,114,2.934959349593496,0.5222329678670935,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int64 value)#387,8,3,114,0,1,3.1578947368421053,0.2727272727272727,114,2.934959349593496,0.5222329678670935,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int64 value)#388,8,3,114,0,1,3.1578947368421053,0.2727272727272727,114,2.934959349593496,0.5222329678670935,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::Int64 value)#389,8,3,114,0,1,3.1578947368421053,0.2727272727272727,114,2.934959349593496,0.5222329678670935,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt64 value)#390,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt64 value)#391,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt64 value)#392,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(Json::Value::UInt64 value)#393,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(double value)#396,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(double value)#397,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(double value)#398,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(double value)#399,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#401,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#402,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#403,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#405,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#406,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const char * value)#407,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::Value(const char * begin, const char * end)#409",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::Value(const char * begin, const char * end)#410",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::Value(const char * begin, const char * end)#411",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::Value(const char * begin, const char * end)#412",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::Value(const char * begin, const char * end)#413",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const Json::String & value)#415,34,1,88,2,0,1.0144927536231885,0.02702702702702703,-1,0.7235772357723578,0.09759000729485333,0.008,1,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const Json::String & value)#416,34,1,88,2,0,1.0144927536231885,0.02702702702702703,-1,0.7235772357723578,0.09759000729485333,0.008,1,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const Json::String & value)#417,34,1,88,2,0,1.0144927536231885,0.02702702702702703,-1,0.7235772357723578,0.09759000729485333,0.008,1,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const Json::String & value)#418,34,1,88,2,0,1.0144927536231885,0.02702702702702703,-1,0.7235772357723578,0.09759000729485333,0.008,1,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const Json::String & value)#419,34,1,88,2,0,1.0144927536231885,0.02702702702702703,-1,0.7235772357723578,0.09759000729485333,0.008,1,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::StaticString & value)#421,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::StaticString & value)#422,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::StaticString & value)#423,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::StaticString & value)#424,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::Value(_Bool value)#426,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(_Bool value)#427,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(_Bool value)#428,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(_Bool value)#429,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::Value & other)#431,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::Value & other)#432,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::Value & other)#433,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(const class Json::Value & other)#434,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(class Json::Value && other)#436,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(class Json::Value && other)#437,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(class Json::Value && other)#438,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::Value(class Json::Value && other)#439,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::~Value()#441,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::~Value()#442,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::~Value()#443,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::~Value()#444,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(const class Json::Value & other)#446,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(const class Json::Value & other)#447,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(const class Json::Value & other)#448,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(const class Json::Value & other)#449,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(class Json::Value && other)#451,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(class Json::Value && other)#452,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator=(class Json::Value && other)#453,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swapPayload(class Json::Value & other)#456,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swapPayload(class Json::Value & other)#457,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swapPayload(class Json::Value & other)#458,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swapPayload(class Json::Value & other)#459,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::copyPayload(const class Json::Value & other)#461,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copyPayload(const class Json::Value & other)#462,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copyPayload(const class Json::Value & other)#463,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copyPayload(const class Json::Value & other)#464,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#466,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#467,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#468,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#469,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#470,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::swap(class Json::Value & other)#471,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::copy(const class Json::Value & other)#473,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copy(const class Json::Value & other)#474,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copy(const class Json::Value & other)#475,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::copy(const class Json::Value & other)#476,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::type()#478,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::type()#479,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#482,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#483,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#484,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#485,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#486,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#487,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::compare(const class Json::Value & other)#488,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#490,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#491,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#492,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#493,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#494,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#496,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#498,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#500,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#502,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#504,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#506,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#507,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#509,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#510,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#511,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#512,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#513,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#515,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#517,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#518,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#519,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#520,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#521,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#522,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#523,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#524,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#525,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#528,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#529,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#530,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#531,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#532,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#533,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#536,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#537,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<(const class Json::Value & other)#538,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator<=(const class Json::Value & other)#540,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator>=(const class Json::Value & other)#542,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator>(const class Json::Value & other)#544,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#546,39,0,83,3,0,0.0,0.0,-1,-0.3170731707317073,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#547,39,0,83,3,0,0.0,0.0,-1,-0.3170731707317073,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#548,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#549,37,0,85,3,0,0.0,0.0,-1,-0.3008130081300813,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#551,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#553,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#555,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#557,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#559,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#561,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#562,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#564,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#565,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#566,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#567,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#568,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#570,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#572,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#573,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#574,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#575,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#576,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#577,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#580,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#581,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#584,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#585,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator==(const class Json::Value & other)#586,39,0,83,3,0,0.0,0.0,-1,-0.3170731707317073,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator!=(const class Json::Value & other)#588,29,0,93,3,0,0.0,0.0,-1,-0.23577235772357724,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#590,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#591,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#593,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#594,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#595,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#596,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#597,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#599,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asCString()#600,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#616",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#617",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#618",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#619",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#620",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#621",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#622",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#623",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#624",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#625",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::getString(const char ** begin, const char ** end)#626",20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#628,32,0,90,3,0,0.0,0.0,-1,-0.2601626016260163,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#629,32,0,90,3,0,0.0,0.0,-1,-0.2601626016260163,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#631,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#633,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#634,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#635,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#636,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#637,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#639,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#640,25,0,97,3,0,0.0,0.0,-1,-0.2032520325203252,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#642,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#644,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#646,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#648,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#650,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#651,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asString()#652,32,0,90,3,0,0.0,0.0,-1,-0.2601626016260163,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#654,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#655,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#657,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#658,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#660,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#661,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#663,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#665,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#667,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#669,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#671,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#673,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt()#674,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#676,49,3,73,0,1,3.0297029702970297,0.057692307692307696,73,2.6016260162601625,0.24019223070763068,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#677,49,3,73,0,1,3.0297029702970297,0.057692307692307696,73,2.6016260162601625,0.24019223070763068,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#679,45,3,77,0,1,3.032258064516129,0.0625,77,2.6341463414634148,0.25,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#680,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#682,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#683,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#685,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#687,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#689,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#691,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#693,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#695,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt()#696,49,3,73,0,1,3.0297029702970297,0.057692307692307696,73,2.6016260162601625,0.24019223070763068,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#700,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#701,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#702,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#703,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#705,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#706,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#708,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#710,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#712,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#714,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#716,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#718,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asInt64()#719,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#721,13,0,109,3,0,0.0,0.0,-1,-0.10569105691056911,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#722,13,0,109,3,0,0.0,0.0,-1,-0.10569105691056911,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#724,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#725,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#727,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#729,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#731,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#733,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#735,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#737,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#739,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asUInt64()#740,13,0,109,3,0,0.0,0.0,-1,-0.10569105691056911,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asLargestInt()#743,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asLargestInt()#747,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asLargestUInt()#751,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asLargestUInt()#755,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#759,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#760,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#762,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#767,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#770,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#772,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#774,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#776,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#778,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asDouble()#779,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#781,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#782,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#784,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#790,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#793,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#795,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#797,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#799,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#801,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asFloat()#802,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#804,54,3,68,0,1,3.027027027027027,0.05263157894736842,68,2.5609756097560976,0.22941573387056177,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#805,54,3,68,0,1,3.027027027027027,0.05263157894736842,68,2.5609756097560976,0.22941573387056177,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#807,51,3,71,0,1,3.0285714285714285,0.05555555555555555,71,2.5853658536585367,0.23570226039551584,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#809,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#811,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#813,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#816,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#817,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#818,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#820,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#822,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::asBool()#823,54,3,68,0,1,3.027027027027027,0.05263157894736842,68,2.5609756097560976,0.22941573387056177,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#825,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#826,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#828,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#829,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#830,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#831,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#832,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#833,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#835,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#836,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#837,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#839,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#840,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#841,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#843,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#845,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#847,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#848,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#850,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#852,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#855,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isConvertibleTo(enum Json::ValueType other)#856,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#859,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::size()#860,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::size()#867,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#869,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::size()#870,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#871,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#872,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#873,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#874,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::size()#876,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#879,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::size()#880,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::empty()#882,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::empty()#883,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::empty()#884,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::empty()#885,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::empty()#886,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator bool()#888,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#890,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#891,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#894,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#895,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#896,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#899,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#900,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#902,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::clear()#904,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#906,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#907,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#909,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#910,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#911,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#912,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#913,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#914,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#915,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#916,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#918,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#919,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#920,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#921,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resize(Json::Value::ArrayIndex newSize)#923,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#925,31,0,91,3,0,0.0,0.0,-1,-0.25203252032520324,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#926,31,0,91,3,0,0.0,0.0,-1,-0.25203252032520324,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#929,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#930,13,0,109,3,0,0.0,0.0,-1,-0.10569105691056911,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#931,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#932,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#933,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#934,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#936,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#937,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#938,30,0,92,3,0,0.0,0.0,-1,-0.24390243902439024,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#939,31,0,91,3,0,0.0,0.0,-1,-0.25203252032520324,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#941,23,0,99,3,0,0.0,0.0,-1,-0.18699186991869918,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#942,23,0,99,3,0,0.0,0.0,-1,-0.18699186991869918,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#945,23,0,99,3,0,0.0,0.0,-1,-0.18699186991869918,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#946,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#948,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#949,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#952,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#953,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#954,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#955,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#956,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#957,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#958,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](Json::Value::ArrayIndex index)#959,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#961,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#962,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#965,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](int index)#966,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#968",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#969",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#970",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#971",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#972",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#973",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::initBasic(enum Json::ValueType type, _Bool allocated)#974",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#976,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#977,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#978,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#979,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#985,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#986,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#988,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#989,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#990,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#991,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#993,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#994,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#995,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#996,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#998,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#1001,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#1002,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#1005,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::dupPayload(const class Json::Value & other)#1006,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1008,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1009,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1015,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1017,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1018,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1019,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1022,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1023,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1026,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::releasePayload()#1027,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupMeta(const class Json::Value & other)#1029,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupMeta(const class Json::Value & other)#1030,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupMeta(const class Json::Value & other)#1031,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupMeta(const class Json::Value & other)#1032,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::dupMeta(const class Json::Value & other)#1033,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1038,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1039,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1042,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1043,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1044,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1046,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1047,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1048,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1050,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1051,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1052,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1053,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key)#1054,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1057",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1058",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1061",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1062",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1063",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1065",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1066",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1067",43,0,79,3,0,0.0,0.0,-1,-0.34959349593495936,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1069",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1070",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1071",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1072",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::resolveReference(const char * key, const char * end)#1073",122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::get(Json::Value::ArrayIndex index, const class Json::Value & defaultValue)#1075",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(Json::Value::ArrayIndex index, const class Json::Value & defaultValue)#1076",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(Json::Value::ArrayIndex index, const class Json::Value & defaultValue)#1077",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(Json::Value::ArrayIndex index, const class Json::Value & defaultValue)#1078",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isValidIndex(Json::Value::ArrayIndex index)#1080,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1082",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1083",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1086",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1087",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1088",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1090",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1091",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1092",6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1093",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::find(const char * begin, const char * end)#1094",57,3,65,0,1,3.0256410256410255,0.05,65,2.5365853658536586,0.22360679774997896,0.024,3,0
+"bug4#src/lib_json/json_value.cpp#Value::demand(const char * begin, const char * end)#1095",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::demand(const char * begin, const char * end)#1096",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::demand(const char * begin, const char * end)#1099",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::demand(const char * begin, const char * end)#1100",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1101,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1102,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1103,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1104,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1105,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1106,44,3,78,0,1,3.032967032967033,0.06382978723404255,78,2.6422764227642275,0.2526455763199557,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1107,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1108,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1109,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1110,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1111,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1112,19,0,103,3,0,0.0,0.0,-1,-0.15447154471544716,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1114,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const char * key)#1115,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1118,38,2,84,1,0,2.0256410256410255,0.04878048780487805,-1,1.6910569105691056,0.18257418583505536,0.016,2,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const Json::String & key)#1119,38,2,84,1,0,2.0256410256410255,0.04878048780487805,-1,1.6910569105691056,0.18257418583505536,0.016,2,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const class Json::StaticString & key)#1122,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::operator[](const class Json::StaticString & key)#1123,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::append(const class Json::Value & value)#1126,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1128,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1129,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1131,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1132,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1133,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1134,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::append(class Json::Value && value)#1135,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, const class Json::Value & newValue)#1137",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, const class Json::Value & newValue)#1138",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, const class Json::Value & newValue)#1139",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1141",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1142",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1144",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1145",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1146",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1148",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1149",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1150",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1151",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1152",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::insert(Json::Value::ArrayIndex index, class Json::Value && newValue)#1153",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * begin, const char * end, const class Json::Value & defaultValue)#1155",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * begin, const char * end, const class Json::Value & defaultValue)#1157",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * begin, const char * end, const class Json::Value & defaultValue)#1158",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * begin, const char * end, const class Json::Value & defaultValue)#1159",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * key, const class Json::Value & defaultValue)#1160",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const char * key, const class Json::Value & defaultValue)#1161",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const Json::String & key, const class Json::Value & defaultValue)#1163",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::get(const Json::String & key, const class Json::Value & defaultValue)#1164",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1167",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1168",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1169",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1171",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1173",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1174",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1175",3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1176",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1177",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1178",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1179",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * begin, const char * end, class Json::Value * removed)#1180",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key, class Json::Value * removed)#1181",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key, class Json::Value * removed)#1182",2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const Json::String & key, class Json::Value * removed)#1184",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeMember(const Json::String & key, class Json::Value * removed)#1185",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1187,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1188,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1190,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1191,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1193,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1194,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const char * key)#1195,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::removeMember(const Json::String & key)#1196,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1198",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1199",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1200",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1202",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1203",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1204",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1205",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1207",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1208",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1209",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1211",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1212",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1213",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1214",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1216",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1217",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1218",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1219",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::removeIndex(Json::Value::ArrayIndex index, class Json::Value * removed)#1220",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::isMember(const char * begin, const char * end)#1222",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::isMember(const char * begin, const char * end)#1223",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::isMember(const char * begin, const char * end)#1224",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::isMember(const char * begin, const char * end)#1225",4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isMember(const char * key)#1226,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isMember(const char * key)#1227,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isMember(const Json::String & key)#1229,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isMember(const Json::String & key)#1230,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1233,21,0,101,3,0,0.0,0.0,-1,-0.17073170731707318,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1234,21,0,101,3,0,0.0,0.0,-1,-0.17073170731707318,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1237,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1238,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1239,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1240,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1241,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1242,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1243,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1244,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1245,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1246,20,0,102,3,0,0.0,0.0,-1,-0.16260162601626016,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getMemberNames()#1247,21,0,101,3,0,0.0,0.0,-1,-0.17073170731707318,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#IsIntegral(double d)#1249,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#IsIntegral(double d)#1250,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#IsIntegral(double d)#1251,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#IsIntegral(double d)#1252,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isNull()#1254,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isBool()#1256,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1258,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1259,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1262,4,0,118,3,0,0.0,0.0,-1,-0.032520325203252036,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1267,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1269,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1270,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1272,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1274,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt()#1275,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1277,52,3,70,0,1,3.02803738317757,0.05454545454545454,70,2.5772357723577235,0.23354968324845687,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1278,52,3,70,0,1,3.02803738317757,0.05454545454545454,70,2.5772357723577235,0.23354968324845687,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1281,45,3,77,0,1,3.032258064516129,0.0625,77,2.6341463414634148,0.25,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1287,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1292,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1293,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1295,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1297,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt()#1298,52,3,70,0,1,3.02803738317757,0.05454545454545454,70,2.5772357723577235,0.23354968324845687,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1300,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1302,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1304,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1306,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1311,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1312,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1314,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1317,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isInt64()#1318,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1320,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1322,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1324,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1326,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1331,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1332,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1334,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1337,6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isUInt64()#1338,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1340,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1341,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1344,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1350,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1351,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1357,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1359,5,0,117,3,0,0.0,0.0,-1,-0.04065040650406504,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isIntegral()#1360,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isDouble()#1362,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isDouble()#1363,8,0,114,3,0,0.0,0.0,-1,-0.06504065040650407,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isNumeric()#1366,7,0,115,3,0,0.0,0.0,-1,-0.056910569105691054,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isString()#1368,9,0,113,3,0,0.0,0.0,-1,-0.07317073170731707,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isArray()#1370,18,0,104,3,0,0.0,0.0,-1,-0.14634146341463414,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::isObject()#1372,18,0,104,3,0,0.0,0.0,-1,-0.14634146341463414,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::Comments(const class Json::Value::Comments & that)#1374,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::Comments(const class Json::Value::Comments & that)#1375,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::Comments(class Json::Value::Comments && that)#1377,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(const class Json::Value::Comments & that)#1379,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(const class Json::Value::Comments & that)#1380,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(const class Json::Value::Comments & that)#1381,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(class Json::Value::Comments && that)#1384,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(class Json::Value::Comments && that)#1385,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::operator=(class Json::Value::Comments && that)#1386,122,3,0,0,1,3.0121457489878543,0.024,0,2.008130081300813,0.15491933384829668,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Comments::has(enum Json::CommentPlacement slot)#1389,24,0,98,3,0,0.0,0.0,-1,-0.1951219512195122,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::has(enum Json::CommentPlacement slot)#1390,24,0,98,3,0,0.0,0.0,-1,-0.1951219512195122,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::get(enum Json::CommentPlacement slot)#1393,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::get(enum Json::CommentPlacement slot)#1394,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::get(enum Json::CommentPlacement slot)#1395,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::get(enum Json::CommentPlacement slot)#1396,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Comments::get(enum Json::CommentPlacement slot)#1397,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1399",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1400",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1401",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1402",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1404",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1405",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1406",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Comments::set(enum Json::CommentPlacement slot, Json::String comment)#1407",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1409",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1410",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1412",6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1413",6,0,116,3,0,0.0,0.0,-1,-0.04878048780487805,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1414",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1415",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1418",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Value::setComment(Json::String comment, enum Json::CommentPlacement placement)#1419",10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::hasComment(enum Json::CommentPlacement placement)#1421,24,0,98,3,0,0.0,0.0,-1,-0.1951219512195122,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::hasComment(enum Json::CommentPlacement placement)#1422,24,0,98,3,0,0.0,0.0,-1,-0.1951219512195122,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getComment(enum Json::CommentPlacement placement)#1425,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getComment(enum Json::CommentPlacement placement)#1426,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::setOffsetStart(ptrdiff_t start)#1429,48,3,74,0,1,3.0303030303030303,0.058823529411764705,74,2.6097560975609757,0.242535625036333,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::setOffsetLimit(ptrdiff_t limit)#1431,48,3,74,0,1,3.0303030303030303,0.058823529411764705,74,2.6097560975609757,0.242535625036333,0.024,3,0
+bug4#src/lib_json/json_value.cpp#Value::getOffsetStart()#1433,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::getOffsetLimit()#1435,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1437,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1438,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1440,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1441,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1442,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1444,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::toStyledString()#1445,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1447,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1448,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1451,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1452,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1453,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1455,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1457,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1458,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1460,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1461,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1464,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1465,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1466,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1468,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1470,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1471,2,0,120,3,0,0.0,0.0,-1,-0.016260162601626018,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1473,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1474,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1477,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1478,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1479,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1481,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1483,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::begin()#1484,12,0,110,3,0,0.0,0.0,-1,-0.0975609756097561,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1486,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1487,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1490,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1491,10,0,112,3,0,0.0,0.0,-1,-0.08130081300813008,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1492,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1494,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1496,3,0,119,3,0,0.0,0.0,-1,-0.024390243902439025,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Value::end()#1497,11,0,111,3,0,0.0,0.0,-1,-0.08943089430894309,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#PathArgument::PathArgument()#1502,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#PathArgument::PathArgument(Json::ArrayIndex index)#1504,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#PathArgument::PathArgument(Json::ArrayIndex index)#1505,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#PathArgument::PathArgument(const char * key)#1507,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#PathArgument::PathArgument(Json::String key)#1509,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1514",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1517",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1518",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1519",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1520",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1521",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1522",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1523",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1524",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::Path(const Json::String & path, const class Json::PathArgument & a1, const class Json::PathArgument & a2, const class Json::PathArgument & a3, const class Json::PathArgument & a4, const class Json::PathArgument & a5)#1525",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1527",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1528",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1529",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1530",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1531",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1532",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1533",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1534",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1535",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1537",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1538",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1539",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1540",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1541",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1542",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1543",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1544",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1545",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1546",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1547",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1548",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1549",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1550",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1551",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1552",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1553",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1554",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::makePath(const Json::String & path, const Json::Path::InArgs & in)#1556",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1558",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1561",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1563",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1565",0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1566",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::addPathInArg(const Json::String & , const Json::Path::InArgs & in, InArgs::const_iterator & itInArg, class PathArgument::Kind kind)#1568",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::invalidPath(const Json::String & , int )#1570",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::invalidPath(const Json::String & , int )#1572",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1574,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1575,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1576,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1577,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1578,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1580,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1582,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1583,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1584,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1586,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1588,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1589,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1592,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1594,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1595,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1596,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root)#1597,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1599",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1600",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1601",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1602",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1603",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1604",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1605",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1606",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1607",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1608",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1609",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1610",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1611",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1612",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1613",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1614",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+"bug4#src/lib_json/json_value.cpp#Path::resolve(const class Json::Value & root, const class Json::Value & defaultValue)#1615",1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1617,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1618,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1619,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1620,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1621,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1623,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1624,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1625,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1626,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1628,0,0,122,3,0,0.0,0.0,-1,0.0,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1629,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1630,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1631,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1632,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
+bug4#src/lib_json/json_value.cpp#Path::make(class Json::Value & root)#1633,1,0,121,3,0,0.0,0.0,-1,-0.008130081300813009,0.0,0.0,0,0
