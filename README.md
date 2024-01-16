@@ -16,6 +16,8 @@ Current limit is that it is limited to only [JsonCPP](https://github.com/open-so
     * Pandas (1.1.15)
     * Numpy (1.19.5)
 
+4. Make, version 4.1
+
 ## EASY command for execution
 ```
 # Generates SBFL dataset for all 4 bug versions of JsonCPP
@@ -30,10 +32,19 @@ Current limit is that it is limited to only [JsonCPP](https://github.com/open-so
 ## Step-by-Step command execution (example)
 
 ```
+# 1. Downloads JsonCPP -> Switch to correct version -> Generate line2function data & TC executables
 ./build.py --project jsoncpp --bug_version bug1 --withPreprocessed
+
+# 2. Runs all TC one by one, saving coverage information
 ./gen_data.py --project jsoncpp --bug_version bug1 --run_all_testcases
+
+# 3. Post-Processes coverage information
 ./gen_data.py --project jsoncpp --bug_version bug1 --spectrum_data
+
+# 4. Calculate spectrum-based informations from the coverage data
 ./gen_data.py --project jsoncpp --bug_version bug1 --processed_data
+
+# 5. Assigns ranks according to suspicious score from SBFL formulas at function level
 ./gen_data.py --project jsoncpp --bug_version bug1 --ranked_data
 ```
 
@@ -57,7 +68,7 @@ usage: gen_data.py [-h] --project PROJECT --bug_version BUG_VERSION
                    [--run_all_testcases] [--spectrum_data] [--processed_data]
                    [--ranked_data]
 
-Generate Spectrum-Based Data.
+Generate Spectrum-Based Dataset.
 
 optional arguments:
   -h, --help            show this help message and exit

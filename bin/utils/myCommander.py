@@ -14,12 +14,12 @@ def assign_test_cases(project_name, db, tf):
     db.tp_cnt = tc_packet[4]
     return
 
-def return_fuction(fname, lnum, line2method_dict):
+def return_fuction(fname, lnum, line2function_dict):
     endName = fname.split('/')[-1]
     useName = endName if endName == 'CMakeCXXCompilerId.cpp' else fname
 
-    if useName in line2method_dict.keys():
-        for funcData in line2method_dict[useName]:
+    if useName in line2function_dict.keys():
+        for funcData in line2function_dict[useName]:
             funcName = funcData[0]
             funcStart = funcData[1]
             funcEnd = funcData[2]
@@ -28,7 +28,7 @@ def return_fuction(fname, lnum, line2method_dict):
                 return funcName
     return 'FUNCTIONNOTFOUND'
 
-def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2method_dict):
+def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2function_dict):
     for file in cov_json['files']:
         col_data = ['lineNo', tc_id]
         row_data = []
@@ -43,7 +43,7 @@ def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2method_di
             cov_result = 1 if line['count'] > 0 else 0
 
             curr_line_number = line['line_number']
-            function_name = return_fuction(filename, curr_line_number, line2method_dict)
+            function_name = return_fuction(filename, curr_line_number, line2function_dict)
 
             row_name = version+'#'+filename+'#'+function_name+"#"+str(curr_line_number)
             row_data.append([
@@ -54,7 +54,7 @@ def add_first_spectra(per_version_dict, cov_json, tc_id, version, line2method_di
         per_version_dict[full_file_name]['row_data'] = row_data
     return per_version_dict
 
-def add_next_spectra(per_version_dict, cov_json, tc_id, version, line2method_dict):
+def add_next_spectra(per_version_dict, cov_json, tc_id, version, line2function_dict):
     for file in cov_json['files']:
         filename = file['file']
         full_file_name = version+'.'+filename
@@ -65,7 +65,7 @@ def add_next_spectra(per_version_dict, cov_json, tc_id, version, line2method_dic
         for i in range(len(file['lines'])):
             line = file['lines'][i]
             curr_line_number = line['line_number']
-            function_name = return_fuction(filename, curr_line_number, line2method_dict)
+            function_name = return_fuction(filename, curr_line_number, line2function_dict)
 
             row_name = version+'#'+filename+'#'+function_name+"#"+str(curr_line_number)
             assert row_name == per_version_dict[full_file_name]['row_data'][i][0]
@@ -157,8 +157,8 @@ def processed_data(project_name, db, failing_per_bug, fails):
         #         buggy_file = fails[failing]['file']
         #         buggy_line = fails[failing]['line'][1]
         
-        line2method_dict = rr.get_line2method_json(project_name, bug_index)
-        function_name = return_fuction(buggy_file, buggy_line, line2method_dict)
+        line2function_dict = rr.get_line2function_json(project_name, bug_index)
+        function_name = return_fuction(buggy_file, buggy_line, line2function_dict)
 
         bug_position = bug_version+'#'+buggy_file+'#'+function_name+'#'+str(buggy_line)
 
@@ -263,11 +263,11 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
     coincident_tc_list = rr.get_coincident_tc(project_name, bug_version)
 
     # builds with according version
-    # produces ii files for line2method data generation
+    # produces ii files for line2function data generation
     # removes the project built for ii
     # build project for coverage
     xx.build_version(project_name)
-    line2method_dict = rr.get_line2method_json(project_name, version_num)
+    line2function_dict = rr.get_line2function_json(project_name, version_num)
 
     per_version_dict = {}
     db.first = True
@@ -300,7 +300,7 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
                 cov_json,
                 tc_id,
                 bug_version,
-                line2method_dict
+                line2function_dict
             )
             db.first = False
         else:
@@ -309,7 +309,7 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
                 cov_json,
                 tc_id,
                 bug_version,
-                line2method_dict
+                line2function_dict
             )
     
     ww.write_spectra_data_to_csv(project_name, per_version_dict)

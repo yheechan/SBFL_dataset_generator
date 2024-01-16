@@ -326,7 +326,7 @@ def change_ii_to_cpp(project_path, ii_files):
     
     return cpp_files
 
-def extract_line2method(project_path, cpp_files):
+def extract_line2function(project_path, cpp_files):
     preprocessed_dir = project_path / 'preprocessed'
 
     cmd = [extractor_exe]
@@ -381,7 +381,7 @@ def extract_line2method(project_path, cpp_files):
             if not data in perFile_data[marked_path]:
                 perFile_data[marked_path].append(data)
         
-        print('>> extracted line2method from {}'.format(file))
+        print('>> extracted line2function from {}'.format(file))
         cmd.pop()
     
     return perFile_data

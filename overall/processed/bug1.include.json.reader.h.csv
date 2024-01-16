@@ -1,8 +1,0 @@
-lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
-bug1#include/json/reader.h#FUNCTIONNOTFOUND#37,66,0,57,3,0,0.0,0.0,-1,-0.532258064516129,0.0,0.0,0,0
-bug1#include/json/reader.h#FUNCTIONNOTFOUND#47,8,0,115,3,0,0.0,0.0,-1,-0.06451612903225806,0.0,0.0,0,0
-bug1#include/json/reader.h#FUNCTIONNOTFOUND#183,9,0,114,3,0,0.0,0.0,-1,-0.07258064516129033,0.0,0.0,0,0
-bug1#include/json/reader.h#FUNCTIONNOTFOUND#245,35,0,88,3,0,0.0,0.0,-1,-0.28225806451612906,0.0,0.0,0,0
-bug1#include/json/reader.h#CharReader::~CharReader()#247,35,0,88,3,0,0.0,0.0,-1,-0.28225806451612906,0.0,0.0,0,0
-bug1#include/json/reader.h#FUNCTIONNOTFOUND#267,37,0,86,3,0,0.0,0.0,-1,-0.29838709677419356,0.0,0.0,0,0
-bug1#include/json/reader.h#Factory::~Factory()#269,37,0,86,3,0,0.0,0.0,-1,-0.29838709677419356,0.0,0.0,0,0

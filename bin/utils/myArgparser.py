@@ -2,7 +2,7 @@ import argparse
 
 def make_parser():
     parser = argparse.ArgumentParser(
-        description='Generate Spectrum-Based Data.'
+        description='Generate Spectrum-Based Dataset.'
     )
 
     parser.add_argument(

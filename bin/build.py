@@ -39,7 +39,7 @@ def build(project_dir, dir_name, preprocessed=False):
 
 def make(project_dir, dir_name):
     build_dir = project_dir / dir_name
-    cmd = ['make']
+    cmd = ['make', '-j5']
     sp.call(cmd, cwd=build_dir)
     print('>> compiled project')
 
@@ -167,8 +167,8 @@ if __name__ == '__main__':
         ii_files = xx.get_ii_files(project_dir)
         cpp_files = xx.change_ii_to_cpp(project_dir, ii_files)
 
-        perFile_data = xx.extract_line2method(project_dir, cpp_files)
-        ww.write_line2method(project_dir, perFile_data, args.bug_version)
+        perFile_data = xx.extract_line2function(project_dir, cpp_files)
+        ww.write_line2function(project_dir, perFile_data, args.bug_version)
         remove(args.project, args.bug_version)
 
     # build coverage project

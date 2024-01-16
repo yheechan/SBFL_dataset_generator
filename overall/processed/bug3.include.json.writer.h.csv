@@ -1,6 +1,0 @@
-lineNo,ep,ef,np,nf,Binary,GP13,Jaccard,Naish1,Naish2,Ochiai,Russel+Rao,Wong1,bug
-bug3#include/json/writer.h#FUNCTIONNOTFOUND#58,15,0,78,3,0,0.0,0.0,-1,-0.1595744680851064,0.0,0.0,0,0
-bug3#include/json/writer.h#FUNCTIONNOTFOUND#148,13,0,80,3,0,0.0,0.0,-1,-0.13829787234042554,0.0,0.0,0,0
-bug3#include/json/writer.h#FastWriter::~FastWriter()#172,8,0,85,3,0,0.0,0.0,-1,-0.0851063829787234,0.0,0.0,0,0
-bug3#include/json/writer.h#StyledWriter::~StyledWriter()#232,5,0,88,3,0,0.0,0.0,-1,-0.05319148936170213,0.0,0.0,0,0
-bug3#include/json/writer.h#StyledStreamWriter::~StyledStreamWriter()#304,5,0,88,3,0,0.0,0.0,-1,-0.05319148936170213,0.0,0.0,0,0

@@ -33,7 +33,7 @@ if __name__ == "__main__":
     copy_data('coverage/coincident', overall_dir / 'coincident')
 
     # 3. Copy criteria data to overall
-    copy_data('criteria-per-BUG', overall_dir / 'criteria')
+    copy_data('criteria', overall_dir / 'criteria')
 
     # 4. Copy spectra data to overall
     copy_data('spectra', overall_dir / 'spectra')
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     # 6. Copy ranked data to overall
     copy_data('ranked', overall_dir / 'ranked')
 
-    # 7. Copy line2method data to overall
-    copy_data('line2method', overall_dir / 'line2method')
+    # 7. Copy line2function data to overall
+    copy_data('line2function', overall_dir / 'line2function')

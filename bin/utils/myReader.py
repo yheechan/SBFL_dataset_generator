@@ -24,16 +24,16 @@ def get_csv_as_pandas_file_path(file_path):
     df = pd.read_csv(file_path, index_col='lineNo')
     return df
 
-def get_line2method_json(project_name, version_num):
+def get_line2function_json(project_name, version_num):
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    line2method_dir = data_dir / 'line2method'
+    line2function_dir = data_dir / 'line2function'
     hh.check_dir(data_dir)
-    hh.check_dir(line2method_dir)
+    hh.check_dir(line2function_dir)
 
     version_name = 'bug'+str(version_num)
-    file_name = version_name + '.line2method.json'
-    file_path = line2method_dir / file_name
+    file_name = version_name + '.line2function.json'
+    file_path = line2function_dir / file_name
 
     json_data = {}
     with open(file_path, 'r') as fp:

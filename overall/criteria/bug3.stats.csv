@@ -1,4 +1,0 @@
-criteria,executes&pass,executes&fail,not-executes,total
-buggy-file,124,3,0,127
-buggy-func,32,3,92,127
-buggy-line,31,3,93,127

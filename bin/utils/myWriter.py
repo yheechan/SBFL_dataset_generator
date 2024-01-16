@@ -68,7 +68,7 @@ def write_TC_on_criteria_to_csv(project_path, criteria_data: dict):
 def write_TC_on_criteria_per_BUG_to_csv(project_name, criteria_data: dict):
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    crit_dir = data_dir / 'criteria-per-BUG'
+    crit_dir = data_dir / 'criteria'
     hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
 
@@ -86,7 +86,7 @@ def write_TC_on_criteria_per_BUG_to_csv(project_name, criteria_data: dict):
 def write_criteria_stat_results_per_BUG_to_csv(project_name, cd, tot):
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    crit_dir = data_dir / 'criteria-per-BUG'
+    crit_dir = data_dir / 'criteria'
     hh.check_dir(data_dir)
     hh.check_dir(crit_dir)
 
@@ -173,15 +173,15 @@ def write_df_to_csv(project_name, df, file_name):
     csv_file_path = processed_dir / file_name
     df.to_csv(csv_file_path)
 
-def write_line2method(project_path, data, bug_version):
+def write_line2function(project_path, data, bug_version):
     data_dir = project_path / 'data'
-    line2method_dir = data_dir / 'line2method'
+    line2function_dir = data_dir / 'line2function'
     hh.check_dir(data_dir)
-    hh.check_dir(line2method_dir)
+    hh.check_dir(line2function_dir)
 
-    file_name = bug_version+'.line2method.json'
+    file_name = bug_version+'.line2function.json'
 
-    file = line2method_dir / file_name
+    file = line2function_dir / file_name
 
     with open(file, 'w') as fp:
         json.dump(data, fp, ensure_ascii=False, indent=4)
