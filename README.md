@@ -55,6 +55,7 @@ SBFL_dataset_generator/
 **참고 사항:** 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
 
 ## 4. 구조 (5개 단계)
+![framwork](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork.png)
 
 ## EASY command for execution
 ```
