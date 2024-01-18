@@ -177,6 +177,7 @@ $ ./gen_spectrum.sh <bug-version>
 * gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리** 한다.
   * Coincident TC들은 제외 된다. ([5장](google.com)에서 coincident TC 제외 관련 자세히 설명 된다)
   * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장 된다.
+
 ### 파일 구조 예시는 다음 그림과 같다:
   ```
   SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
@@ -186,7 +187,7 @@ $ ./gen_spectrum.sh <bug-version>
       └─ bug1.file5.cpp.csv
   ```
 
-### 커버리지 결과 후처리 파일 내용 및 설명
+### 커버리지 결과 후처리 파일 내용 및 설명: ```spectra/<bug-version>.<file-name>.csv```
 Line no. | TC1 | TC2 | ... 
 --- | --- | --- | ---
 ```<bug-version>#<file-name>#<func-name>#<line-number>``` | 0 | 1 | ...
@@ -198,3 +199,206 @@ Line no. | TC1 | TC2 | ...
 * 2번째 열 ~ N번째 열은 각 테스트 케이스 별 해당 라인에 대한 실행 여부를 뜻한다.
   * 해당 라인이 실행 되었을 때 1, 실행 되지 않았을 때 0으로 표시한다.
   * N의 개수는, 총 jsoncpp 테스트 케이스의 개수에서 coincident TC 개수를 제외 한 개수이다. ([5장](google.com)에서 테스트 케이스 개수 자세히 설명 된다)
+
+## 4.4 스펙트럼 기반 특징 추출 단계
+![framework-step4](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step4.png)
+
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+```
+$ ./gen_processed.sh <bug-version>
+```
+
+* 후처리 된 커버러지 정보로부터 **라인 단위** 스펙트럽 기반 특징을 추출 한다.
+  * 스펙트럼 기반 특징은 ```ep, ef, np, nf```와 **SBFL formula** 적용 결과가 있다.
+  * 스펙트럽 기반 특징 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/processed/```디렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장 된다.
+
+### 파일 구조 예시는 다음 그림과 같다:
+  ```
+  SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
+  └─ processed/
+      |  … 
+      ├─ bug1.file4.cpp.csv
+      └─ bug1.file5.cpp.csv
+  ```
+
+### 스펙트럼 기반 특징 결과 파일 내용 및 설명: ```processed/<bug-version>.<file-name>.csv```
+Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russel+Rao | Wong1 | bug
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+```<bug-version>#<file-name>#<func-name>#<line-number>``` | 33 | 3 | 60 | 1 | 0 | 2.5 | 0.5 | -1 | 1.98 | 0.67 | 0.02 | 2 | 0
+```bug1#file1.cpp#ClassA::foo(int x)#10``` | 0 | 3 | 93 | 0 | 1 | 4.0 | 1.0 | 93 | 3.0 | 1.0 | 0.03125 | 3 | 1
+... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...
+
+* ```line no.```열은 ```버그버전#파일명#함수명#라인위치``` 형식으로 해당 소스 코드 파일의 라인들을 표한다.
+* ```ep, ef, np, nf```의 의미:
+  * ef : 해당 라인을 실행하고 fail한 테스트 수
+  * nf : 해당 라인을 실행하지 않고 fail한 테스트 수
+  * ep : 해당 라인을 실행하고 pass한 테스트 수
+  * np : 해당 라인을 실행하지 않고 pass한 테스트 수
+* 총 8개의 SBFL formula 의심도 결과 ([6장]장에서 SBFL formula 명시 된다)
+* ```bug```열은 해당 라인이 **버기 라인**인 경우 1, **버기 라인**이 아닌 경우 0으로 표시 한다.
+
+## 4.5 함수 별 의심도 순위 정열 단계
+![framework-step5](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step5.png)
+
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+```
+$ ./rank_functions.sh <bug-version>
+```
+
+* **라인 단위** 스펙트럼 특징 결과와 **line-function** 정보를 참고해서 각 함수를 대표하는 라인을 의심도가 가장 높은 라인으로 선택해서 **함수 단위** 스펙트럼 특징 결과로 변환 한다.
+* **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정열 한다.
+  * 함수 단위 의심도 순위로 정열 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장 된다.
+* 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장 된다. (해당 표는 [6장](google.com)에서 설명)
+
+### ```$ ./rank_functions.sh bug1``` 실행 후 함수 단위 순위 결과 예시
+```
+SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
+└─ ranked/
+    | …
+    ├─ bug1.ranked.summary.csv
+    ├─ bug1.Naish2.csv
+    └─ bug1.Ochiai.csv
+```
+
+### 스펙트럼 기반 특징 결과 파일 내용 및 설명: ```processed/<bug-version>.<file-name>.csv```
+Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russel+Rao | Wong1 | bug | rank
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+```bug1#file1.cpp#ClassA::foo(int x)``` | 0 | 3 | 93 | 0 | 1 | 4.0 | 1.0 | 93 | 3.0 | 1.0 | 0.03125 | 3 | 1 | 1
+```<bug-version>#<file-name>#<func-name>``` | 33 | 3 | 60 | 1 | 0 | 2.5 | 0.5 | -1 | 1.98 | 0.67 | 0.02 | 2 | 0| 2
+... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...
+
+* ```line no.```열은 ```버그버전#파일명#함수명``` 형식으로 jsoncpp 프로젝트의 함수들을 표한다.
+* ```ep, ef, np, nf```열, **SBFL formula 의심도 결과**열, ```bug```열은 4.4단계에서 제시한 예제와 동일하다.
+* 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 함수의 순위를 의미한다.
+
+# 5. JsonCPP의 테스트 케이스 정보
+* 총 127 테스트 케이스 존재
+  * 각 4개의 버그 버전 별 **3개의 failing 테스트 케이스**가 있다.
+  * 다음 표는 각 버그 별, 127개 테스트 케이스 중, 스펙트럼 특징 정보에 사용된 테스트 케이스의 개수를 보인다
+
+    ```<bug-version>``` | 사용 테스트 케이스 개수
+    --- | ---
+    bug1 | 126개
+    bug2 | 127개
+    bug3 | 96개
+    bug4 | 125개
+* 테스트 케이스의 출처
+  * 총 11개 테스트 케이스는 본인이 추가
+  * 총 119개 테스트 케이스는 JsonCPP 제작
+* 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
+* 테스트 케이스 파일에 테스트 케이스 예시를 보이기 위해 다음 코드에서 TC4를 대표로 보인다.
+```
+JSONTEST_FIXTURE_LOCAL(ReaderTest, allowNumericKeysTest_1) {
+  Json::Features features;
+  features.allowNumericKeys_ = true;
+  setFeatures(features);
+  checkParse(R"({ 123 : "abc" })");
+}
+```
+
+### 다음 표는 failing 테스트 케이스에 대한 내용을 보인다
+```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 출처
+--- | --- | --- | --- | --- | --- | --- | ---
+TC1 | ValueTest, issue1264_1 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC2 | ValueTest, issue1264_2 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC3 | ValueTest, issue1264_3 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC4 | ReaderTest, allowNumericKeysTest_1 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | JsonCPP
+TC5 | ReaderTest, allowNumericKeysTest_2 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
+TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
+TC7 | ReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC8 | ReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC9 | ReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC10 | ReaderTest, ossFuzz_18146_1 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC11 | ReaderTest, ossFuzz_18146_2 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC12 | ReaderTest, ossFuzz_18146_3 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+
+* 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스 (coincident TC)**들은 제외 된다.
+  * Coincident TC를 제외 하므로, 버그 함수 예층 **성능이 향상** 된다.
+
+### 버그 버전 별 버기 라인을 실행 헀으나 우연히 pass 한 테스트 케이스의 개수
+```<bug-version>``` | Coincident TC 개수
+--- | ---
+bug1 | 1개
+bug2 | 0개
+bug3 | 31개
+bug4 | 2개
+
+### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다 ([4.2](google.com)장에서 처음 소개 됨)
+
+```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
+--- | --- | --- | --- | --- |
+bug1 | file | 124 | 3 | 0
+bug1 | function | 2 | 3 | 122
+bug1 | line | **1** | 3 | 123
+bug2 | file | 124 | 3 | 0
+bug2 | function | 10 | 3 | 114
+bug2 | line | **0** | 3 | 124
+bug3 | file | 124 | 3 | 0
+bug3 | function | 32 | 3 | 92
+bug3 | line | **31** | 3 | 93
+bug4 | file | 124 | 3 | 0
+bug4 | function | 5 | 3 | 119
+bug4 | line | **2** | 3 | 122
+
+* [Understand by SciTool](https://scitools.com/) 활용 JsonCPP 저장소 분석 결과:
+  * 총 file 개수: ~ 40
+  * 총 function 개수: ~ 1,000
+  * 총 line 개수: ~ 10,000
+
+# 6. 버기 함수 별 의심도 순위 결과
+* 다음 표는 각 버그 버전 (총 4개) 별 8개의 SBFL formula 기준 **버기 함수에 대한 순위**를 보인다. ([4.5](google.com)장에서 처음 소개 됨)
+
+```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+bug1 | 211 | 5 | 5 | 5 | 5 | 5 | 211 | 211
+bug2 | 220 | 7 | 7 | 7 | 7 | 7 | 220 | 220
+bug3 | 228 | 8 | 8 | 8 | 8 | 8 | 228 | 228
+bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
+
+* 다음 그림에서는 총 8개의 SBFL formula를 보인다
+![SBFL-formula](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/SBFL-formula.png)
+
+# 7. 간편 실행 방법
+* 한번의 실행으로 모든 버그 버전들의 **SBFL 데이터셋 생성**
+  * 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+    ```
+    $ ./SBFL_all.sh
+    ```
+  * 각 버그 버전 별 추출 된 모든 정보들은 하나의 디렉토리, ```SBFL_dataset_generator/overall/```에 모음으로 저장 된다.
+
+* 하나의 버그 버전의 **SBFL 데이터셋 생성**
+  * 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+    ```
+    $ ./SBFL_single.sh <bug-version>
+    ```
+  * 소유 시간 약 4분 10초.
+
+# 8. 라인-함수 매핑 제한 조건
+  * 데이터셋에서 각 라인은 다음 형식으로 표시된다
+    ```
+    <bug-version>#<file-name>#<func-name>#<line-number>
+    ```
+  * 다음과 같은 코드 라인들은 ```<func-name>```이 인식 되지 않기에 (즉, clang이 해당 구문의 function을 identify하지 못하므로) ```FUNCTIONNOTFOUND```로 표시 한다.
+    1. Line that defines a class
+    2. Line that defines a struct
+    3. Line that defines a field
+    4. Line that defines a global variable
+    5. C directives (i.e., preprocess macro)
+
+### JsonCPP 소스 코드 파일 별 함수가 인식 되지 않는 라인의 개수
+파일명 | 라인-함수 매핑 되지 못한 라인의 개수
+--- | ---
+CMakeCXXCompilerId | 0줄
+reader.h | 5줄
+value.h | 5줄
+writer.h | 2줄
+jsontestrunner/main.cpp | 1줄
+lib_json/json_reader.cpp | 10줄
+lib_json/json_tool.cpp | 0줄
+lib_json/json_value.cpp | 3줄
+lib_json/json_valueiterator.inl | 0줄
+lib_json/json_writer.cpp | 1줄
+fuzz.cpp | 0줄
+jsontest.cpp | 2줄
+jsontest.h | 3줄
+test_lib_json/main.cpp | 50줄
