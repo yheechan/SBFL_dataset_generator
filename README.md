@@ -13,7 +13,7 @@
   ```
 *  Git 설치 방법: [git 설치 방법 링크](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98)
 
-## 도구 다운로드 디렉토리 구조
+### 도구 다운로드 디렉토리 구조
 ```
 SBFL_dataset_generator/
 ├─ README.md
@@ -22,7 +22,7 @@ SBFL_dataset_generator/
 └─ src/
 ```
 
-**참고 사항:** 해당 문석에서 파일 경로 명시 할 때의 홈 디렉토리는 **SBFL_dataset_generator/**로 가정합니다.
+**참고 사항:** 해당 문석에서 파일 경로 명시 할 때의 홈 디렉토리는 ```SBFL_dataset_generator/```로 가정합니다.
 
 # 3. 의존 도구 (Prerequisites)
 1. Clang/LLVM
@@ -58,98 +58,73 @@ SBFL_dataset_generator/
 
 # 4. 구조 (5개 단계)
 ![framwork](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork.png)
+<그림 4.1> 개발 된 도구의 구조
 
-## SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
+### SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
 ```
-SBFL_dataset_generator/
-├─ README.md
-├─ bin/
-├─ docs/
-└─ src/
-```
-
-## EASY command for execution
-```
-# Generates SBFL dataset for all 4 bug versions of JsonCPP
-./bin/SBFL_all.sh
-
-# or
-
-# Generates SBFL dataset for a single bug version of JsonCPP
-./bin/SBFL_<bug-version>.sh
+gen_data_4_jsoncpp/bin
+├─ SBFL_all.sh
+├─ SBFL_single.sh
+├─ build_project.sh
+├─ gen_processed.sh
+├─ gen_spectrum.sh
+├─ rank_functions.sh
+├─ run_testcases.sh
+└─ tools/
 ```
 
-## Step-by-Step command execution (example)
+### ```<bug-version>```에 가능한 입력 값
+* bug1
+* bug2
+* bug3
+* bug4
 
+### ```<bug-version>```의 입력 값을 ```bug1```기준, 단계 별 명령어 예제
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-# 1. Downloads JsonCPP -> Switch to correct version -> Generate line2function data & TC executables
-./build.py --project jsoncpp --bug_version bug1 --withPreprocessed
-
-# 2. Runs all TC one by one, saving coverage information
-./gen_data.py --project jsoncpp --bug_version bug1 --run_all_testcases
-
-# 3. Post-Processes coverage information
-./gen_data.py --project jsoncpp --bug_version bug1 --spectrum_data
-
-# 4. Calculate spectrum-based informations from the coverage data
-./gen_data.py --project jsoncpp --bug_version bug1 --processed_data
-
-# 5. Assigns ranks according to suspicious score from SBFL formulas at function level
-./gen_data.py --project jsoncpp --bug_version bug1 --ranked_data
+$ ./build_project.sh bug1
+$ ./run_testcases.sh bug1
+$ ./gen_spectrum.sh bug1
+$ ./gen_processed.sh bug1
+$ ./rank_functions.sh bug1
 ```
 
-## ToDo
-* analyze ossfuzz timeout bugs
+**참고 사항:** 간편 실행은 [8장](google.com)에서 설명된다.
 
-## TC Criteria
-TC that:
-  1. Not executes **cpp file** containing buggy line
-  2. executes **cpp file** containing buggy line
-  3. Not executes **class** containing buggy line
-  4. executes **class** containing buggy line
-  5. Not executes **function** containing buggy line
-  6. executes **function** containing buggy line
-  7. NOT executes buggy **lines**
-  8. executes buggy **lines**
+## 4.1 프로젝트 빌드 단계
+![framwork-step1](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork-step1.png)
 
-## Command Line Interface for ```./bin/gen_data.py```
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-usage: gen_data.py [-h] --project PROJECT --bug_version BUG_VERSION
-                   [--run_all_testcases] [--spectrum_data] [--processed_data]
-                   [--ranked_data]
-
-Generate Spectrum-Based Dataset.
-
-optional arguments:
-  -h, --help            show this help message and exit
-
-  --project PROJECT     project name (ex. jsoncpp)
-
-  --bug_version BUG_VERSION
-                        bug version (ex. bug1)
-                        
-  --run_all_testcases   Command that runs all existinc test cases. For each
-                        run, it saves coverage result data
-                        ('/<project>/data/coverage/'). It also generates lists
-                        of test cases that coincidentally pass even when
-                        running the buggy line
-                        ('/<project>/data/coverage/coincident/<bug-
-                        version>.coincidentTC.txt')
-
-  --spectrum_data       Command that generates spectrum data on each file of
-                        project from the test case coverage results.
-                        ('<project>/data/spectra/')
-
-  --processed_data      Command that processes the spectrum data (ep, ef, np,
-                        nf) then running all the SBFL formula with the
-                        processed data. The processed data is saved in
-                        ('/<project>/data/processed/').
-
-  --ranked_data         Command that ranks each method in standard of each
-                        SBFL formula independantly using processed data. The
-                        ranked data is saved in ('/<project>/data/ranked/').
-                        It also generates a summary of the rank of the buggy
-                        method on each SBFL formula
-                        ('/<project>/data/ranked/<bug-
-                        version>.rank.summary.csv').
+$ ./build_project.sh <bug-version>
 ```
+* 해당 명령어를 실행하면 ```SBFL_dataset_generator/subjects/``` 디렉토리가 새롭게 생성된다. 
+* ```<bug-version>```으로 입력 된 **jsoncpp 버전**의 프로젝트가 ```jsoncpp-<bug-version>/``` 이름으로 ```subjects/``` 디렉토리에 자동 저장 된다.
+  * ```$ ./build_project.sh bug1``` 명령어를 실행 후 프로젝트 저장 결과
+    ```
+    gen_data_4_jsoncpp/
+      └─subjects/
+        └─ jsoncpp-bug1/
+    ```
+* 저장하게 된 jsoncpp 프로젝트는 **빌드** 되어 **jsoncpp executables**들이 생성 된다.
+* jsoncpp의 소스 코드 전처리 파일들로부터 **line-function 정보**가 ```SBFL_dataset_generator/data/line2function/``` 디렉토리 위치에 ```<bug-version>.line2function.json```이름 형식으로 저장 된다.
+  * ```$ ./build_project.sh bug1``` 명령어를 실행 후 **line-function 정보** 저장 결과
+    ```
+    gen_data_4_jsoncpp/subjects/jsoncpp-bug1/
+      └─ data/
+        └─ line2function/
+          └─ bug1.line2function.json
+    ```
+* **line-function** 추출 정보 예시: ```<bug-version>.line2function.json```
+  * 프로젝트의 소스 코드 **파일**의 **함수들의 이름**과 해당 함수의 **시작 지점**과 **끝나는 지점**을 json 포맷으로 저장한다
+  ```
+  {
+    …
+    “file1.cpp": [
+      [“ClassA::foo(int x)”, 10, 15],
+      [“ClassA::boo(int x)", 17, 24],
+      …
+    ],
+    …
+  }
+  ```
