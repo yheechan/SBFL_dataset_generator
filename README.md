@@ -57,7 +57,7 @@ SBFL_dataset_generator/
 **참고 사항:** 현재 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
 
 # 4. 구조 (5개 단계)
-![framwork](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork.png)
+![framework](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework.png)
 <그림 4.1> 개발 된 도구의 구조
 
 ### SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
@@ -92,13 +92,13 @@ $ ./rank_functions.sh bug1
 **참고 사항:** 간편 실행은 [8장](google.com)에서 설명된다.
 
 ## 4.1 프로젝트 빌드 단계
-![framwork-step1](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork-step1.png)
+![framework-step1](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step1.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
 $ ./build_project.sh <bug-version>
 ```
-* 해당 명령어를 실행하면 ```SBFL_dataset_generator/subjects/``` 디렉토리가 새롭게 생성된다. 
+* ```SBFL_dataset_generator/subjects/``` 디렉토리가 새롭게 생성된다. 
 * ```<bug-version>```으로 입력 된 **jsoncpp 버전**의 프로젝트가 ```jsoncpp-<bug-version>/``` 이름으로 ```subjects/``` 디렉토리에 자동 저장 된다.
   * ```$ ./build_project.sh bug1``` 명령어를 실행 후 프로젝트 저장 결과
     ```
@@ -128,3 +128,40 @@ $ ./build_project.sh <bug-version>
     …
   }
   ```
+
+## 4.2 테스트 케이스 실행 및 커버리지 정보 추출 단계
+![framework-step2](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step2.png)
+
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+```
+$ ./run_testcases.sh <bug-version>
+```
+* jsoncpp executables로부터 하나의 테스트 케이스를 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행 된다)
+* 하나의 테스트 케이스를 실행한 후, **gcovr**를 통해 **라인, 함수, 파일 커버리지 정보**를:
+  * ```SBFL_dataset_generator/data/coverage/raw/```디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장 된다. 해당 파일은 **라인과 함수 커버리지 정보**를 저장한다.
+  * ```SBFL_dataset_generator/data/coverage/summary/```디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장 된다. 해당 파일은 **파일 커버리지 정보**를 저장한다.
+  * 커버리지 정보는 **gcovr**의 json 옵셕으로 json 형식으로 저장된다.
+    * gcovr의 json 아웃풋 형식 설명 링크: https://gcovr.com/en/stable/output/json.html#json-output
+* gcovr에서 추출 된 커버리지 결과를 통해:
+  * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/data/criteria/```디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
+  *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/data/coverage/coincident/```디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록 된다.
+  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 (5장)[google.com]에서 자세희 설명 된다.
+
+### ```$ ./run_testcases.sh <bug-version>``` 실행 후 커버리지 정보 저장 결과
+```
+jsoncpp-bug1/data/
+├─ coverage/
+|    ├─ coincident/
+|    |   └─ bug1.coincidentTC.txt
+|    ├─ raw/
+|    |    …
+|    |   ├─ bug1.TC126.raw.json
+|    |   └─ bug1.TC127.raw.json
+|    └─ summary/
+|         …
+|        ├─ bug1.TC126.summary.json
+|        └─ bug1.TC127.summary.json
+└─ criteria/
+    └─ bug1.stat.csv
+
+```
