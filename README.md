@@ -6,10 +6,10 @@
 또한, 각 버전에는 **하나의 고유한 버그**가 존재한다.
 
 # 2. Github 저장소로부터 도구 다운로드 방법
-* Github 저장소 링크: https://github.com/yheechan/gen_data_4_jsoncpp.git
+* Github 저장소 링크: https://github.com/yheechan/SBFL_dataset_generator.git
 * 다운로드 명령어: 
   ```
-  $ git clone https://github.com/yheechan/gen_data_4_jsoncpp.git
+  $ git clone https://github.com/yheechan/SBFL_dataset_generator.git
   ```
 *  Git 설치 방법: [git 설치 방법 링크](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98)
 
@@ -57,7 +57,7 @@ SBFL_dataset_generator/
 **참고 사항:** 현재 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
 
 # 4. 구조 (5개 단계)
-![framework](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework.png)
+![framework](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework.png)
 
 ### SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
 ```
@@ -88,10 +88,10 @@ $ ./gen_processed.sh bug1
 $ ./rank_functions.sh bug1
 ```
 
-**참고 사항:** 간편 실행은 [7장](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명된다.
+**참고 사항:** 간편 실행은 [7장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명된다.
 
 ## 4.1 프로젝트 빌드 단계
-![framework-step1](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step1.png)
+![framework-step1](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step1.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
@@ -130,7 +130,7 @@ $ ./build_project.sh <bug-version>
   ```
 
 ## 4.2 테스트 케이스 실행 및 커버리지 정보 추출 단계
-![framework-step2](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step2.png)
+![framework-step2](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step2.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
@@ -146,7 +146,7 @@ $ ./run_testcases.sh <bug-version>
 * gcovr에서 추출 된 커버리지 결과를 통해:
   * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/criteria/```디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
   *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/```디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록 된다.
-  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 [5장](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 자세희 설명 된다.
+  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 [5장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 자세희 설명 된다.
 
 ### ```$ ./run_testcases.sh bug1``` 실행 후 커버리지 정보 저장 결과
 ```
@@ -167,7 +167,7 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 ```
 
 ## 4.3 커버리지 결과 csv 포맷으로 후처리 단계
-![framework-step3](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step3.png)
+![framework-step3](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step3.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
@@ -175,7 +175,7 @@ $ ./gen_spectrum.sh <bug-version>
 ```
 
 * gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리** 한다.
-  * Coincident TC들은 제외 된다. ([5장](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 coincident TC 제외 관련 자세히 설명 된다)
+  * Coincident TC들은 제외 된다. ([5장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 coincident TC 제외 관련 자세히 설명 된다)
   * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장 된다.
 
 ### 파일 구조 예시는 다음 그림과 같다:
@@ -198,10 +198,10 @@ Line no. | TC1 | TC2 | ...
 * ```line no.```열은 ```버그버전#파일명#함수명#라인위치``` 형식으로 해당 소스 코드 파일의 라인들을 표한다.
 * 2번째 열 ~ N번째 열은 각 테스트 케이스 별 해당 라인에 대한 실행 여부를 뜻한다.
   * 해당 라인이 실행 되었을 때 1, 실행 되지 않았을 때 0으로 표시한다.
-  * N의 개수는, 총 jsoncpp 테스트 케이스의 개수에서 coincident TC 개수를 제외 한 개수이다. ([5장](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 테스트 케이스 개수 자세히 설명 된다)
+  * N의 개수는, 총 jsoncpp 테스트 케이스의 개수에서 coincident TC 개수를 제외 한 개수이다. ([5장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 테스트 케이스 개수 자세히 설명 된다)
 
 ## 4.4 스펙트럼 기반 특징 추출 단계
-![framework-step4](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step4.png)
+![framework-step4](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step4.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
@@ -238,7 +238,7 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
 * ```bug```열은 해당 라인이 **버기 라인**인 경우 1, **버기 라인**이 아닌 경우 0으로 표시 한다.
 
 ## 4.5 함수 별 의심도 순위 정열 단계
-![framework-step5](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step5.png)
+![framework-step5](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step5.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
@@ -248,7 +248,7 @@ $ ./rank_functions.sh <bug-version>
 * **라인 단위** 스펙트럼 특징 결과와 **line-function** 정보를 참고해서 각 함수를 대표하는 라인을 의심도가 가장 높은 라인으로 선택해서 **함수 단위** 스펙트럼 특징 결과로 변환 한다.
 * **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정열 한다.
   * 함수 단위 의심도 순위로 정열 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장 된다.
-* 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장 된다. (해당 표는 [6장](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명)
+* 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장 된다. (해당 표는 [6장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명)
 
 ### ```$ ./rank_functions.sh bug1``` 실행 후 함수 단위 순위 결과 예시
 ```
@@ -323,7 +323,7 @@ bug2 | 0개
 bug3 | 31개
 bug4 | 2개
 
-### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다 ([4.2](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
+### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다 ([4.2](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
 
 ```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
 --- | --- | --- | --- | --- |
@@ -346,7 +346,7 @@ bug4 | line | **2** | 3 | 122
   * 총 line 개수: ~ 10,000
 
 # 6. 버기 함수 별 의심도 순위 결과
-* 다음 표는 각 버그 버전 (총 4개) 별 8개의 SBFL formula 기준 **버기 함수에 대한 순위**를 보인다. ([4.5](https://github.com/yheechan/gen_data_4_jsoncpp/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
+* 다음 표는 각 버그 버전 (총 4개) 별 8개의 SBFL formula 기준 **버기 함수에 대한 순위**를 보인다. ([4.5](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
 
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
@@ -356,7 +356,7 @@ bug3 | 228 | 8 | 8 | 8 | 8 | 8 | 228 | 228
 bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
 
 * 다음 그림에서는 총 8개의 SBFL formula를 보인다
-![SBFL-formula](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/SBFL-formula.png)
+![SBFL-formula](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/SBFL-formula.png)
 
 # 7. 간편 실행 방법
 * 한번의 실행으로 모든 버그 버전들의 **SBFL 데이터셋 생성**
