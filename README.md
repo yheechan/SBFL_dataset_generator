@@ -88,7 +88,7 @@ $ ./gen_processed.sh bug1
 $ ./rank_functions.sh bug1
 ```
 
-**참고 사항:** 간편 실행은 [7장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명된다.
+**참고 사항:** 간편 실행은 [7장](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명된다.
 
 ## 4.1 프로젝트 빌드 단계
 ![framework-step1](https://github.com/yheechan/SBFL_dataset_generator/blob/master/docs/img/framework-step1.png)
@@ -146,7 +146,7 @@ $ ./run_testcases.sh <bug-version>
 * gcovr에서 추출 된 커버리지 결과를 통해:
   * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/criteria/```디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
   *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/```디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록 된다.
-  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 [5장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 자세희 설명 된다.
+  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 [5장](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#5-jsoncpp%EC%9D%98-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%A0%95%EB%B3%B4)에서 자세희 설명 된다.
 
 ### ```$ ./run_testcases.sh bug1``` 실행 후 커버리지 정보 저장 결과
 ```
@@ -175,7 +175,7 @@ $ ./gen_spectrum.sh <bug-version>
 ```
 
 * gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리** 한다.
-  * Coincident TC들은 제외 된다. ([5장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 coincident TC 제외 관련 자세히 설명 된다)
+  * Coincident TC들은 제외 된다. ([5장](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#5-jsoncpp%EC%9D%98-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BC%80%EC%9D%B4%EC%8A%A4-%EC%A0%95%EB%B3%B4)에서 coincident TC 제외 관련 자세히 설명 된다)
   * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장 된다.
 
 ### 파일 구조 예시는 다음 그림과 같다:
@@ -234,7 +234,7 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
   * nf : 해당 라인을 실행하지 않고 fail한 테스트 수
   * ep : 해당 라인을 실행하고 pass한 테스트 수
   * np : 해당 라인을 실행하지 않고 pass한 테스트 수
-* 총 8개의 SBFL formula 의심도 결과 ([6장]장에서 SBFL formula 명시 된다)
+* 총 8개의 SBFL formula 의심도 결과 ([6장](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#6-%EB%B2%84%EA%B8%B0-%ED%95%A8%EC%88%98-%EB%B3%84-%EC%9D%98%EC%8B%AC%EB%8F%84-%EC%88%9C%EC%9C%84-%EA%B2%B0%EA%B3%BC)장에서 SBFL formula 명시 된다)
 * ```bug```열은 해당 라인이 **버기 라인**인 경우 1, **버기 라인**이 아닌 경우 0으로 표시 한다.
 
 ## 4.5 함수 별 의심도 순위 정열 단계
@@ -248,7 +248,7 @@ $ ./rank_functions.sh <bug-version>
 * **라인 단위** 스펙트럼 특징 결과와 **line-function** 정보를 참고해서 각 함수를 대표하는 라인을 의심도가 가장 높은 라인으로 선택해서 **함수 단위** 스펙트럼 특징 결과로 변환 한다.
 * **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정열 한다.
   * 함수 단위 의심도 순위로 정열 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장 된다.
-* 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장 된다. (해당 표는 [6장](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)에서 설명)
+* 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked/```디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장 된다. (해당 표는 [6장](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#6-%EB%B2%84%EA%B8%B0-%ED%95%A8%EC%88%98-%EB%B3%84-%EC%9D%98%EC%8B%AC%EB%8F%84-%EC%88%9C%EC%9C%84-%EA%B2%B0%EA%B3%BC)에서 설명)
 
 ### ```$ ./rank_functions.sh bug1``` 실행 후 함수 단위 순위 결과 예시
 ```
@@ -323,7 +323,7 @@ bug2 | 0개
 bug3 | 31개
 bug4 | 2개
 
-### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다 ([4.2](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
+### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다 ([4.2](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#6-%EB%B2%84%EA%B8%B0-%ED%95%A8%EC%88%98-%EB%B3%84-%EC%9D%98%EC%8B%AC%EB%8F%84-%EC%88%9C%EC%9C%84-%EA%B2%B0%EA%B3%BC)장에서 처음 소개 됨)
 
 ```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
 --- | --- | --- | --- | --- |
@@ -346,7 +346,7 @@ bug4 | line | **2** | 3 | 122
   * 총 line 개수: ~ 10,000
 
 # 6. 버기 함수 별 의심도 순위 결과
-* 다음 표는 각 버그 버전 (총 4개) 별 8개의 SBFL formula 기준 **버기 함수에 대한 순위**를 보인다. ([4.5](https://github.com/yheechan/SBFL_dataset_generator/tree/master?tab=readme-ov-file#7-%EA%B0%84%ED%8E%B8-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)장에서 처음 소개 됨)
+* 다음 표는 각 버그 버전 (총 4개) 별 8개의 SBFL formula 기준 **버기 함수에 대한 순위**를 보인다. ([4.5](https://github.com/yheechan/SBFL_dataset_generator?tab=readme-ov-file#45-%ED%95%A8%EC%88%98-%EB%B3%84-%EC%9D%98%EC%8B%AC%EB%8F%84-%EC%88%9C%EC%9C%84-%EC%A0%95%EC%97%B4-%EB%8B%A8%EA%B3%84)장에서 처음 소개 됨)
 
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
