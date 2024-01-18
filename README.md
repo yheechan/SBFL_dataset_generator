@@ -1,11 +1,11 @@
 # SBFL_dataset_generator
 
-## 1. 소개
+# 1. 소개
 해당 github 저장소에서 개발 된 도구는 Spectrum-Based Fault Localization (SBFL)을 위해 **스펙트럼 기반 특징 데이터셋**을 생성한다.
 현재 [JsonCPP](https://github.com/open-source-parsers/jsoncpp) 오픈 소스 프로젝트의 총 **4가지 버전**에만 적용된다.
 또한, 각 버전에는 **하나의 고유한 버그**가 존재한다.
 
-## 2. Github 저장소로부터 도구 다운로드 방법
+# 2. Github 저장소로부터 도구 다운로드 방법
 * Github 저장소 링크: https://github.com/yheechan/gen_data_4_jsoncpp.git
 * 다운로드 명령어: 
   ```
@@ -13,7 +13,7 @@
   ```
 *  Git 설치 방법: [git 설치 방법 링크](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98)
 
-### 도구 다운로드 디렉토리 구조
+## 도구 다운로드 디렉토리 구조
 ```
 SBFL_dataset_generator/
 ├─ README.md
@@ -22,7 +22,9 @@ SBFL_dataset_generator/
 └─ src/
 ```
 
-## 3. 의존 도구 (Prerequisites)
+**참고 사항:** 해당 문석에서 파일 경로 명시 할 때의 홈 디렉토리는 **SBFL_dataset_generator/**로 가정합니다.
+
+# 3. 의존 도구 (Prerequisites)
 1. Clang/LLVM
     * 버전: 13.0.1
     * 설치 방법 링크: https://apt.llvm.org/
@@ -52,10 +54,19 @@ SBFL_dataset_generator/
 4. Make
     * 버전: 4.1
 
-**참고 사항:** 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
+**참고 사항:** 현재 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
 
-## 4. 구조 (5개 단계)
+# 4. 구조 (5개 단계)
 ![framwork](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framwork.png)
+
+## SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
+```
+SBFL_dataset_generator/
+├─ README.md
+├─ bin/
+├─ docs/
+└─ src/
+```
 
 ## EASY command for execution
 ```
