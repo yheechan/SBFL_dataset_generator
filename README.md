@@ -58,11 +58,10 @@ SBFL_dataset_generator/
 
 # 4. 구조 (5개 단계)
 ![framework](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework.png)
-<그림 4.1> 개발 된 도구의 구조
 
 ### SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
 ```
-gen_data_4_jsoncpp/bin
+SBFL_dataset_generator/bin
 ├─ SBFL_all.sh
 ├─ SBFL_single.sh
 ├─ build_project.sh
@@ -98,19 +97,20 @@ $ ./rank_functions.sh bug1
 ```
 $ ./build_project.sh <bug-version>
 ```
+
 * ```SBFL_dataset_generator/subjects/``` 디렉토리가 새롭게 생성된다. 
 * ```<bug-version>```으로 입력 된 **jsoncpp 버전**의 프로젝트가 ```jsoncpp-<bug-version>/``` 이름으로 ```subjects/``` 디렉토리에 자동 저장 된다.
   * ```$ ./build_project.sh bug1``` 명령어를 실행 후 프로젝트 저장 결과
     ```
-    gen_data_4_jsoncpp/
+    SBFL_dataset_generator/
       └─subjects/
         └─ jsoncpp-bug1/
     ```
 * 저장하게 된 jsoncpp 프로젝트는 **빌드** 되어 **jsoncpp executables**들이 생성 된다.
-* jsoncpp의 소스 코드 전처리 파일들로부터 **line-function 정보**가 ```SBFL_dataset_generator/data/line2function/``` 디렉토리 위치에 ```<bug-version>.line2function.json```이름 형식으로 저장 된다.
+* jsoncpp의 소스 코드 전처리 파일들로부터 **line-function 정보**가 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/line2function/``` 디렉토리 위치에 ```<bug-version>.line2function.json```이름 형식으로 저장 된다.
   * ```$ ./build_project.sh bug1``` 명령어를 실행 후 **line-function 정보** 저장 결과
     ```
-    gen_data_4_jsoncpp/subjects/jsoncpp-bug1/
+    SBFL_dataset_generator/subjects/jsoncpp-bug1/
       └─ data/
         └─ line2function/
           └─ bug1.line2function.json
@@ -136,32 +136,65 @@ $ ./build_project.sh <bug-version>
 ```
 $ ./run_testcases.sh <bug-version>
 ```
+
 * jsoncpp executables로부터 하나의 테스트 케이스를 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행 된다)
 * 하나의 테스트 케이스를 실행한 후, **gcovr**를 통해 **라인, 함수, 파일 커버리지 정보**를:
-  * ```SBFL_dataset_generator/data/coverage/raw/```디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장 된다. 해당 파일은 **라인과 함수 커버리지 정보**를 저장한다.
-  * ```SBFL_dataset_generator/data/coverage/summary/```디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장 된다. 해당 파일은 **파일 커버리지 정보**를 저장한다.
+  * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/raw/```디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장 된다. 해당 파일은 **라인과 함수 커버리지 정보**를 저장한다.
+  * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/summary/```디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장 된다. 해당 파일은 **파일 커버리지 정보**를 저장한다.
   * 커버리지 정보는 **gcovr**의 json 옵셕으로 json 형식으로 저장된다.
     * gcovr의 json 아웃풋 형식 설명 링크: https://gcovr.com/en/stable/output/json.html#json-output
 * gcovr에서 추출 된 커버리지 결과를 통해:
-  * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/data/criteria/```디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
-  *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/data/coverage/coincident/```디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록 된다.
-  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 (5장)[google.com]에서 자세희 설명 된다.
+  * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/criteria/```디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
+  *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/```디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록 된다.
+  * **각 테스트 케이스들의 특징**과 **coincident TC** 관련해서는 [5장](google.com)에서 자세희 설명 된다.
 
-### ```$ ./run_testcases.sh <bug-version>``` 실행 후 커버리지 정보 저장 결과
+### ```$ ./run_testcases.sh bug1``` 실행 후 커버리지 정보 저장 결과
 ```
-jsoncpp-bug1/data/
+SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 ├─ coverage/
 |    ├─ coincident/
 |    |   └─ bug1.coincidentTC.txt
 |    ├─ raw/
-|    |    …
+|    |   | …
 |    |   ├─ bug1.TC126.raw.json
 |    |   └─ bug1.TC127.raw.json
 |    └─ summary/
-|         …
+|        | …
 |        ├─ bug1.TC126.summary.json
 |        └─ bug1.TC127.summary.json
 └─ criteria/
     └─ bug1.stat.csv
-
 ```
+
+## 4.3 커버리지 결과 csv 포맷으로 후처리 단계
+![framework-step3](https://github.com/yheechan/gen_data_4_jsoncpp/blob/master/docs/img/framework-step3.png)
+
+작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
+```
+$ ./gen_spectrum.sh <bug-version>
+```
+
+* gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리** 한다.
+  * Coincident TC들은 제외 된다. ([5장](google.com)에서 coincident TC 제외 관련 자세히 설명 된다)
+  * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장 된다.
+### 파일 구조 예시는 다음 그림과 같다:
+  ```
+  SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
+  └─ spectra/
+      |  … 
+      ├─ bug1.file4.cpp.csv
+      └─ bug1.file5.cpp.csv
+  ```
+
+### 커버리지 결과 후처리 파일 내용 및 설명
+Line no. | TC1 | TC2 | ... 
+--- | --- | --- | ---
+```<bug-version>#<file-name>#<func-name>#<line-number>``` | 0 | 1 | ...
+```bug1#file1.cpp#ClassA::foo(int x)#10``` | 0 | 1| ...
+... | ... | ... | ...
+
+
+* ```line no.```열은 ```버그버전#파일명#함수명#라인위치``` 형식으로 해당 소스 코드 파일의 라인들을 표한다.
+* 2번째 열 ~ N번째 열은 각 테스트 케이스 별 해당 라인에 대한 실행 여부를 뜻한다.
+  * 해당 라인이 실행 되었을 때 1, 실행 되지 않았을 때 0으로 표시한다.
+  * N의 개수는, 총 jsoncpp 테스트 케이스의 개수에서 coincident TC 개수를 제외 한 개수이다. ([5장](google.com)에서 테스트 케이스 개수 자세히 설명 된다)
