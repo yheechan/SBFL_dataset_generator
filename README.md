@@ -1,22 +1,60 @@
-# gen_data_4_jsoncpp
+# SBFL_dataset_generator
 
-This programs generate ranked dataset for Spectrum-Based Fault Localization (SBFL).
-Current limit is that it is limited to only [JsonCPP](https://github.com/open-source-parsers/jsoncpp).
+## 1. 소개
+해당 github 저장소에서 개발 된 도구는 Spectrum-Based Fault Localization (SBFL)을 위해 **스펙트럼 기반 특징 데이터셋**을 생성한다.
+현재 [JsonCPP](https://github.com/open-source-parsers/jsoncpp) 오픈 소스 프로젝트의 총 **4가지 버전**에만 적용된다.
+또한, 각 버전에는 **하나의 고유한 버그**가 존재한다.
 
-## Dependencies
-1. Clang/LLVM, version 13.0.1
-    * apt package downloader: https://apt.llvm.org/
-    * manually built from source: https://releases.llvm.org/download.html
-      * ```sudo apt install llvm-13-dev clang-13 libclang-13-dev lld-13 libc++abi-13-dev```
+## 2. Github 저장소로부터 도구 다운로드 방법
+* Github 저장소 링크: https://github.com/yheechan/gen_data_4_jsoncpp.git
+* 다운로드 명령어: 
+  ```
+  $ git clone https://github.com/yheechan/gen_data_4_jsoncpp.git
+  ```
+*  Git 설치 방법: [git 설치 방법 링크](https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98)
 
-2. Gcovr, version 6.0
-    * install guide: https://gcovr.com/en/stable/installation.html
+### 도구 다운로드 디렉토리 구조
+```
+SBFL_dataset_generator/
+├─ README.md
+├─ bin/
+├─ docs/
+└─ src/
+```
+
+## 3. 의존 도구 (Prerequisites)
+1. Clang/LLVM
+    * 버전: 13.0.1
+    * 설치 방법 링크: https://apt.llvm.org/
+    * 설치 명령어:
+        ```
+        $ wget https:/apt.llvm.org/llvm.sh
+        $ chmod +x llvm.sh
+        $ sudo ./llvm.sh 13 all
+        ```
+    * 환경 설정 필요
+
+2. Gcovr
+    * 설치 방법 링크: https://gcovr.com/en/stable/installation.html
+    * 설치 명령어:
+      ```
+      $ pip install gcovr==6.0
+      ```
 
 3. Python Modules
-    * Pandas (1.1.15)
-    * Numpy (1.19.5)
+    * Pandas 버전: 1.1.15
+    * Numpy 버전: 1.19.5
+    * 설치 명령어:
+      ```
+      $ pip install pandas==1.15 numpy==1.19.5
+      ```
 
-4. Make, version 4.1
+4. Make
+    * 버전: 4.1
+
+**참고 사항:** 개발 된 도구는 위 명시 되어있는 의존 도구들의 버전으로 개발 되었으며, 다른 버전으로 테스트 되지 않았습니다.
+
+## 4. 구조 (5개 단계)
 
 ## EASY command for execution
 ```

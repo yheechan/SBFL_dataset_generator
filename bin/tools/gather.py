@@ -38,7 +38,15 @@ if __name__ == "__main__":
     hh.check_dir(overall_dir)
 
     # 2. Copy coincident data to overall
-    copy_data('coverage/coincident', overall_dir / 'coincident')
+    coverage_dir = overall_dir / 'coverage'
+    hh.check_dir(coverage_dir)
+    copy_data('coverage/coincident', coverage_dir / 'coincident')
+
+    # 2-1. Copy raw data to overall
+    copy_data('coverage/raw', coverage_dir / 'raw')
+
+    # 2-2. Copy summary data to overall
+    copy_data('coverage/summary', coverage_dir / 'summary')
 
     # 3. Copy criteria data to overall
     copy_data('criteria', overall_dir / 'criteria')
