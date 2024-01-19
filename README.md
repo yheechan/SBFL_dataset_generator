@@ -247,10 +247,10 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
 
 * ```line no.```열은 ```버그버전#파일명#함수명#라인위치``` 형식으로 해당 소스 코드 파일의 라인들을 표한다.
 * ```ep, ef, np, nf```의 의미:
-  * ef : 해당 라인을 실행하고 fail한 테스트 수 (Executed & Failed)
-  * nf : 해당 라인을 실행하지 않고 fail한 테스트 수 (Not-executed & Failed)
-  * ep : 해당 라인을 실행하고 pass한 테스트 수 (Executed & Passed)
-  * np : 해당 라인을 실행하지 않고 pass한 테스트 수 (Not-executed & Passed)
+  * **ef** : 해당 라인을 실행하고 fail한 테스트 수 (Executed & Failed)
+  * **nf** : 해당 라인을 실행하지 않고 fail한 테스트 수 (Not-executed & Failed)
+  * **ep** : 해당 라인을 실행하고 pass한 테스트 수 (Executed & Passed)
+  * **np** : 해당 라인을 실행하지 않고 pass한 테스트 수 (Not-executed & Passed)
 * [6장](#6-의심도-순위-결과)에서 명시 된 **8개의 SBFL formula**를 각 **라인**에 적용 한 의심도 결과
 * ```bug```열은 해당 라인이 **버기 라인인 경우** 1, **버기 라인이 아닌** 경우 0으로 표시한다.
 
@@ -448,7 +448,7 @@ bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
     2. Line that defines a struct
     3. Line that defines a field
     4. Line that defines a global variable
-    5. C directives (i.e., preprocess macro)
+    5. C directives (i.e., preprocessing directives, 전처리 지시자)
 
     ### JsonCPP 소스 코드 파일 별 함수가 인식 되지 않는 라인의 개수
     파일명 | 라인-함수 매핑 되지 못한 라인의 개수 | 유형
