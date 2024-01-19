@@ -2,4 +2,4 @@
 ./run_testcases.sh $1
 ./gen_spectrum.sh $1
 ./gen_processed.sh $1
-./rank_functions.sh $1
+./rank.sh $1

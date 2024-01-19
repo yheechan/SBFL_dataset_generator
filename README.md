@@ -77,7 +77,7 @@ SBFL_dataset_generator/bin
 ├─ build_project.sh
 ├─ gen_processed.sh
 ├─ gen_spectrum.sh
-├─ rank_functions.sh
+├─ rank.sh
 ├─ run_testcases.sh
 └─ tools/
 ```
@@ -99,7 +99,7 @@ $ ./build_project.sh bug1
 $ ./run_testcases.sh bug1
 $ ./gen_spectrum.sh bug1
 $ ./gen_processed.sh bug1
-$ ./rank_functions.sh bug1
+$ ./rank.sh bug1
 ```
 
 **참고 사항:** 간편 실행은 [7장](#7-간편-실행-방법)에서 설명된다.
@@ -259,7 +259,7 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./rank_functions.sh <bug-version>
+$ ./rank.sh <bug-version>
 ```
 
 ### 라인 단위 결과
@@ -294,7 +294,7 @@ $ ./rank_functions.sh <bug-version>
   * ```ep, ef, np, nf```열, **SBFL formula 의심도 결과**열, ```bug```열은 [4.4](#44-스펙트럼-기반-특징-추출-단계)단계에서 제시한 예제와 동일하다.
   * 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 함수의 순위를 의미한다.
 
-### ```$ ./rank_functions.sh bug1``` 실행 후 함수 단위 순위 결과 예시
+### ```$ ./rank.sh bug1``` 실행 후 함수 단위 순위 결과 예시
 ```
 SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 └─ ranked-function/
