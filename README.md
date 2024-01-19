@@ -354,7 +354,9 @@ TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::d
 * 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스**들은 제외된다.
   * Coincident TC를 제외 하므로, 버그 함수 예층 **성능이 향상**된다.
 
-  ### 버그 버전 별 버기 라인을 실행 헀으나 우연히 pass 한 테스트 케이스의 개수
+  ### 버그 버전 별 버기 라인을 실행 헀으나 우연히 pass 한 테스트 케이스의 개수 :
+    * 파일: ```/coincident/<bug-version>.coincidentTC.txt``` ([4.2](#42-테스트-케이스-실행-및-커버리지-정보-추출-단계)장에서 소개)
+
   ```<bug-version>``` | Coincident TC 개수
   --- | ---
   bug1 | **1**개
@@ -362,7 +364,9 @@ TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::d
   bug3 | **31**개
   bug4 | **2**개
 
-  ### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다
+  ### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다:
+    * 파일: ```criteria/<bug-version>.stat.csv``` ([4.2](#42-테스트-케이스-실행-및-커버리지-정보-추출-단계)장에서 소개)
+
   ```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
   --- | --- | --- | --- | --- |
   bug1 | file | 124 | 3 | 0
@@ -384,7 +388,9 @@ TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::d
   * 총 line 개수: ~ 10,000
 
 # 6. 의심도 순위 결과
-### 라인 단위 버기 함수의 의심 순위: ```ranked-line/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+### 라인 단위 버기 함수의 의심 순위:
+  * ```ranked-line/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 bug1 | 539 | 29 | 29 | 29 | 29 | 29 | 539 | 539
@@ -392,7 +398,9 @@ bug2 | 617 | 30 | 30 | 30 | 30 | 30 | 617 | 617
 bug3 | 680 | 45 | 45 | 45 | 45 | 45 | 680 | 680
 bug4 | 676 | 3 | 3 | 3 | 3 | 3 | 676 | 676
 
-### 함수 단위 버기 함수의 의심 순위: ```ranked-function/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+### 함수 단위 버기 함수의 의심 순위:
+  * ```ranked-function/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
 bug1 | 211 | 5 | 5 | 5 | 5 | 5 | 211 | 211
@@ -400,7 +408,7 @@ bug2 | 220 | 7 | 7 | 7 | 7 | 7 | 220 | 220
 bug3 | 228 | 8 | 8 | 8 | 8 | 8 | 228 | 228
 bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
 
-* 다음 그림에서는 총 8개의 SBFL formula를 보인다
+### 총 8개의 SBFL formula를 보인다
 ![SBFL-formula](docs/img/SBFL-formula.png)
 
 # 7. 간편 실행 방법
