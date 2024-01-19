@@ -83,10 +83,12 @@ SBFL_dataset_generator/bin
 ```
 
 ### ```<bug-version>```에 가능한 입력 값
-* bug1
-* bug2
-* bug3
-* bug4
+```<bug-version>``` |
+---
+bug1
+bug2
+bug3
+bug4
 
 ### ```<bug-version>```의 입력 값을 ```bug1```기준, 단계 별 명령어 예제
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
@@ -318,9 +320,9 @@ TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader
 TC7 | ReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
 TC8 | ReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
 TC9 | ReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
-TC10 | ReaderTest, ossFuzz_18146_1 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
-TC11 | ReaderTest, ossFuzz_18146_2 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
-TC12 | ReaderTest, ossFuzz_18146_3 | bug3 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC10 | ReaderTest, ossFuzz_18146_1 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC11 | ReaderTest, ossFuzz_18146_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
 
 * 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스 (coincident TC)**들은 제외 된다.
   * Coincident TC를 제외 하므로, 버그 함수 예층 **성능이 향상** 된다.
