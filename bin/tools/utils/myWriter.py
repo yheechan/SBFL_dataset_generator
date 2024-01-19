@@ -188,10 +188,11 @@ def write_line2function(project_path, data, bug_version):
         json.dump(data, fp, ensure_ascii=False, indent=4)
 
     
-def write_ranked_data_to_csv(project_name, df, fname):
+def write_ranked_data_to_csv(project_name, df, fname, level):
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    ranked_dir = data_dir / 'ranked'
+    rank_name = 'ranked-'+level
+    ranked_dir = data_dir / rank_name
     hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
 
@@ -200,13 +201,14 @@ def write_ranked_data_to_csv(project_name, df, fname):
 
     df.to_csv(file)
 
-def write_ranked_summary_to_csv(project_name, data):
+def write_ranked_summary_to_csv(project_name, data, level):
     project = project_name.split('-')[0]
     bug_version = project_name.split('-')[1]
     
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    ranked_dir = data_dir / 'ranked'
+    ranked_name = 'ranked-'+level
+    ranked_dir = data_dir / ranked_name
     hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
 

@@ -36,7 +36,7 @@ SBFL_dataset_generator/
 
 # 3. 의존 도구 (Prerequisites)
 1. Clang/LLVM
-    * 버전: 13.0.1
+    * 버전: 13.0.1 (이 외 버전 사용 불가)
     * 설치 방법 링크: https://apt.llvm.org/
     * 설치 명령어:
         ```
@@ -47,6 +47,7 @@ SBFL_dataset_generator/
     * 환경 설정 필요
 
 2. Gcovr
+    * 버전: 6.0 (이 외 버전 사용 불가)
     * 설치 방법 링크: https://gcovr.com/en/stable/installation.html
     * 설치 명령어:
       ```

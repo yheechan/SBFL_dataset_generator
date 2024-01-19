@@ -210,14 +210,14 @@ def ranked_data(project_name, db, failing_per_bug, fails):
         # for line level
         line_level = og_total_df.copy()
         line_result_df = line_level.sort_values(by=sbfl_type, ascending=False)
-        file_name = bug_version+'.'+sbfl_type
+        file_name = bug_version+'.'+sbfl_type+'.line'
 
         line_result_df['Rank'] = line_result_df[sbfl_type].rank(method='max', ascending=False)
         bug_row_line = line_result_df[line_result_df['bug'] == 1]
         bug_rank_value_line = bug_row_line['Rank'].values[0]
         row_data_line[bug_index].append(bug_rank_value_line)
         ww.write_ranked_data_to_csv(project_name, line_result_df, file_name, 'line')
-        
+
         # for function level
         total_df = og_total_df.copy()
 
@@ -248,7 +248,6 @@ def ranked_data(project_name, db, failing_per_bug, fails):
         
     summary_result = {'col_data': col_data, 'row_data': row_data}
     ww.write_ranked_summary_to_csv(project_name, summary_result, 'function')
-
     summary_result_line = {'col_data': col_data, 'row_data': row_data_line}
     ww.write_ranked_summary_to_csv(project_name, summary_result_line, 'line')
 
