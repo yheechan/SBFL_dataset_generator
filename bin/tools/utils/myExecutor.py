@@ -11,6 +11,7 @@ main_dir = bin_dir.parent
 src_dir = main_dir / 'src'
 extractor_exe = tool_dir / 'extractor'
 subjects_dir = main_dir / 'subjects'
+queue_dir = main_dir / 'afl-test-cases' / 'output' / 'default' / 'queue'
 
 versions_dir = src_dir / 'bug-versions-jsoncpp'
 
@@ -198,6 +199,8 @@ def get_test_case_list(project_name, tf):
 
     project_path = subjects_dir / project_name
     build_dir = project_path / 'build'
+    # if the project version is not built
+    # build the project version
     if not project_path.exists() or not build_dir.exists():
         cmd = [
             './build.py', '--project', project, '--bug_version', bug_version,
@@ -205,11 +208,13 @@ def get_test_case_list(project_name, tf):
         ]
         sp.call(cmd, cwd=bin_dir)
 
+    # this is the command executable in jsoncpp that executes each TC
     cmd = [
         './jsoncpp_test',
         '--list-tests'
     ]
 
+    # this is the directory path where the jsoncpp_test executable exists
     test_dir = build_dir / 'src/test_lib_json'
 
     process = sp.Popen(
@@ -217,6 +222,7 @@ def get_test_case_list(project_name, tf):
         cwd=test_dir, encoding='utf-8'
     )
 
+    # first save all the test cases with their names in raw list
     raw_tf = []
     raw_tp = []
     while True:
@@ -237,8 +243,11 @@ def get_test_case_list(project_name, tf):
     tot_cnt = 0
     fail_cnt = 0
     pass_cnt = 0
-    num = 1
+    # then save all the test cases with their names in tc dictionary
+    # type indicates whether the test case is failing or passing
+    tc_cnt = 0
     for num in range(len(raw_tc_list)):
+        tc_cnt += 1
         tc_id = 'TC'+str(num+1)
         tc_name = raw_tc_list[num]
         type = 'tp'
@@ -250,9 +259,37 @@ def get_test_case_list(project_name, tf):
 
         tc[tc_id] = {
             'type': type,
-            'name': tc_name
+            'name': tc_name,
+            'path': None
         }
         name2id[tc_name] = tc_id
+
+    # get jsoncpp_fuzzer path
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+
+    for afl_tc in sorted(queue_dir.iterdir()):
+        tc_cnt += 1
+        tc_id = 'TC'+str(tc_cnt)
+
+        afl_name = afl_tc.name
+        check = afl_name.split(',')[0].split(':')
+        if check[0] != "id": continue
+
+        afl_num = check[1]
+        tc_name = 'afl/afl-'+afl_num
+        type = 'tp'
+        
+        assert not tc_id in tc.keys()
+
+        cmd = [jsoncpp_fuzzer, afl_tc]
+
+        tc[tc_id] = {
+            'type': type,
+            'name': tc_name,
+            'path': afl_tc
+        }
     
     tot_cnt = len(tc.keys())
     pass_cnt = tot_cnt - fail_cnt
