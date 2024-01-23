@@ -159,7 +159,7 @@ $ ./build_project.sh <bug-version>
 $ ./run_testcases.sh <bug-version>
 ```
 
-* jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개), AFL++로 추출한 테스트 케이스 (1029개)를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
+* jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개), AFL++로 추출한 테스트 케이스 (1,029개)를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
 * 하나의 테스트 케이스를 실행한 후, **gcovr**를 통해 **라인, 함수, 파일 커버리지 정보**를:
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/raw/``` 디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **라인과 함수 커버리지 정보**를 저장한다.
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/summary/``` 디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **파일 커버리지 정보**를 저장한다.
@@ -187,6 +187,10 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 └─ criteria/
     └─ bug1.stat.csv
 ```
+
+### ```<tc-name>``` 형식
+* 테스트 케이스의 번호에 따라 ```TC<숫자>``` 형식으로 테스트 케이스의 이름이 정해진다.
+  * ex) ```TC1032```
 
 ## 4.3 커버리지 결과 csv 포맷으로 후처리 단계
 ![framework-step3](docs/img/framework-step3.png)
@@ -348,7 +352,7 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 본인과 JsonCPP | 127개 | 91.4%
 AFL++ | 1,029개 | 13.4%
   * 위 표는 각 출처에서 제작 된 테스트 케이스를 모두 실행했을 때 jsoncpp 프로젝트 전체의 라인 커버리지 결과이다.
-  * JsonCPP은 단일 실행 파일이 아닌 라이브러리입니다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있습니다.
+  * JsonCPP은 단일 실행 파일이 아닌 라이브러리이다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있다.
 
 ### 다음 표는 failing 테스트 케이스에 대한 내용을 보인다
 ```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 라인 커버리지 | 출처
