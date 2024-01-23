@@ -14,6 +14,12 @@
 해당 github 저장소에서 개발 된 도구는 Spectrum-Based Fault Localization (SBFL)을 위해 **스펙트럼 기반 특징 데이터셋**을 생성한다.
 현재 [JsonCPP](https://github.com/open-source-parsers/jsoncpp) 오픈 소스 프로젝트의 총 **4가지 버전**에만 적용된다. 각 버전에는 **하나의 고유한 버그**가 존재 한다.
 
+### Jsoncpp 프로젝트 규모 요약
+* [Understand by SciTool](https://scitools.com/) 활용 JsonCPP 저장소 분석 결과:
+  * 총 file 개수: ~ 40
+  * 총 function 개수: ~ 1,000
+  * 총 line 개수: ~ 10,000
+
 # 2. Github 저장소로부터 도구 다운로드 방법
 * Github 저장소 링크: https://github.com/yheechan/SBFL_dataset_generator.git
 * 다운로드 명령어: 
@@ -77,13 +83,13 @@
 ### SBFL_dataset_generator/bin/ 디렉토리 구조 (사용자에게 제공 되는 명령어)
 ```
 SBFL_dataset_generator/bin
-├─ SBFL_all.sh
-├─ SBFL_single.sh
-├─ build_project.sh
-├─ gen_processed.sh
-├─ gen_spectrum.sh
-├─ rank.sh
-├─ run_testcases.sh
+├─ SBFL_jsoncpp_all.sh
+├─ SBFL_jsoncpp_single.sh
+├─ 1_jsoncpp_build.sh
+├─ 2_jsoncpp_run_testcases.sh
+├─ 3_jsoncpp_gen_spectrum.sh
+├─ 4_jsoncpp_gen_processed.sh
+├─ 5_jsoncpp_rank.sh
 └─ tools/
 ```
 
@@ -100,11 +106,11 @@ bug4 |
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./build_project.sh bug1
-$ ./run_testcases.sh bug1
-$ ./gen_spectrum.sh bug1
-$ ./gen_processed.sh bug1
-$ ./rank.sh bug1
+$ ./1_jsoncpp_build.sh bug1
+$ ./2_jsoncpp_run_testcases.sh bug1
+$ ./3_jsoncpp_gen_spectrum.sh bug1
+$ ./4_jsoncpp_gen_processed.sh bug1
+$ ./5_jsoncpp_rank.sh bug1
 ```
 
 **참고 사항:** 간편 실행은 [7장](#7-간편-실행-방법)에서 설명된다.
@@ -114,22 +120,22 @@ $ ./rank.sh bug1
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./build_project.sh <bug-version>
+$ ./1_jsoncpp_build.sh <bug-version>
 ```
 
 * ```SBFL_dataset_generator/subjects/``` 디렉토리가 새롭게 생성된다. 
 * 사용자가 입력 한 ```<bug-version>``` 버전의 jsoncpp 프로젝트가 ```jsoncpp-<bug-version>/``` 이름으로 ```subjects/``` 디렉토리에 자동 저장된다.
-  * ```$ ./build_project.sh bug1``` 명령어를 실행 후 프로젝트 저장 결과
+  * ```$ ./1_jsoncpp_build.sh bug1``` 명령어를 실행 후 프로젝트 저장 결과
     ```
     SBFL_dataset_generator/
       └─subjects/
         └─ jsoncpp-bug1/
     ```
 * 저장하게 된 jsoncpp 프로젝트는 **빌드** 되어 **jsoncpp executables**들이 생성된다.
-* jsoncpp의 소스 코드 전처리 파일들로부터 **line-function 정보**가 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/line2function/``` 디렉토리 위치에 ```<bug-version>.line2function.json```이름 형식으로 저장된다.
+* jsoncpp의 소스 코드 전처리 파일들로부터 **line-function 정보**가 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/line2function/``` 디렉토리 위치에 ```<bug-version>.line2function.json```이름 형식으로 저장된다 ([4.1.1](#411-extractor-설명)장에서 추가 설명).
   * jsoncpp의 소스 코드 파일들에 대한 line-function 정보를 하나의 파일 ```<bug-version>.line2function.json```에 담기는 것이다.
 
-  ### ```$ ./build_project.sh bug1``` 명령어 실행 후 **line-function 정보** 저장 결과
+  ### ```$ ./1_jsoncpp_build.sh bug1``` 명령어 실행 후 **line-function 정보** 저장 결과
   ```
   SBFL_dataset_generator/subjects/jsoncpp-bug1/
     └─ data/
@@ -148,7 +154,26 @@ $ ./build_project.sh <bug-version>
     ],
     …
   }
+
+### 4.1.1 **Extractor** 설명
+* Extractor는 프로젝트의 ```전처리 소스 코드``` (*.c 혹은 *.cpp)파일을 입력으로 받아 각 ```라인-함수 매핑 정보```를 출력해주는 실행 파일이다.
+  * ```src/clang-frontend/extractor.cpp``` 소스 코드 파일이 실제 clang-fronted 소스 코드를 담고있다.
+  * ```src/clang-frontend/Makefile``` 을 통해 ```extractor.cpp``` 소스 코드를 컴파일해서 ```extractor``` 실행 파일이 생성되는 것이다.
+
+* ```extractor``` 실행 파일 사용 방법:
   ```
+  $ ./extractor <source-code-file>
+  ```
+    * ```<source-code-file>```은 하나의 c 혹은 cpp 파일을 의미한다.
+  
+* 하나의 소스 코드 파일에 대하여 출력 결과 예시/형식
+  * 해당 출력 결과를 사용자에 입맛으로 후처리 필요
+    ```
+    <class-name>##<function-name>##<start-line>##<end_line>\n
+    ClassA##foo(int x, int y)##10##24\n
+    ...
+    ```
+
 **참고 사항:** line-function 정보에 대한 제한 조건은 [8장](#8-라인-함수-매핑-제한-조건)에서 설명된다.
 
 ## 4.2 테스트 케이스 실행 및 커버리지 정보 추출 단계
@@ -156,7 +181,7 @@ $ ./build_project.sh <bug-version>
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./run_testcases.sh <bug-version>
+$ ./2_jsoncpp_run_testcases.sh <bug-version>
 ```
 
 * jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개), AFL++로 추출한 테스트 케이스 (1,029개)를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
@@ -170,7 +195,7 @@ $ ./run_testcases.sh <bug-version>
   *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/``` 디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록된다.
   * [5장](#5-jsoncpp의-테스트-케이스-정보)에서 **각 테스트 케이스들의 특징**과 **coincident TC** 정보 관련 내용이 자세희 설명된다.
 
-### ```$ ./run_testcases.sh bug1``` 명령어 실행 후 커버리지 정보 저장 결과
+### ```$ ./2_jsoncpp_run_testcases.sh bug1``` 명령어 실행 후 커버리지 정보 저장 결과
 ```
 SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 ├─ coverage/
@@ -197,14 +222,14 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./gen_spectrum.sh <bug-version>
+$ ./3_jsoncpp_gen_spectrum.sh <bug-version>
 ```
 
 * gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리**한다.
   * Coincident TC들은 제외된다. ([5장](#5-jsoncpp의-테스트-케이스-정보)에서 coincident TC 제외 관련 내용이 자세히 설명된다)
   * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장된다.
 
-  ### ```$ ./gen_spectrum bug1``` 명령어 실행 후 생성 되는 파일 구조 (예시):
+  ### ```$ ./3_jsoncpp_gen_spectrum bug1``` 명령어 실행 후 생성 되는 파일 구조 (예시):
   ```
   SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
   └─ spectra/
@@ -231,7 +256,7 @@ Line no. | TC1 | TC2 | ...
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./gen_processed.sh <bug-version>
+$ ./4_jsoncpp_gen_processed.sh <bug-version>
 ```
 
 * 후처리 된 커버러지 정보로부터 **라인 단위** 스펙트럽 기반 특징을 추출한다.
@@ -268,7 +293,7 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
 ```
-$ ./rank.sh <bug-version>
+$ ./5_jsoncpp_rank.sh <bug-version>
 ```
 
 ### 라인 단위 결과
@@ -303,7 +328,7 @@ $ ./rank.sh <bug-version>
   * ```ep, ef, np, nf```열, **SBFL formula 의심도 결과**열, ```bug```열은 [4.4](#44-스펙트럼-기반-특징-추출-단계)단계에서 제시한 예제와 동일하다.
   * 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 함수의 순위를 의미한다.
 
-### ```$ ./rank.sh bug1``` 실행 후 함수 단위 순위 결과 예시
+### ```$ ./5_jsoncpp_rank.sh bug1``` 실행 후 함수 단위 순위 결과 예시
 ```
 SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 └─ ranked-function/
@@ -402,11 +427,6 @@ TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReade
   bug4 | function | 243 | 3 | 910
   bug4 | line | **27** | 3 | 1,126
 
-* [Understand by SciTool](https://scitools.com/) 활용 JsonCPP 저장소 분석 결과:
-  * 총 file 개수: ~ 40
-  * 총 function 개수: ~ 1,000
-  * 총 line 개수: ~ 10,000
-
 # 6. 의심도 순위 결과
 ### 라인 단위 버기 함수의 의심 순위:
   * ```ranked-line/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
@@ -435,11 +455,11 @@ bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
 * 한번의 실행으로 모든 버그 버전들의 **SBFL 데이터셋 생성**
   * 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
     ```
-    $ ./SBFL_all.sh
+    $ ./SBFL_jsoncpp_all.sh
     ```
   * 각 버그 버전 별 추출 된 모든 정보들은 하나의 디렉토리, ```SBFL_dataset_generator/overall/```에 모음으로 저장된다.
 
-  ### ```<SBFL_all.sh>``` 실행 후 ```SBFL_dataset_generator/overall/``` 디렉토리 구조
+  ### ```<SBFL_jsoncpp_all.sh>``` 실행 후 ```SBFL_dataset_generator/overall/``` 디렉토리 구조
   ```
   SBFL_dataset_generator/overall/
   ├── coverage/
@@ -454,7 +474,7 @@ bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
 * 하나의 버그 버전의 **SBFL 데이터셋 생성**
   * 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
     ```
-    $ ./SBFL_single.sh <bug-version>
+    $ ./SBFL_jsoncpp_single.sh <bug-version>
     ```
   * 소유 시간 약 4분 10초.
 
