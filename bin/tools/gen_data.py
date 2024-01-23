@@ -163,29 +163,3 @@ if __name__ == "__main__":
     # if args.pretty_json is not None:
     #     pt = cc.pretty_json_TC(db, args.pretty_json)
     
-    print()
-    print()
-    print("************************************")
-    print("***** FINAL RESULTS ON COMMAND *****")
-    print("************************************")
-
-    if sd[0]:
-        print(sd[1])
-    if psd[0]:
-        print(psd[1])
-    if rd[0]:
-        print(rd[1])
-    if ct[0]:
-        print(ct[1])
-    if cb[0]:
-        print(cb[1])
-    if rt[0]:
-        print(rt[1])
-    if lt[0]:
-        print(lt[1])
-    if st[0]:
-        print(st[1])
-    if ht[0]:
-        print(ht[1])
-    if pt[0]:
-        print(pt[1])

@@ -2918,39 +2918,6 @@ JSONTEST_FIXTURE_LOCAL(ReaderTest, allowNumericKeysTest_3) {
 
 struct CharReaderTest : JsonTest::TestCase {};
 
-JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_1) {
-  Json::CharReaderBuilder b;
-  CharReaderPtr reader(b.newCharReader());
-  Json::String errs;
-  Json::Value root;
-  char const doc[] = "-9223372036854775808";
-  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
-  JSONTEST_ASSERT(ok);
-  JSONTEST_ASSERT(errs.empty());
-}
-
-JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_2) {
-  Json::CharReaderBuilder b;
-  CharReaderPtr reader(b.newCharReader());
-  Json::String errs;
-  Json::Value root;
-  char const doc[] = "{\"number\": -9223372036854775808}";
-  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
-  JSONTEST_ASSERT(ok);
-  JSONTEST_ASSERT(errs.empty());
-}
-
-JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_3) {
-  Json::CharReaderBuilder b;
-  CharReaderPtr reader(b.newCharReader());
-  Json::String errs;
-  Json::Value root;
-  char const doc[] = "{\"number\": \"hello world\", \"bug\": -9223372036854775808}";
-  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
-  JSONTEST_ASSERT(ok);
-  JSONTEST_ASSERT(errs.empty());
-}
-
 JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_21916_1) {
   Json::CharReaderBuilder b;
   CharReaderPtr reader(b.newCharReader());
@@ -3008,6 +2975,39 @@ JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_21916_3) {
   Json::String errs;
   Json::Value root;
   char const doc[] = "";
+  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
+  JSONTEST_ASSERT(ok);
+  JSONTEST_ASSERT(errs.empty());
+}
+
+JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_1) {
+  Json::CharReaderBuilder b;
+  CharReaderPtr reader(b.newCharReader());
+  Json::String errs;
+  Json::Value root;
+  char const doc[] = "-9223372036854775808";
+  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
+  JSONTEST_ASSERT(ok);
+  JSONTEST_ASSERT(errs.empty());
+}
+
+JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_2) {
+  Json::CharReaderBuilder b;
+  CharReaderPtr reader(b.newCharReader());
+  Json::String errs;
+  Json::Value root;
+  char const doc[] = "{\"number\": -9223372036854775808}";
+  bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
+  JSONTEST_ASSERT(ok);
+  JSONTEST_ASSERT(errs.empty());
+}
+
+JSONTEST_FIXTURE_LOCAL(CharReaderTest, ossFuzz_18147_3) {
+  Json::CharReaderBuilder b;
+  CharReaderPtr reader(b.newCharReader());
+  Json::String errs;
+  Json::Value root;
+  char const doc[] = "{\"number\": \"hello world\", \"bug\": -9223372036854775808}";
   bool ok = reader->parse(doc, doc + std::strlen(doc), &root, &errs);
   JSONTEST_ASSERT(ok);
   JSONTEST_ASSERT(errs.empty());

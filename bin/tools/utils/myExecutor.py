@@ -11,6 +11,7 @@ main_dir = bin_dir.parent
 src_dir = main_dir / 'src'
 extractor_exe = tool_dir / 'extractor'
 subjects_dir = main_dir / 'subjects'
+queue_dir = main_dir / 'afl-test-cases' / 'output' / 'default' / 'queue'
 
 versions_dir = src_dir / 'bug-versions-jsoncpp'
 
@@ -22,20 +23,32 @@ def remove_all_gcda(project_name):
         '-delete'
     ]
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "removed all *.gcda files.")
+    # hh.after_exec(res, "removed all *.gcda files.")
 
-def run_by_tc_name(project_name, tc_name):
+def run_by_tc_name(project_name, tc_name, tc_id, res):
     project_path = subjects_dir / project_name
     build_dir = project_path / 'build'
     test_dir = build_dir / 'src/test_lib_json'
+    jsoncpp_test = test_dir / 'jsoncpp_test'
 
     cmd = [
-        './jsoncpp_test',
+        jsoncpp_test,
         '--test',
         tc_name
     ]
-    res = sp.call(cmd, cwd=test_dir)
-    hh.after_exec(res, "running test case {}\n".format(tc_name))
+    sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    hh.after_exec(res, "running {}: {}\n".format(tc_id, tc_name))
+
+def run_afl_tc(project_name, tc_path, tc_id):
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+
+    tc_name = 'aflTC-' + tc_path.name.split(',')[0].split(':')[1]
+
+    cmd = [jsoncpp_fuzzer, tc_path]
+    res = sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    hh.after_exec(res, "running {}: {}\n".format(tc_id, tc_name))
 
 def run_needed(project_name, version, tc_id, type):
     project_path = subjects_dir / project_name
@@ -81,7 +94,7 @@ def generate_json_for_TC(project_name, version, tc_id):
         '--json', file_path
     ]
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "generating json for {} on {}".format(tc_id, file_name))
+    # hh.after_exec(res, "generating json for {} on {}".format(tc_id, file_name))
     return file_path
 
 def generate_summary_json_for_TC(project_name, tc_id):
@@ -134,7 +147,7 @@ def generate_summary_json_for_TC_perBUG(project_name, bug_name, tc_id):
     ]
 
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "generating summary json coverage data using gcovr")
+    # hh.after_exec(res, "generating summary json coverage data using gcovr")
 
     return file_path
 
@@ -198,6 +211,8 @@ def get_test_case_list(project_name, tf):
 
     project_path = subjects_dir / project_name
     build_dir = project_path / 'build'
+    # if the project version is not built
+    # build the project version
     if not project_path.exists() or not build_dir.exists():
         cmd = [
             './build.py', '--project', project, '--bug_version', bug_version,
@@ -205,11 +220,13 @@ def get_test_case_list(project_name, tf):
         ]
         sp.call(cmd, cwd=bin_dir)
 
+    # this is the command executable in jsoncpp that executes each TC
     cmd = [
         './jsoncpp_test',
         '--list-tests'
     ]
 
+    # this is the directory path where the jsoncpp_test executable exists
     test_dir = build_dir / 'src/test_lib_json'
 
     process = sp.Popen(
@@ -217,6 +234,7 @@ def get_test_case_list(project_name, tf):
         cwd=test_dir, encoding='utf-8'
     )
 
+    # first save all the test cases with their names in raw list
     raw_tf = []
     raw_tp = []
     while True:
@@ -229,7 +247,6 @@ def get_test_case_list(project_name, tf):
             raw_tf.append(tc_name)
         else:
             raw_tp.append(tc_name)
-    
 
     raw_tc_list = raw_tf + raw_tp
     tc = {}
@@ -237,7 +254,8 @@ def get_test_case_list(project_name, tf):
     tot_cnt = 0
     fail_cnt = 0
     pass_cnt = 0
-    num = 1
+    # then save all the test cases with their names in tc dictionary
+    # type indicates whether the test case is failing or passing
     for num in range(len(raw_tc_list)):
         tc_id = 'TC'+str(num+1)
         tc_name = raw_tc_list[num]
@@ -250,9 +268,38 @@ def get_test_case_list(project_name, tf):
 
         tc[tc_id] = {
             'type': type,
-            'name': tc_name
+            'name': tc_name,
+            'path': None
         }
         name2id[tc_name] = tc_id
+
+    # get jsoncpp_fuzzer path
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+
+    tc_cnt = len(tc.keys()) - 1
+    for afl_tc in sorted(queue_dir.iterdir()):
+        tc_cnt += 1
+        tc_id = 'TC'+str(tc_cnt)
+
+        afl_name = afl_tc.name
+        check = afl_name.split(',')[0].split(':')
+        if check[0] != "id": continue
+
+        afl_num = check[1]
+        tc_name = 'afl/afl-'+afl_num
+        type = 'tp'
+        
+        assert not tc_id in tc.keys()
+
+        cmd = [jsoncpp_fuzzer, afl_tc]
+
+        tc[tc_id] = {
+            'type': type,
+            'name': tc_name,
+            'path': afl_tc
+        }
     
     tot_cnt = len(tc.keys())
     pass_cnt = tot_cnt - fail_cnt

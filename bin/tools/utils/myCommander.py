@@ -128,8 +128,6 @@ def processed_data(project_name, db, failing_per_bug, fails):
         bug_version = csv_file_name.split('.')[0]
         bug_index = int(bug_version[3:])
 
-        print(">> processed data for {}: {}".format(bug_version, csv_file_name))
-
         failing_list = []
         for failing in failing_per_bug[bug_version]:
             tc_id = db.name2id[failing]
@@ -166,6 +164,8 @@ def processed_data(project_name, db, failing_per_bug, fails):
         if bug_position in new_df.index:
             new_df.loc[bug_position, 'bug'] = 1
         ww.write_df_to_csv(project_name, new_df, csv_file_name)
+
+        print(">> processed data for {}: {}".format(bug_version, csv_file_name))
 
     output = ">>> [COMPLETE] Generating processed data with generated Spectrum-data."
     print(output)
@@ -290,19 +290,31 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
     db.first = True
     for tc_id in db.tc.keys():
         tc_name = db.tc[tc_id]['name']
+        if tc_name in failing_per_bug[bug_version]:
+            res = True
+        else:
+            res = False
+
+        afl_check = tc_name.split('/')[0]
 
         # skip the tc if it is in the coincident tc list
         if [tc_id, tc_name] in coincident_tc_list:
+            print(">> excluding coincident TC: {} from {}".format(tc_id, bug_version))
             continue
     # for tc_name in tc_names:
     #     tc_id  = db.name2id[tc_name]
 
-        print(">> spectra data for {}: {}".format(bug_version, tc_id))
+        print(">> spectra data on {}: {}".format(bug_version, tc_id))
 
         xx.remove_all_gcda(project_name)
         check_run = xx.run_needed(project_name, bug_version, tc_id, 'raw')
         if check_run[0]:
-            xx.run_by_tc_name(project_name, tc_name)
+
+            if afl_check != 'afl':
+                xx.run_by_tc_name(project_name, tc_name, tc_id, res)
+            else:
+                xx.run_afl_tc(project_name, db.tc[tc_id]['path'], tc_id)
+
             json_file_path = xx.generate_json_for_TC(project_name, bug_version, tc_id)
             for_summ = xx.run_needed(project_name, bug_version, tc_id, 'summary')
             if for_summ[0]:
@@ -556,14 +568,24 @@ def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
         col_data.append(tc_id)
 
         tc_name = db.tc[tc_id]['name']
-        print(bug_version, tc_name)
+        if tc_name in failing_per_bug[bug_version]:
+            res = True
+        else:
+            res = False
+        afl_check = tc_name.split('/')[0]
+        
+        # print(bug_version, tc_name)
         # if xx.run_needed(tc_id, 'summary'):
         xx.remove_all_gcda(project_name)
 
         check_run = xx.run_needed(project_name, bug_version, tc_id, 'summary')
         if check_run[0]:
             # 2. run TC on current version
-            xx.run_by_tc_name(project_name, tc_name)
+            if afl_check != 'afl':
+                xx.run_by_tc_name(project_name, tc_name, tc_id, res)
+            else:
+                xx.run_afl_tc(project_name, db.tc[tc_id]['path'], tc_id)
+
             json_file_path = xx.generate_summary_json_for_TC_perBUG(project_name, bug_version, tc_id)
             for_raw = xx.run_needed(project_name, bug_version, tc_id, 'raw')
             if for_raw[0]:
@@ -601,12 +623,16 @@ def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
         else:
             row_data[0].append(0)
             row_data[1].append(0)
-        print("* {} on fail file".format(execs_buggy_file))
+        # print("* {} on fail file".format(execs_buggy_file))
 
         # for func criteria
         check_run = xx.run_needed(project_name, bug_version, tc_id, 'raw')
         if check_run[0]:
-            xx.run_by_tc_name(project_name, tc_name)
+            if afl_check != 'afl':
+                xx.run_by_tc_name(project_name, tc_name, tc_id, res)
+            else:
+                xx.run_afl_tc(project_name, db.tc[tc_id]['path'], tc_id)
+
             json_file_path = xx.generate_json_for_TC(project_name, bug_version, tc_id)
         else:
             json_file_path = check_run[1]
@@ -647,7 +673,7 @@ def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
         else:   
             row_data[2].append(0)
             row_data[3].append(0)
-        print("* {} on fail func".format(execs_buggy_func))
+        # print("* {} on fail func".format(execs_buggy_func))
 
         # for func criteria
         execs_buggy_line = False
@@ -684,7 +710,7 @@ def criteria_per_BUG(project_name, db, bugs, failing_per_bug):
         else:
             row_data[4].append(0)
             row_data[5].append(0)
-        print("* {} on fail line".format(execs_buggy_line))
+        # print("* {} on fail line".format(execs_buggy_line))
 
     # write coincident TC
     ww.write_coincident_TC(project_name, bug_version, coincident_tc_list)
