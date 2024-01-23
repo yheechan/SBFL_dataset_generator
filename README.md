@@ -32,7 +32,7 @@
     └─ src/
     ```
       * ```bin/``` 디렉토리는 도구에 실행 명령어들이 위치하고 있다.
-      * ```afl-test-cases/``` 디렉토리는 AFL++을 활용해서 jsoncpp에 대하여 추출 한 테스트 케이스(총 **1029**개)의 저장소이다.
+      * ```afl-test-cases/``` 디렉토리는 AFL++을 활용해서 jsoncpp에 대하여 추출 한 테스트 케이스(총 **1,029**개)의 저장소이다.
       * ```docs/img/``` 디렉토리는 ```README.md```에서 보이는 이미지들의 저장소이다.
       * ```src/``` 디렉토리는 도구의 작동을 위한 소스 코드의 저장소이다.
 
@@ -317,7 +317,7 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 # 5. JsonCPP의 테스트 케이스 정보
 * 총 1,156개의 테스트 케이스 존재
   * 각 4개의 버그 버전 별 **3개의 failing 테스트 케이스**가 있다.
-  * 다음 표는 각 버그 별, 127개 테스트 케이스 중, 스펙트럼 특징 정보 추출에 사용된 테스트 케이스의 개수를 보인다
+  * 다음 표는 각 버그 별, 1,156개 테스트 케이스 중, 스펙트럼 특징 정보 추출에 사용된 테스트 케이스의 개수를 보인다
 
     ```<bug-version>``` | 사용 테스트 케이스 개수
     --- | ---
@@ -330,7 +330,7 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
   * 총 11개 테스트 케이스는 **본인이 추가**
   * 총 119개 테스트 케이스는 **JsonCPP 제작**
   * 총 1,029개 테스트 케이스는 **AFL++** 활용해서 제작
-* 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
+* 127개 (11개 본인, 119개 JsonCPP) 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
   ### 테스트 케이스 예시 (TC4)
   ```
   JSONTEST_FIXTURE_LOCAL(ReaderTest, allowNumericKeysTest_1) {
@@ -340,22 +340,31 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
     checkParse(R"({ 123 : "abc" })");
   }
   ```
+* 1,029개 (AFL++) 테스트 케이스 저장 위치: ```SBFL_dataset_generator/afl-test-cases/output/default/queue/``` 
+
+### Jsoncpp 테스트 케이스와 AFL++ 테스트 케이스 커버리지 차이
+출처 | 테스트 케이스 개수 | 라인 커버리지
+--- | --- | ---
+본인과 JsonCPP | 127개 | 91.4%
+AFL++ | 1,029개 | 13.4%
+  * 위 표는 각 출처에서 제작 된 테스트 케이스를 모두 실행했을 때 jsoncpp 프로젝트 전체의 라인 커버리지 결과이다.
+  * JsonCPP은 단일 실행 파일이 아닌 라이브러리입니다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있습니다.
 
 ### 다음 표는 failing 테스트 케이스에 대한 내용을 보인다
-```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 출처
---- | --- | --- | --- | --- | --- | --- | ---
-TC1 | ValueTest, issue1264_1 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
-TC2 | ValueTest, issue1264_2 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
-TC3 | ValueTest, issue1264_3 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
-TC4 | ReaderTest, allowNumericKeysTest_1 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | JsonCPP
-TC5 | ReaderTest, allowNumericKeysTest_2 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
-TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
-TC7 | ReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
-TC8 | ReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
-TC9 | ReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
-TC10 | ReaderTest, ossFuzz_18146_1 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
-TC11 | ReaderTest, ossFuzz_18146_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
-TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 라인 커버리지 | 출처
+--- | --- | --- | --- | --- | --- | --- | --- | ---
+TC1 | ValueTest, issue1264_1 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
+TC2 | ValueTest, issue1264_2 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
+TC3 | ValueTest, issue1264_3 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
+TC4 | ReaderTest, allowNumericKeysTest_1 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 9% | JsonCPP
+TC5 | ReaderTest, allowNumericKeysTest_2 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 9% | 본인
+TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 10% | 본인
+TC7 | CharReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 10% | 본인
+TC8 | CharReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 13% | 본인
+TC9 | CharReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 13% | 본인
+TC10 | CharReaderTest, ossFuzz_18147_1 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 10% | 본인
+TC11 | CharReaderTest, ossFuzz_18147_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 11% | 본인
+TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 11% | 본인
 
 ### Coincident Test-Case
 * 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스**들은 제외된다.
