@@ -26,10 +26,15 @@
     ```
     SBFL_dataset_generator/
     ├─ README.md
+    ├─ afl-test-cases/
     ├─ bin/
-    ├─ docs/
+    ├─ docs/img/
     └─ src/
     ```
+      * ```bin/``` 디렉토리는 도구에 실행 명령어들이 위치하고 있다.
+      * ```afl-test-cases/``` 디렉토리는 AFL++을 활용해서 jsoncpp에 대하여 추출 한 테스트 케이스(총 **1029**개)의 저장소이다.
+      * ```docs/img/``` 디렉토리는 ```README.md```에서 보이는 이미지들의 저장소이다.
+      * ```src/``` 디렉토리는 도구의 작동을 위한 소스 코드의 저장소이다.
 
 **참고 사항:** 해당 문석에서 파일 경로 명시 할 때의 홈 디렉토리는 ```SBFL_dataset_generator/```로 가정합니다.
 
@@ -154,7 +159,7 @@ $ ./build_project.sh <bug-version>
 $ ./run_testcases.sh <bug-version>
 ```
 
-* jsoncpp executables로부터 하나의 테스트 케이스를 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
+* jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개), AFL++로 추출한 테스트 케이스 (1029개)를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
 * 하나의 테스트 케이스를 실행한 후, **gcovr**를 통해 **라인, 함수, 파일 커버리지 정보**를:
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/raw/``` 디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **라인과 함수 커버리지 정보**를 저장한다.
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/summary/``` 디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **파일 커버리지 정보**를 저장한다.
@@ -310,19 +315,21 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 ```
 
 # 5. JsonCPP의 테스트 케이스 정보
-* 총 127 테스트 케이스 존재
+* 총 1,156개의 테스트 케이스 존재
   * 각 4개의 버그 버전 별 **3개의 failing 테스트 케이스**가 있다.
   * 다음 표는 각 버그 별, 127개 테스트 케이스 중, 스펙트럼 특징 정보 추출에 사용된 테스트 케이스의 개수를 보인다
 
     ```<bug-version>``` | 사용 테스트 케이스 개수
     --- | ---
-    bug1 | 126개
-    bug2 | 127개
-    bug3 | 96개
-    bug4 | 125개
+    bug1 | 1,155개
+    bug2 | 1,156개
+    bug3 | 98개
+    bug4 | 1,129개
+
 * 테스트 케이스의 출처
   * 총 11개 테스트 케이스는 **본인이 추가**
   * 총 119개 테스트 케이스는 **JsonCPP 제작**
+  * 총 1,029개 테스트 케이스는 **AFL++** 활용해서 제작
 * 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
   ### 테스트 케이스 예시 (TC4)
   ```
@@ -361,26 +368,26 @@ TC12 | ReaderTest, ossFuzz_18146_3 | bug4 | json_reader.cpp | Json::OurReader::d
   --- | ---
   bug1 | **1**개
   bug2 | **0**개
-  bug3 | **31**개
-  bug4 | **2**개
+  bug3 | **1,058**개
+  bug4 | **27**개
 
   ### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다:
     * 파일: ```criteria/<bug-version>.stat.csv``` ([4.2](#42-테스트-케이스-실행-및-커버리지-정보-추출-단계)장에서 소개)
 
   ```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
   --- | --- | --- | --- | --- |
-  bug1 | file | 124 | 3 | 0
-  bug1 | function | 2 | 3 | 122
-  bug1 | line | **1** | 3 | 123
-  bug2 | file | 124 | 3 | 0
-  bug2 | function | 10 | 3 | 114
-  bug2 | line | **0** | 3 | 124
-  bug3 | file | 124 | 3 | 0
-  bug3 | function | 32 | 3 | 92
-  bug3 | line | **31** | 3 | 93
-  bug4 | file | 124 | 3 | 0
-  bug4 | function | 5 | 3 | 119
-  bug4 | line | **2** | 3 | 122
+  bug1 | file | 1,153 | 3 | 0
+  bug1 | function | 2 | 3 | 1,151
+  bug1 | line | **1** | 3 | 1,152
+  bug2 | file | 1,153 | 3 | 0
+  bug2 | function | 10 | 3 | 1,143
+  bug2 | line | **0** | 3 | 1,153
+  bug3 | file | 1,152 | 3 | 1
+  bug3 | function | 1,059 | 3 | 94
+  bug3 | line | **1,058** | 3 | 95
+  bug4 | file | 1,153 | 3 | 0
+  bug4 | function | 243 | 3 | 910
+  bug4 | line | **27** | 3 | 1,126
 
 * [Understand by SciTool](https://scitools.com/) 활용 JsonCPP 저장소 분석 결과:
   * 총 file 개수: ~ 40

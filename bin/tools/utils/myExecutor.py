@@ -23,20 +23,32 @@ def remove_all_gcda(project_name):
         '-delete'
     ]
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "removed all *.gcda files.")
+    # hh.after_exec(res, "removed all *.gcda files.")
 
-def run_by_tc_name(project_name, tc_name):
+def run_by_tc_name(project_name, tc_name, tc_id, res):
     project_path = subjects_dir / project_name
     build_dir = project_path / 'build'
     test_dir = build_dir / 'src/test_lib_json'
+    jsoncpp_test = test_dir / 'jsoncpp_test'
 
     cmd = [
-        './jsoncpp_test',
+        jsoncpp_test,
         '--test',
         tc_name
     ]
-    res = sp.call(cmd, cwd=test_dir)
-    hh.after_exec(res, "running test case {}\n".format(tc_name))
+    sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    hh.after_exec(res, "running {}: {}\n".format(tc_id, tc_name))
+
+def run_afl_tc(project_name, tc_path, tc_id):
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+    jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+
+    tc_name = 'aflTC-' + tc_path.name.split(',')[0].split(':')[1]
+
+    cmd = [jsoncpp_fuzzer, tc_path]
+    res = sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+    hh.after_exec(res, "running {}: {}\n".format(tc_id, tc_name))
 
 def run_needed(project_name, version, tc_id, type):
     project_path = subjects_dir / project_name
@@ -82,7 +94,7 @@ def generate_json_for_TC(project_name, version, tc_id):
         '--json', file_path
     ]
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "generating json for {} on {}".format(tc_id, file_name))
+    # hh.after_exec(res, "generating json for {} on {}".format(tc_id, file_name))
     return file_path
 
 def generate_summary_json_for_TC(project_name, tc_id):
@@ -135,7 +147,7 @@ def generate_summary_json_for_TC_perBUG(project_name, bug_name, tc_id):
     ]
 
     res = sp.call(cmd, cwd=project_path)
-    hh.after_exec(res, "generating summary json coverage data using gcovr")
+    # hh.after_exec(res, "generating summary json coverage data using gcovr")
 
     return file_path
 
@@ -235,7 +247,6 @@ def get_test_case_list(project_name, tf):
             raw_tf.append(tc_name)
         else:
             raw_tp.append(tc_name)
-    
 
     raw_tc_list = raw_tf + raw_tp
     tc = {}
@@ -245,9 +256,7 @@ def get_test_case_list(project_name, tf):
     pass_cnt = 0
     # then save all the test cases with their names in tc dictionary
     # type indicates whether the test case is failing or passing
-    tc_cnt = 0
     for num in range(len(raw_tc_list)):
-        tc_cnt += 1
         tc_id = 'TC'+str(num+1)
         tc_name = raw_tc_list[num]
         type = 'tp'
@@ -269,6 +278,7 @@ def get_test_case_list(project_name, tf):
     build_dir = project_path / 'build'
     jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
 
+    tc_cnt = len(tc.keys()) - 1
     for afl_tc in sorted(queue_dir.iterdir()):
         tc_cnt += 1
         tc_id = 'TC'+str(tc_cnt)
