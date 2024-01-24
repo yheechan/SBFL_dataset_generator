@@ -192,8 +192,8 @@ $ ./2_jsoncpp_run_testcases.sh <bug-version>
     * gcovr의 json 아웃풋 형식 설명 링크: https://gcovr.com/en/stable/output/json.html#json-output
 * 모든 테스트 케이스를 실행 항 후 추출 된 커버리지 결과로부터:
   * **각 테스트 케이스들의 특징**을 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/criteria/``` 디렉토리에 ```<bug-version>.stat.csv``` 이름 형식으로 저장된다.
-  *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincident TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/``` 디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록된다.
-  * [5장](#5-jsoncpp의-테스트-케이스-정보)에서 **각 테스트 케이스들의 특징**과 **coincident TC** 정보 관련 내용이 자세희 설명된다.
+  *  **우연히 버기 라인을 실행하고도 pass 된 테스트 케이스 (coincidentally passing TC)** 정보를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/coincident/``` 디렉토리에 ```<bug-version>.coincidentTC.txt``` 이름 형식으로 기록된다.
+  * [5장](#5-jsoncpp의-테스트-케이스-정보)에서 **각 테스트 케이스들의 특징**과 **coincidentally passing TC** 정보 관련 내용이 자세희 설명된다.
 
 ### ```$ ./2_jsoncpp_run_testcases.sh bug1``` 명령어 실행 후 커버리지 정보 저장 결과
 ```
@@ -226,7 +226,7 @@ $ ./3_jsoncpp_gen_spectrum.sh <bug-version>
 ```
 
 * gcovr 도구를 통해 추출 한 테스트 케이스 별 커버리지 결과를 **csv 포맷으로 후처리**한다.
-  * Coincident TC들은 제외된다. ([5장](#5-jsoncpp의-테스트-케이스-정보)에서 coincident TC 제외 관련 내용이 자세히 설명된다)
+  * Coincidentally passing TC들은 제외된다. ([5장](#5-jsoncpp의-테스트-케이스-정보)에서 coincidentally passing TC 제외 관련 내용이 자세히 설명된다)
   * 후처리 된 결과는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/spectra/```데렉토리에 **jsoncpp의 소스 코드 파일** 별로 ```<bug-version>.<file-name>.csv``` 이름 형식으로 저장된다.
 
   ### ```$ ./3_jsoncpp_gen_spectrum bug1``` 명령어 실행 후 생성 되는 파일 구조 (예시):
@@ -249,7 +249,7 @@ Line no. | TC1 | TC2 | ...
 * ```line no.```열은 ```버그버전#파일명#함수명#라인위치``` 형식으로 해당 소스 코드 파일의 **라인**들을 표한다.
 * 2번째 열 ~ N번째 열은 각 테스트 케이스 별 해당 라인에 대한 **실행 여부**를 뜻한다.
   * 해당 라인이 실행 되었을 때 1, 실행 되지 않았을 때 0으로 표시한다.
-  * N의 개수는, jsoncpp 테스트 케이스의 개수에서 **coincident TC** 개수를 제외 한 개수이다. ([5장](#5-jsoncpp의-테스트-케이스-정보)에서 테스트 케이스 개수 내용이 자세히 설명된다)
+  * N의 개수는, jsoncpp 테스트 케이스의 개수에서 **coincidentally passing TC** 개수를 제외 한 개수이다. ([5장](#5-jsoncpp의-테스트-케이스-정보)에서 테스트 케이스 개수 내용이 자세히 설명된다)
 
 ## 4.4 스펙트럼 기반 특징 추출 단계
 ![framework-step4](docs/img/framework-step4.png)
@@ -395,14 +395,14 @@ TC10 | CharReaderTest, ossFuzz_18147_1 | bug4 | json_reader.cpp | Json::OurReade
 TC11 | CharReaderTest, ossFuzz_18147_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
 TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
 
-### Coincident Test-Case
+### Coincidentally Passing Test-Case
 * 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스**들은 제외된다.
-  * Coincident TC를 제외 하므로, 버그 함수 예층 **성능이 향상**된다.
+  * Coincidentally passing TC를 제외 하므로, 버그 함수 예층 **성능이 향상**된다.
 
   ### 버그 버전 별 버기 라인을 실행 헀으나 우연히 pass 한 테스트 케이스의 개수 :
     * 파일: ```/coincident/<bug-version>.coincidentTC.txt``` ([4.2](#42-테스트-케이스-실행-및-커버리지-정보-추출-단계)장에서 소개)
 
-  ```<bug-version>``` | Coincident TC 개수
+  ```<bug-version>``` | Coincidentally Passing TC 개수
   --- | ---
   bug1 | **1**개
   bug2 | **0**개
