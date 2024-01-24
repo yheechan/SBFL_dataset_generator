@@ -372,28 +372,28 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 * 1,029개 (AFL++) 테스트 케이스 저장 위치: ```SBFL_dataset_generator/afl-test-cases/output/default/queue/``` 
 
 ### Jsoncpp 테스트 케이스와 AFL++ 테스트 케이스 커버리지 차이
-출처 | 테스트 케이스 개수 | 라인 커버리지
---- | --- | ---
-본인과 JsonCPP | 127개 | 91.4%
-AFL++ | 1,029개 | 13.4%
+출처 | 테스트 케이스 개수 | 라인 커버리지 | 분기 커버리지
+--- | --- | --- | ---
+본인과 JsonCPP | 127개 | 91.4% | 43.4%
+AFL++ | 1,029개 | 13.4% | 3.4%
   * 위 표는 각 출처에서 제작 된 테스트 케이스를 모두 실행했을 때 jsoncpp 프로젝트 전체의 라인 커버리지 결과이다.
   * JsonCPP은 단일 실행 파일이 아닌 라이브러리이다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있다.
 
 ### 다음 표는 failing 테스트 케이스에 대한 내용을 보인다
-```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 라인 커버리지 | 출처
---- | --- | --- | --- | --- | --- | --- | --- | ---
-TC1 | ValueTest, issue1264_1 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
-TC2 | ValueTest, issue1264_2 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
-TC3 | ValueTest, issue1264_3 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 8% | 본인
-TC4 | ReaderTest, allowNumericKeysTest_1 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 9% | JsonCPP
-TC5 | ReaderTest, allowNumericKeysTest_2 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 9% | 본인
-TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 10% | 본인
-TC7 | CharReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 10% | 본인
-TC8 | CharReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 13% | 본인
-TC9 | CharReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 13% | 본인
-TC10 | CharReaderTest, ossFuzz_18147_1 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 10% | 본인
-TC11 | CharReaderTest, ossFuzz_18147_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 11% | 본인
-TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 11% | 본인
+```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 출처
+--- | --- | --- | --- | --- | --- | --- | --- 
+TC1 | ValueTest, issue1264_1 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC2 | ValueTest, issue1264_2 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC3 | ValueTest, issue1264_3 | bug1 | json_value.cpp | Json::Value::resize(unsinged int) | 915 | Assertion Violation: Updated size of an array type | 본인
+TC4 | ReaderTest, allowNumericKeysTest_1 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | JsonCPP
+TC5 | ReaderTest, allowNumericKeysTest_2 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
+TC6 | ReaderTest, allowNumericKeysTest_3 | bug2 | json_reader.cpp | Json::Reader::readObject(Json::Reader::Token&) | 467 | Assertion Violation: Input type (expecting string Value) | 본인
+TC7 | CharReaderTest, ossFuzz_21916_1 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC8 | CharReaderTest, ossFuzz_21916_2 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC9 | CharReaderTest, ossFuzz_21916_3 | bug3 | json_reader.cpp | Json::OurReader::skipBom(bool) | 1279 | heap overflow | 본인
+TC10 | CharReaderTest, ossFuzz_18147_1 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC11 | CharReaderTest, ossFuzz_18147_2 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
+TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReader::decodeNumber(Json::ourReader::Token&, Json::Value&) | 1628 | integer overflow | 본인
 
 ### Coincident Test-Case
 * 버그 버전 별 **버기 라인**을 실행 했으나 **우연히 pass 하는 테스트 케이스**들은 제외된다.
