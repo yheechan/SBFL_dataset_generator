@@ -288,7 +288,7 @@ Line no. | ep | ef | np | nf | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochia
 * [6장](#6-의심도-순위-결과)에서 명시 된 **8개의 SBFL formula**를 각 **라인**에 적용 한 의심도 결과
 * ```bug```열은 해당 라인이 **버기 라인인 경우** 1, **버기 라인이 아닌** 경우 0으로 표시한다.
 
-## 4.5 의심도 순위 정열 단계
+## 4.5 의심도 순위 정렬 단계
 ![framework-step5](docs/img/framework-step5.png)
 
 작업 디렉토리를 ```SBFL_dataset_generator/bin/```으로 이동해서 실행한다:
@@ -297,8 +297,8 @@ $ ./5_jsoncpp_rank.sh <bug-version>
 ```
 
 ### 라인 단위 결과
-* **라인 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정열한다.
-  * 라인 단위 의심도 순위로 정열 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-line/``` 디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장된다.
+* **라인 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정렬한다.
+  * 라인 단위 의심도 순위로 정렬 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-line/``` 디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장된다.
 * 모든 SBFL formula 기준 버기 라인의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-line/``` 디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장된다. (해당 표는 [6장](#6-의심도-순위-결과)에서 설명)
 
   ### 라인단위 스펙트럼 기반 특징 결과 파일 내용 및 설명: ```ranked-ㅣline/<bug-version>.<file-name>.csv```
@@ -313,8 +313,8 @@ $ ./5_jsoncpp_rank.sh <bug-version>
 
 ### 함수 단위 결과
 * **라인 단위** 스펙트럼 특징 결과와 **line-function** 정보를 참고해서 각 함수를 대표하는 라인을 **의심도가 가장 높은 라인**으로 선택해서 **함수 단위** 스펙트럼 특징 결과로 변환한다.
-* **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정열한다.
-  * 함수 단위 의심도 순위로 정열 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-function/``` 디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장된다.
+* **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정렬한다.
+  * 함수 단위 의심도 순위로 정렬 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-function/``` 디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장된다.
 * 모든 SBFL formula 기준 버기 함수의 순위를 정리 한 요약 표를 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-function/``` 디렉토리에 ```<bug-version>.rank.summary.csv``` 이름 형식으로 저장된다. (해당 표는 [6장](#6-의심도-순위-결과)에서 설명)
 
   ### 함수단위 스펙트럼 기반 특징 결과 파일 내용 및 설명: ```ranked-function/<bug-version>.<file-name>.csv```
@@ -430,7 +430,7 @@ TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReade
 
 # 6. 의심도 순위 결과
 ### 라인 단위 버기 함수의 의심 순위:
-  * ```ranked-line/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+  * ```ranked-line/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정렬-단계)장에서 소개)
 
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
@@ -440,7 +440,7 @@ bug3 | 680 | 45 | 45 | 45 | 45 | 45 | 680 | 680
 bug4 | 676 | 3 | 3 | 3 | 3 | 3 | 676 | 676
 
 ### 함수 단위 버기 함수의 의심 순위:
-  * ```ranked-function/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정열-단계)장에서 소개)
+  * ```ranked-function/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정렬-단계)장에서 소개)
 
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
 --- | --- | --- | --- | --- | --- | --- | --- | ---
