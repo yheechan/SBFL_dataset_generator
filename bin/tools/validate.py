@@ -163,7 +163,9 @@ def edit():
                 fp = open(file, 'r')
                 lines = fp.readlines()
                 out = pd.read_csv(file)
-                out = out.drop(['Rank'], axis=1)
+                # out = out.drop(['Rank'], axis=1)
+                out = out.sample(frac=1)
+                
 
                 file_path = rankedlines_upt / file_name
                 out.to_csv(file_path, index=False)
