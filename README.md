@@ -311,7 +311,7 @@ $ ./5_jsoncpp_rank.sh <bug-version>
     * ```line no.```열, ```ep, ef, np, nf```열, **SBFL formula 의심도 결과**열, ```bug```열은 [4.4](#44-스펙트럼-기반-특징-추출-단계)단계에서 제시한 예제와 동일하다.
     * 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 라인의 순위를 의미한다.
 
-### 함수 단위 결과
+<!-- ### 함수 단위 결과
 * **라인 단위** 스펙트럼 특징 결과와 **line-function** 정보를 참고해서 각 함수를 대표하는 라인을 **의심도가 가장 높은 라인**으로 선택해서 **함수 단위** 스펙트럼 특징 결과로 변환한다.
 * **함수 단위** 스펙트럼 특징 결과로부터 **높은 의심도**에서 **낮은 의심도** 순서로 정렬한다.
   * 함수 단위 의심도 순위로 정렬 된 정보는 ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/ranked-function/``` 디렉토리에 **8개의 SBFL formula** 별로 ```<bug-version>.<sbfl-formula>.csv``` 이름 형식으로 저장된다.
@@ -326,21 +326,18 @@ $ ./5_jsoncpp_rank.sh <bug-version>
 
   * ```line no.```열은 ```버그버전#파일명#함수명``` 형식으로 jsoncpp 프로젝트의 함수들을 표한다.
   * ```ep, ef, np, nf```열, **SBFL formula 의심도 결과**열, ```bug```열은 [4.4](#44-스펙트럼-기반-특징-추출-단계)단계에서 제시한 예제와 동일하다.
-  * 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 함수의 순위를 의미한다.
+  * 새롭게 추가 된 ```rank```열은 SBFL formula의 의심도 결과 기준 함수의 순위를 의미한다. -->
 
 ### ```$ ./5_jsoncpp_rank.sh bug1``` 실행 후 함수 단위 순위 결과 예시
 ```
 SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
-└─ ranked-function/
+├─ ranked-line/
 |   | …
 |   ├─ bug1.ranked.summary.csv
 |   ├─ bug1.Naish2.csv
 |   └─ bug1.Ochiai.csv
 └─ ranked-line/
-    | …
-    ├─ bug1.ranked.summary.csv
-    ├─ bug1.Naish2.csv
-    └─ bug1.Ochiai.csv
+    └─ total.ranked.summary.csv
 ```
 
 # 5. JsonCPP의 테스트 케이스 정보
