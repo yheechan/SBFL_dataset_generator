@@ -216,38 +216,40 @@ def ranked_data(project_name, db, failing_per_bug, fails):
         bug_row_line = line_result_df[line_result_df['bug'] == 1]
         bug_rank_value_line = bug_row_line['Rank'].values[0]
         row_data_line[bug_index].append(bug_rank_value_line)
-        ww.write_ranked_data_to_csv(project_name, line_result_df, file_name, 'line')
+        
+        # ww.write_ranked_data_to_csv(project_name, line_result_df, file_name, 'line')
+        ww.write_ranked_data_to_csv(project_name, og_total_df, file_name, 'line')
         
         # for function level
-        total_df = og_total_df.copy()
+        # total_df = og_total_df.copy()
 
-        # the index (lineNo) of total_df is a single string formatted as follows:
-        # bug_name#file_name#function_name#line_number
-        # I want to combine rows that have the same bug_name#file_name#function_name
-        # the column values set to the maximum value of a column names sbfl_type
-        total_df['key'] = total_df.index.str.extract(r'(bug\d+#.*?#.*?)(?=#|$)', expand=False)
-        total_df.columns = total_df.columns.str.strip()
+        # # the index (lineNo) of total_df is a single string formatted as follows:
+        # # bug_name#file_name#function_name#line_number
+        # # I want to combine rows that have the same bug_name#file_name#function_name
+        # # the column values set to the maximum value of a column names sbfl_type
+        # total_df['key'] = total_df.index.str.extract(r'(bug\d+#.*?#.*?)(?=#|$)', expand=False)
+        # total_df.columns = total_df.columns.str.strip()
 
-        # set bug value to 1 if any of the rows in the group has a bug value of 1
-        result_df = total_df.groupby('key', group_keys=False).apply(set_bug_value, sbfl_type=sbfl_type)
-        result_df = result_df.drop(columns='key')
+        # # set bug value to 1 if any of the rows in the group has a bug value of 1
+        # result_df = total_df.groupby('key', group_keys=False).apply(set_bug_value, sbfl_type=sbfl_type)
+        # result_df = result_df.drop(columns='key')
 
-        # sort by column of variable sbfl_type
-        result_df = result_df.sort_values(by=sbfl_type, ascending=False)
+        # # sort by column of variable sbfl_type
+        # result_df = result_df.sort_values(by=sbfl_type, ascending=False)
 
-        file_name = bug_version+'.'+sbfl_type
+        # file_name = bug_version+'.'+sbfl_type
 
-        result_df['Rank'] = result_df[sbfl_type].rank(method='max', ascending=False)
-        bug_row = result_df[result_df['bug'] == 1]
-        bug_rank_value = bug_row['Rank'].values[0]
-        row_data[bug_index].append(bug_rank_value)
+        # result_df['Rank'] = result_df[sbfl_type].rank(method='max', ascending=False)
+        # bug_row = result_df[result_df['bug'] == 1]
+        # bug_rank_value = bug_row['Rank'].values[0]
+        # row_data[bug_index].append(bug_rank_value)
 
-        ww.write_ranked_data_to_csv(project_name, result_df, file_name, 'function')
+        # ww.write_ranked_data_to_csv(project_name, result_df, file_name, 'function')
 
-        print(">> ranked data for {}: {} at rank {}".format(bug_version, file_name, bug_rank_value))
+        # print(">> ranked data for {}: {} at rank {}".format(bug_version, file_name, bug_rank_value))
         
-    summary_result = {'col_data': col_data, 'row_data': row_data}
-    ww.write_ranked_summary_to_csv(project_name, summary_result, 'function')
+    # summary_result = {'col_data': col_data, 'row_data': row_data}
+    # ww.write_ranked_summary_to_csv(project_name, summary_result, 'function')
 
     summary_result_line = {'col_data': col_data, 'row_data': row_data_line}
     ww.write_ranked_summary_to_csv(project_name, summary_result_line, 'line')
