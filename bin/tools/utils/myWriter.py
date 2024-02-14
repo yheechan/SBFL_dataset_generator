@@ -209,11 +209,13 @@ def write_ranked_summary_to_csv(project_name, data, level):
     data_dir = project_path / 'data'
     ranked_name = 'ranked-'+level
     ranked_dir = data_dir / ranked_name
+    summary_dir = ranked_dir / 'summary'
     hh.check_dir(data_dir)
     hh.check_dir(ranked_dir)
+    hh.check_dir(summary_dir)
 
     file_name = bug_version + '.rank.summary.csv'
-    file = ranked_dir / file_name
+    file = summary_dir / file_name
 
     with open(file, 'w') as fp:
         cw = csv.writer(fp)

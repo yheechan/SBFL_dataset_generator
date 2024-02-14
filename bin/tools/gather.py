@@ -76,7 +76,10 @@ if __name__ == "__main__":
 
     # 6. Copy ranked data to overall
     copy_data('ranked-line', overall_dir / 'ranked-line')
-    copy_data('ranked-function', overall_dir / 'ranked-function')
+    # copy_data('ranked-function', overall_dir / 'ranked-function')
 
     # 7. Copy line2function data to overall
     copy_data('line2function', overall_dir / 'line2function')
+
+    #8. Copy ranked summary data to overall
+    copy_data('summary', overall_dir / 'summary')
