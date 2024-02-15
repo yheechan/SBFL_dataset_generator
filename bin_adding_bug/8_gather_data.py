@@ -10,37 +10,64 @@ main_dir = bin_dir.parent
 mutations_output_dir = main_dir / 'mutations'
 bugs_dir = main_dir / 'bugs'
 
+def check_dir(dir):
+    if not dir.exists():
+        dir.mkdir()
+
+def copy_data(src_dir, dest_dir, bug_versions):
+    check_dir(dest_dir)
+
+    # summary_files = []
+
+    for bug in bug_versions:
+        # dir_name = f'{project}-{bug}'
+        # dir_path = subjects_dir / dir_name
+        # data_dir = dir_path / 'data' / src_dir
+        data_dir = bug / 'data' / src_dir
+
+        for filepath in data_dir.iterdir():
+            # file_name = filepath.name
+            # is_summary = True if file_name.split('.')[1] == 'rank' else False
+            # if is_summary:
+            #     summary_files.append(filepath)
+            #     continue
+            sp.call(['cp', str(filepath), str(dest_dir)])
+    
+    # if len(summary_files) != 0:
+    #     df = pd.DataFrame()
+    #     file_path = dest_dir / 'total.rank.summary.csv'
+    #     # sort file_path by file name
+    #     summary_files = sorted(summary_files, key=lambda x: x.name)
+    #     for summary_file in summary_files:
+    #         df = pd.concat([df, pd.read_csv(summary_file)], axis=0)
+    #     df.to_csv(file_path, index=False)
+
 if __name__ == "__main__":
-    if not bugs_dir.exists():
-        bugs_dir.mkdir()
     
-    # get list of line in avail_machine_file
-    avail_machine_file = open('available_machine.txt', 'r')
-    lines = avail_machine_file.readlines()
+    versions = []
+    for machines in sorted(bugs_dir.iterdir()):
+        for target in sorted(machines.iterdir()):
+            versions.append(target)
     
-    available_machine_list = []
-    for line in lines:
-        info = line.strip().split(':')
-        if info[1] == 'ok':
-            available_machine_list.append(info[0])
-    print('available machine total: {}'.format(len(available_machine_list)))
+    overall_dir = main_dir / 'overall'
+    check_dir(overall_dir)
     
-    bash_file = open('8_gather_data.sh', 'w')
-    bash_file.write('date\n')
+    # make coverage directory
+    coverage_dir = overall_dir / 'coverage'
+    check_dir(coverage_dir)
+    
+    # copy coverage data
+    copy_data('coverage/raw', coverage_dir / 'raw', versions)
 
-    cnt = 0
-    for machine in available_machine_list:
-        command = 'scp -r {}:/home/yangheechan/SBFL_dataset_generator/bugs {}/{} & \n'.format(machine, bugs_dir, machine)
-        bash_file.write(command)
+    # copy summary data
+    copy_data('coverage/summary', coverage_dir / 'summary', versions)
 
-        if cnt % 5 == 0:
-            bash_file.write("sleep 1s\n")
-        cnt += 1
-    
-    bash_file.write('echo ssh done, waiting...\n')
-    bash_file.write('date\n')
-    bash_file.write('wait\n')
-    bash_file.write('date\n')
+    # copy spectra data
+    copy_data('spectra', overall_dir / 'spectra', versions)
 
-    cmd = ['chmod', '+x', '8_gather_data.sh']
-    res = sp.call(cmd, cwd=bin_dir)
+    # copy processed data
+    copy_data('processed', overall_dir / 'processed', versions)
+
+    # copy ranked-line
+    copy_data('ranked-line', overall_dir / 'ranked-line', versions)
+
