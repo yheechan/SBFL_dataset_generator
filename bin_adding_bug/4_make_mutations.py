@@ -43,7 +43,7 @@ if __name__ == "__main__":
     lib_json_dir = jsoncpp_src / 'lib_json'
     
     target_files = [
-        mytest_dir / 'mytest.c',
+        mytest_dir / 'a' / 'b' / 'mytest.c',
         # lib_json_dir / 'json_value.cpp',
         # lib_json_dir / 'json_reader.cpp',
     ]
@@ -59,7 +59,8 @@ if __name__ == "__main__":
             print('File not found: {}'.format(file))
             exit(1)
         dir_path = file.parent
-        dir_path_str = '/'.join(str(dir_path).split('/')[8:])+'/'
+        dir_path_str = '/'.join(str(file).split('/')[-3:])+'/'
+        # get last 4 elements of file splitted by '/'
         
         file_name = file.name
         ftype = file_name.split('.')[-1]

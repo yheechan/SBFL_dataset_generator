@@ -25,6 +25,7 @@ if __name__ == "__main__":
     # dict that contains key as file and value as number of mutations
     mutations_dict = {}
     total_cnt = 0
+    mutation_info_dict = {}
     for file_dir in mutations_output_dir.iterdir():
         cnt = 0
         if file_dir not in mutations_dict:
@@ -32,7 +33,11 @@ if __name__ == "__main__":
         
         # change following code so that file_dir.iterdir() show with sorted order by file_dir.name
         for mutation in sorted(file_dir.iterdir(), key=lambda x: x.name):
+            # save the mutation info (csv file)
             if mutation.name.split('.')[-1] == 'csv':
+                file_name = file_dir.name
+                if file_name not in mutation_info_dict:
+                    mutation_info_dict[file_name] = mutation
                 continue
             mutations_dict[file_dir].append(mutation)
             cnt += 1
@@ -97,6 +102,15 @@ if __name__ == "__main__":
         if cnt % 5 == 0:
             bash_file.write("sleep 1s\n")
         cnt  += 1
+
+        for csv_info in mutation_info_dict:
+            file_name = csv_info
+            mutation_file = mutation_info_dict[csv_info]
+            cmd = 'scp {} {}:/home/yangheechan/SBFL_dataset_generator/mutations/{}/ & \n'.format(mutation_file, machine, file_name)
+            bash_file.write(cmd)
+            if cnt % 5 == 0:
+                bash_file.write("sleep 1s\n")
+            cnt  += 1
         
         # send mutations to the machine
         for mutation in machine2mutations[machine]:
