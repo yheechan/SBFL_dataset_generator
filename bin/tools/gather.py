@@ -23,14 +23,15 @@ def copy_data(src_dir, dest_dir):
                 summary_files.append(filepath)
                 continue
             sp.call(['cp', str(filepath), str(dest_dir)])
-        
-    df = pd.DataFrame()
-    file_path = dest_dir / 'total.rank.summary.csv'
-    # sort file_path by file name
-    summary_files = sorted(summary_files, key=lambda x: x.name)
-    for summary_file in summary_files:
-        df = pd.concat([df, pd.read_csv(summary_file)], axis=0)
-    df.to_csv(file_path, index=False)
+    
+    if len(summary_files) != 0:
+        df = pd.DataFrame()
+        file_path = dest_dir / 'total.rank.summary.csv'
+        # sort file_path by file name
+        summary_files = sorted(summary_files, key=lambda x: x.name)
+        for summary_file in summary_files:
+            df = pd.concat([df, pd.read_csv(summary_file)], axis=0)
+        df.to_csv(file_path, index=False)
 
 
 if __name__ == "__main__":
