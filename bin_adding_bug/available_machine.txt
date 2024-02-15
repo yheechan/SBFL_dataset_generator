@@ -1,0 +1,29 @@
+faster1:no connection, not loginable
+faster2:ok
+faster3:running all 11:30, seen incorrect results, retest on bug1 --> still outcome is different.. why?
+faster4:ok
+faster5:ok
+faster6:환경 설정 문제 (error while running test cases at random TC - suspicious on gcovr)
+faster7:ok
+faster8:ok
+faster9:ok
+faster10:yes connection, loginable
+faster11:yes connection, loginable
+faster12:no connection, not loginable
+faster13:no connection, not loginable
+faster14:ok
+faster15:ok
+faster16:ok
+faster17:ok
+faster18:ok
+faster19:ok
+faster20:ok
+faster21:ok
+faster22:no connection, not loginable
+faster23:ok
+faster24:ok
+faster25:ok
+faster26:ok
+faster27:ok
+faster28:bin/ environment need inspection
+faster29:ok

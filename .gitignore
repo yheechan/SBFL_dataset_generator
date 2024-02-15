@@ -6,3 +6,6 @@ bin/tools/extractor
 subjects/
 overall/
 overall*
+.vscode/
+mutations/
+bin_adding_bug/MUSIC/
