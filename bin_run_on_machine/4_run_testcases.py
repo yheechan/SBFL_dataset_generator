@@ -193,6 +193,7 @@ if __name__ == "__main__":
             jsoncpp_test = test_dir / 'jsoncpp_test'
 
             cmd = [
+                'timeout', '2s',
                 jsoncpp_test,
                 '--test',
                 tc_name

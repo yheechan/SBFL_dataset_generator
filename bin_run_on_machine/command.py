@@ -170,9 +170,11 @@ if __name__ == "__main__":
                 continue
             print('{} - 4. save mutation: {}'.format(template_name, res))
 
-            if cnt == 0:
-                break
-            cnt += 1
-        break
+        #     if cnt == 0:
+        #         break
+        #     cnt += 1
+        # break
 
-
+    print('{} - compile_error cnt: {}'.format(template_name, compile_error))
+    print('{} - run_but_no_bug cnt: {}'.format(template_name, run_but_no_bug))
+    print('{} - run_and_bug cnt: {}'.format(template_name, run_and_bug))

@@ -12,6 +12,7 @@ main_dir = bin_dir.parent
 subjects_dir = main_dir / 'subjects'
 
 extractor_exe = main_dir / 'bin' / 'tools' / 'extractor'
+clangPP = Path('/usr/bin/clang++-13')
 
 def clean_json_build_dir(project_dir, only_pp=False):
     if only_pp:
@@ -51,7 +52,7 @@ def build_jsoncpp(project_dir, dir_name, preprocessed=False):
     
     cmd = [
         'cmake',
-        '-DCMAKE_CXX_COMPILER=clang++',
+        '-DCMAKE_CXX_COMPILER={}'.format(clangPP),
         '-DCMAKE_CXX_FLAGS=-O0 -fprofile-arcs -ftest-coverage -g -fno-omit-frame-pointer -gline-tables-only -DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION -fsanitize=address,undefined -fsanitize-address-use-after-scope -fsanitize=fuzzer-no-link',
         '-DBUILD_SHARED_LIBS=OFF', '-G',
         'Unix Makefiles',
@@ -173,7 +174,7 @@ def compile_fuzzer(project_dir, dir_name):
     fuzz_dir = project_dir / 'src/test_lib_json'
 
     cmd = [
-        'clang++', '-O0',
+        clangPP, '-O0',
         '-fprofile-arcs', '-ftest-coverage', '-g',
         '-fno-omit-frame-pointer', '-gline-tables-only',
         '-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION',

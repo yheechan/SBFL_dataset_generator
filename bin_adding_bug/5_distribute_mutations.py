@@ -91,7 +91,7 @@ if __name__ == "__main__":
     # with all the directory for each file
     # and send the assigned files
     cnt = 0
-    laps = 100
+    laps = 50
     cores = 8
     for machine in available_machine_list:
         cmd = 'ssh {} \" cd SBFL_dataset_generator && mkdir mutations && cd mutations '.format(machine)

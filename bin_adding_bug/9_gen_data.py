@@ -25,14 +25,14 @@ if __name__ == "__main__":
             available_machine_list.append(info[0])
     print('available machine total: {}'.format(len(available_machine_list)))
     
-    bash_file = open('6_gen_on_machines.sh', 'w')
+    bash_file = open('9_gen_data.sh', 'w')
     bash_file.write('date\n')
 
     cnt = 0
     cores = 8
     for machine in available_machine_list:
         for core_n in range(cores):
-            command = 'ssh {} \"cd SBFL_dataset_generator/bin_run_on_machine && ./command.py core{} > output.{} 2>&1\" & \n'.format(
+            command = 'ssh {} \"cd SBFL_dataset_generator/bin_run_on_machine && ./command_2.py core{} > output.gen.{} 2>&1\" & \n'.format(
                 machine, core_n, core_n
             )
             bash_file.write(command)
@@ -47,5 +47,5 @@ if __name__ == "__main__":
     bash_file.write('wait\n')
     bash_file.write('date\n')
 
-    cmd = ['chmod', '+x', '6_gen_on_machines.sh']
+    cmd = ['chmod', '+x', '9_gen_data.sh']
     res = sp.call(cmd, cwd=bin_dir)
