@@ -124,7 +124,7 @@ if __name__ == "__main__":
             ###################
             # 4. run test cases
             print('{} - 3. start run test cases'.format(template_name))
-            cmd = [run_tc, mutation_name, mutation_info, template_name, 'False']
+            cmd = ['timeout', '180s', run_tc, mutation_name, mutation_info, template_name, 'False']
             res = sp.call(cmd, cwd=bin_dir)
             if res == 111:
                 print('{} - 3. [{}] has no bug on this version: {}'.format(template_name, res, mutation_name))

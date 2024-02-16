@@ -48,6 +48,7 @@ if __name__ == "__main__":
     for machines in sorted(bugs_dir.iterdir()):
         for target in sorted(machines.iterdir()):
             versions.append(target)
+    print('total bugs: {}'.format(len(versions)))
     
     overall_dir = main_dir / 'overall'
     check_dir(overall_dir)
