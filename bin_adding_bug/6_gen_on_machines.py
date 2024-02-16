@@ -29,13 +29,18 @@ if __name__ == "__main__":
     bash_file.write('date\n')
 
     cnt = 0
+    cores = 8
     for machine in available_machine_list:
-        command = 'ssh {} \"cd SBFL_dataset_generator/bin_run_on_machine && ./command.py > output.0 2>&1\" & \n'.format(machine)
-        bash_file.write(command)
+        for core_n in range(cores):
+            command = 'ssh {} \"cd SBFL_dataset_generator/bin_run_on_machine && ./command.py core{} > output.{} 2>&1\" & \n'.format(
+                machine, core_n, core_n
+            )
+            bash_file.write(command)
 
-        if cnt % 5 == 0:
-            bash_file.write("sleep 1s\n")
-        cnt += 1
+            if cnt % 5 == 0:
+                bash_file.write("sleep 1s\n")
+                # bash_file.write("wait\n")
+            cnt += 1
     
     bash_file.write('echo ssh done, waiting...\n')
     bash_file.write('date\n')

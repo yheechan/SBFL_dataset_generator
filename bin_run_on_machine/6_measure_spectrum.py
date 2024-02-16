@@ -107,25 +107,22 @@ def sbfl(e_p, e_f, n_p, n_f, formula="Ochiai"):
     else:
         raise Exception(f"Unknown formula: {formula}")
 
-def write_df_to_csv(project_name, df, file_name):
+def write_df_to_csv(project_name, df, file_name, target):
     project_path = subjects_dir / project_name
     data_dir = project_path / 'data'
-    processed_dir = data_dir / 'processed'
+    target_dir = data_dir / target
     check_dir(data_dir)
-    check_dir(processed_dir)
+    check_dir(target_dir)
 
-    csv_file_path = processed_dir / file_name
-    df.to_csv(csv_file_path)
-
-    rankLine_dir = data_dir / 'ranked-line'
-    check_dir(rankLine_dir)
-    csv_file_path = rankLine_dir / file_name
+    csv_file_path = target_dir / file_name
     df.to_csv(csv_file_path)
 
 if __name__ == "__main__":
-    target_dir = subjects_dir / 'mytest'
-    target_code = target_dir / 'a' / 'b' / 'mytest.c'
-    tc_dir = target_dir / 'TC'
+    # target_dir = subjects_dir / 'mytest'
+    # target_code = target_dir / 'a' / 'b' / 'mytest.c'
+    # tc_dir = target_dir / 'TC'
+    template_name = sys.argv[5]
+    target_dir = subjects_dir / template_name
     version = sys.argv[1] # mytest.MUT139.c
     mutation_info = sys.argv[2]
 
@@ -144,8 +141,8 @@ if __name__ == "__main__":
 
     # get failing tc list
     file_nm = version + '.txt'
-    failing_file = target_dir / 'data' / 'failing' / file_nm
-    failing_fp = open(failing_file, 'r')
+    failing_tc_list_file = target_dir / 'data' / 'failing' / file_nm
+    failing_fp = open(failing_tc_list_file, 'r')
     failing_list = failing_fp.readlines()
     failing_list_as_id = []
     for failing in failing_list:
@@ -153,7 +150,7 @@ if __name__ == "__main__":
         failing_list_as_id.append(fail_id)
     
     # get line2function dict
-    line2function_dict = get_line2function_json('mytest', version)
+    line2function_dict = get_line2function_json(template_name, version)
 
     # get failing line by reading lines of mutation_info
     file = sys.argv[3]
@@ -170,20 +167,22 @@ if __name__ == "__main__":
             continue
     # print('failing_file: {}'.format(file))
     failing_line = line
-    print('failing_line: {}'.format(failing_line))
     # failing file
-    failing_file = 'a/b/mytest.c'
+    failing_file = sys.argv[4] # 'a/b/mytest.c'
     # failing function
     failing_func = return_fuction(failing_file, failing_line, line2function_dict)
 
+    # print('failing_line: {}'.format(failing_line))
+    # print('failing_file: {}'.format(failing_file))
+    # print('failing_function: {}'.format(failing_func))
 
     for spectra_csv in spectra_list:
-        print(spectra_csv)
+        # print(spectra_csv)
         csv_file_name = spectra_csv.name
         bug_version = '.'.join(csv_file_name.split('.')[:3])
         # bug_version = bug_version.split('.')[0] this is original
         # bug_index = int(bug_version[3:])
-        print('bug_version: {}'.format(bug_version))
+        # print('bug_version: {}'.format(bug_version))
 
         # get csv as pandas
         spectra_df = pd.read_csv(spectra_csv, index_col='lineNo')
@@ -206,4 +205,14 @@ if __name__ == "__main__":
         new_df = pd.DataFrame(data, index=index_nd)
         if bug_key in new_df.index:
             new_df.loc[bug_key, 'bug'] = 1
-        write_df_to_csv('mytest', new_df, csv_file_name)
+        write_df_to_csv(template_name, new_df, csv_file_name, 'processed')
+    
+    # merge all df
+    processed_dir = target_dir / 'data' / 'processed'
+    df_list = []
+    for path in processed_dir.iterdir():
+        df = pd.read_csv(path, index_col='lineNo')
+        df_list.append(df)
+    
+    total_df = pd.concat(df_list, axis=0)
+    write_df_to_csv(template_name, total_df, version+'.csv', 'ranked-line')

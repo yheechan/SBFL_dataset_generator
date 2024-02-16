@@ -29,7 +29,8 @@ if __name__ == "__main__":
         bash_file.write(command)
 
         if cnt % 5 == 0:
-            bash_file.write("sleep 1s\n")
+            bash_file.write("sleep 0.5s\n")
+            bash_file.write("wait\n")
         cnt += 1
     
     bash_file.write('echo ssh done, waiting...\n')

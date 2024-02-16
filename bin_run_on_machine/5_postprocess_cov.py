@@ -7,10 +7,12 @@ import json
 import sys
 import csv
 
+
 script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 subjects_dir = main_dir / 'subjects'
+queue_dir = main_dir / 'afl-test-cases' / 'output' / 'default' / 'queue'
 
 def check_dir(dir):
     if not dir.exists():
@@ -126,18 +128,89 @@ def write_preprocessed_data(project_name, per_version_dict):
             cw.writerow(col_data)
             cw.writerows(row_data)
 
+def get_test_case_list(project_name, version):
+    bug_version = version
+
+    project_path = subjects_dir / project_name
+    build_dir = project_path / 'build'
+
+    # get jsoncpp test cases
+    cmd = ['./jsoncpp_test', '--list-tests']
+    test_dir = build_dir / 'src/test_lib_json'
+    
+    if not test_dir.exists():
+        print('test directory not found: {}'.format(test_dir))
+        exit(1)
+    
+    process = sp.Popen(
+        cmd, stdout=sp.PIPE, stderr=sp.PIPE,
+        cwd=test_dir, encoding='utf-8'
+    )
+
+    tc_list = []
+    name2id = {}
+    while True:
+        line = process.stdout.readline()
+        if line == '' and process.poll() != None:
+            break
+        tc_name = line.strip()
+        tc_list.append(tc_name)
+    
+    tc = {}
+    for num in range(len(tc_list)):
+        tc_id = 'TC'+str(num+1)
+        tc_name = tc_list[num]
+
+        assert not tc_id in tc.keys()
+
+        tc[tc_id] = {
+            'name': tc_name,
+            'path': None
+        }
+        name2id[tc_name] = tc_id
+    
+    # get afl test cases
+    # project_path = subjects_dir / project_name
+    # build_dir = project_path / 'build'
+    # jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+
+    # tc_cnt = len(tc.keys()) - 1
+    # for afl_tc in sorted(queue_dir.iterdir()):
+    #     tc_cnt += 1
+    #     tc_id = 'TC'+str(tc_cnt)
+        
+    #     afl_name = afl_tc.name
+    #     check = afl_name.split(',')[0].split(':')
+    #     if check[0] != 'id': continue
+
+    #     afl_num = check[1]
+    #     tc_name = 'afl/afl-'+afl_num
+
+    #     assert not tc_id in tc.keys()
+
+    #     # cmd = [jsoncpp_fuzzer, afl_tc]
+
+    #     tc[tc_id] = {
+    #         'name': tc_name,
+    #         'path': afl_tc
+    #     }
+    
+    return tc, name2id
+
 if __name__ == "__main__":
-    target_dir = subjects_dir / 'mytest'
-    target_code = target_dir / 'a' / 'b' / 'mytest.c'
-    tc_dir = target_dir / 'TC'
+    # target_dir = subjects_dir / 'mytest'
+    # target_code = target_dir / 'a' / 'b' / 'mytest.c'
+    # tc_dir = target_dir / 'TC'
     version = sys.argv[1] # mytest.MUT139.c
     mutation_info = sys.argv[2]
+    template_name = sys.argv[3]
 
     # 1. get list of test case
-    tc_list = get_tc_list(tc_dir)
+    # tc_list = get_tc_list(tc_dir)
+    tc, name2id = get_test_case_list(template_name, version)
 
     # 2. get line to function dict
-    line2function_dict = get_line2function_json('mytest', version)
+    line2function_dict = get_line2function_json(template_name, version)
 
     # # 3. get failing line by reading lines of mutation_info
     # file = sys.argv[3]
@@ -159,7 +232,11 @@ if __name__ == "__main__":
 
     per_version_dict = {}
     first = True
-    for tc_id in tc_list:
+    # for tc_id in tc_list:
+    target_dir = subjects_dir / template_name
+    # MYLIMIT = 10
+    # LIMIT_CNT = 0
+    for tc_id in tc.keys():
         # get coverage path
         file_name = version + '.' + tc_id + '.raw.json'
         cov_path = target_dir / 'data' / 'coverage' / 'raw' / file_name
@@ -184,6 +261,10 @@ if __name__ == "__main__":
                 version,
                 line2function_dict
             )
+        
+        # if LIMIT_CNT == MYLIMIT:
+        #     break
+        # LIMIT_CNT += 1
     
     # write preprocessed_data
-    write_preprocessed_data('mytest', per_version_dict)
+    write_preprocessed_data(template_name, per_version_dict)

@@ -91,35 +91,51 @@ if __name__ == "__main__":
     # with all the directory for each file
     # and send the assigned files
     cnt = 0
+    laps = 100
+    cores = 8
     for machine in available_machine_list:
         cmd = 'ssh {} \" cd SBFL_dataset_generator && mkdir mutations && cd mutations '.format(machine)
-        for file in mutations_dict.keys():
-            file_name = file.name
-            cmd += '&& mkdir {} \"'.format(file_name)
-        cmd += '\n'
+        for core_n in range(cores):
+            for file in mutations_dict.keys():
+                file_name = file.name
+                cmd += '&& mkdir -p core{}/{} '.format(core_n, file_name)
+        cmd += '\" \n'
         bash_file.write(cmd)
+        bash_file.write("sleep 0.5s\n")
+        bash_file.write("wait\n")
 
-        if cnt % 5 == 0:
-            bash_file.write("sleep 1s\n")
-        cnt  += 1
+        # if cnt % 5 == 0:
+        #     bash_file.write("sleep 0.5s\n")
+        bash_file.write("wait\n")
+        # cnt  += 1
 
-        for csv_info in mutation_info_dict:
-            file_name = csv_info
-            mutation_file = mutation_info_dict[csv_info]
-            cmd = 'scp {} {}:/home/yangheechan/SBFL_dataset_generator/mutations/{}/ & \n'.format(mutation_file, machine, file_name)
-            bash_file.write(cmd)
-            if cnt % 5 == 0:
-                bash_file.write("sleep 1s\n")
-            cnt  += 1
+        for core_n in range(cores):
+            for csv_info in mutation_info_dict:
+                file_name = csv_info
+                mutation_file = mutation_info_dict[csv_info]
+                cmd = 'scp {} {}:/home/yangheechan/SBFL_dataset_generator/mutations/core{}/{}/ & \n'.format(
+                    mutation_file, machine, core_n, file_name
+                )
+                bash_file.write(cmd)
+                if cnt % laps == 0:
+                    bash_file.write("sleep 0.5s\n")
+                    bash_file.write("wait\n")
+                cnt  += 1
         
         # send mutations to the machine
+        saving = 0
         for mutation in machine2mutations[machine]:
             file_name = mutation[0]
             mutation_file = mutation[1]
-            cmd = 'scp {} {}:/home/yangheechan/SBFL_dataset_generator/mutations/{}/ & \n'.format(mutation_file, machine, file_name)
+            curr_core = saving % cores
+            cmd = 'scp {} {}:/home/yangheechan/SBFL_dataset_generator/mutations/core{}/{} & \n'.format(
+                mutation_file, machine, curr_core, file_name
+            )
             bash_file.write(cmd)
-            if cnt % 5 == 0:
-                bash_file.write("sleep 1s\n")
+            saving += 1
+            if cnt % laps == 0:
+                bash_file.write("sleep 0.5s\n")
+                bash_file.write("wait\n")
             cnt  += 1
 
     

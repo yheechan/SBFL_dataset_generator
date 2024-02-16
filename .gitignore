@@ -1,6 +1,4 @@
 *__pycache__*
-*tmp*
-*temp*
 jsoncpp/
 bin/tools/extractor
 subjects/
@@ -10,3 +8,4 @@ overall*
 mutations/
 bin_adding_bug/MUSIC/
 bugs/
+buggy_mutations/

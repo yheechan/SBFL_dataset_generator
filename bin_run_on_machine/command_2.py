@@ -38,6 +38,9 @@ if __name__ == "__main__":
 
     ###############################
     # 1. apply mutation one by one
+    compile_error = 0
+    run_but_no_bug = 0
+    run_and_bug = 0
     file_count = 0
     for file in mutations_dir.iterdir():
         file_count += 1
@@ -57,14 +60,13 @@ if __name__ == "__main__":
             cmd = ['rm', '-r', data_dir]
             sp.call(cmd, cwd=bin_dir)
 
-        compile_error = 0
-        run_but_no_bug = 0
-        run_and_bug = 0
         cnt = 0
         # for single mutation
+        # get total count of file in file.iterdir()
         total_cnt = len(list(file.iterdir()))
         percentage = 0
         for mutation in file.iterdir():
+            # print current percentage done for loop
             percentage += 1
             print('{} - {}/{} done on {} file'.format(template_name, percentage, total_cnt, file_count))
             if mutation.name.split('.')[-1] == 'csv':
@@ -124,7 +126,7 @@ if __name__ == "__main__":
             ###################
             # 4. run test cases
             print('{} - 3. start run test cases'.format(template_name))
-            cmd = [run_tc, mutation_name, mutation_info, template_name, 'False']
+            cmd = [run_tc, mutation_name, mutation_info, template_name, 'True']
             res = sp.call(cmd, cwd=bin_dir)
             if res == 111:
                 print('{} - 3. [{}] has no bug on this version: {}'.format(template_name, res, mutation_name))
@@ -139,40 +141,51 @@ if __name__ == "__main__":
 
             # ###############################
             # # 5. post-process coverage data
-            # cmd = [postprocess_cov, mutation_name, mutation_info, mutation_file_path_str]
-            # res = sp.call(cmd, cwd=bin_dir)
-            # if res != 0:
-            #     print('post-process coverage data failed: {}'.format(res))
-            #     continue
+            cmd = [postprocess_cov, mutation_name, mutation_info, template_name]
+            print('{} - 4. start post-process coverage data'.format(template_name))
+            res = sp.call(cmd, cwd=bin_dir)
+            if res != 0:
+                print('{} - 4. post-process coverage data failed: {}'.format(template_name, res))
+                continue
+            print('{} - 4. post-process coverage data: {}'.format(template_name, res))
 
             # ###############################
-            # # 6. measure spectrum (formula)
-            # cmd = [measure_spectrum, mutation_name, mutation_info, mutation_file_path_str, target_src_file_path]
-            # res = sp.call(cmd, cwd=bin_dir)
-            # if res != 0:
-            #     print('measure spectrum failed: {}'.format(res))
-            #     continue
+            # 6. measure spectrum (formula)
+            cmd = [measure_spectrum, mutation_name, mutation_info, mutation_file_path_str, target_src_file_path, template_name]
+            print('{} - 5. start measure spectrum'.format(template_name))
+            res = sp.call(cmd, cwd=bin_dir)
+            if res != 0:
+                print('{} - 5. measure spectrum failed: {}'.format(template_name, res))
+                continue
+            print('{} - 5. measure spectrum: {}'.format(template_name, res))
             
             # ###############
-            # # 7. save (record) data
-            # cmd = [save_data, mutation_name, mutation_info, mutation_file_path_str]
-            # res = sp.call(cmd, cwd=bin_dir)
-            # if res != 0:
-            #     print('save data failed: {}'.format(res))
-            #     continue
-
-            # 8. save mutation since it passes run test case with failing TC
-            cmd = [save_mutation, template_name, mutation_name, mutation_file_path_str]
-            print('{} - 4. save mutation'.format(template_name))
-            res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+            # 7. save (record) data
+            cmd = [save_data, mutation_name, mutation_info, template_name]
+            print('{} - 6. start save data'.format(template_name))
+            res = sp.call(cmd, cwd=bin_dir)
             if res != 0:
-                print('{} - 4. save mutation failed: {}'.format(template_name, res))
+                print('{} - save data failed: {}'.format(template_name, res))
                 continue
-            print('{} - 4. save mutation: {}'.format(template_name, res))
+            print('{} - 6. save data: {}'.format(template_name, res))
+
+            # # 8. save mutation since it passes run test case with failing TC
+            # cmd = [save_mutation, template_name, mutation_name, mutation_file_path_str]
+            # print('{} - 4. save mutation'.format(template_name))
+            # res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
+            # if res != 0:
+            #     print('{} - 4. save mutation failed: {}'.format(template_name, res))
+            #     continue
+            # print('{} - 4. save mutation: {}'.format(template_name, res))
 
             if cnt == 0:
                 break
             cnt += 1
         break
+
+    print('{} - compile_error cnt: {}'.format(template_name, compile_error))
+    print('{} - run_but_no_bug cnt: {}'.format(template_name, run_but_no_bug))
+    print('{} - run_and_bug cnt: {}'.format(template_name, run_and_bug))
+
 
 

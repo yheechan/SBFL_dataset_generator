@@ -43,9 +43,9 @@ if __name__ == "__main__":
     lib_json_dir = jsoncpp_src / 'lib_json'
     
     target_files = [
-        mytest_dir / 'a' / 'b' / 'mytest.c',
-        # lib_json_dir / 'json_value.cpp',
-        # lib_json_dir / 'json_reader.cpp',
+        # mytest_dir / 'a' / 'b' / 'mytest.c',
+        lib_json_dir / 'json_value.cpp',
+        lib_json_dir / 'json_reader.cpp',
     ]
     file_types = ['cpp', 'c', 'h', 'inl']
 
@@ -77,12 +77,12 @@ if __name__ == "__main__":
         if not output_dir.exists():
             output_dir.mkdir()
         
-        if file_name == 'mytest.c':
-            cmd = '{} {} -o {} -- & \n'.format(
-                music_exe, file, output_dir
-            )
-            bash_file.write(cmd)
-            continue
+        # if file_name == 'mytest.c':
+        #     cmd = '{} {} -o {} -- & \n'.format(
+        #         music_exe, file, output_dir
+        #     )
+        #     bash_file.write(cmd)
+        #     continue
         
         # make mutations for this file into the output directory
         cmd = '{} {} -o {} -l 1 -p {} & \n'.format(
@@ -92,7 +92,8 @@ if __name__ == "__main__":
         bash_file.write(cmd)
 
         if cnt % 5 == 0:
-            bash_file.write("sleep 1s\n")
+            bash_file.write("sleep 0.5s\n")
+            bash_file.write("wait\n")
         cnt += 1
     
     bash_file.write('echo ssh done, waiting...\n')

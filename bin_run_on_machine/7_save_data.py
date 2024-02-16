@@ -14,11 +14,13 @@ def check_dir(dir):
         dir.mkdir()
 
 if __name__ == "__main__":
-    target_dir = subjects_dir / 'mytest'
-    target_code = target_dir / 'a' / 'b' / 'mytest.c'
-    tc_dir = target_dir / 'TC'
+    # target_dir = subjects_dir / 'mytest'
+    # target_code = target_dir / 'a' / 'b' / 'mytest.c'
+    # tc_dir = target_dir / 'TC'
     version = sys.argv[1] # mytest.MUT139.c
     mutation_info = sys.argv[2]
+    template_name = sys.argv[3]
+    target_dir = subjects_dir / template_name
 
     # make a directory
     bugs_dir = main_dir / 'bugs'
