@@ -11,7 +11,7 @@ main_dir = bin_dir.parent
 mutations_output_dir = main_dir / 'mutations'
 
 if __name__ == "__main__":
-    # get list of line in avail_machine_file
+    # 1. GET NUMBER OF AVAILABLE MACHINES
     avail_machine_file = open('available_machine.txt', 'r')
     lines = avail_machine_file.readlines()
     
@@ -22,7 +22,8 @@ if __name__ == "__main__":
             available_machine_list.append(info[0])
     print('available machine total: {}'.format(len(available_machine_list)))
 
-    # 1. collect buggy mutation lists
+    # 2. COLLECT BUGGY MUTATIONS TO
+    # BUGGY_MUTATION_DICT PER MUTATION_PATH_ORIGIN
     buggy_mutation_dir = main_dir / 'buggy_mutations'
     buggy_mutation_dict = {}
     total_buggy_mutation = 0
@@ -45,7 +46,7 @@ if __name__ == "__main__":
     for key in buggy_mutation_dict:
         print('\t{}: {}'.format(key, len(buggy_mutation_dict[key])))
 
-    # file to save selected mutations
+    # 3. INITIATE FILE TO SAVE SELECTED MUTANTS
     selected_file = main_dir / 'selected_mutation.txt'
     if selected_file.exists():
         selected_file.unlink()
@@ -53,14 +54,18 @@ if __name__ == "__main__":
         selected_file.touch()
     selected_file = open(selected_file, 'a')
     
-    # 2. select (target_cnt / file_cnt) per file
-    select_cnt = int(100 // len(buggy_mutation_dict))
+    # 4. DISTRIBUTE EQUALL AMOUNT OF MUTANTS PER FILE
+    selecting_amount = 200
+    select_cnt = int(selecting_amount // len(buggy_mutation_dict))
+    print('selecting amount: {}'.format(selecting_amount))
+    print('selecting count per file: {}'.format(select_cnt))
 
+    # 5. SELECT MUTANTS PER FILE
     selected_per_file = {}
     for file in buggy_mutation_dict:
         selected_per_file[file] = []
 
-        # get mutation info from db for this file
+        # GET MUTANT INFO DB TO MATCH MUTANT TO SOURCE CODE LINE
         file_name_info = file.split('-')[-1].split('.')
         csv_file_name = file_name_info[0] + '_mut_db.csv'
         info_path = main_dir / 'mutations' / file / csv_file_name
@@ -74,15 +79,18 @@ if __name__ == "__main__":
         lineNum2mutations = {}
         total_mutation = len(buggy_mutation_dict[file])
         curr_cnt = 0
+        # SAVE MUTANTS ON ITS LINE
+        # KEY: LINE, VALUE: LIST OF MUTANTS ON THE LINE
         for mutation_id in buggy_mutation_dict[file]:
             curr_cnt += 1
-            print('current: {}/{}'.format(curr_cnt, total_mutation))
+            # print('current: {}/{}'.format(curr_cnt, total_mutation))
 
             # get mutation info from db
             for db_line in db_lines:
                 db_line = db_line.strip()
                 db_info = db_line.split(',')
 
+                # FOUND MUTANT INFO IN DB
                 if mutation_id == db_info[0]:
                     start_line = int(db_info[2])
                     if start_line not in lineNum2mutations:
@@ -90,16 +98,35 @@ if __name__ == "__main__":
                     lineNum2mutations[start_line].append(mutation_id)
                 
         cnt = 0
-        for line in lineNum2mutations:
-            selected_per_file[file].append(lineNum2mutations[line][0])
-            data = '{},\t{}\n'.format(lineNum2mutations[line][0],line)
-            selected_file.write(data)
-            cnt += 1
-            if cnt == select_cnt:
-                break
-        
+        flag = 1
+        completed = 0
+        # FOR THIS FILE, SELECT MUTANTS THAT ARE ON THE SAME LINE
+        while True:
+            turn = 0
+            for line in lineNum2mutations:
+                if turn >= len(lineNum2mutations[line]):
+                    continue
+                flag = 0
+
+                selected_per_file[file].append(lineNum2mutations[line][turn])
+                data = '{},\t{},\t{}\n'.format(lineNum2mutations[line][turn], line, turn+1)
+                selected_file.write(data)
+
+                cnt += 1
+                if cnt == select_cnt:
+                    completed = 1
+                    break
+            if completed == 1: break
+            if flag == 1: break
+            turn += 1
+
+    total_amount = 0
+    amount = 0
     for key in selected_per_file:
-        print('{}: {}'.format(key, len(selected_per_file[key])))
+        amount = len(selected_per_file[key])
+        total_amount += amount
+        print('{}: {}'.format(key, amount))
+    print('total: {}'.format(total_amount))
         
         
     # count number of files (mutations) to distribute
@@ -115,11 +142,11 @@ if __name__ == "__main__":
                     mutation_info_dict[file_name] = mutation
                     break
     
-    # assigns equall amount of mutations to each machine
+    # 6. assigns equall amount of mutations to each machine
     machine2mutations = {}
     curr_machine = 0
     mutation_cnt = 0
-    per_machine = select_cnt//len(available_machine_list)
+    per_machine = selecting_amount//len(available_machine_list)
     print('per machine: {}'.format(per_machine))
 
     for key in selected_per_file.keys():
@@ -140,7 +167,7 @@ if __name__ == "__main__":
             
             mutation_cnt += 1
 
-            if mutation_cnt == (select_cnt//len(available_machine_list)):
+            if mutation_cnt == per_machine:
                 curr_machine += 1
                 mutation_cnt = 0
                 if curr_machine == len(available_machine_list):

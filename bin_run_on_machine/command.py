@@ -3,7 +3,6 @@ import subprocess as sp
 from pathlib import Path
 import os
 import sys
-import time
 
 script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
@@ -66,7 +65,7 @@ if __name__ == "__main__":
         percentage = 0
         for mutation in file.iterdir():
             percentage += 1
-            print('{} - {}/{} done on {} file'.format(template_name, percentage, total_cnt, file_count))
+            print('{} - starting on mutation {}/{} done on {} file'.format(template_name, percentage, total_cnt, file_count))
             if mutation.name.split('.')[-1] == 'csv':
                 continue
 
@@ -77,23 +76,26 @@ if __name__ == "__main__":
             target_src_file_name = mutation_file_path_str.split('-')[-1]
             target_src_file_path = '/'.join(mutation_file_path_str.split('-')[:-1])
 
-            print('{} [print info] - mutation_name: {}'.format(template_name, mutation_name))
-            print('{} [print info] - mutation_id: {}'.format(template_name, mutation_id))
-            print('{} [print info] - mutation_file_path_str: {}'.format(template_name, mutation_file_path_str))
-            print('{} [print info] - target_src_file_name: {}'.format(template_name, target_src_file_name))
-            print('{} [print info] - target_src_file_path: {}\n'.format(template_name, target_src_file_path))
+            print('{} [print info] - mutation_name: {}'.format(template_name, mutation_name)) # json_value.MUT123.cpp
+            print('{} [print info] - mutation_id: {}'.format(template_name, mutation_id)) # MUT123
+            print('{} [print info] - mutation_file_path_str: {}'.format(template_name, mutation_file_path_str)) # src-lib_json-json_value.cpp-json_value.cpp
+            print('{} [print info] - target_src_file_name: {}'.format(template_name, target_src_file_name)) # json_value.cpp
+            print('{} [print info] - target_src_file_path: {}\n'.format(template_name, target_src_file_path)) # src/lib_json/json_value.cpp
             
             ###############################
             # 1. apply mutation one by one
             cmd = [
                 apply_mutation, mutation,
                 mutation_name, mutation_id,
-                mutation_file_path_str, target_src_file_name, target_src_file_path,
-                template_name
+                mutation_file_path_str, target_src_file_name,
+                target_src_file_path, template_name
             ]
-            print('{} - 1. start apply mutation'.format(template_name))
+            print('{} - 1. start replace with bugfree code then applying mutation'.format(template_name))
             res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
-            print('{} - 1. apply mutation: {}'.format(template_name, res))
+            if res != 0:
+                print('{} - 1. Failed in replace template with bug free and applying mutation: {}'.format(template_name, res))
+                continue
+            print('{} - 1. Success in replace template with bug free and applying mutation: {}'.format(template_name, res))
 
             # ################
             # 2. compile code
@@ -105,11 +107,11 @@ if __name__ == "__main__":
             res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
             # if compile error move to step 1
             if res != 0:
-                print('{} - 2 compiling code failed: {}'.format(template_name, res))
+                print('{} - 2 Failed compiling code: {}'.format(template_name, res))
                 compile_error += 1
                 print('{} - 2. compile error count: {}'.format(template_name, compile_error))
                 continue
-            print('{} - 2. compile code: {}'.format(template_name, res))
+            print('{} - 2. Sucess compile code: {}'.format(template_name, res))
 
 
             #################################
@@ -123,18 +125,21 @@ if __name__ == "__main__":
 
             ###################
             # 4. run test cases
-            print('{} - 3. start run test cases'.format(template_name))
             cmd = ['timeout', '180s', run_tc, mutation_name, mutation_info, template_name, 'False']
-            res = sp.call(cmd, cwd=bin_dir)
+            print('{} - 3. start run test cases'.format(template_name))
+            res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNUL)
             if res == 111:
                 print('{} - 3. [{}] has no bug on this version: {}'.format(template_name, res, mutation_name))
                 run_but_no_bug += 1
                 print('{} - 3. run but no bug count: {}'.format(template_name, run_but_no_bug))
                 continue
+            elif res != 0:
+                print('{} - 3. [{}] failed to run test cases: {}'.format(template_name, res, mutation_name))
+                continue
             print('{} - 3. [{}] this version has bug: {}'.format(template_name, res, mutation_name))
             run_and_bug += 1
             print('{} - 3. run and bug count: {}'.format(template_name, run_and_bug))
-            print('{} - 3. run test cases: {}'.format(template_name, res))
+            print('{} - 3. Success run test cases: {}'.format(template_name, res))
 
 
             # ###############################
@@ -166,15 +171,17 @@ if __name__ == "__main__":
             print('{} - 4. save mutation'.format(template_name))
             res = sp.call(cmd, cwd=bin_dir, stdout=sp.DEVNULL, stderr=sp.DEVNULL)
             if res != 0:
-                print('{} - 4. save mutation failed: {}'.format(template_name, res))
+                print('{} - 4. Failed save mutation failed: {}'.format(template_name, res))
                 continue
-            print('{} - 4. save mutation: {}'.format(template_name, res))
+            print('{} - 4. Success save mutation: {}'.format(template_name, res))
+
+            print('{} - Success run on buggy mutation: {}/{} done on {} file'.format(template_name, percentage, total_cnt, file_count))
+            print('{} - Result after run on mutation: {}'.format(template_name, mutation_name))
+            print('\t{} - compile_error cnt: {}'.format(template_name, compile_error))
+            print('\t{} - run_but_no_bug cnt: {}'.format(template_name, run_but_no_bug))
+            print('\t{} - run_and_bug cnt: {}'.format(template_name, run_and_bug))
 
         #     if cnt == 0:
         #         break
         #     cnt += 1
         # break
-
-    print('{} - compile_error cnt: {}'.format(template_name, compile_error))
-    print('{} - run_but_no_bug cnt: {}'.format(template_name, run_but_no_bug))
-    print('{} - run_and_bug cnt: {}'.format(template_name, run_and_bug))

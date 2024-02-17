@@ -8,11 +8,8 @@ script_file_path = Path(os.path.realpath(__file__))
 bin_dir = script_file_path.parent
 main_dir = bin_dir.parent
 mutations_output_dir = main_dir / 'mutations'
-bugs_dir = main_dir / 'bugs'
 
 if __name__ == "__main__":
-    if not bugs_dir.exists():
-        bugs_dir.mkdir()
     
     # get list of line in avail_machine_file
     avail_machine_file = open('available_machine.txt', 'r')

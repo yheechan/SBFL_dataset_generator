@@ -9,3 +9,9 @@ mutations/
 bin_adding_bug/MUSIC/
 bugs/
 buggy_mutations/
+
+bin_adding_bug/tmp
+buggy_mutations-v1/
+bugs-v1/
+mutations-v1/
+selected_mutation-v1.txt

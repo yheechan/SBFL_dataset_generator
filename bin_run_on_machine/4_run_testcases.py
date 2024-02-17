@@ -213,7 +213,7 @@ if __name__ == "__main__":
             tc_path  = tc[tc_id]['path']
             tc_name = 'aflTC-' + tc_path.name.split(',')[0].split(':')[1]
 
-            cmd = [jsoncpp_fuzzer, tc_path]
+            cmd = ['timeout', '2s', jsoncpp_fuzzer, tc_path]
             res = sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.STDOUT)
         # cmd = [tc]
         # res = sp.call(cmd, stdout=sp.DEVNULL, stderr=sp.STDOUT)

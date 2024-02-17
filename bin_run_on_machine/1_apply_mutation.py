@@ -11,20 +11,34 @@ subjects_dir = main_dir / 'subjects'
 mytest_dir = subjects_dir / 'mytest'
 
 if __name__ == "__main__":
-    mutation_file = Path(sys.argv[1])
-    
-    mutation_name = sys.argv[2]
-
-    file_info = mutation_name.split('.')
-    mutation_id = sys.argv[3]
-    mutation_file_path = sys.argv[4]
-    file_name = sys.argv[5]
-    # get all element except last one from file_path.parent.name.split('-')
-    # and join them with '-'
-    file_path = sys.argv[6]
-    
     template_name = sys.argv[7]
-    template_dir = subjects_dir / sys.argv[7]
+    template_dir = subjects_dir / template_name
+
+    file_name = sys.argv[5] # json_reader.cpp or json_value.cpp
+    file_path = sys.argv[6] # src/lib_json/json_reader.cpp or src/lib_json/json_value.cpp
+
+    # APPLYING BUGFREE HERE
+    bugfree_dir = main_dir / 'src/bug-versions-jsoncpp/bugFree'
+    bugfree_json_reader = bugfree_dir / 'json_reader.cpp'
+    bugfree_json_value = bugfree_dir / 'json_value.cpp'
+
+    bug_json_reader = template_dir / 'src/lib_json/json_reader.cpp'
+    bug_json_value = template_dir / 'src/lib_json/json_value.cpp'
+
+    # replace bug files to bugfree files
+    cmd = ['cp', bugfree_json_reader, bug_json_reader]
+    sp.call(cmd, cwd=bin_dir)
+    cmd = ['cp', bugfree_json_value, bug_json_value]
+    sp.call(cmd, cwd=bin_dir)
+
+
+    # APPLYING MUTATION HERE
+    mutation_file = Path(sys.argv[1]) # file path to # json_value.MUT123.cpp
+    
+    mutation_name = sys.argv[2] # json_value.MUT123.cpp
+    mutation_id = sys.argv[3]    # MUT123
+    mutation_file_path = sys.argv[4] # src-lib_json-json_value.cpp-json_value.cpp
+
 
     # print('mutation file path: {}'.format(mutation_file))
     # print('mutation_id: {}'.format(mutation_id))
@@ -55,8 +69,8 @@ if __name__ == "__main__":
             print('File not found: {}'.format(target_file))
             exit(1)
         
-        cmd = ['rm', target_file]
-        sp.call(cmd, cwd=bin_dir)
+        # cmd = ['rm', target_file]
+        # sp.call(cmd, cwd=bin_dir)
 
         # replace with mutation file
         cmd = ['cp', mutation_file, target_file]
