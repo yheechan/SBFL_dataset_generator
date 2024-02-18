@@ -1,4 +1,4 @@
-﻿# SBFL 특징 데이터셋
+﻿# SBFL 특징 데이터셋 (24.02.19 Needs to be updated to describe the updated data of the 158 new mutant bugs)
 
 # 1. 데이터셋 통계
 * 총 버그 개수: **162개**
