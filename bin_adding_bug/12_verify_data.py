@@ -17,53 +17,38 @@ def validate_broken_row():
     print('validating broken row for ranked line')
     for file in rankedLines.iterdir():
         file_name = file.name
-        file_version = file_name.split('.')[0]
-        file_type = file_name.split('.')[1]
-
-        if file_type == 'rank':
-            continue
-
-        fp = open(file, 'r')
-        lines = fp.readlines()
         out = pd.read_csv(file)
-        
-        # assert all value in all columns of all rows are not null
-        assert out.isnull().values.any() == False
+        # check whether there is a broken row
+        broken_row = out[out.isnull().any(axis=1)]
+        assert broken_row.shape[0] == 0
+            
+
     print('\tno broken lines')
 
-def validate_buggy_one():
-    info_db = [
-        main_dir / 'mutations/src-lib_json-json_value.cpp-json_value.cpp' / 'json_value_mut_db.csv',
-        main_dir / 'mutations/src-lib_json-json_writer.cpp-json_writer.cpp' / 'json_writer_mut_db.csv',
-    ]
-    
+def validate_buggy_row():
     # check the number of row with column 'bug' == 1
-    print('validating buggy one')
+    print('validating invalidity (does not contain buggy row')
     rankedLines = main_dir / 'overall' / 'ranked-line'
-    cnt = 0
+    invalid_buggy_row_cnt = 0
     for file in rankedLines.iterdir():
         file_name = file.name
         mutant_id = '.'.join(file_name.split('.')[:3])
         
-        fp = open(file, 'r')
-        lines = fp.readlines()
         out = pd.read_csv(file)
         buggy_one = out[out['bug'] == 1]
         
         if buggy_one.shape[0] != 1:
-            cnt += 1
-            print('\t{}: {}'.format(mutant_id, buggy_one.shape[0]))
-    print('\t{} files'.format(cnt))
+            invalid_buggy_row_cnt += 1
+            # print('\t{}'.format(mutant_id))
+    print('\ttotal # of mutant data that are invalid: {}'.format(invalid_buggy_row_cnt))
 
 def mutant_line_not_executed_but_still_fail():
     tg = main_dir / 'overall' / 'ranked-line'
 
-    print('validating mutant line not executed but still fail')
+    print('validating invalidity (mutant line not executed but still fail)')
     total_cnt = 0
     diff_cnt = {}
     for file in tg.iterdir():
-        fp = open(file, 'r')
-        lines = fp.readlines()
         out = pd.read_csv(file)
 
         # check if a row that
@@ -88,5 +73,5 @@ def mutant_line_not_executed_but_still_fail():
 
 if __name__ == "__main__":
     validate_broken_row()
-    validate_buggy_one()
+    validate_buggy_row()
     mutant_line_not_executed_but_still_fail()

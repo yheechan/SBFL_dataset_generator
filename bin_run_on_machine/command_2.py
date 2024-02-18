@@ -22,7 +22,7 @@ save_mutation = bin_dir / '8_save_mutation.py'
 if __name__ == "__main__":
     # TIME_LIMIT = 5
     TIME_LIMIT = 60 * 5
-    START_TIME = time.time()
+    # START_TIME = time.time()
     MYCORE = sys.argv[1]
     template_name = MYCORE
     
@@ -135,9 +135,9 @@ if __name__ == "__main__":
                 run_but_no_bug += 1
                 print('{} - 3. run but no bug count: {}'.format(template_name, run_but_no_bug))
                 continue
-            elif res != 0:
-                print('{} - 3. [{}] failed to run test cases: {}'.format(template_name, res, mutation_name))
-                continue
+            # elif res != 0:
+            #     print('{} - 3. [{}] failed to run test cases: {}'.format(template_name, res, mutation_name))
+            #     continue
             print('{} - 3. [{}] this version has bug: {}'.format(template_name, res, mutation_name))
             run_and_bug += 1
             print('{} - 3. run and bug count: {}'.format(template_name, run_and_bug))

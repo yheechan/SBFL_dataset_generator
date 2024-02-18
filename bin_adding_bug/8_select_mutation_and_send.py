@@ -55,15 +55,19 @@ if __name__ == "__main__":
     selected_file = open(selected_file, 'a')
     
     # 4. DISTRIBUTE EQUALL AMOUNT OF MUTANTS PER FILE
-    selecting_amount = 200
+    selecting_amount = 160
     select_cnt = int(selecting_amount // len(buggy_mutation_dict))
     print('selecting amount: {}'.format(selecting_amount))
     print('selecting count per file: {}'.format(select_cnt))
 
     # 5. SELECT MUTANTS PER FILE
     selected_per_file = {}
+    old_selected_per_file = {}
+    old_selected_on_line = {}
     for file in buggy_mutation_dict:
         selected_per_file[file] = []
+        old_selected_per_file[file] = []
+        old_selected_on_line[file] = []
 
         # GET MUTANT INFO DB TO MATCH MUTANT TO SOURCE CODE LINE
         file_name_info = file.split('-')[-1].split('.')
@@ -96,7 +100,21 @@ if __name__ == "__main__":
                     if start_line not in lineNum2mutations:
                         lineNum2mutations[start_line] = []
                     lineNum2mutations[start_line].append(mutation_id)
-                
+        
+        past_selected_mutations = main_dir / 'selected_mutation-v1.txt'
+        past_list = open(past_selected_mutations, 'r')
+        past_lines = past_list.readlines()
+        for line in past_lines:
+            line = line.strip()
+            info = line.split(',')
+            old_mutant_id = info[0]
+            old_line = str(info[1])
+            old_selected_per_file[file].append(old_mutant_id)
+            old_selected_on_line[file].append(old_line)
+
+
+
+
         cnt = 0
         flag = 1
         completed = 0
@@ -106,10 +124,14 @@ if __name__ == "__main__":
             for line in lineNum2mutations:
                 if turn >= len(lineNum2mutations[line]):
                     continue
+                if lineNum2mutations[line][turn] in old_selected_per_file[file]:
+                    continue
+                if str(line) in old_selected_on_line[file]:
+                    continue
                 flag = 0
 
                 selected_per_file[file].append(lineNum2mutations[line][turn])
-                data = '{},\t{},\t{}\n'.format(lineNum2mutations[line][turn], line, turn+1)
+                data = '{},{},{}\n'.format(lineNum2mutations[line][turn], line, turn+1)
                 selected_file.write(data)
 
                 cnt += 1
