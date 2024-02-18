@@ -38,10 +38,11 @@
       └── spectrum_feature_data_per_file/
     ```
 
+<!--
 # 3. 모델 학습용 데이터셋 검증: ``overall/spectrum_feature_data_per_bug/``
 ### 검증 된 내용
 1. 모든 CSV 파일은 ``bug``열의 값이 1인 행은 하나 뿐이다
-<!-- 2. 모든 행의 ``ep + ef + np + nf``는 127으로 더해진다 (총 127 테스트 케이스 사용)
+2. 모든 행의 ``ep + ef + np + nf``는 127으로 더해진다 (총 127 테스트 케이스 사용)
 3. 각각의 SBFL 공식에 ``ep, ef, np, nf``를 적용 한 결과가 유요한 범위 안으로 계산된다
 4. 각 버그 버전에 해당 되는 failing 테스트 케이스들은 버기 라인을 실행한다 (``overall/coverage_data`` 정보에서 확인 가능) -->
 
