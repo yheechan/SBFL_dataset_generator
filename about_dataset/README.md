@@ -9,8 +9,8 @@
     github issue | 2개
     mutant based | 158개
 
-# 2. 디렉토리 구조
-데이터셋 세부 디렉토리 별 정보:
+# 2. 데이터셋 디렉토리 구조
+
 * ``overall/line2function``: 버그 버전 별 각 jsoncpp 소스 코드에 대한 **라인-함수 매핑 정보**
 * ``overall/failing``: 버그 버전 별 **Failing 테스트 케이스 정보** (참고용으로 사용)
 * ``overall/coverage``: 버그 버전 별 각 127 테스트 케이스에 대한 **JSON 형식 커버리지 정보**
