@@ -1,4 +1,4 @@
-# SBFL 특징 데이터셋
+﻿# SBFL 특징 데이터셋
 
 # 1. 데이터셋 통계
 * 총 버그 개수: **162개**
@@ -9,26 +9,43 @@
     github issue | 2개
     mutant based | 158개
 
-# 2. 데이터셋 디렉토리 구조
+# 2. 데이터셋 디렉토리 정보
+### 데이터셋 파일 크기 정보
+* ``overall.zip`` 압축 상태 크기: 1.3G
+* ``overall/`` 압축 풀린 크기: 72.9G
+* 디렉토리 개수: 7개
+* 파일 개수: 46,335
 
-* ``overall/line2function``: 버그 버전 별 각 jsoncpp 소스 코드에 대한 **라인-함수 매핑 정보**
-* ``overall/failing``: 버그 버전 별 **Failing 테스트 케이스 정보** (참고용으로 사용)
-* ``overall/coverage``: 버그 버전 별 각 127 테스트 케이스에 대한 **JSON 형식 커버리지 정보**
-* ``overall/spectra``: json 형식 커버리지 정보를 **CSV 형식으로 후처리 한 정보**
-* ``overall/processed``: 버그 버전 별 각 jsoncpp 소스 코드에 대한 **SBFL 특징 계산 정보**
-* ``overall/ranked-line``: 버그 버전 별 SBFL 특징 계산 정보 **(중요: 모델 학습 데이터로 사용)**
+### 각 디렉토리에 담긴 정보
+* ``overall/bug_versions_jsoncpp/``: 각 **버그 버전**에 해당 되는 **jsoncpp 소스 코드 파일**
+* ``overall/coverage_data/``: 버그 버전 별 각 127 테스트 케이스에 대한 **JSON 형식 커버리지 정보**
+* ``overall/failing_testcases/``: 버그 버전 별 **Failing 테스트 케이스 정보** (참고용)
+* ``overall/line2function_data/``: 버그 버전 별 각 jsoncpp 소스 코드에 대한 **라인-함수 매핑 정보**
+* ``overall/postprocessed_coverage_data/``: json 형식 커버리지 정보를 **CSV 형식으로 후처리 한 정보**
+* ``overall/README.md``: SBFL 특징 데이터셋에 대한 설명
+* ``overall/spectrum_feature_data_per_bug/``: 버그 버전 별 SBFL 특징 정보 **(중요: 모델 학습 데이터로 사용)**
+* ``overall/spectrum_feature_data_per_file/``: 버그 버전 별 각 jsoncpp 소스 코드에 대한 **SBFL 특징 계산 정보**
 
     ```
     overall/
-      ├── line2function
-      ├── failing
-      ├── coverage
-      ├── spectra
-      ├── processed
-      └── ranked-line
+      ├── bug_versions_jsoncpp/
+      ├── coverage_data/
+      ├── failing_testcases/
+      ├── line2function_data/
+      ├── postprocessed_coverage_data/
+      ├── README.md
+      ├── spectrum_feature_data_per_bug/
+      └── spectrum_feature_data_per_file/
     ```
 
-# 3. 각 버그 별 라인 정보
+# 3. 모델 학습용 데이터셋 검증: ``overall/spectrum_feature_data_per_bug/``
+### 검증 된 내용
+1. 모든 CSV 파일은 ``bug``열의 값이 1인 행은 하나 뿐이다
+2. 모든 행의 ``ep + ef + np + nf``는 127으로 더해진다 (총 127 테스트 케이스 사용)
+3. 각각의 SBFL 공식에 ``ep, ef, np, nf``를 적용 한 결과가 유요한 범위 안으로 계산된다
+4. 각 버그 버전에 해당 되는 failing 테스트 케이스들은 버기 라인을 실행한다 (``overall/coverage_data`` 정보에서 확인 가능)
+
+# 4. 각 버그 별 라인 정보
 
 ## ossfuzz와 github issue 버그 정보
 index | 버기 버전 | 출처 | 소스 코드 파일  | buggy line # | bug type

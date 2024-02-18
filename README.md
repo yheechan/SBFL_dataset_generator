@@ -38,7 +38,7 @@
     └─ src/
     ```
       * ```bin/``` 디렉토리는 도구에 실행 명령어들이 위치하고 있다.
-      * ```afl-test-cases/``` 디렉토리는 AFL++을 활용해서 jsoncpp에 대하여 추출 한 테스트 케이스(총 **1,029**개)의 저장소이다.
+      <!-- * ```afl-test-cases/``` 디렉토리는 AFL++을 활용해서 jsoncpp에 대하여 추출 한 테스트 케이스(총 **1,029**개)의 저장소이다. -->
       * ```docs/img/``` 디렉토리는 ```README.md```에서 보이는 이미지들의 저장소이다.
       * ```src/``` 디렉토리는 도구의 작동을 위한 소스 코드의 저장소이다.
 
@@ -184,7 +184,7 @@ $ ./1_jsoncpp_build.sh <bug-version>
 $ ./2_jsoncpp_run_testcases.sh <bug-version>
 ```
 
-* jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개), AFL++로 추출한 테스트 케이스 (1,029개)를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
+* jsoncpp executables로부터 jsoncpp의 테스트 케이스 (127개)<!--, AFL++로 추출한 테스트 케이스 (1,029개)-->를 각각 실행한다. (모든 테스트 케이스가 한번씩 순차적으로 실행된다)
 * 하나의 테스트 케이스를 실행한 후, **gcovr**를 통해 **라인, 함수, 파일 커버리지 정보**를:
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/raw/``` 디렉토리에 ```<bug-version>.<tc-name>.raw.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **라인과 함수 커버리지 정보**를 저장한다.
   * ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/data/coverage/summary/``` 디렉토리에 ```<bug-version>.<tc-name>.summary.json``` 이름 형식으로 저장된다. 해당 파일은 해당 테스트 케이스의 **파일 커버리지 정보**를 저장한다.
@@ -215,7 +215,7 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 
 ### ```<tc-name>``` 형식
 * 테스트 케이스의 번호에 따라 ```TC<숫자>``` 형식으로 테스트 케이스의 이름이 정해진다.
-  * ex) ```TC1032```
+  * ex) ```TC127```
 
 ## 4.3 커버리지 결과 csv 포맷으로 후처리 단계
 ![framework-step3](docs/img/framework-step3.png)
@@ -341,22 +341,26 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
 ```
 
 # 5. JsonCPP의 테스트 케이스 정보
-* 총 1,156개의 테스트 케이스 존재
+* 총 <!--1,156-->127개의 테스트 케이스 존재
   * 각 4개의 버그 버전 별 **3개의 failing 테스트 케이스**가 있다.
   * 다음 표는 각 버그 별, 1,156개 테스트 케이스 중, 스펙트럼 특징 정보 추출에 사용된 테스트 케이스의 개수를 보인다
 
     ```<bug-version>``` | 사용 테스트 케이스 개수
     --- | ---
-    bug1 | 1,155개
+    bug1 | 126개
+    bug2 | 1,156개
+    bug3 | 96개
+    bug4 | 125개
+    <!-- bug1 | 1,155개
     bug2 | 1,156개
     bug3 | 98개
-    bug4 | 1,129개
+    bug4 | 1,129개 -->
 
 * 테스트 케이스의 출처
   * 총 11개 테스트 케이스는 **본인이 추가**
-  * 총 119개 테스트 케이스는 **JsonCPP 제작**
-  * 총 1,029개 테스트 케이스는 **AFL++** 활용해서 제작
-* 127개 (11개 본인, 119개 JsonCPP) 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
+  * 총 116 테스트 케이스는 **JsonCPP 제작**
+  <!-- * 총 1,029개 테스트 케이스는 **AFL++** 활용해서 제작 -->
+* 127개 (11개 본인, 116 JsonCPP) 테스트 케이스 파일 위치: ```SBFL_dataset_generator/subjects/jsoncpp-<bug-version>/src/test_lib_json/main.cpp```
   ### 테스트 케이스 예시 (TC4)
   ```
   JSONTEST_FIXTURE_LOCAL(ReaderTest, allowNumericKeysTest_1) {
@@ -366,16 +370,17 @@ SBFL_dataset_generator/subjects/jsoncpp-bug1/data/
     checkParse(R"({ 123 : "abc" })");
   }
   ```
-* 1,029개 (AFL++) 테스트 케이스 저장 위치: ```SBFL_dataset_generator/afl-test-cases/output/default/queue/``` 
+<!-- * 1,029개 (AFL++) 테스트 케이스 저장 위치: ```SBFL_dataset_generator/afl-test-cases/output/default/queue/```  -->
 
-### Jsoncpp 테스트 케이스와 AFL++ 테스트 케이스 커버리지 차이
+<!-- ### Jsoncpp 테스트 케이스와 AFL++ 테스트 케이스 커버리지 차이 -->
+### Jsoncpp 테스트 케이스 커버리지 결과
 출처 | 테스트 케이스 개수 | 라인 커버리지 | 분기 커버리지
 --- | --- | --- | ---
 본인과 JsonCPP | 127개 | 91.4% | 43.4%
-AFL++ | 1,029개 | 13.3% | 3.4%
+<!-- AFL++ | 1,029개 | 13.3% | 3.4%
 total (all) | 1,156개 | 91.6% | 43.6%
   * 위 표는 각 출처에서 제작 된 테스트 케이스를 모두 실행했을 때 jsoncpp 프로젝트 전체의 라인 커버리지 결과이다.
-  * JsonCPP은 단일 실행 파일이 아닌 라이브러리이다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있다.
+  * JsonCPP은 단일 실행 파일이 아닌 라이브러리이다. 따라서 AFL++이 생성한 테스트 케이스는 JsonCPP의 퍼저 드라이버 내부에 있는 parse() 함수에 집중되어 있다. -->
 
 ### 다음 표는 failing 테스트 케이스에 대한 내용을 보인다
 ```<tc-name>``` | description (schema, test) | ```<bug-version>``` | buggy file name | buggy function | buggy line # | bug type | 출처
@@ -404,10 +409,12 @@ TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReade
   --- | ---
   bug1 | **1**개
   bug2 | **0**개
-  bug3 | **1,058**개
-  bug4 | **27**개
+  bug3 | **31**개
+  bug4 | **2**개
+  <!-- bug3 | **1,058**개
+  bug4 | **27**개 -->
 
-  ### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다:
+  <!-- ### 다음 표는 각 버그 버전에서 테스트 케이스들의 **특징** 정보를 보인다:
     * 파일: ```criteria/<bug-version>.stat.csv``` ([4.2](#42-테스트-케이스-실행-및-커버리지-정보-추출-단계)장에서 소개)
 
   ```<bug-version>``` | 기준 | bug 실행 후 pass 하는 TC 개수 | bug 실행 후 fail 하는 TC 개수 | bug 실행 하지 않는 TC 개수
@@ -423,7 +430,7 @@ TC12 | CharReaderTest, ossFuzz_18147_3 | bug4 | json_reader.cpp | Json::OurReade
   bug3 | line | **1,058** | 3 | 95
   bug4 | file | 1,153 | 3 | 0
   bug4 | function | 243 | 3 | 910
-  bug4 | line | **27** | 3 | 1,126
+  bug4 | line | **27** | 3 | 1,126 -->
 
 # 6. 의심도 순위 결과
 ### 라인 단위 버기 함수의 의심 순위:
@@ -436,7 +443,7 @@ bug2 | 617 | 30 | 30 | 30 | 30 | 30 | 617 | 617
 bug3 | 680 | 45 | 45 | 45 | 45 | 45 | 680 | 680
 bug4 | 676 | 3 | 3 | 3 | 3 | 3 | 676 | 676
 
-### 함수 단위 버기 함수의 의심 순위:
+<!-- ### 함수 단위 버기 함수의 의심 순위:
   * ```ranked-function/<bug-version>.summary.csv``` ([4.5](#45-의심도-순위-정렬-단계)장에서 소개)
 
 ```<bug-version>``` | Binary | GP13 | Jaccard | Naish1 | Naish2 | Ochiai | Russe+Rao | Wong1
@@ -444,7 +451,7 @@ bug4 | 676 | 3 | 3 | 3 | 3 | 3 | 676 | 676
 bug1 | 211 | 5 | 5 | 5 | 5 | 5 | 211 | 211
 bug2 | 220 | 7 | 7 | 7 | 7 | 7 | 220 | 220
 bug3 | 228 | 8 | 8 | 8 | 8 | 8 | 228 | 228
-bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227
+bug4 | 227 | 1 | 1 | 1 | 1 | 1 | 227 | 227 -->
 
 ### 총 8개의 SBFL formula를 보인다
 ![SBFL-formula](docs/img/SBFL-formula.png)
