@@ -46,7 +46,7 @@
 3. 각각의 SBFL 공식에 ``ep, ef, np, nf``를 적용 한 결과가 유요한 범위 안으로 계산된다
 4. 각 버그 버전에 해당 되는 failing 테스트 케이스들은 버기 라인을 실행한다 (``overall/coverage_data`` 정보에서 확인 가능) -->
 
-# 4. 각 버그 별 라인 정보
+# 3. 각 버그 별 라인 정보
 
 ## ossfuzz와 github issue 버그 정보
 index | 버기 버전 | 출처 | 소스 코드 파일  | buggy line # | bug type
