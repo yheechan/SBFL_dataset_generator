@@ -11,7 +11,6 @@ main_dir = bin_dir.parent
 src_dir = main_dir / 'src'
 extractor_exe = tool_dir / 'extractor'
 subjects_dir = main_dir / 'subjects'
-queue_dir = main_dir / 'afl-test-cases' / 'output' / 'default' / 'queue'
 
 versions_dir = src_dir / 'bug-versions-jsoncpp'
 
@@ -273,39 +272,38 @@ def get_test_case_list(project_name, tf):
         }
         name2id[tc_name] = tc_id
 
-    # get jsoncpp_fuzzer path
-    project_path = subjects_dir / project_name
-    build_dir = project_path / 'build'
-    jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
+    # GET AFL TEST CASES
+    # project_path = subjects_dir / project_name
+    # build_dir = project_path / 'build'
+    # jsoncpp_fuzzer = build_dir / 'jsoncpp_fuzzer'
 
-    tc_cnt = len(tc.keys()) - 1
-    for afl_tc in sorted(queue_dir.iterdir()):
-        tc_cnt += 1
-        tc_id = 'TC'+str(tc_cnt)
+    # queue_dir = main_dir / 'afl-test-cases' / 'output' / 'default' / 'queue'
+    # tc_cnt = len(tc.keys()) - 1
+    # for afl_tc in sorted(queue_dir.iterdir()):
+    #     tc_cnt += 1
+    #     tc_id = 'TC'+str(tc_cnt)
 
-        afl_name = afl_tc.name
-        check = afl_name.split(',')[0].split(':')
-        if check[0] != "id": continue
+    #     afl_name = afl_tc.name
+    #     check = afl_name.split(',')[0].split(':')
+    #     if check[0] != "id": continue
 
-        afl_num = check[1]
-        tc_name = 'afl/afl-'+afl_num
-        type = 'tp'
+    #     afl_num = check[1]
+    #     tc_name = 'afl/afl-'+afl_num
+    #     type = 'tp'
         
-        assert not tc_id in tc.keys()
+    #     assert not tc_id in tc.keys()
 
-        cmd = [jsoncpp_fuzzer, afl_tc]
-
-        tc[tc_id] = {
-            'type': type,
-            'name': tc_name,
-            'path': afl_tc
-        }
+    #     tc[tc_id] = {
+    #         'type': type,
+    #         'name': tc_name,
+    #         'path': afl_tc
+    #     }
     
-    tot_cnt = len(tc.keys())
-    pass_cnt = tot_cnt - fail_cnt
-    hh.after_exec(0, "collecting TC lists\n\t> total: {}\n\t> failing: {}\n\t> passing: {}".format(
-        tot_cnt, fail_cnt, pass_cnt
-    ))
+    # tot_cnt = len(tc.keys())
+    # pass_cnt = tot_cnt - fail_cnt
+    # hh.after_exec(0, "collecting TC lists\n\t> total: {}\n\t> failing: {}\n\t> passing: {}".format(
+    #     tot_cnt, fail_cnt, pass_cnt
+    # ))
 
     return [tc, name2id, tot_cnt, fail_cnt, pass_cnt]
 

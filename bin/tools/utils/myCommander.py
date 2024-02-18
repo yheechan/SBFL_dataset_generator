@@ -205,20 +205,22 @@ def ranked_data(project_name, db, failing_per_bug, fails):
     
     # concat all dataframes in list
     og_total_df = pd.concat(dataframe_list, axis=0)
+    ww.write_ranked_data_to_csv(project_name, og_total_df, bug_version, 'line')
 
-    for sbfl_type in SBFL:
-        # for line level
-        line_level = og_total_df.copy()
-        line_result_df = line_level.sort_values(by=sbfl_type, ascending=False)
-        file_name = bug_version+'.'+sbfl_type
+    # > ORDERING CODE
+    # for sbfl_type in SBFL:
+    #     # for line level
+    #     line_level = og_total_df.copy()
+    #     line_result_df = line_level.sort_values(by=sbfl_type, ascending=False)
+    #     file_name = bug_version+'.'+sbfl_type
 
-        line_result_df['Rank'] = line_result_df[sbfl_type].rank(method='max', ascending=False)
-        bug_row_line = line_result_df[line_result_df['bug'] == 1]
-        bug_rank_value_line = bug_row_line['Rank'].values[0]
-        row_data_line[bug_index].append(bug_rank_value_line)
+    #     line_result_df['Rank'] = line_result_df[sbfl_type].rank(method='max', ascending=False)
+    #     bug_row_line = line_result_df[line_result_df['bug'] == 1]
+    #     bug_rank_value_line = bug_row_line['Rank'].values[0]
+    #     row_data_line[bug_index].append(bug_rank_value_line)
         
-        # ww.write_ranked_data_to_csv(project_name, line_result_df, file_name, 'line')
-        ww.write_ranked_data_to_csv(project_name, og_total_df, file_name, 'line')
+    #     # ww.write_ranked_data_to_csv(project_name, line_result_df, file_name, 'line')
+    #     ww.write_ranked_data_to_csv(project_name, og_total_df, file_name, 'line')
         
         # for function level
         # total_df = og_total_df.copy()
