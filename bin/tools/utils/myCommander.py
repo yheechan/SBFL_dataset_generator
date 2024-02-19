@@ -301,6 +301,7 @@ def spectra_data(project_name, db, tf, tp, processed_flag, failing_per_bug, fail
 
         afl_check = tc_name.split('/')[0]
 
+        # CODE THE REMOVES COINCIDENT TC
         # skip the tc if it is in the coincident tc list
         if [tc_id, tc_name] in coincident_tc_list:
             print(">> excluding coincident TC: {} from {}".format(tc_id, bug_version))
