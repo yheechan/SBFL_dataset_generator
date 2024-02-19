@@ -24,12 +24,13 @@
 
     ```
     overall/
+      ├── README.md
       ├── bug_versions_jsoncpp/
       ├── coverage_data/
       ├── failing_testcases/
       ├── line2function_data/
+      ├── mutant_db/
       ├── postprocessed_coverage_data/
-      ├── README.md
       ├── spectrum_feature_data_excluding_coincidentally_correct_tc_per_bug/
       └── spectrum_feature_data_per_bug/
     ```
@@ -45,7 +46,7 @@
 1. 모든 CSV 파일은 ``bug``열의 값이 1인 행은 하나만 존재하는 것은 검증한다
 2. ``overall/spectrum_feature_data_per_bug/``에 위치하는 데이터(우연히 passing 하는 테스트 케이스를 제외 하지 않은 데이터)의 모든 행의 ``ep + ef + np + nf``는 127로 더해지는 것을 검증한다 (총 127 테스트 케이스 사용)
 3. 각각의 SBFL 공식에 ``ep, ef, np, nf``를 적용한 결과가 유효한 범위 안으로 계산되는 것을 검증한다
-4. 각 mutant based 데이터의 생성 된 변형이 버그 버전에 해당하는 jsoncpp 소스 코드 파일에 (``overall/bug_versions_jsoncpp/``) 생성되었는지 검증한다
+4. 각 mutant based 데이터의 생성 된 mutant이 버그 버전에 해당하는 jsoncpp 소스 코드 파일에 (``overall/bug_versions_jsoncpp/``) 생성되었는지 검증한다
 
 
 
