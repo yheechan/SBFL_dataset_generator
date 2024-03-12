@@ -36,6 +36,12 @@ def copy_data(src_dir, dest_dir, bug_versions):
 
     print(f'included_cnt {included_cnt} files')
     
+def validate_correct_buggy_line(bug_version_name, buggy_line_key):
+    bug_version_from_key = buggy_line_key.split('#')[0]
+    if bug_version_name != bug_version_from_key:
+        print('[invalid] incorrect buggy line: {}'.format(bug_version_name))
+        print('\t\tbug version should be {} not {}'.format(bug_version_name, bug_version_from_key))
+        # print('\t{}'.format(buggy_line_key))
 
 if __name__ == "__main__":
     
@@ -43,6 +49,7 @@ if __name__ == "__main__":
     excluded_versions = []
     no_buggy_line_mutants = []
     fail_without_buggy_line_execution = []
+    wrong_buggy_line_mutants = []
     # pass_with_buggy_line_execution = []
     list_fail_tc_not_executing_buggy_line_per_target = {}
     for machines in sorted(bugs_dir.iterdir()):
@@ -52,6 +59,8 @@ if __name__ == "__main__":
 
             target_id = target.name
             if target_id == 'bugs': continue
+
+            bug_version_name = '.'.join(target_id.split('.')[:3])
 
             csv_name = target_id + '.csv'
             rankedLines = target / 'data/ranked-line' / csv_name
@@ -65,6 +74,12 @@ if __name__ == "__main__":
                 exclude_status = True
                 no_buggy_line_status = True
                 no_buggy_line_mutants.append(target_id)
+            
+            buggy_line_key = buggy_one['lineNo'].values[0].strip()
+            bug_versino_from_key = buggy_line_key.split('#')[0]
+            if bug_version_name != bug_versino_from_key:
+                wrong_buggy_line_mutants.append(target_id)
+                validate_correct_buggy_line(bug_version_name, buggy_line_key)
             
             # [2] check for mutant line not executed but still fail
             # buggy row ('bug' == 1)...
@@ -159,31 +174,31 @@ if __name__ == "__main__":
         print('{}: {}'.format(key, perfile_cnt[key]))
 
     
-    overall_dir = main_dir / 'overall'
-    check_dir(overall_dir)
+    # overall_dir = main_dir / 'overall'
+    # check_dir(overall_dir)
     
-    # make coverage directory
-    coverage_dir = overall_dir / 'coverage'
-    check_dir(coverage_dir)
+    # # make coverage directory
+    # coverage_dir = overall_dir / 'coverage'
+    # check_dir(coverage_dir)
     
-    # copy coverage data
-    copy_data('coverage/raw', coverage_dir / 'raw', selected_versions)
+    # # copy coverage data
+    # copy_data('coverage/raw', coverage_dir / 'raw', selected_versions)
 
-    # copy summary data
-    copy_data('coverage/summary', coverage_dir / 'summary', selected_versions)
+    # # copy summary data
+    # copy_data('coverage/summary', coverage_dir / 'summary', selected_versions)
 
-    # copy spectra data
-    copy_data('spectra', overall_dir / 'spectra', selected_versions)
+    # # copy spectra data
+    # copy_data('spectra', overall_dir / 'spectra', selected_versions)
 
-    # copy processed data
-    copy_data('processed', overall_dir / 'processed', selected_versions)
+    # # copy processed data
+    # copy_data('processed', overall_dir / 'processed', selected_versions)
 
-    # copy ranked-line
-    copy_data('ranked-line', overall_dir / 'ranked-line', selected_versions)
+    # # copy ranked-line
+    # copy_data('ranked-line', overall_dir / 'ranked-line', selected_versions)
 
-    # copy failing
-    copy_data('failing', overall_dir / 'failing', selected_versions)
+    # # copy failing
+    # copy_data('failing', overall_dir / 'failing', selected_versions)
 
-    # line2function
-    copy_data('line2function', overall_dir / 'line2function', selected_versions)
+    # # line2function
+    # copy_data('line2function', overall_dir / 'line2function', selected_versions)
 

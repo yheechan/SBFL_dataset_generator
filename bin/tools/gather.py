@@ -47,6 +47,8 @@ if __name__ == "__main__":
 
     for project_path in subjects_dir.iterdir():
         project_name = project_path.name
+        if 'bug' not in project_name:
+            continue
         project = project_name.split('-')[0]
         bug = project_name.split('-')[1]
 
@@ -80,7 +82,7 @@ if __name__ == "__main__":
     # copy_data('ranked-function', overall_dir / 'ranked-function')
 
     # 7. Copy line2function data to overall
-    # copy_data('line2function', overall_dir / 'line2function')
+    copy_data('line2function', overall_dir / 'line2function')
 
     #8. Copy ranked summary data to overall
     copy_data('summary', overall_dir / 'summary')

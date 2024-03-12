@@ -177,5 +177,5 @@ def edit():
 
 if __name__ == "__main__":
     validate_broken_row()
-    validate_row_count()
+    # validate_row_count()
     # edit()
